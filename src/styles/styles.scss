@@ -1,0 +1,17 @@
+/* Variables */
+$vin-blue: #5bb7db;
+$vin-green: #60b044;
+$vin-red: #ff0000;
+
+ .search-button{
+  background: linear-gradient(0deg, #930253 0%, #ba0e6f 100%);
+  color:white!important;
+ }
+
+
+ @media (min-width: 1100){
+  .nav-custom a {
+    padding: 0px!important;
+}
+ }
+
