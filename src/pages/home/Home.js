@@ -3,10 +3,13 @@ import React from "react";
 import "../../styles/tpl/style.css";
 import "../../styles/tpl/bootstrap.css";
 import "./homeStyles.scss";
+
+import HomeHeader from './HomeHeader'
 //<div className="page text-center">
 const Home = () => {
   return (
     <div>
+      <HomeHeader/>
       <section className="section-80 section-lg-120">
         <div className="container container-wide isotope-wrap">
           <div

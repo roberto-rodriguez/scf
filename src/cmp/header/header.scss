@@ -2,30 +2,7 @@
    visibility: visible !important;
    opacity: 1 !important;
  }
-
- .ulparallax {
-   transform: translate3d(0px, 0px, 0px);
-   transform-style: preserve-3d;
-   backface-visibility: hidden;
-   position: relative;
- }
-
- .parallax1 {
-   transform: translate3d(23.122px, 0px, 0px);
-   transform-style: preserve-3d;
-   backface-visibility: hidden;
-   position: relative;
-   display: block;
-   left: 0px;
-   top: 0px;
- }
-
- .parallax2 {
-   transform: translate3d(20.2984px, 0px, 0px);
-   transform-style: preserve-3d;
-   backface-visibility: hidden;
-   position: absolute;
-   display: block;
-   left: 0px;
-   top: 0px;
+ 
+ .basic-header{
+   height: 70px; 
  }
