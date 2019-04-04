@@ -1,7 +1,5 @@
 import React from "react";
-
-import "../../styles/tpl/style.css";
-import "../../styles/tpl/bootstrap.css";
+ 
 import "./homeStyles.scss";
 
 import HomeHeader from './HomeHeader'
