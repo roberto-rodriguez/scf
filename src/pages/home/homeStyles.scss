@@ -1,11 +1,31 @@
- 
-
- .page-header{
-  background:  no-repeat url('images/background-05.jpg') center;
-  height: 500px;
-  width: 100%;
+ .page-header {
+   background: no-repeat url('images/background-05.jpg') center;
+   height: 500px;
+   width: 100%;
  }
 
+ .isotope {
+   display: inline !important;
+ }
 
+ .row {
+   border: 1px solid #B0DFE5;
+   margin-top: 0px !important;
+ }
 
+ .row-wrapper {
+   width: 49%;
+   padding: 1%;
+   display: inline;
+ }
 
+ .post-table {
+   border-collapse: separate;
+   border-spacing: 50px 0;
+ }
+
+ @media (min-width: 1300px) {
+   .container {
+     max-width: 1270px;
+   }
+ }
