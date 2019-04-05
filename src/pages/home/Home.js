@@ -1,7 +1,6 @@
 import React from "react";
 
 import "./homeStyles.scss";
-import Post from "./cmp/Post";
 import PostColumn from "./cmp/PostColumn";
 import HomeHeader from "./cmp/HomeHeader";
 
@@ -23,17 +22,23 @@ const Home = () => {
             <table className="post-table" cellSpacing="10">
               <tbody>
                 <tr>
-                  <td />
-                  <PostColumn
-                    float={"left"}
-                    header={
-                      <div>
-                        <h5 style={{ textAlign: "left", color: "#c62a82" }}>
-                          Premium Deals{" "}
-                        </h5>
-                      </div>
-                    }
-                  />
+                  <td>
+                    <PostColumn
+                      float={"left"}
+                      header={
+                        <div>
+                          <h5 style={{ textAlign: "left", color: "#c62a82" }}>
+                            Sample Premium Deals from 1 week ago 
+
+                            <span className="see-premium-link">
+                              {"Try premium FREE"}
+                             </span>
+                          </h5>
+
+                        </div>
+                      }
+                    />
+                  </td>
                   <td>
                     <PostColumn
                       float={"right"}

@@ -1,0 +1,118 @@
+ .post-header {
+   top: 10px;
+   right: 10px;
+   position: absolute;
+   background-color: white;
+   padding: 3px 7px;
+   border-radius: 8px !important;
+ }
+
+ .post-footer {
+   bottom: 10px;
+   left: 10px;
+   position: absolute;
+   background-color: rgba(0, 0, 0, 0.55);
+   color: yellow;
+   padding: 3px 7px;
+   border-radius: 8px !important;
+ }
+
+ .premium-post-overlay {
+   position: absolute;
+   background-color: rgba(0, 0, 0, 0.45);
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+ }
+
+ .expired-text {
+   color: white;
+   padding: 15px;
+ }
+
+ .premium-post-ad {
+   text-align: center;
+   color: yellow;
+   font-size: 24px;
+   margin-bottom: 10px;
+ }
+
+ .premium-post-login {
+   text-align: center;
+   cursor: pointer;
+   margin-top:15px; 
+   font-size: 14px;
+ }
+
+ @media screen and (max-width:1400px) {
+   .premium-post-ad {
+     font-size: 16px;
+     margin-bottom: 3px;
+   }
+ }
+
+
+ @media screen and (max-width:1200px) {
+   .premium-post-ad {
+     font-size: 16px;
+   }
+ }
+
+
+
+ .pink-text {
+   color: rgb(198, 42, 130);
+   font-weight: bold;
+ }
+
+ .regular-price {
+   text-decoration: underline;
+   color: #9e9e9e;
+   margin-left: 5px;
+   font-size: 13px;
+ }
+
+ .thumbnail {
+   border-radius: 5px !important;
+ }
+
+ .pOrigin {
+   text-align: left;
+ }
+
+
+ .pDestination {
+   text-align: right;
+ }
+
+ .thumbnail:hover .post-header {
+   display: none;
+ }
+
+ .city-price {
+   color: yellow
+ }
+
+ .list-marked li:before {
+   color: yellow !important;
+ }
+
+ ol,
+ ul,
+ dl {
+   margin-bottom: -20px !important;
+ }
+
+ .cities-list li:hover a,
+ .cities-list li:hover span,
+ .cities-list li:hover:before {
+   color: white !important;
+ }
+
+
+ .unlock-premium-button {
+   padding: 8px 5px !important;
+   text-transform: none !important;
+   min-height: 35px;
+ }

@@ -851,15 +851,15 @@ address {
 }
 
 .page a.text-info:hover, .page a.text-info:focus {
-	color: #17c7e4 !important;
+	color: white !important;
 }
 
 .page .text-info-dr {
-	color: #22a9bf !important;
+	color: yellow !important;
 }
 
 .page a.text-info-dr:hover, .page a.text-info-dr:focus {
-	color: #1a8394 !important;
+	color: white !important;
 }
 
 .page .text-dark {
@@ -10698,7 +10698,7 @@ html.mac-os .button-naira:before {
 	left: 0;
 	right: 0;
 	z-index: -1;
-	background-color: rgba(34, 169, 191, 0.7);
+	background-color: rgba(0, 0, 0, 0.75);
 	transform: translateY(-20%);
 	transition: .4s;
 	opacity: 0;

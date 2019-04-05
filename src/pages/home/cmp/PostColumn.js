@@ -1,44 +1,38 @@
 import React from "react";
-import Post from "./Post";
-import PostPremium from "./PostPremium";
+import Post from "./post/Post";
+import PostPremium from "./post/PostPremium";
 import PropTypes from "prop-types";
 
 class PostColumn extends React.Component {
   render() {
-    var { float, header } = this.props;
+    var { header } = this.props;
+
+    var list = [];
+
+    for (var i = 0; i < 12; i++) {
+      list.push(this.createPost(i));
+    }
 
     return (
       <div className="row-wrapper">
         {header}
-        <div className="row text-lg-left">
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-        </div>
+        <div className="row text-lg-left">{list}</div>
       </div>
     );
   }
 
-  // createPost(){
-  //   if(this.props.float == 'left'){
-  //     return <PostPremium/>
-  //   }else{
-  //     return <Post/>;
-  //   }
-  // }
+  createPost(i) {
+    if (this.props.float == "left") {
+      return <PostPremium key={i}/>;
+    } else {
+      return <Post  key={i}/>;
+    }
+  }
 }
 
 PostColumn.propTypes = {
-  float: PropTypes.string
+  float: PropTypes.string,
+  header: PropTypes.element
 };
 
 export default PostColumn;
