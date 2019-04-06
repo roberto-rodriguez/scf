@@ -5,6 +5,11 @@
    background-color: white;
    padding: 3px 7px;
    border-radius: 8px !important;
+   z-index: 1000;
+ }
+ 
+ .thumbnail:hover .post-footer, .thumbnail:hover .country-text{
+   display: none;
  }
 
  .post-footer {
@@ -15,6 +20,7 @@
    color: yellow;
    padding: 3px 7px;
    border-radius: 8px !important;
+   z-index: 1000;
  }
 
  .premium-post-overlay {

@@ -2,8 +2,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom"; 
 import "./header.scss";
-
-//add this to header when scoll down  bg-gray-dark
+import PropTypes from "prop-types";
+ 
   class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -42,16 +42,20 @@ import "./header.scss";
   }
 
   render() {
+    var {navBck} = this.props;
     var navCls = "rd-navbar-wrap"; 
 
     if (this.state.navSolidBackground) {
       navCls += " bg-gray-dark";
-    } 
+    }else{
+      if(navBck){
+        navCls += " nav-bck";
+      }
+    }
 
-    // {" | "}
-    // <NavLink to="/fuel-savings">Demo App</NavLink>
-    // {" | "}
-    // <NavLink to="/about">About</NavLink>
+    
+
+    //nav-bck
 
     return (  
           <div
@@ -132,31 +136,8 @@ import "./header.scss";
   }
 }
 
-/* <NavLink exact to="/">
-
-</NavLink> */
-
-// class App extends React.Component {
-//   render() {
-//     const activeStyle = { color: 'blue' };
-//     return (
-//       <div>
-//         <div>
-//           <NavLink exact to="/" activeStyle={activeStyle}>Home</NavLink>
-//           {' | '}
-//           <NavLink to="/fuel-savings" activeStyle={activeStyle}>Demo App</NavLink>
-//           {' | '}
-//           <NavLink to="/about" activeStyle={activeStyle}>About</NavLink>
-//         </div>
-//         <Switch>
-//           <Route exact path="/" component={HomePage} />
-//           <Route path="/fuel-savings" component={FuelSavingsPage} />
-//           <Route path="/about" component={AboutPage} />
-//           <Route component={NotFoundPage} />
-//         </Switch>
-//       </div>
-//     );
-//   }
-// }
+NavBar.propTypes = {
+  navBck: PropTypes.bool 
+};
 
 export default NavBar;

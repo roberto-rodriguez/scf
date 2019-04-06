@@ -29,17 +29,11 @@ const Post = () => {
           $253 <span className="regular-price">$481</span>
         </div>
         <div className="post-footer">3 hous ago</div>
-        <img
-          src={require("../../images/gallery-02.jpg")}
-          className="img-responsive center-block thumbnail-image"
-          width="420"
-          height="280"
-          alt=""
-        />
+        <img  src={require("../../images/gallery-02.jpg")} className="img-responsive center-block thumbnail-image"  width="420"  height="280"  alt=""  />
         <div className="caption">
           <ul className="list-marked list-marked-no-padding list-marked-flex text-base cities-list">
             <li>
-              <a className="text-info-dr" href="tickets.html">
+              <a className="yellow-text" href="tickets.html">
                 Paris
               </a>
               <div>
@@ -48,7 +42,7 @@ const Post = () => {
               </div>
             </li>
             <li>
-              <a className="text-info-dr" href="tickets.html">
+              <a className="yellow-text" href="tickets.html">
                 Rome
               </a>
               <div>
@@ -57,7 +51,7 @@ const Post = () => {
               </div>
             </li>
             <li>
-              <a className="text-info-dr" href="tickets.html">
+              <a className="yellow-text" href="tickets.html">
                 Barcelona
               </a>
               <div>
@@ -66,7 +60,7 @@ const Post = () => {
               </div>
             </li>
             <li>
-              <a className="text-info-dr" href="tickets.html">
+              <a className="yellow-text" href="tickets.html">
                 Berlin
               </a>
               <div>
@@ -75,7 +69,7 @@ const Post = () => {
               </div>
             </li>
             <li>
-              <a className="text-info-dr" href="tickets.html">
+              <a  className="yellow-text" href="tickets.html">
                 Madrid
               </a>
               <div>

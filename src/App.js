@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import About from "./pages/about/About"; 
 import NotFoundPage from "./cmp/notFound/NotFoundPage";
 import Home from "./pages/home/Home";
+import Details from './pages/details/Details'
 
 import "./styles/tpl/style.css";
 import "./styles/tpl/bootstrap.css";
@@ -14,6 +15,7 @@ class App extends React.Component {
     return (
       <div className="page text-center"> 
         <Switch>
+          <Route exact path="/details" component={Details} /> 
           <Route exact path="/" component={Home} /> 
           <Route path="/about" component={About} />
           <Route component={NotFoundPage} />

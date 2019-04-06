@@ -1,14 +1,16 @@
- .page-header {
-   background: no-repeat url('./images/background-05.jpg') center;
-   height: 500px;
-   width: 100%;
+ .home-header {
+   background: no-repeat url('./images/background-05.jpg') center; 
  }
 
+ .home-body{
+  background-color: rgba(1,1,1,0.01);
+ }
 
- .row {
-   border: 1px solid #B0DFE5;
+ .post-column {
+   border: 1px solid rgba(0,0,0,0.10);
    margin-top: 0px !important;
    border-radius: 8px;
+   background-color: white;
  }
 
 
@@ -34,3 +36,15 @@
    cursor: pointer;
    text-decoration: underline;
  }
+
+ .page a.text-info:hover, .page a.text-info:focus {
+	color: white !important;
+}
+
+.page .text-info-dr {
+	color: yellow !important;
+}
+
+.page a.text-info-dr:hover, .page a.text-info-dr:focus {
+	color: white !important;
+}

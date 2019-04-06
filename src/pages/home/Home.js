@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div>
       <HomeHeader />
-      <section className="section-80 section-lg-120">
+      <section className="section-80 section-lg-120 home-body">
         <div
           className="container container-wide isotope-wrap"
           style={{ pading: 0 }}

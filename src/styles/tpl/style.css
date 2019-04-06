@@ -324,7 +324,7 @@ dl {
 
 @media (min-width: 1600px) {
 	.list-tickets .list-item {
-		padding: 13px 12.2% 12px 40px;
+		padding: 13px 6% 12px 6%;
 	}
 }
 
@@ -355,6 +355,8 @@ dl {
 
 .list-tickets .list-item-price {
 	margin-top: 3px;
+	margin-bottom: 0px!important;
+	text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -395,9 +397,9 @@ dl {
 @media (min-width: 768px) {
 	.list-tickets .list-item-footer {
 		margin-top: 0;
-		margin-left: 7.6%;
-		text-align: left;
-	}
+		margin-left: 5%;
+		text-align: center;
+	} 
 }
 
 .list-tickets .list-item-top, .list-tickets .list-item-bottom {
@@ -851,15 +853,15 @@ address {
 }
 
 .page a.text-info:hover, .page a.text-info:focus {
-	color: white !important;
+	color: #17c7e4!important;
 }
 
 .page .text-info-dr {
-	color: yellow !important;
+	color: #22a9bf !important;
 }
 
 .page a.text-info-dr:hover, .page a.text-info-dr:focus {
-	color: white !important;
+	color: #1a8394 !important;
 }
 
 .page .text-dark {

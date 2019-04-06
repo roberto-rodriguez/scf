@@ -14,7 +14,7 @@ import NavBar from "../../../cmp/header/NavBar";
  
   render() {  
     return (
-      <header className="page-header">
+      <header className="page-header home-header">
         <NavBar />
 
         <section style={{ paddingTop: 130 }}>
