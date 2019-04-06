@@ -14,7 +14,7 @@ class PostColumn extends React.Component {
     }
 
     return (
-      <div className="row-wrapper">
+      <div className="row-wrapper" >
         {header}
         <div className="row text-lg-left">{list}</div>
       </div>

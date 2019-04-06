@@ -26,10 +26,29 @@
    right: 0;
  }
 
- .expired-text {
-   color: white;
-   padding: 15px;
+ .absolute-left-text{
+  position: absolute;
+  top: 0; 
+  left: 0;
+  color: white;
+  text-align: left;
+  padding: 15px;
  }
+
+ .white-text { 
+   color: white; 
+ }
+
+ .country-text { 
+  color: white ; 
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  bottom: 0; 
+  right: 0;
+  border-radius: 10px
+}
+
 
  .premium-post-ad {
    text-align: center;
