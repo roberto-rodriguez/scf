@@ -22,24 +22,22 @@ const Home = () => {
             <table className="post-table" cellSpacing="10">
               <tbody>
                 <tr>
-                  <td>
+                  <td width="50%">
                     <PostColumn
                       float={"left"}
                       header={
                         <div>
                           <h5 style={{ textAlign: "left", color: "#c62a82" }}>
-                            Sample Premium Deals from 1 week ago 
-
+                            Sample Premium Deals from 1 week ago
                             <span className="see-premium-link">
                               {"Try premium FREE"}
-                             </span>
+                            </span>
                           </h5>
-
                         </div>
                       }
                     />
                   </td>
-                  <td>
+                  <td width="50%">
                     <PostColumn
                       float={"right"}
                       header={

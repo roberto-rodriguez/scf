@@ -11,12 +11,17 @@
    margin-top: 0px !important;
    border-radius: 8px;
    background-color: white;
+   padding-bottom: 20px;
  }
 
 
  .post-table {
    border-collapse: separate;
    border-spacing: 50px 0;
+
+   td{
+    vertical-align: top;
+   }
  }
 
  h5 .premium-header-desc {

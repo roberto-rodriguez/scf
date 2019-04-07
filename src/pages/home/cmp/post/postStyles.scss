@@ -1,14 +1,15 @@
  .post-header {
    top: 10px;
    right: 10px;
+   padding: 3px 7px;
    position: absolute;
    background-color: white;
-   padding: 3px 7px;
-   border-radius: 8px !important;
+   border-radius: 4px;
    z-index: 1000;
  }
- 
- .thumbnail:hover .post-footer, .thumbnail:hover .country-text{
+
+ .thumbnail:hover .post-footer,
+ .thumbnail:hover .country-text {
    display: none;
  }
 
@@ -19,7 +20,7 @@
    background-color: rgba(0, 0, 0, 0.55);
    color: yellow;
    padding: 3px 7px;
-   border-radius: 8px !important;
+   border-radius: 8px;
    z-index: 1000;
  }
 
@@ -32,28 +33,27 @@
    right: 0;
  }
 
- .absolute-left-text{
-  position: absolute;
-  top: 0; 
-  left: 0;
-  color: white;
-  text-align: left;
-  padding: 15px;
+ .absolute-left-text {
+   position: absolute;
+   top: 0;
+   left: 0;
+   color: white;
+   text-align: left;
+   padding: 15px;
  }
 
- .white-text { 
-   color: white; 
+ .white-text {
+   color: white;
  }
 
- .country-text { 
-  color: white ; 
-  padding: 5px;
-  background-color: rgba(0, 0, 0, 0.25);
-  position: absolute;
-  bottom: 0; 
-  right: 0;
-  border-radius: 10px
-}
+ .country-text {
+   color: white;
+   padding: 0px 10px 10px 0px; 
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   border-radius:0px
+ }
 
 
  .premium-post-ad {
@@ -66,7 +66,7 @@
  .premium-post-login {
    text-align: center;
    cursor: pointer;
-   margin-top:15px; 
+   margin-top: 15px;
    font-size: 14px;
  }
 
@@ -75,6 +75,39 @@
      font-size: 16px;
      margin-bottom: 3px;
    }
+
+   .post-header {
+     top: 5px;
+     right: 5px;
+     padding: 1px 3px;
+     font-size: 13px;
+     font-weight: normal;
+
+     .regular-price {
+       font-size: 13px;
+       font-weight: normal;
+     }
+   }
+
+   .post-footer {
+     bottom: 5px;
+     left: 5px;
+     font-size: 13px;
+     font-weight: normal;
+     padding: 1px 3px;
+     border-radius: 3px;
+   }
+
+   .country-text {
+     color: white;
+     padding: 2px;
+     border-radius:2px;
+     font-size: 13px;
+     font-weight: normal;
+     bottom: 5px;
+     right: 5px;
+   }
+ 
  }
 
 
@@ -82,6 +115,38 @@
    .premium-post-ad {
      font-size: 16px;
    }
+
+   .post-header {
+     top: 1px;
+     right: 1px;
+     padding: 0px 1px;
+     font-size: 12px; 
+
+     .regular-price {
+       font-size: 11px; 
+     }
+   }
+
+   .post-footer {
+     bottom: 1px;
+     left: 1px;
+     font-size: 12px; 
+     padding: 0px 1px;
+     border-radius: 0px;
+   }
+
+   .country-text { 
+    padding: 0px 1px;
+    border-radius:0px;
+    font-size: 12px; 
+    bottom: 1px;
+    right: 1px;
+  }
+
+  .pOrigin, .pDestination{
+    font-size: 12px;
+    font-weight: normal;
+  }
  }
 
 

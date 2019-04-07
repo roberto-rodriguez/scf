@@ -33,7 +33,7 @@ const PostPremium = () => {
         </div>
         <div className="post-footer">7 days ago</div>
         <img
-          src={require("../../images/gallery-02.jpg")}
+          src={require("../../images/gallery-3.jpg")}
           className="img-responsive center-block thumbnail-image"
           width="420"
           height="280"
