@@ -6,11 +6,11 @@ class Post extends React.Component {
  
 
   render() {
-    var {index, post} = this.props; 
+    var {post} = this.props; 
     var {id, city, country} = post;
 
     return (
-      <div key={index}
+      <div  
         className="col-12 col-md-12 col-lg-12 col-xl-6 isotope-item"
         data-filter="Type 3"
       >

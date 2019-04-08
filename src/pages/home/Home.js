@@ -3,6 +3,7 @@ import React from "react";
 import "./homeStyles.scss";
 import PostColumn from "./cmp/PostColumn";
 import HomeHeader from "./cmp/HomeHeader";
+import ExpiredPostColumn from "./cmp/ExpiredPostColumn";
 
 const Home = () => {
   return (
@@ -23,19 +24,7 @@ const Home = () => {
               <tbody>
                 <tr>
                   <td width="50%">
-                    <PostColumn
-                      float={"left"}
-                      header={
-                        <div>
-                          <h5 style={{ textAlign: "left", color: "#c62a82" }}>
-                            Sample Premium Deals from 1 week ago
-                            <span className="see-premium-link">
-                              {"Try premium FREE"}
-                            </span>
-                          </h5>
-                        </div>
-                      }
-                    />
+                    <ExpiredPostColumn />
                   </td>
                   <td width="50%">
                     <PostColumn
@@ -56,5 +45,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;

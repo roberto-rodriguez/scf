@@ -1,6 +1,7 @@
 import React from "react";
 import "./postStyles.scss";
-const PostPremium = () => {
+
+const PostExpired = () => {
   return (
     <div
       className="col-12 col-md-12 col-lg-12 col-xl-6 isotope-item"
@@ -31,7 +32,7 @@ const PostPremium = () => {
         <div className="post-header pink-text">
           $253 <span className="regular-price">$750</span>
         </div>
-        <div className="post-footer">7 days ago</div>
+        <div className="post-footer" style={{backgroundColor:'transparent'}}>7 days ago</div>
         <img
           src={require("../../images/gallery-3.jpg")}
           className="img-responsive center-block thumbnail-image"
@@ -58,4 +59,4 @@ const PostPremium = () => {
   );
 };
 
-export default PostPremium;
+export default PostExpired;

@@ -3,7 +3,9 @@
   width: 100%;
 }
 
-
+.white-text {
+  color: white !important;
+}
 
 .yellow-text {
   color: yellow !important;
@@ -13,7 +15,11 @@
   color: #1f2746;
 }
 
-.black-bold-text{
-  font-weight:bold;
-   color:black
+.black-bold-text {
+  font-weight: bold;
+  color: black
+}
+
+.pink-text {
+  color: "#c62a82"; 
 }

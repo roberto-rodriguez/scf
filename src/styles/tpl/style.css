@@ -16194,7 +16194,7 @@ p + .group {
 	}
 }
 
-.nav-custom a {
+.nav-custom a, .nav-custom .region-link {
 	display: block;
 	color: #808080;
 	font-weight: 700;
@@ -16204,25 +16204,29 @@ p + .group {
 }
 
 @media (min-width: 768px) {
-	.nav-custom a {
+	.nav-custom a, .nav-custom .region-link {
 		border: none;
 	}
 }
 
 @media (min-width: 992px) {
-	.nav-custom a {
+	.nav-custom a, .nav-custom .region-link{
 		padding: 9px 30px;
 	}
 }
 
-.nav-custom a:hover {
+.nav-custom a:hover, .nav-custom .region-link:hover {
 	background-color: #c62a82;
 	color: #fff;
 }
 
-.nav-custom a.active {
+.nav-custom a.active, .nav-custom span.active {
 	background-color: #22a9bf;
 	color: #fff;
+}
+
+.region-link:hover{
+	outline: none;
 }
 
 .nav-custom-tabs {

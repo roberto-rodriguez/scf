@@ -1,18 +1,20 @@
-import React from "react"; 
-import NavBar from "../../../cmp/header/NavBar"; 
+import React from "react";
+import NavBar from "../../../cmp/header/NavBar";
+import HeaderRegion from "./HeaderRegion";
 
+var regions = [
+  "All Deals to:",
+  "Europe",
+  "Asia",
+  "Oceania",
+  "Caribean",
+  "America",
+  "Africa"
+];
+class HomeHeader extends React.Component {
+  
 
-
- class HomeHeader extends React.Component {
-  constructor(props) {
-    super(props); 
-
-    this.state = { 
-    };
-  }
- 
- 
-  render() {  
+  render() {
     return (
       <header className="page-header home-header">
         <NavBar />
@@ -22,9 +24,9 @@ import NavBar from "../../../cmp/header/NavBar";
             Welcome to the community of Smart Travelers
           </h3>
           <br />
-          <span style={{ color: "white" }}>
-            Here you will find the best deals from your home city to +150 cities
-            around the world
+          <span style={{ color: "white", fontSize: 17 }}>
+            Here you will find the best deals from your home city to <b>+200</b>{" "}
+            cities around the world
           </span>
 
           <br />
@@ -48,75 +50,20 @@ import NavBar from "../../../cmp/header/NavBar";
 
         <div className="isotope-filters isotope-filters-horizontal">
           <ul className="nav-custom" style={{ backgroundColor: "white" }}>
-            <li>
-              <a
-                className="active"
-                data-isotope-filter="*"
-                data-isotope-group="gallery"
-                href="#"
-              >
-                All Deals to
-              </a>
-            </li>
-            <li>
-              <a
-                data-isotope-filter="Type 1"
-                data-isotope-group="gallery"
-                href="#"
-              >
-                Europe
-              </a>
-            </li>
-            <li>
-              <a
-                data-isotope-filter="Type 3"
-                data-isotope-group="gallery"
-                href="#"
-              >
-                Asia
-              </a>
-            </li>
-            <li>
-              <a
-                data-isotope-filter="Type 4"
-                data-isotope-group="gallery"
-                href="#"
-              >
-                Oceania
-              </a>
-            </li>
-            <li>
-              <a
-                data-isotope-filter="Type 2"
-                data-isotope-group="gallery"
-                href="#"
-              >
-                Caribean
-              </a>
-            </li>
-            <li>
-              <a
-                data-isotope-filter="Type 2"
-                data-isotope-group="gallery"
-                href="#"
-              >
-                America{" "}
-              </a>
-            </li>
-            <li>
-              <a
-                data-isotope-filter="Type 2"
-                data-isotope-group="gallery"
-                href="#"
-              >
-                Africa{" "}
-              </a>
-            </li>
+            {regions.map((r, i) => (
+              <HeaderRegion 
+                key={i}
+                id={i + 1}
+                text={r}
+              />
+            ))}
           </ul>
         </div>
       </header>
     );
   }
+
+  onUpdateRegion = region => this.setState(region);
 }
 
 /* <NavLink exact to="/">
