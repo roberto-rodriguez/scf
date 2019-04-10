@@ -1,27 +1,29 @@
-import React from "react";  
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import PostExpired from './post/PostExpired'
- 
+import PostExpired from "./post/PostExpired";
+
 class ExpiredPostColumn extends React.Component {
- 
   render() {
     var { postList } = this.props;
 
     return (
       <div className="row-wrapper">
         <div>
-          <h5 className={'blue-text'} style={{ textAlign: "left"}}>
-            Sample Premium Deals from 1 week ago
-            <span className="see-premium-link">{"Try premium FREE"}</span>
+          <h5 className={"blue-text"} style={{ textAlign: "left" }}>
+             Premium Deals from{" "}
+            <span style={{ color: "#c62a82" }}>1 week ago</span>
+            <span className="see-premium-link">{"See today's deals"}</span>
           </h5>
         </div>
         <div className="row post-column text-lg-left">
-          {postList.map((post, i) => (<PostExpired key={i} post={post} />))}
-        </div> 
+          {postList.map((post, i) => (
+            <PostExpired key={i} post={post} />
+          ))}
+        </div>
       </div>
     );
-  } 
+  }
 }
 
 ExpiredPostColumn.propTypes = {
@@ -29,9 +31,12 @@ ExpiredPostColumn.propTypes = {
 };
 
 function mapStateToProps({ postReducer }) {
-  return {
-    postList: Object.values(postReducer.expiredPostList)
-  };
+  var { region, expiredPostList, freePostList } = postReducer;
+  var postList = Object.values(expiredPostList);
+  postList = postList.filter(p => region == 0 || p.region == region);
+  postList = postList.slice(0, freePostList.length);
+
+  return { postList };
 }
 
 export default connect(mapStateToProps)(ExpiredPostColumn);

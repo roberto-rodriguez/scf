@@ -53,16 +53,19 @@ export function updateRegion(region) {
 //-------------  TEST API ------------------------
 
 function apiListJobs(page = 0, params = {}) {
- 
+  var freePostList = buildList(params);
 
-  var freePostList = buildList( params);
+  freePostList = freePostList.map(p => {
+    p.cityList = object.listToObject(p.cityList);
+    return p;
+  });
 
-  var expiredPostList = buildList( params);
+  var expiredPostList = buildList(params);
 
   return { freePostList, expiredPostList };
 }
 
-function buildList( params) {
+function buildList(params) {
   var list = [
     {
       city: "Venice",
@@ -118,15 +121,50 @@ function buildList( params) {
 
   var resultList = [];
 
-  do{
-    var filteredList =  list.filter(item => !params.region || params.region == item.region);
-    resultList = resultList.concat(filteredList)
-  }while(filteredList != 0 && resultList.length < 10);
+  do {
+    var filteredList = list.filter(
+      item => !params.region || params.region == item.region
+    );
+    resultList = resultList.concat(filteredList);
+  } while (filteredList != 0 && resultList.length < 10);
 
-  return resultList 
-    .map((item) => ({
-      ...item,
-      city: (++id) + "-" + item.city,
-      id: id
-    }));
+  return resultList.map(item => ({
+    ...item, 
+    id: ++id,
+    price: 300 + id,
+    avg: 600 - id,
+    foundDate: "5 hours ago",
+    origin: "San Francisco",
+    cityList: buildSampleSearchCityList()
+  }));
+}
+
+function buildSampleSearchCityList() {
+  return [
+    {
+      name: "Rome",
+      price: 234,
+      id: "rome"
+    },
+    {
+      name: "Venice",
+      price: 333,
+      id: "venice"
+    },
+    {
+      name: "Florence",
+      price: 340,
+      id: "berlin"
+    },
+    {
+      name: "Milan",
+      price: 447,
+      id: "milan"
+    },
+    {
+      name: "Pisa",
+      price: 1233,
+      id: "pisa"
+    }
+  ];
 }

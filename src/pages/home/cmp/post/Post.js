@@ -1,16 +1,16 @@
 import React from "react";
 import "./postStyles.scss";
 import PropTypes from "prop-types";
+import PostCityPrice from "./PostCityPrice";
 class Post extends React.Component {
-
- 
-
   render() {
-    var {post} = this.props; 
-    var {id, city, country} = post;
+    var { post } = this.props;
+    var { id, origin, city, country, price, avg, foundDate, cityList } = post;
+
+    var cities = Object.values(cityList);
 
     return (
-      <div  
+      <div
         className="col-12 col-md-12 col-lg-12 col-xl-6 isotope-item"
         data-filter="Type 3"
       >
@@ -18,25 +18,25 @@ class Post extends React.Component {
           <tbody>
             <tr>
               <td style={{ textAlign: "left" }}>
-                <span className="pOrigin">San Francisco</span>
+                <span className="pOrigin">{origin}</span>
               </td>
               <td>
                 <i className="fa fa-long-arrow-right" />
               </td>
               <td style={{ textAlign: "right" }}>
-                <span className="pDestination pink-text">{ city }</span>
+                <span className="pDestination pink-text">{city}</span>
               </td>
             </tr>
           </tbody>
         </table>
         <div className="thumbnail">
           <span className="country-text">{country}</span>
-          <div className="post-header pink-text">
-            $253 <span className="regular-price">$481</span>
+          <div className="post-header pink-text icon">
+            ${price} <span className="regular-price">${avg}</span>
           </div>
-          <div className="post-footer">3 hous ago</div>
+          <div className="post-footer">{foundDate}</div>
           <img
-            src={require('../../images/gallery-' + (id%12) + '.jpg')}
+            src={require("../../images/gallery-" + (id % 12) + ".jpg")}
             className="img-responsive center-block thumbnail-image"
             width="420"
             height="280"
@@ -44,51 +44,16 @@ class Post extends React.Component {
           />
           <div className="caption">
             <ul className="list-marked list-marked-no-padding list-marked-flex text-base cities-list">
-              <li>
-                <a className="yellow-text" href="tickets.html">
-                  Paris
-                </a>
-                <div>
-                  {" "}
-                  <span className="city-price">$98.00</span>
-                </div>
-              </li>
-              <li>
-                <a className="yellow-text" href="tickets.html">
-                  Rome
-                </a>
-                <div>
-                  {" "}
-                  <span className="city-price">$134.00</span>
-                </div>
-              </li>
-              <li>
-                <a className="yellow-text" href="tickets.html">
-                  Barcelona
-                </a>
-                <div>
-                  {" "}
-                  <span className="city-price">$119.00</span>
-                </div>
-              </li>
-              <li>
-                <a className="yellow-text" href="tickets.html">
-                  Berlin
-                </a>
-                <div>
-                  {" "}
-                  <span className="city-price">$99.00</span>
-                </div>
-              </li>
-              <li>
-                <a className="yellow-text" href="tickets.html">
-                  Madrid
-                </a>
-                <div>
-                  {" "}
-                  <span className="city-price">$1299.00</span>
-                </div>
-              </li>
+              {cities.map((city, i) => (
+                <PostCityPrice
+                  key={i}
+                  sampleSearchCity={city}
+                  origin={origin}
+                  city={city.name}
+                  country={country} 
+                  avg={avg}
+                />
+              ))}
             </ul>
           </div>
         </div>
@@ -99,7 +64,7 @@ class Post extends React.Component {
 
 Post.propTypes = {
   index: PropTypes.number,
-  post: PropTypes.object 
+  post: PropTypes.object
 };
 
 export default Post;

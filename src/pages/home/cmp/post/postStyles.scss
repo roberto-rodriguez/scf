@@ -19,7 +19,7 @@
    position: absolute;
    background-color: rgba(0, 0, 0, 0.55);
    color: yellow;
-   padding: 0px 2px; 
+   padding: 0px 2px;
    z-index: 1000;
  }
 
@@ -47,11 +47,11 @@
 
  .country-text {
    color: white;
-   padding: 0px 10px 10px 0px; 
+   padding: 0px 10px 10px 0px;
    position: absolute;
    bottom: 0;
    right: 0;
-   border-radius:0px
+   border-radius: 0px
  }
 
 
@@ -100,13 +100,13 @@
    .country-text {
      color: white;
      padding: 2px;
-     border-radius:2px;
+     border-radius: 2px;
      font-size: 13px;
      font-weight: normal;
      bottom: 5px;
      right: 5px;
    }
- 
+
  }
 
 
@@ -119,33 +119,34 @@
      top: 1px;
      right: 1px;
      padding: 0px 1px;
-     font-size: 12px; 
+     font-size: 12px;
 
      .regular-price {
-       font-size: 11px; 
+       font-size: 11px;
      }
    }
 
    .post-footer {
      bottom: 1px;
      left: 1px;
-     font-size: 12px; 
+     font-size: 12px;
      padding: 0px 1px;
      border-radius: 0px;
    }
 
-   .country-text { 
-    padding: 0px 1px;
-    border-radius:0px;
-    font-size: 12px; 
-    bottom: 1px;
-    right: 1px;
-  }
+   .country-text {
+     padding: 0px 1px;
+     border-radius: 0px;
+     font-size: 12px;
+     bottom: 1px;
+     right: 1px;
+   }
 
-  .pOrigin, .pDestination{
-    font-size: 12px;
-    font-weight: normal;
-  }
+   .pOrigin,
+   .pDestination {
+     font-size: 12px;
+     font-weight: normal;
+   }
  }
 
 
@@ -204,4 +205,8 @@
    padding: 8px 5px !important;
    text-transform: none !important;
    min-height: 35px;
+ }
+
+ .city-price:before {
+   font-size: 14px;
  }

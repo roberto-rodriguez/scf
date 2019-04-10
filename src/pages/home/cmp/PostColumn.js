@@ -12,27 +12,19 @@ class PostColumn extends React.Component {
       region: null
     };
   }
-
+  
   shouldComponentUpdate(nextProps, nextState) {
     var { region } = this.state;
-
-    var shouldComponentUpdate = region == null || region != nextProps.region;
-    console.log("PostColumn::shouldComponentUpdate = " + shouldComponentUpdate);
-    return shouldComponentUpdate;
+    return region == null || region != nextProps.region;
   }
 
   render() {
     var reload = this.state.region != this.props.region;
-    console.log(
-      "PostColumn::render -> reload = " +
-        reload +
-        " +++++++++++++++++++++++++++"
-    );
+
     return (
       <div className="row-wrapper">
         <h5 className={"blue-text"} style={{ textAlign: "right" }}>
-          {" "}
-          Free Deals{" "}
+          {"Free Deals"}
         </h5>
         <InfiniteList
           loader={this.doList}
@@ -46,13 +38,7 @@ class PostColumn extends React.Component {
   }
 
   doList = (page, infiniteListCallback) => {
-    console.log("PostColumn::doList -> page = " + page);
     var { region, listPost } = this.props;
-    //  var reset = this.state.region != region;
-
-    // if (reset) {
-    //   page = 0;
-    // }
 
     listPost(
       page,
@@ -61,7 +47,6 @@ class PostColumn extends React.Component {
         infiniteListCallback(resultList);
       },
       { region }
-      //   , reset
     );
   };
 }
@@ -72,7 +57,6 @@ PostColumn.propTypes = {
 };
 
 function mapStateToProps({ postReducer }) {
-  console.log("PostColumn::mapStateToProps -> region = " + postReducer.region);
   return {
     postList: postReducer.freePostList,
     region: postReducer.region

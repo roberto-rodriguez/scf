@@ -1,32 +1,27 @@
- 
 import React from "react";
 import { hot } from "react-hot-loader";
-import { Route, Switch } from "react-router-dom"; 
-import About from "./pages/about/About"; 
+import { Route, Switch } from "react-router-dom";
+import About from "./pages/about/About";
 import NotFoundPage from "./cmp/notFound/NotFoundPage";
 import Home from "./pages/home/Home";
-import Details from './pages/details/Details'
+import Deal from "./pages/details/Deal";
 
 import "./styles/tpl/style.css";
 import "./styles/tpl/bootstrap.css";
- 
+
 class App extends React.Component {
-  render() { 
+  render() {
     return (
-      <div className="page text-center"> 
+      <div className="page text-center">
         <Switch>
-          <Route exact path="/details" component={Details} /> 
-          <Route exact path="/" component={Home} /> 
+          <Route name="deal" path="/deal/:sampleSearchCityId" component={Deal} />
+          <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route component={NotFoundPage} />
         </Switch>
-      </div>   
+      </div>
     );
   }
+}
 
-  
-} 
-
-
- 
 export default hot(module)(App);
