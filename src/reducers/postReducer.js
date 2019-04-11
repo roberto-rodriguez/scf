@@ -15,7 +15,7 @@ export default function postReducer(state = initialState.deals, action) {
 
   switch (type) {
     case "POST_LIST_ADD":
-    console.log('reducer POST_LIST_ADD -> ');
+      console.log("reducer POST_LIST_ADD -> ");
       var { freePostList, expiredPostList } = data;
 
       var newState = objectAssign({}, state, {
@@ -25,15 +25,51 @@ export default function postReducer(state = initialState.deals, action) {
           state.expiredPostList,
           expiredPostList
         )
-      }); 
+      });
       return newState;
 
-    case 'REGION_UPDATE':
-      console.log('reducer REGION_UPDATE -> ' + action.region);
+    case "REGION_UPDATE":
+      console.log("reducer REGION_UPDATE -> " + action.region);
       return objectAssign({}, state, { region: action.region });
 
-    case POST_LIST_EXPIRED_ADD:
-      return objectAssign({}, state, { region: data.region });
+    case "LOAD_POST":
+      var { post } = data;
+      return {
+        ...state,
+        freePostList: {
+          ...state.freePostList,
+          [post.id]: {
+            ...post
+          }
+        }
+      };
+
+    case "LOAD_SAMPLE_SEARCH_CITY":
+      var { postId, sampleSearchCity } = data;
+      post = state.freePostList[postId] || { cityList: {} };
+
+      console.log(
+        "Dispatcher:: LOAD_SAMPLE_SEARCH_CITY -> sampleSearchCity.origin = " +
+          sampleSearchCity.origin
+      );
+
+      return {
+        ...state,
+        freePostList: {
+          ...state.freePostList,
+          [postId]: {
+            ...post,
+            cityList: {
+              ...post.cityList,
+              [sampleSearchCity.id]: {
+                ...post.cityList[sampleSearchCity.id],
+                ...sampleSearchCity,
+                loaded: true
+              }
+            }
+          }
+        }
+      };
 
     default:
       return state;

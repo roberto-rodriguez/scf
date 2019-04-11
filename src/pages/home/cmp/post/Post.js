@@ -48,10 +48,10 @@ class Post extends React.Component {
                 <PostCityPrice
                   key={i}
                   sampleSearchCity={city}
-                  origin={origin}
-                  city={city.name}
+                  origin={origin} 
                   country={country} 
                   avg={avg}
+                  postId={id + ''}
                 />
               ))}
             </ul>
@@ -64,7 +64,7 @@ class Post extends React.Component {
 
 Post.propTypes = {
   index: PropTypes.number,
-  post: PropTypes.object
+  post: PropTypes.object 
 };
 
 export default Post;

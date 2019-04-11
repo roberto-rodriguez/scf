@@ -38,8 +38,7 @@ class PostColumn extends React.Component {
   }
 
   doList = (page, infiniteListCallback) => {
-    var { region, listPost } = this.props;
-
+    var { region, listPost } = this.props; 
     listPost(
       page,
       resultList => {

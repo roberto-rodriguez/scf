@@ -14,10 +14,15 @@ class App extends React.Component {
     return (
       <div className="page text-center">
         <Switch>
-          <Route name="deal" path="/deal/:sampleSearchCityId" component={Deal} />
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route component={NotFoundPage} />
+          <Route  key={'deal'}
+            name="deal"
+            path="/deal/:postId/:sampleSearchCityId"
+         
+            component={Deal}
+          />
+          <Route exact path="/" component={Home} key={'home'}/>
+          <Route path="/about" component={About}  key={'about'}/>
+          <Route component={NotFoundPage}  key={'notFound'}/>
         </Switch>
       </div>
     );

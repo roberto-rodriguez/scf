@@ -60,12 +60,12 @@ class InfiniteList extends Component {
     setTimeout(this.moreFeed, 100);
     this._mounted = true;
 
-    window.addEventListener("scroll", () => this.handleScroll());
+    window.addEventListener("scroll", this.handleScroll);
   }
 
   componentWillUnmount() {
     this._mounted = false;
-    window.removeEventListener("scroll", () => this.handleScroll());
+    window.removeEventListener("scroll", this.handleScroll);
   }
 
   handleScroll = event => {

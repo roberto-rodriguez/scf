@@ -1,16 +1,43 @@
 import React from "react";
-
+import { connect } from "react-redux";
+import * as dealActions from "./actions/DealActions";
 import "./detailsStyles.scss";
 import HomeHeader from "./cmp/DealHeader";
 import CityPost from "./cmp/CityPost";
 import SampleSearch from "./cmp/SampleSearch";
+import PropTypes from "prop-types";
 
 var cityNames = ["rome_s", "venice", "pisa", "milan", "florence"];
 class Deal extends React.Component {
+  componentDidMount() {
+    console.log("componentDidMount");
+    var { post, match, loadPost } = this.props;
+    var { postId, sampleSearchCityId } = match && match.params;
+
+    if (!post) {
+      loadPost(postId, sampleSearchCityId);
+    }
+  }
+
   render() {
     var props = this.props;
+     
+    var { sampleSearchCityId } = props.match && props.match.params;
     var query = props.location.query || {};
     var { origin, city, country, avg, price } = query;
+
+    var post = this.props.post || {};
+    var cityList = post.cityList || {};
+
+    var sampleSearchCity = cityList[sampleSearchCityId] || {};
+
+    origin = origin || sampleSearchCity.origin;
+    city = city || sampleSearchCity.name;
+    country = country || sampleSearchCity.country;
+    avg = avg || sampleSearchCity.avg;
+    price = price || sampleSearchCity.price;
+
+    var { departureDate, arrivalDate } = sampleSearchCity;
 
     var cityPosts = [];
     for (var i = 0; i < 4; i++) {
@@ -55,7 +82,9 @@ class Deal extends React.Component {
                           </h5>
                         </td>
                         <td style={{ textAlign: "center" }}>
-                          <h6>From May — Jun</h6>
+                          <h6>
+                            {departureDate} — {arrivalDate}
+                          </h6>
                         </td>
                         <td>
                           <div style={{ float: "right", maxWidth: 180 }}>
@@ -120,4 +149,23 @@ class Deal extends React.Component {
   }
 }
 
-export default Deal;
+Deal.propTypes = {
+  loadCityIfNotExist: PropTypes.func,
+  loadPost: PropTypes.func,
+  post: PropTypes.object,
+  match: PropTypes.object,
+  location: PropTypes.object
+};
+
+function mapStateToProps({ postReducer }, props) {
+  var { postId, sampleSearchCityId } = props.match && props.match.params;
+
+  if (postId && sampleSearchCityId) {
+    return { post: postReducer.freePostList[postId] };
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  dealActions
+)(Deal);

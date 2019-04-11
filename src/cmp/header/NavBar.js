@@ -15,14 +15,14 @@ import PropTypes from "prop-types";
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", () => this.handleScroll());
+    window.addEventListener("scroll", this.handleScroll);
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("scroll", () => this.handleScroll());
+  componentWillUnmount() { 
+    window.removeEventListener("scroll", this.handleScroll);
   }
 
-  handleScroll() {
+  handleScroll = ()  =>{
     var navSolidBackground = window.scrollY != 0;
 
     if (

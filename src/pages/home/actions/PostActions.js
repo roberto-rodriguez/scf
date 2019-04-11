@@ -31,7 +31,7 @@ export function listPost(page, callback, params) {
     if (freePostList.length >= end) {
       callback(freePostList.slice(start, end));
     } else {
-      var listPostResult = apiListJobs(page, params);
+      var listPostResult = apiListPosts(page, params);
 
       var res = freePostList.concat(listPostResult.freePostList);
       res = res.slice(start, end);
@@ -52,7 +52,7 @@ export function updateRegion(region) {
 
 //-------------  TEST API ------------------------
 
-function apiListJobs(page = 0, params = {}) {
+export function apiListPosts(page = 0, params = {}) {
   var freePostList = buildList(params);
 
   freePostList = freePostList.map(p => {

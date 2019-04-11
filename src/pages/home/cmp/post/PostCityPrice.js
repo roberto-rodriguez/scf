@@ -1,5 +1,7 @@
 import React from "react";
 import "./postStyles.scss";
+import { connect } from "react-redux";
+import * as dealActions from "../../../details/actions/DealActions";
 import PropTypes from "prop-types";
 import * as string from "../../../../utils/string";
 import { Link } from "react-router-dom";
@@ -8,41 +10,47 @@ class PostCityPrice extends React.Component {
   render() {
     var { CityLink, props } = this;
     var { sampleSearchCity } = props;
-    var { id, name, price } = sampleSearchCity;
+    var { name, price } = sampleSearchCity;
     var formattedPrice = price && string.formatAmount(price);
 
     return (
-      <li>
+      <li onClick={this.onClick}>
         {CityLink(name, "yellow-text")}
         <div>
-          {CityLink(formattedPrice, "city-price icon fa fa-dollar yellow-text")}
+         {CityLink(formattedPrice, "city-price icon fa fa-dollar yellow-text")}
         </div>
       </li>
     );
   }
 
+  onClick = (e) => {
+    var { postId, sampleSearchCity, loadCityIfNotExist} = this.props;
+    var { id } = sampleSearchCity;
+
+    loadCityIfNotExist(postId, id);
+  }
+ 
   CityLink = (text, className) => {
     var {
-      origin,
-      city,
+      origin, 
       country,
       avg,
       foundDate,
-      sampleSearchCity
-    } = this.props;
-    var { id, name, price } = sampleSearchCity;
+      sampleSearchCity,
+      postId 
+    } = this.props; 
 
     return (
       <Link
         className={className}
         to={{
-          pathname: "/deal/" + id,
+          pathname: "/deal/" + postId + '/' + sampleSearchCity.id,
           query: {
-            origin,
-            city,
+            origin, 
             country,
             avg,
             foundDate,
+            city: sampleSearchCity.city, 
             price: sampleSearchCity.price
           }
         }}
@@ -55,11 +63,13 @@ class PostCityPrice extends React.Component {
 
 PostCityPrice.propTypes = {
   sampleSearchCity: PropTypes.object,
-  origin: PropTypes.string,
-  city: PropTypes.string,
+  origin: PropTypes.string, 
   country: PropTypes.string,
   avg: PropTypes.number,
-  foundDate: PropTypes.string
+  foundDate: PropTypes.string,
+  postId: PropTypes.string,
+  cityCode: PropTypes.string,
+  loadCityIfNotExist: PropTypes.func
 };
 
-export default PostCityPrice;
+export default connect(null, dealActions)(PostCityPrice);
