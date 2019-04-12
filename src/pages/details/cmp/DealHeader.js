@@ -13,7 +13,7 @@ class DealHeader extends React.Component {
       <header
         className="page-header"
         style={{
-          background: "no-repeat url(http://localhost:3000/rome_x.jpg) center"
+          background: "no-repeat  url('./images/rome_x.jpg') center"
         }}
       >
         <NavBar navBck />

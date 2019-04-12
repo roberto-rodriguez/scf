@@ -71,6 +71,7 @@ class Deal extends React.Component {
                       <tr>
                         <td style={{ textAlign: "left" }}>
                           <h5 style={{ color: "#ba0e6f" }}>
+                            {'Price: '}
                             <span
                               style={{ fontSize: 18 }}
                               className="icon fa fa-dollar"

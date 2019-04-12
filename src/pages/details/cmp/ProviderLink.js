@@ -14,12 +14,10 @@ class ProviderLink extends React.Component {
     return (
        <a className="provider-link" href="http://google.com" target="_blank" rel="noopener noreferrer">
          <div className="list-item-content-left provider-link" style={styles}> 
-         <span className="small">
-         <span className={'icon fa fa-dollar black-bold-text'}></span> 
-        
-         <span className={'black-bold-text'}>{'435 '}</span>   
+         <span className="small">  
             {`${provider} `} 
-         <span className="icon fa fa-external-link"></span>
+            <span className={'icon fa fa-dollar blue-text'} style={{fontWeight:'bold', marginRight:4, color:'green'}}>{'435 '}</span>   
+            <span className="icon fa fa-external-link"></span>
          </span>
       </div>
       </a>

@@ -18,6 +18,12 @@ class SampleSearch extends React.Component {
         <div className="list-item-main">
           <div className="list-item-top"> 
             <div className="list-item-content sample-search-justify-left">
+            <img
+              className="img-responsive center-block thumbnail-img details-city-img"
+              style={{height:50}}
+              src={require(`../images/providers/google.png`)} 
+              alt=""
+            />
               <div className="list-item-content-left">
                 <div className="text-bold text-base">Mar 22</div>
                 <span className="small d-block">JFK</span>

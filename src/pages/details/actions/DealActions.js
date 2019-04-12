@@ -91,7 +91,8 @@ function apiLoadSampleSearchCity(id) {
 
   var city = cityObj[id];
   city.origin= "San Francisco"; 
-  city. avg= 500;
+  city.avg= 500;
+  city.country= 'Italy';
 
   var sampleSearchList = [];
 
