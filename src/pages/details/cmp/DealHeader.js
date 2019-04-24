@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../../../cmp/header/NavBar";
-
+import "./dealHeader.scss";
 class DealHeader extends React.Component {
   constructor(props) {
     super(props);
@@ -11,9 +11,10 @@ class DealHeader extends React.Component {
   render() {
     return (
       <header
-        className="page-header"
+        className="page-header deal-header"
         style={{
-          background: "no-repeat  url('./images/rome_x.jpg') center"
+          backgroundSize: 'cover',
+          background: "no-repeat  url(https://res.cloudinary.com/fsc/image/upload/v1556075068/CAI.jpg) center"
         }}
       >
         <NavBar navBck />

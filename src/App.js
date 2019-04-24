@@ -1,3 +1,6 @@
+//To run in Dev Mode: npm start -s
+//Cloudinary  roberto.us.2019@gmail.com  Generic1!
+
 import React from "react";
 import { hot } from "react-hot-loader";
 import { Route, Switch } from "react-router-dom";
