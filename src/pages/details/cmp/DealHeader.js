@@ -14,7 +14,7 @@ class DealHeader extends React.Component {
         className="page-header deal-header"
         style={{
           backgroundSize: 'cover',
-          background: "no-repeat  url(https://res.cloudinary.com/fsc/image/upload/v1556075068/CAI.jpg) center"
+          background: "no-repeat  url(https://res.cloudinary.com/fsc/image/upload/v1556212036/TNR.jpg) center"
         }}
       >
         <NavBar navBck />

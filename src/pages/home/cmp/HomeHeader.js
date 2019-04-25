@@ -20,22 +20,21 @@ class HomeHeader extends React.Component {
         <NavBar />
 
         <section style={{ paddingTop: 130 }}>
-          <h3 style={{ color: "white" }}>
-            Welcome to the community of Smart Travelers
+          <h3 style={{ color: "white", fontFamily:'Courgette, cursive' }}>
+            Find all the cheapest flights
           </h3>
           <br />
-          <span style={{ color: "white", fontSize: 17 }}>
-            Here you will find the best deals from your home city to <b>+200</b>{" "}
-            cities around the world
+          <span style={{ color: "white", fontSize: 22, fontFamily:'Overlock, cursive' }}>
+            Departing from your home city 
           </span>
 
           <br />
           <br />
           <span
-            className="text-middle text small text-italic"
-            style={{ color: "white" }}
+            className="text-middle text text-italic"
+            style={{ color: "white", fontFamily:'Overlock, cursive' }}
           >
-            - Updated Daily -
+             Updated Daily  
           </span>
 
           <br />

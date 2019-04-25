@@ -55,7 +55,10 @@ import PropTypes from "prop-types";
 
     
 
-    //<h5 class="text-bold">Fly Super Cheap</h5>
+    // <h5 style={{ float: "left", margin: "24px 0px 0px 20px", color:'white'}}>
+    // <span style={{color:'#c62a82', fontWeight:'bold'}}>Fly </span>
+    // Super Cheap 
+    // </h5> 
 
     return (  
           <div
@@ -89,14 +92,13 @@ import PropTypes from "prop-types";
               data-xxl-stick-up="true"
             >
               <NavLink exact to="/">
-                <img
-                  src={require("./images/logo-white.png")}
+              <img
+                  src={require("./images/logo.png")}
                   className="img-responsive center-block thumbnail-image"
-                  style={{ float: "left", margin: "5px 0px 0px 20px" }}
-                  width="166"
-                  height="55"
+                  style={{ float: "left", margin: "18px 0px 0px 20px" }}
+                  width="230"
                   alt=""
-                />
+                />  
               </NavLink>
               <div
                 className="rd-navbar-inner"
