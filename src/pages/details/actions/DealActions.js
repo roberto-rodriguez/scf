@@ -11,6 +11,20 @@ const loadPostAction = (post) => ({
   data: { post }
 });
 
+export function loadPost(postId, sampleSearchCityId) {
+  return function(dispatch, getState) {
+    
+    //TODO make an API that return the post with the selected city
+    var allPost = postAction.apiListPosts();
+    var postObj = object.listToObject(allPost.freePostList);
+
+    var post = postObj[postId];
+    dispatch( loadPostAction(post) );
+
+    loadCityIfNotExist(postId, sampleSearchCityId)(dispatch, getState);
+  };
+}
+
 export function loadCityIfNotExist(postId, sampleSearchCityId) {
   return function(dispatch, getState) {
     var { postReducer } = getState();
@@ -26,19 +40,7 @@ export function loadCityIfNotExist(postId, sampleSearchCityId) {
   };
 }
 
-export function loadPost(postId, sampleSearchCityId) {
-  return function(dispatch, getState) {
-    
-    //TODO make an API that return the post with the selected city
-    var allPost = postAction.apiListPosts();
-    var postObj = object.listToObject(allPost.freePostList);
 
-    var post = postObj[postId];
-    dispatch( loadPostAction(post) );
-
-    loadCityIfNotExist(postId, sampleSearchCityId)(dispatch, getState);
-  };
-}
 
 
 //-------------  TEST API ------------------------
@@ -49,7 +51,7 @@ function apiLoadSampleSearchCity(id) {
       name: "Rome",
       price: 234,
       id: "rome",
-      code: "ROM",
+      cityCode: "ROM",
       departureDate: "Jun 3",
       arrivalDate: "Jun 12" 
     },
@@ -57,7 +59,7 @@ function apiLoadSampleSearchCity(id) {
       name: "Venice",
       price: 333,
       id: "venice",
-      code: "VEN",
+      cityCode: "VEN",
       departureDate: "Jun 3",
       arrivalDate: "Jun 12"
     },
@@ -65,7 +67,7 @@ function apiLoadSampleSearchCity(id) {
       name: "Florence",
       price: 340,
       id: "berlin",
-      code: "FLO",
+      cityCode: "FLO",
       departureDate: "Jun 3",
       arrivalDate: "Jun 12"
     },
@@ -73,7 +75,7 @@ function apiLoadSampleSearchCity(id) {
       name: "Milan",
       price: 447,
       id: "milan",
-      code: "MIL",
+      cityCode: "MIL",
       departureDate: "Jun 3",
       arrivalDate: "Jun 12"
     },
@@ -81,7 +83,7 @@ function apiLoadSampleSearchCity(id) {
       name: "Pisa",
       price: 1233,
       id: "pisa",
-      code: "PIS",
+      cityCode: "PIS",
       departureDate: "Jun 2019",
       arrivalDate: "Jul 2019"
     }
@@ -96,13 +98,15 @@ function apiLoadSampleSearchCity(id) {
 
   var sampleSearchList = [];
 
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 1; i++) {
     sampleSearchList.push({ 
-      originCode: "SFO",  
+      originCode: "TPA",  
+      cityCode: "BCN",
       price: city.price + i,
-      departureDate: "Jun " + (10 + i),
-      arrivalDate: "Jun " + (30 - i),
-      nights: 30 - i - (10 + i)
+      departureDate: 1573621200000,
+      arrivalDate: 1574830800000,
+      nights: 30 - i - (10 + i),
+     // provider: 'sky'
     });
   }
 

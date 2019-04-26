@@ -1,0 +1,26 @@
+ 
+
+.sample-search-justify-left {
+  justify-content: space-around !important;
+}
+
+.provider-link {
+  color: grey;
+  cursor: pointer;
+
+  div {
+    min-width: 0px !important;
+    margin: 0px 10px;
+    margin-top: 0px !important;
+  }
+}
+
+.provider-link:hover {
+  color: #42d4ec;
+}
+
+.popover-header{
+  text-align: center;
+  background-color: white!important;
+}
+ 

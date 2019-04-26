@@ -35,11 +35,13 @@
   "dependencies": {
     "connected-react-router": "4.4.1",
     "express": "4.16.4",
+    "moment": "2.24.0",
     "object-assign": "4.1.1",
     "react": "16.4.2",
     "react-dom": "16.4.2",
     "react-redux": "5.0.7",
     "react-router-dom": "4.3.1",
+    "reactstrap": "8.0.0",
     "redux": "4.0.0",
     "redux-thunk": "2.3.0"
   },

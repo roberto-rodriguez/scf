@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types"; 
- import ProviderLink from './ProviderLink'       
+ import ProviderLink from './providers/ProviderLink'       
 
-class SampleSearch extends React.Component {
+class TopSampleSearch extends React.Component {
   render() { 
     var providerNames = ['Google Flights','Sky Scanner', 'Momondo', 'Kayak'];
     var providers = [];
@@ -20,8 +20,8 @@ class SampleSearch extends React.Component {
             <div className="list-item-content sample-search-justify-left">
             <img
               className="img-responsive center-block thumbnail-img details-city-img"
-              style={{height:50}}
-              src={require(`../images/providers/google.png`)} 
+              style={{height:40}}
+              src={require(`../../images/providers/momondo.png`)} 
               alt=""
             />
               <div className="list-item-content-left">
@@ -65,9 +65,9 @@ class SampleSearch extends React.Component {
   }
 }
 
-SampleSearch.propTypes = {
+TopSampleSearch.propTypes = {
   imgName: PropTypes.string 
 };
 
 
-export default SampleSearch;
+export default TopSampleSearch;

@@ -4,13 +4,13 @@ import * as dealActions from "./actions/DealActions";
 import "./detailsStyles.scss";
 import HomeHeader from "./cmp/DealHeader";
 import CityPost from "./cmp/CityPost";
-import SampleSearch from "./cmp/SampleSearch";
+import SampleSearch from "./cmp/sampleSearch/SampleSearch";
+import TopSampleSearch from "./cmp/sampleSearch/TopSampleSearch";
 import PropTypes from "prop-types";
 
 var cityNames = ["rome_s", "venice", "pisa", "milan", "florence"];
 class Deal extends React.Component {
-  componentDidMount() {
-    console.log("componentDidMount");
+  componentDidMount() { 
     var { post, match, loadPost } = this.props;
     var { postId, sampleSearchCityId } = match && match.params;
 
@@ -37,7 +37,9 @@ class Deal extends React.Component {
     avg = avg || sampleSearchCity.avg;
     price = price || sampleSearchCity.price;
 
+
     var { departureDate, arrivalDate } = sampleSearchCity;
+    var sampleSearchList = sampleSearchCity.sampleSearchList || [];
 
     var cityPosts = [];
     for (var i = 0; i < 4; i++) {
@@ -119,19 +121,12 @@ class Deal extends React.Component {
                         </td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> 
 
                   <ul className="list-tickets">
-                    <SampleSearch />
-                    <SampleSearch />
-                    <SampleSearch />
-                    <SampleSearch />
-                    <SampleSearch />
-                    <SampleSearch />
-                    <SampleSearch />
-                    <SampleSearch />
-                    <SampleSearch />
-                    <SampleSearch />
+                    <TopSampleSearch /> 
+
+                    {sampleSearchList.map((s, i) => (<SampleSearch sampleSearch={s} id={i} key={i}/>))} 
                   </ul>
                 </div>
               </div>
