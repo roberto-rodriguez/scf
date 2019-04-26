@@ -1,25 +1,24 @@
 import * as object from "../../../utils/object";
-import * as postAction from '../../home/actions/PostActions'
+import * as postAction from "../../home/actions/PostActions";
 
 const loadCityAction = (postId, sampleSearchCity) => ({
   type: "LOAD_SAMPLE_SEARCH_CITY",
   data: { postId, sampleSearchCity }
 });
 
-const loadPostAction = (post) => ({
+const loadPostAction = post => ({
   type: "LOAD_POST",
   data: { post }
 });
 
 export function loadPost(postId, sampleSearchCityId) {
   return function(dispatch, getState) {
-    
     //TODO make an API that return the post with the selected city
     var allPost = postAction.apiListPosts();
     var postObj = object.listToObject(allPost.freePostList);
 
     var post = postObj[postId];
-    dispatch( loadPostAction(post) );
+    dispatch(loadPostAction(post));
 
     loadCityIfNotExist(postId, sampleSearchCityId)(dispatch, getState);
   };
@@ -32,16 +31,13 @@ export function loadCityIfNotExist(postId, sampleSearchCityId) {
     var freePostObj = postReducer.freePostList;
     var post = freePostObj && freePostObj[postId];
     var sampleSearchCity = post && post.cityList[sampleSearchCityId];
- 
-    if (!sampleSearchCity || !sampleSearchCity.loaded) {  
-      sampleSearchCity = apiLoadSampleSearchCity(sampleSearchCityId); 
+
+    if (!sampleSearchCity || !sampleSearchCity.loaded) {
+      sampleSearchCity = apiLoadSampleSearchCity(sampleSearchCityId);
       dispatch(loadCityAction(postId, sampleSearchCity));
     }
   };
 }
-
-
-
 
 //-------------  TEST API ------------------------
 
@@ -53,7 +49,7 @@ function apiLoadSampleSearchCity(id) {
       id: "rome",
       cityCode: "ROM",
       departureDate: "Jun 3",
-      arrivalDate: "Jun 12" 
+      arrivalDate: "Jun 12"
     },
     {
       name: "Venice",
@@ -92,21 +88,42 @@ function apiLoadSampleSearchCity(id) {
   var cityObj = object.listToObject(cityList);
 
   var city = cityObj[id];
-  city.origin= "San Francisco"; 
-  city.avg= 500;
-  city.country= 'Italy';
+  city.origin = "San Francisco";
+  city.avg = 500;
+  city.country = "Italy";
 
   var sampleSearchList = [];
 
-  for (var i = 0; i < 1; i++) {
-    sampleSearchList.push({ 
-      originCode: "TPA",  
+  sampleSearchList.push({
+    id: 1,
+    originCode: "TPA",
+    cityCode: "BCN",
+    price: city.price,
+    departureDate: 1573621200000,
+    arrivalDate: 1574830800000,
+    nights: 7,
+    provider: "momondo",
+    skyPrice: 123,
+    googlePrice: 345,
+    momondoPrice: 234,
+    kiwiPrice: 333,
+    kiwiLink:
+      "https://www.kiwi.com/en/search/wichita-kansas-united-states/new-york-city-new-york-united-states"
+  });
+
+  for (var i = 0; i < 4; i++) {
+    sampleSearchList.push({
+      id: i + 2,
+      originCode: "TPA",
       cityCode: "BCN",
       price: city.price + i,
       departureDate: 1573621200000,
       arrivalDate: 1574830800000,
       nights: 30 - i - (10 + i),
-     // provider: 'sky'
+      googlePrice: 345,
+      kiwiPrice: 333,
+      kiwiLink:
+        "https://www.kiwi.com/en/search/wichita-kansas-united-states/new-york-city-new-york-united-states"
     });
   }
 

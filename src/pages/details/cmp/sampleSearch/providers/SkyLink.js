@@ -3,25 +3,25 @@ import PropTypes from "prop-types";
 import ProviderLink from "./ProviderLink";
 import * as urlBuilder from "./urlBuilder";
 
-class GoogleLink extends React.Component {
+class SkyLink extends React.Component {
   render() {
-    var { sampleSearch, small } = this.props; 
-    var { googlePrice } = sampleSearch;
+    var { sampleSearch, small } = this.props;
+    var { skyPrice } = sampleSearch;
 
     return (
       <ProviderLink
-        provider={"Google Flights"}
-        price={googlePrice}
-        url={urlBuilder.buildUrl('google', sampleSearch)}
+        provider={"Sky Scanner"}
+        price={skyPrice}
+        url={urlBuilder.buildUrl("sky", sampleSearch)}
         small={small}
       />
     );
   } 
 }
 
-GoogleLink.propTypes = {
+SkyLink.propTypes = {
   small: PropTypes.bool,
   sampleSearch: PropTypes.object
 };
 
-export default GoogleLink;
+export default SkyLink;

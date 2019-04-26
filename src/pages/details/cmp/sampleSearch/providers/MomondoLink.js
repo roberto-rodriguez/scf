@@ -3,25 +3,26 @@ import PropTypes from "prop-types";
 import ProviderLink from "./ProviderLink";
 import * as urlBuilder from "./urlBuilder";
 
-class GoogleLink extends React.Component {
+class MomondoLink extends React.Component {
   render() {
     var { sampleSearch, small } = this.props; 
-    var { googlePrice } = sampleSearch;
+    var { momondoPrice } = sampleSearch;
 
     return (
       <ProviderLink
-        provider={"Google Flights"}
-        price={googlePrice}
-        url={urlBuilder.buildUrl('google', sampleSearch)}
+        provider={"Momondo"}
+        price={momondoPrice}
+        url={urlBuilder.buildUrl("momondo", sampleSearch)}
         small={small}
       />
     );
-  } 
+  }
+ 
 }
 
-GoogleLink.propTypes = {
+MomondoLink.propTypes = {
   small: PropTypes.bool,
   sampleSearch: PropTypes.object
 };
 
-export default GoogleLink;
+export default MomondoLink;

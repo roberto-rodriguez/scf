@@ -15,7 +15,7 @@ class ProviderLink extends React.Component {
         <div className="list-item-content-left">
           <span className={small ? "small" : ""}>
             {`${provider} `}
-            {price && (
+            {small && price && (
               <span
                 className={"icon fa fa-dollar blue-text"}
                 style={{ fontWeight: "bold", marginRight: 4, color: "green" }}

@@ -4,8 +4,7 @@ import * as dealActions from "./actions/DealActions";
 import "./detailsStyles.scss";
 import HomeHeader from "./cmp/DealHeader";
 import CityPost from "./cmp/CityPost";
-import SampleSearch from "./cmp/sampleSearch/SampleSearch";
-import TopSampleSearch from "./cmp/sampleSearch/TopSampleSearch";
+import SampleSearch from "./cmp/sampleSearch/SampleSearch"; 
 import PropTypes from "prop-types";
 
 var cityNames = ["rome_s", "venice", "pisa", "milan", "florence"];
@@ -123,9 +122,7 @@ class Deal extends React.Component {
                     </tbody>
                   </table> 
 
-                  <ul className="list-tickets">
-                    <TopSampleSearch /> 
-
+                  <ul className="list-tickets"> 
                     {sampleSearchList.map((s, i) => (<SampleSearch sampleSearch={s} id={i} key={i}/>))} 
                   </ul>
                 </div>

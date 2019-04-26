@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ProviderLink from "./providers/ProviderLink";
-import GoogleLink from "./providers/GoogleLink";
-import "./sampleSearchStyles.scss";
-import moment from "moment";
 import {
-  Button,
-  UncontrolledPopover,
-  PopoverHeader,
-  PopoverBody
-} from "reactstrap";
+  GoogleLink,
+  SkyLink,
+  MomondoLink,
+  KayakLink,
+  KiwiLink
+} from "./providers/";
+import "./sampleSearchStyles.scss";
+import * as dates from "../../../../utils/dates";
+import ViewDealButton from "./ViewDealButton";
 
 class SampleSearch extends React.Component {
   providers = {
@@ -27,7 +27,7 @@ class SampleSearch extends React.Component {
   toggle = () => this.setState({ popoverOpen: !this.state.popoverOpen });
 
   render() {
-    var { id, sampleSearch } = this.props;
+    var { sampleSearch } = this.props;
 
     var {
       departureDate,
@@ -36,30 +36,20 @@ class SampleSearch extends React.Component {
       originCode,
       cityCode,
       provider,
-      price,
-      googlePrice,
-      skyPrice,
-      momondoPrice,
-      kiwiPrice,
-      isKiwiSearch,
-      skyLink,
-      kiwiLink
+      price
     } = sampleSearch;
 
-    sampleSearch["formattedDepartureDate"] = this.formatDate(departureDate);
-    sampleSearch["formattedArrivalDate"] = this.formatDate(arrivalDate);
+    sampleSearch["formattedDepartureDate"] = dates.formatWithTimezone(
+      departureDate
+    );
+    sampleSearch["formattedArrivalDate"] = dates.formatWithTimezone(
+      arrivalDate
+    );
 
     var providerInfo = (provider && this.providers[provider]) || {};
 
-    var providerNames = ["Sky Scanner", "Momondo", "Google Flights", "Kayak"];
-    var providersLinks = [];
-
-    for (var i = 0; i < providerNames.length; i++) {
-      providersLinks.push(<ProviderLink key={i} provider={providerNames[i]} />);
-    }
-
     return (
-      <li className="list-item">
+      <li className="list-item sample-search">
         <div className="list-item-inner">
           <div className="list-item-main">
             <div className="list-item-top">
@@ -71,14 +61,16 @@ class SampleSearch extends React.Component {
                     src={require(`../../images/providers/${
                       providerInfo.image
                     }`)}
-                    alt=""
+                    alt="Provider where this deal was found"
                   />
                 ) : (
                   <span style={{ height: 40, width: "30%" }}> </span>
                 )}
 
                 <div className="list-item-content-left">
-                  <div className="text-bold text-base">{departureDate}</div>
+                  <div className="text-bold text-base">
+                    {dates.format(departureDate, "MMM Do")}
+                  </div>
                   <span className="small d-block">{originCode}</span>
                 </div>
                 <div className="list-item-content-line-wrapper small">
@@ -88,7 +80,9 @@ class SampleSearch extends React.Component {
                   <div className="list-item-content-line" />
                 </div>
                 <div className="list-item-content-right">
-                  <div className="text-bold text-base">{arrivalDate}</div>
+                  <div className="text-bold text-base">
+                    {dates.format(arrivalDate, "MMM Do")}
+                  </div>
                   <span className="small d-block">{cityCode}</span>
                 </div>
               </div>
@@ -96,9 +90,14 @@ class SampleSearch extends React.Component {
             <hr className="divider divider-wide" />
             <div className="list-item-bottom">
               <div className="list-item-content sample-search-justify-left provider-link-list">
-                {providerNames.map((p, i) => (
-                  <ProviderLink key={i} provider={p} small />
-                ))}
+                <GoogleLink small sampleSearch={sampleSearch} />
+                <SkyLink small sampleSearch={sampleSearch} />
+                <MomondoLink small sampleSearch={sampleSearch} />
+                {sampleSearch.kiwiPrice ? (
+                  <KiwiLink small sampleSearch={sampleSearch} />
+                ) : (
+                  <KayakLink small sampleSearch={sampleSearch} />
+                )}
               </div>
             </div>
           </div>
@@ -107,124 +106,13 @@ class SampleSearch extends React.Component {
               <span className={"icon fa fa-dollar black-bold-text"} />
               {price}
             </h5>
-
-            {provider ? (
-              <a
-                className="button button-primary button-xs button-no-shadow"
-                href="#"
-              >
-                View Deal
-              </a>
-            ) : (
-              <div>
-                <Button
-                  id={`PopoverFocus-${id}`}
-                  type="button"
-                  color="link"
-                  style={{ padding: 0 }}
-                >
-                  <span
-                    className="button button-default button-no-shadow"
-                    href="#"
-                    onClick={this.toggle}
-                    id={"Popover-1"}
-                  >
-                    View Deal
-                  </span>
-                </Button>
-                <UncontrolledPopover
-                  trigger="focus"
-                  placement="top"
-                  target={`PopoverFocus-${id}`}
-                >
-                  <PopoverHeader>Providers</PopoverHeader>
-                  <PopoverBody>
-                    <table width="300" cellSpacing="20" cellPadding="10">
-                      <tbody>
-                        <tr>
-                          <td width="50%">
-                            <a
-                              className="provider-link"
-                              href="http://google.com"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Sky Scanner{" "}
-                              <span className="icon fa fa-external-link" />
-                            </a>
-                          </td>
-                          <td width="50%">
-                            <a
-                              className="provider-link"
-                              href="http://google.com"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Momondo{" "}
-                              <span className="icon fa fa-external-link" />
-                            </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td width="50%">
-                            <GoogleLink sampleSearch={sampleSearch} />
-                          </td>
-                          <td width="50%">
-                            <a
-                              className="provider-link"
-                              href="http://google.com"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <div className="list-item-content-left provider-link">
-                                <span>
-                                  {"Kayak "}
-                                  {!price && (
-                                    <span
-                                      className={"icon fa fa-dollar blue-text"}
-                                      style={{
-                                        fontWeight: "bold",
-                                        marginRight: 4,
-                                        color: "green"
-                                      }}
-                                    >
-                                      {price}
-                                    </span>
-                                  )}
-                                  <span className="icon fa fa-external-link" />
-                                </span>
-                              </div>
-                            </a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </PopoverBody>
-                  <PopoverHeader>
-                    <a
-                      className="provider-link"
-                      href="http://google.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Open All <span className="icon fa fa-external-link" />
-                    </a>
-                  </PopoverHeader>
-                </UncontrolledPopover>
-              </div>
-            )}
-
+            <ViewDealButton sampleSearch={sampleSearch} />
             <br />
             <span className="small">{providerInfo.name}</span>
           </div>
         </div>
       </li>
     );
-  }
-
-  formatDate(d) {
-    d += new Date().getTimezoneOffset() * 60000;
-    return moment(d).format("YYYY-MM-DD");
   }
 }
 
