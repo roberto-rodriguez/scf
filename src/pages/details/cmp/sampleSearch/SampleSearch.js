@@ -19,13 +19,7 @@ class SampleSearch extends React.Component {
     kayak: { name: "Kayak" },
     kiwi: { name: "Kiwi.com", image: "kiwi.png" }
   };
-
-  state = {
-    popoverOpen: false
-  };
-
-  toggle = () => this.setState({ popoverOpen: !this.state.popoverOpen });
-
+ 
   render() {
     var { sampleSearch } = this.props;
 

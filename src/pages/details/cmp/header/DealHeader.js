@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../../../cmp/header/NavBar";
+import NavBar from "../../../../cmp/header/NavBar";
 import "./dealHeader.scss";
 class DealHeader extends React.Component {
   constructor(props) {
