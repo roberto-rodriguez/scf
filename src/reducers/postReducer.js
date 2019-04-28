@@ -1,7 +1,7 @@
-import {
-  POST_LIST_FREE_ADD,
-  POST_LIST_EXPIRED_ADD
-} from "../constants/actionTypes";
+// import {
+//   POST_LIST_FREE_ADD,
+//   POST_LIST_EXPIRED_ADD
+// } from "../constants/actionTypes";
 import objectAssign from "object-assign";
 import initialState from "./initialState";
 
@@ -15,11 +15,10 @@ export default function postReducer(state = initialState.deals, action) {
 
   switch (type) {
     case "POST_LIST_ADD":
-      console.log("reducer POST_LIST_ADD -> ");
-      var { freePostList, expiredPostList } = data;
+      var { postList, expiredPostList } = data;
 
       var newState = objectAssign({}, state, {
-        freePostList: objectAssign({}, state.freePostList, freePostList),
+        postList: objectAssign({}, state.postList, postList),
         expiredPostList: objectAssign(
           {},
           state.expiredPostList,
@@ -29,15 +28,14 @@ export default function postReducer(state = initialState.deals, action) {
       return newState;
 
     case "REGION_UPDATE":
-      console.log("reducer REGION_UPDATE -> " + action.region);
       return objectAssign({}, state, { region: action.region });
 
     case "LOAD_POST":
       var { post } = data;
       return {
         ...state,
-        freePostList: {
-          ...state.freePostList,
+        postList: {
+          ...state.postList,
           [post.id]: {
             ...post
           }
@@ -46,17 +44,11 @@ export default function postReducer(state = initialState.deals, action) {
 
     case "LOAD_SAMPLE_SEARCH_CITY":
       var { postId, sampleSearchCity } = data;
-      post = state.freePostList[postId] || { cityList: {} };
-
-      console.log(
-        "Dispatcher:: LOAD_SAMPLE_SEARCH_CITY -> sampleSearchCity.origin = " +
-          sampleSearchCity.origin
-      );
-
+      post = state.postList[postId] || { cityList: {} };
       return {
         ...state,
-        freePostList: {
-          ...state.freePostList,
+        postList: {
+          ...state.postList,
           [postId]: {
             ...post,
             cityList: {
@@ -70,6 +62,21 @@ export default function postReducer(state = initialState.deals, action) {
           }
         }
       };
+
+    // case "LOAD_NEARBY_CITY_LIST":
+    //   var { postId, nearbyCityList } = data;
+    //   post = state.postList[postId] || { cityList: {} };
+    //   return {
+    //     ...state,
+    //     postList: {
+    //       ...state.postList,
+    //       [postId]: {
+    //         ...post,
+    //         nearbyCitiesLoaded: true,
+    //         nearbyCityList
+    //       }
+    //     }
+    //   };
 
     default:
       return state;

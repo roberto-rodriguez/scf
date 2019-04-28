@@ -1,5 +1,6 @@
 import * as object from "../../../utils/object";
-import * as postAction from "../../home/actions/PostActions";
+import * as dates from "../../../utils/dates";
+import * as postActions from "../../home/actions/PostActions";
 
 const loadCityAction = (postId, sampleSearchCity) => ({
   type: "LOAD_SAMPLE_SEARCH_CITY",
@@ -11,16 +12,30 @@ const loadPostAction = post => ({
   data: { post }
 });
 
-export function loadPost(postId, sampleSearchCityId) {
+// const loadNearbyCityListAction = (postId, nearbyCityList) => ({
+//   type: "LOAD_NEARBY_CITY_LIST",
+//   data: { postId, nearbyCityList }
+// });
+
+export function loadPost(postId, sampleSearchCityId, callback) {
   return function(dispatch, getState) {
     //TODO make an API that return the post with the selected city
-    var allPost = postAction.apiListPosts();
-    var postObj = object.listToObject(allPost.freePostList);
+    var allPost = postActions.apiListPosts();
+    var postObj = object.listToObject(allPost.postList);
 
     var post = postObj[postId];
-    dispatch(loadPostAction(post));
 
-    loadCityIfNotExist(postId, sampleSearchCityId)(dispatch, getState);
+    setTimeout(function() {
+      dispatch(loadPostAction(post));
+    
+      setTimeout(function() {
+        loadCityIfNotExist(postId, sampleSearchCityId)(dispatch, getState); 
+      }, 1000); 
+    }, 1000); 
+
+   
+ 
+ 
   };
 }
 
@@ -28,67 +43,56 @@ export function loadCityIfNotExist(postId, sampleSearchCityId) {
   return function(dispatch, getState) {
     var { postReducer } = getState();
 
-    var freePostObj = postReducer.freePostList;
-    var post = freePostObj && freePostObj[postId];
+    var postObj = postReducer.postList;
+    var post = postObj && postObj[postId];
     var sampleSearchCity = post && post.cityList[sampleSearchCityId];
 
     if (!sampleSearchCity || !sampleSearchCity.loaded) {
-      sampleSearchCity = apiLoadSampleSearchCity(sampleSearchCityId);
-      dispatch(loadCityAction(postId, sampleSearchCity));
+      var temp = apiLoadSampleSearchCity(sampleSearchCityId);
+
+      var newSampleSearchCity = { ...temp };
+      if (newSampleSearchCity.sampleSearchList) {
+        newSampleSearchCity.sampleSearchList.map(sampleSearch => {
+          sampleSearch["formattedDepartureDate"] = dates.formatWithTimezone(
+            sampleSearch.departureDate
+          );
+          sampleSearch["formattedArrivalDate"] = dates.formatWithTimezone(
+            sampleSearch.arrivalDate
+          );
+        });
+      }
+
+      dispatch(loadCityAction(postId, newSampleSearchCity));
     }
+
+    // setTimeout(function() {
+    //   loadNearbyCitiesIfNotExist(postId)(dispatch, getState);
+    // }, 300);
   };
 }
+
+// export function loadNearbyCitiesIfNotExist(postId) {
+//   return function(dispatch, getState) {
+//     var { postReducer } = getState();
+
+//     var postObj = postReducer.postList;
+//     var post = postObj && postObj[postId];
+
+//     var nearbyCitiesLoaded = post && post.nearbyCitiesLoaded;
+
+//     if (!nearbyCitiesLoaded) {
+//       dispatch(loadNearbyCityListAction(postId, buildCityList()));
+//     }
+//   };
+// }
 
 //-------------  TEST API ------------------------
 
 function apiLoadSampleSearchCity(id) {
-  var cityList = [
-    {
-      name: "Rome",
-      price: 234,
-      id: "rome",
-      cityCode: "ROM",
-      departureDate: "Jun 3",
-      arrivalDate: "Jun 12"
-    },
-    {
-      name: "Venice",
-      price: 333,
-      id: "venice",
-      cityCode: "VEN",
-      departureDate: "Jun 3",
-      arrivalDate: "Jun 12"
-    },
-    {
-      name: "Florence",
-      price: 340,
-      id: "berlin",
-      cityCode: "FLO",
-      departureDate: "Jun 3",
-      arrivalDate: "Jun 12"
-    },
-    {
-      name: "Milan",
-      price: 447,
-      id: "milan",
-      cityCode: "MIL",
-      departureDate: "Jun 3",
-      arrivalDate: "Jun 12"
-    },
-    {
-      name: "Pisa",
-      price: 1233,
-      id: "pisa",
-      cityCode: "PIS",
-      departureDate: "Jun 2019",
-      arrivalDate: "Jul 2019"
-    }
-  ];
-
-  var cityObj = object.listToObject(cityList);
+  var cityObj = object.listToObject(postActions.buildCityList());
 
   var city = cityObj[id];
-  city.origin = "San Francisco";
+  city.originCity = "San Francisco";
   city.avg = 500;
   city.country = "Italy";
 
@@ -131,3 +135,5 @@ function apiLoadSampleSearchCity(id) {
 
   return city;
 }
+
+ 

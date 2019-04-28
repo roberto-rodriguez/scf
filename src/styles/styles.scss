@@ -15,6 +15,10 @@
   color: #1f2746;
 }
 
+.black-text, .black-text span:before { 
+  color: black!important;
+}
+
 .black-bold-text {
   font-weight: bold;
   color: black
@@ -22,4 +26,8 @@
 
 .pink-text {
   color: "#c62a82"; 
+} 
+
+.font-weight-normal{
+  font-weight: normal !important; 
 } 

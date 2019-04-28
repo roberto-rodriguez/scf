@@ -10,12 +10,13 @@ class PostCityPrice extends React.Component {
   render() {
     var { CityLink, props } = this;
     var { sampleSearchCity } = props;
-    var { name, price } = sampleSearchCity;
+    var { city, price } = sampleSearchCity;
     var formattedPrice = price && string.formatAmount(price);
 
+    //onClick={this.onClick}
     return (
-      <li onClick={this.onClick}>
-        {CityLink(name, "yellow-text")}
+      <li >
+        {CityLink(city, "yellow-text")}
         <div>
          {CityLink(formattedPrice, "city-price icon fa fa-dollar yellow-text")}
         </div>
@@ -23,19 +24,17 @@ class PostCityPrice extends React.Component {
     );
   }
 
-  onClick = (e) => {
-    var { postId, sampleSearchCity, loadCityIfNotExist} = this.props;
-    var { id } = sampleSearchCity;
+  // onClick = (e) => {
+  //   var { postId, sampleSearchCity, loadCityIfNotExist} = this.props;
+  //   var { id } = sampleSearchCity;
 
-    loadCityIfNotExist(postId, id);
-  }
+  //   loadCityIfNotExist(postId, id);
+  // }
  
   CityLink = (text, className) => {
     var {
-      origin, 
-      country,
-      avg,
-      foundDate,
+      originCity, 
+      country, 
       sampleSearchCity,
       postId 
     } = this.props; 
@@ -46,12 +45,13 @@ class PostCityPrice extends React.Component {
         to={{
           pathname: "/deal/" + postId + '/' + sampleSearchCity.id,
           query: {
-            origin, 
-            country,
-            avg,
-            foundDate,
+            originCity, 
+            country,  
             city: sampleSearchCity.city, 
-            price: sampleSearchCity.price
+            price: sampleSearchCity.price,
+            avg: sampleSearchCity.avg, 
+            image: sampleSearchCity.image,
+            cityCode: sampleSearchCity.cityCode
           }
         }}
       >
@@ -63,10 +63,8 @@ class PostCityPrice extends React.Component {
 
 PostCityPrice.propTypes = {
   sampleSearchCity: PropTypes.object,
-  origin: PropTypes.string, 
-  country: PropTypes.string,
-  avg: PropTypes.number,
-  foundDate: PropTypes.string,
+  originCity: PropTypes.string, 
+  country: PropTypes.string, 
   postId: PropTypes.string,
   cityCode: PropTypes.string,
   loadCityIfNotExist: PropTypes.func

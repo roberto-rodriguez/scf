@@ -57,7 +57,7 @@ PostColumn.propTypes = {
 
 function mapStateToProps({ postReducer }) {
   return {
-    postList: postReducer.freePostList,
+    postList: postReducer.postList,
     region: postReducer.region
   };
 }

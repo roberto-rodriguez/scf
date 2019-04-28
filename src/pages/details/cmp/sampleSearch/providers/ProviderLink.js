@@ -16,10 +16,7 @@ class ProviderLink extends React.Component {
           <span className={small ? "small" : ""}>
             {`${provider} `}
             {small && price && (
-              <span
-                className={"icon fa fa-dollar blue-text"}
-                style={{ fontWeight: "bold", marginRight: 4, color: "green" }}
-              >
+              <span className={"icon fa fa-dollar blue-text provider-link-price"} >
                 {price}
               </span>
             )}

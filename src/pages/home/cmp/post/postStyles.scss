@@ -8,20 +8,27 @@
    z-index: 1000;
  }
 
- .thumbnail:hover .post-footer,
+ .thumbnail:hover .post-text,
  .thumbnail:hover .country-text {
    display: none;
  }
 
- .post-footer {
-   bottom: 10px;
-   left: 10px;
-   position: absolute;
-   background-color: rgba(0, 0, 0, 0.55);
+ .post-text{ 
+   position: absolute; 
    color: yellow;
    padding: 0px 2px;
    z-index: 1000;
  }
+
+ .post-top-left{
+  top: 10px;
+  left: 10px; 
+}
+
+.post-botom-left{
+  bottom: 10px;
+  left: 10px; 
+}
 
  .premium-post-overlay {
    position: absolute;
@@ -88,14 +95,22 @@
      }
    }
 
-   .post-footer {
-     bottom: 5px;
-     left: 5px;
+   .post-text{ 
      font-size: 13px;
      font-weight: normal;
      padding: 1px 3px;
      border-radius: 3px;
    }
+
+   .post-top-left{
+    top: 5px;
+     left: 5px;
+  }
+  
+  .post-botom-left{
+    bottom: 5px;
+    left: 5px;
+  }
 
    .country-text {
      color: white;
@@ -126,13 +141,21 @@
      }
    }
 
-   .post-footer {
-     bottom: 1px;
-     left: 1px;
+   .post-text{ 
      font-size: 12px;
      padding: 0px 1px;
      border-radius: 0px;
    }
+
+   .post-top-left{
+    top: 1px;
+     left: 1px;
+  }
+  
+  .post-botom-left{
+    bottom: 1px;
+    left: 1px;
+  }
 
    .country-text {
      padding: 0px 1px;

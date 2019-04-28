@@ -33,13 +33,7 @@ class SampleSearch extends React.Component {
       price
     } = sampleSearch;
 
-    sampleSearch["formattedDepartureDate"] = dates.formatWithTimezone(
-      departureDate
-    );
-    sampleSearch["formattedArrivalDate"] = dates.formatWithTimezone(
-      arrivalDate
-    );
-
+   
     var providerInfo = (provider && this.providers[provider]) || {};
 
     return (
@@ -62,7 +56,7 @@ class SampleSearch extends React.Component {
                 )}
 
                 <div className="list-item-content-left">
-                  <div className="text-bold text-base">
+                  <div className="text-base">
                     {dates.format(departureDate, "MMM Do")}
                   </div>
                   <span className="small d-block">{originCode}</span>
@@ -74,7 +68,7 @@ class SampleSearch extends React.Component {
                   <div className="list-item-content-line" />
                 </div>
                 <div className="list-item-content-right">
-                  <div className="text-bold text-base">
+                  <div className="text-base black-text">
                     {dates.format(arrivalDate, "MMM Do")}
                   </div>
                   <span className="small d-block">{cityCode}</span>
@@ -96,8 +90,8 @@ class SampleSearch extends React.Component {
             </div>
           </div>
           <div className="list-item-footer">
-            <h5 className="text-bold list-item-price">
-              <span className={"icon fa fa-dollar black-bold-text"} />
+            <h5 className="text-bold list-item-price font-weight-normal black-text">
+              <span className={"icon fa fa-dollar"} />
               {price}
             </h5>
             <ViewDealButton sampleSearch={sampleSearch} />

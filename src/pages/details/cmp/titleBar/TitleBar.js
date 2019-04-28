@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 class TitleBar extends React.Component {
   render() {
-    var { origin, city, country } = this.props;
+    var { originCity, city, country } = this.props;
 
     return (
       <div>
@@ -13,17 +13,17 @@ class TitleBar extends React.Component {
         >
           (*) All flights are round trip
         </span>
-        <h3 className="blue-text  hr-title">
-          {origin} — {city}
-          <span style={{ color: "grey", fontSize: 20 }}> ({country})</span>
-        </h3>
+        <h4 className="blue-text  hr-title">
+          {originCity} — {city}
+          {country && (<span style={{ color: "grey", fontSize: 20 }}> ({country})</span>)} 
+        </h4>
       </div>
     );
   }
 }
 
 TitleBar.propTypes = {
-  origin: PropTypes.string,
+  originCity: PropTypes.string,
   city: PropTypes.string,
   country: PropTypes.string
 };

@@ -5,7 +5,7 @@ var id = 1;
 const addPostListAction = response => ({
   type: "POST_LIST_ADD",
   data: {
-    freePostList: object.listToObject(response.freePostList),
+    postList: object.listToObject(response.postList),
     expiredPostList: object.listToObject(response.expiredPostList)
   }
 });
@@ -14,26 +14,25 @@ const updateRegionAction = region => ({ type: "REGION_UPDATE", region });
 
 export function listPost(page, callback, params) {
   return function(dispatch, getState) {
-    console.log("PostActions:: listPost -> page = " + page);
-
+    
     var { postReducer } = getState();
 
-    var freePostObj = postReducer.freePostList;
-    var freePostList = Object.values(freePostObj);
+    var freePostObj = postReducer.postList;
+    var postList = Object.values(freePostObj);
 
     if (params.region) {
-      freePostList = freePostList.filter(post => post.region == params.region);
+      postList = postList.filter(post => post.region == params.region);
     }
 
     var start = page * 10;
     var end = start + 10;
 
-    if (freePostList.length >= end) {
-      callback(freePostList.slice(start, end));
+    if (postList.length >= end) {
+      callback(postList.slice(start, end));
     } else {
       var listPostResult = apiListPosts(page, params);
 
-      var res = freePostList.concat(listPostResult.freePostList);
+      var res = postList.concat(listPostResult.postList);
       res = res.slice(start, end);
 
       callback(res);
@@ -53,16 +52,16 @@ export function updateRegion(region) {
 //-------------  TEST API ------------------------
 
 export function apiListPosts(page = 0, params = {}) {
-  var freePostList = buildList(params);
+  var postList = buildList(params);
 
-  freePostList = freePostList.map(p => {
+  postList = postList.map(p => {
     p.cityList = object.listToObject(p.cityList);
     return p;
   });
 
   var expiredPostList = buildList(params);
 
-  return { freePostList, expiredPostList };
+  return { postList, expiredPostList };
 }
 
 function buildList(params) {
@@ -132,39 +131,69 @@ function buildList(params) {
     ...item, 
     id: ++id,
     price: 300 + id,
-    avg: 600 - id,
+    avg: 100,
     foundDate: "5 hours ago",
-    origin: "San Francisco",
-    cityList: buildSampleSearchCityList()
+    originCity: "San Francisco",
+    cityList: buildCityList() 
   }));
 }
 
-function buildSampleSearchCityList() {
+export function buildCityList() {
   return [
     {
-      name: "Rome",
+      originCity: "San Francisco",
+      city: "Nairobi",
       price: 234,
-      id: "rome"
+      id: "Nairobi",
+      cityCode: "NBO",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      image: "v1556212244",
+      avg: 700
     },
     {
-      name: "Venice",
+      originCity: "San Francisco",
+      city: "Antananarivo",
       price: 333,
-      id: "venice"
+      id: "Antananarivo",
+      cityCode: "TNR",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      image: "v1556212036",
+      avg: 700
     },
     {
-      name: "Florence",
+      originCity: "San Francisco",
+      city: "Rabat",
       price: 340,
-      id: "berlin"
+      id: "Rabat",
+      cityCode: "RBA",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      image: "v1556210366",
+      avg: 700
     },
     {
-      name: "Milan",
+      originCity: "San Francisco",
+      city: "Cape Town",
       price: 447,
-      id: "milan"
+      id: "CapeTown",
+      cityCode: "CPT",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      image: "v1556316155",
+      avg: 700
     },
     {
-      name: "Pisa",
+      originCity: "San Francisco",
+      city: "Cairo",
       price: 1233,
-      id: "pisa"
+      id: "Cairo",
+      cityCode: "CAI",
+      departureDate: "Jun 2019",
+      arrivalDate: "Jul 2019",
+      image: "v1556075068",
+      avg: 700
     }
   ];
 }

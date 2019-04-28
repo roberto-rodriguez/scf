@@ -2,6 +2,6 @@ export default {
   deals: {
     region:0,
     expiredPostList: {},
-    freePostList: {}
+    postList: {}
   }
 };

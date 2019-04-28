@@ -357,8 +357,14 @@ dl {
 	margin-top: 3px;
 	margin-bottom: 0px!important;
 	text-align: center;
-}
 
+	span:before{
+		color: rgba(1,1,1,0.67)!important;
+		font-size: 17px!important;
+		margin-right: 1px!important; 
+	}
+}
+ 
 @media (min-width: 768px) {
 	.list-tickets .list-item-inner {
 		display: flex;

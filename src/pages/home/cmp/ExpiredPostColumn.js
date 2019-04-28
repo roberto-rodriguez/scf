@@ -31,10 +31,10 @@ ExpiredPostColumn.propTypes = {
 };
 
 function mapStateToProps({ postReducer }) {
-  var { region, expiredPostList, freePostList } = postReducer;
+  var { region, expiredPostList, postList } = postReducer;
   var postList = Object.values(expiredPostList);
   postList = postList.filter(p => region == 0 || p.region == region);
-  postList = postList.slice(0, freePostList.length);
+  postList = postList.slice(0, postList.length);
 
   return { postList };
 }

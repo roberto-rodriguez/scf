@@ -15,7 +15,8 @@
     min-width: 0px !important;
     margin: 0px 10px;
     margin-top: 0px !important;
-  }
+  } 
+ 
 }
 
 .provider-link:hover {
@@ -26,4 +27,16 @@
   text-align: center;
   background-color: white!important;
 }
+
+.provider-link-price{
+  font-weight: bold!important;
+  margin-right: 4px!important;
+  color:green!important;
+
+  &:before{
+    font-size: 9px;
+    margin-right: 1px;
+  }
+}
+
  

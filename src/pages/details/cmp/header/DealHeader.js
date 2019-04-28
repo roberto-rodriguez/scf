@@ -1,20 +1,18 @@
 import React from "react";
 import NavBar from "../../../../cmp/header/NavBar";
 import "./dealHeader.scss";
+import PropTypes from "prop-types";
+ 
 class DealHeader extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
   render() {
+    var { image, cityCode } = this.props;
+  
     return (
       <header
         className="page-header deal-header"
         style={{
-          backgroundSize: 'cover',
-          background: "no-repeat  url(https://res.cloudinary.com/fsc/image/upload/v1556212036/TNR.jpg) center"
+          backgroundSize: "cover",
+          background: `no-repeat  url(https://res.cloudinary.com/fsc/image/upload/${image}/${cityCode}.jpg) center`
         }}
       >
         <NavBar navBck />
@@ -22,5 +20,10 @@ class DealHeader extends React.Component {
     );
   }
 }
+
+DealHeader.propTypes = {
+  image: PropTypes.string,
+  cityCode: PropTypes.string
+};
 
 export default DealHeader;

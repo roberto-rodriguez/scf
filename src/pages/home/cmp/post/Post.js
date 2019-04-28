@@ -5,7 +5,7 @@ import PostCityPrice from "./PostCityPrice";
 class Post extends React.Component {
   render() {
     var { post } = this.props;
-    var { id, origin, city, country, price, avg, foundDate, cityList } = post;
+    var { id, originCity, city, country, price, avg, foundDate, cityList } = post;
 
     var cities = Object.values(cityList);
 
@@ -18,7 +18,7 @@ class Post extends React.Component {
           <tbody>
             <tr>
               <td style={{ textAlign: "left" }}>
-                <span className="pOrigin">{origin}</span>
+                <span className="pOrigin">{originCity}</span>
               </td>
               <td>
                 <i className="fa fa-long-arrow-right" />
@@ -34,7 +34,7 @@ class Post extends React.Component {
           <div className="post-header pink-text icon">
             ${price} <span className="regular-price">${avg}</span>
           </div>
-          <div className="post-footer">{foundDate}</div>
+          <div className="post-text post-botom-left">{foundDate}</div>
           <img
             src={require("../../images/gallery-" + (id % 12) + ".jpg")}
             className="img-responsive center-block thumbnail-image"
@@ -48,10 +48,10 @@ class Post extends React.Component {
                 <PostCityPrice
                   key={i}
                   sampleSearchCity={city}
-                  origin={origin} 
-                  country={country} 
+                  originCity={originCity}
+                  country={country}
                   avg={avg}
-                  postId={id + ''}
+                  postId={id + ""}
                 />
               ))}
             </ul>
@@ -64,7 +64,7 @@ class Post extends React.Component {
 
 Post.propTypes = {
   index: PropTypes.number,
-  post: PropTypes.object 
+  post: PropTypes.object
 };
 
 export default Post;
