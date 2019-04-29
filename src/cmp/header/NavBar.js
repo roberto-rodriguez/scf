@@ -126,7 +126,7 @@ import PropTypes from "prop-types";
                       <NavLink to="/about">About</NavLink>
                     </li>
                     <li>
-                      <NavLink to="/fuel-savings">Login</NavLink>
+                      <NavLink to="/login">Login</NavLink>
                     </li>
                   </ul>
                 </div>

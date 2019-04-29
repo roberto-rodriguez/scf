@@ -3,5 +3,8 @@ export default {
     region:0,
     expiredPostList: {},
     postList: {}
+  },
+  configs:{
+    
   }
 };

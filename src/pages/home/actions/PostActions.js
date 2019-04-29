@@ -139,7 +139,7 @@ function buildList(params) {
 }
 
 export function buildCityList() {
-  return [
+  var list = [
     {
       originCity: "San Francisco",
       city: "Nairobi",
@@ -196,4 +196,5 @@ export function buildCityList() {
       avg: 700
     }
   ];
+ 
 }
