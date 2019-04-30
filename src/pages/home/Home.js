@@ -1,10 +1,8 @@
 import React from "react";
 
 import "./homeStyles.scss";
-import PostColumn from "./cmp/PostColumn";
-import HomeHeader from "./cmp/HomeHeader";
-import ExpiredPostColumn from "./cmp/ExpiredPostColumn";
-
+import {PostColumn, ExpiredPostColumn, HomeHeader} from "./cmp/";
+ 
 const Home = () => {
   return (
     <div>

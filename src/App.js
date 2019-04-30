@@ -1,4 +1,5 @@
 //To run in Dev Mode: npm start -s
+//To run in Heroku: git push heroku master
 //Cloudinary  roberto.us.2019@gmail.com  Generic1!
 //https://331155194479742:331155194479742@api.cloudinary.com/v1_1/fsc/resources/image
 import React from "react";

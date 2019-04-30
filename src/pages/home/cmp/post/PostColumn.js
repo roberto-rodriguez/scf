@@ -1,9 +1,9 @@
 import React from "react";
-import Post from "./post/Post";
+import Post from "./Post";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import InfiniteList from "../../../cmp/InfiniteList";
-import * as postActions from "../actions/PostActions";
+import InfiniteList from "../../../../cmp/InfiniteList";
+import * as postActions from "../../actions/PostActions";
 class PostColumn extends React.Component {
   constructor(props) {
     super(props);

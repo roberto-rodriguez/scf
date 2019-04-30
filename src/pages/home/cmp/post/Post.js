@@ -2,10 +2,21 @@ import React from "react";
 import "./postStyles.scss";
 import PropTypes from "prop-types";
 import PostCityPrice from "./PostCityPrice";
+import * as Constants from '../../../../constants/Constants'
 class Post extends React.Component {
   render() {
     var { post } = this.props;
-    var { id, originCity, city, country, price, avg, foundDate, cityList } = post;
+    var {
+      id,
+      originCity,
+      city,
+      country,
+      price,
+      avg,
+      foundDate,
+      cityList,
+      cityCode
+    } = post;
 
     var cities = Object.values(cityList);
 
@@ -36,17 +47,17 @@ class Post extends React.Component {
           </div>
           <div className="post-text post-botom-left">{foundDate}</div>
           <img
-            src={require("../../images/gallery-" + (id % 12) + ".jpg")}
-            className="img-responsive center-block thumbnail-image"
             width="420"
-            height="280"
-            alt=""
-          />
+            height="280" 
+            className='img-responsive center-block thumbnail-img post-max-height'
+            src={`http://res.cloudinary.com/fsc/image/upload/c_scale,w_360/v${Constants.TIMESTAMP}/${cityCode}.jpg`}
+          /> 
           <div className="caption">
             <ul className="list-marked list-marked-no-padding list-marked-flex text-base cities-list">
               {cities.map((city, i) => (
                 <PostCityPrice
                   key={i}
+                  selectedCity={cityCode}
                   sampleSearchCity={city}
                   originCity={originCity}
                   country={country}

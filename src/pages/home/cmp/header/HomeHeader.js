@@ -1,15 +1,15 @@
 import React from "react";
-import NavBar from "../../../cmp/header/NavBar";
+import NavBar from "../../../../cmp/header/NavBar";
 import HeaderRegion from "./HeaderRegion";
 
 var regions = [
   "All Deals to:",
-  "Europe",
-  "Asia",
-  "Oceania",
-  "Caribean",
-  "America",
-  "Africa"
+  "Europe",//2
+  "Asia", //3
+  "Oceania",//4
+  "Caribean",//5
+  "America",//6
+  "Africa"//7
 ];
 class HomeHeader extends React.Component {
   

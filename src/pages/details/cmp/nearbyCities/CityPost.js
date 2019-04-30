@@ -54,7 +54,7 @@ class CityPost extends React.Component {
             <div className="post-text post-top-left">{city}</div>
             <img
               className="img-responsive center-block thumbnail-img details-city-img"
-              src={`http://res.cloudinary.com/fsc/image/upload/c_scale,w_360/${image}/${cityCode}.jpg`}
+              src={`http://res.cloudinary.com/fsc/image/upload/c_scale,w_360/v1/${cityCode}.jpg`}
             />
             <div className="caption datails-city-caption">
               <span

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as postActions from "../actions/PostActions";
+import * as postActions from "../../actions/PostActions";
 import PropTypes from "prop-types";
 
 class HeaderRegion extends React.Component {
@@ -8,16 +8,22 @@ class HeaderRegion extends React.Component {
     var { id, text, region } = this.props;
 
     return (
-      <li onClick={this.doClick}>
-        <span className={id == region ? "active white-text region-link" : "region-link"}>{text}</span>
+      <li onClick={this.doClick} className="cursor-pointer">
+        <span
+          className={
+            id == region ? "active white-text region-link" : "region-link"
+          }
+        >
+          {text}
+        </span>
       </li>
     );
   }
 
-  doClick = (e) => {
-      e.preventDefault();
+  doClick = e => {
+    e.preventDefault();
     var { id, updateRegion } = this.props;
-    updateRegion(id); 
+    updateRegion(id);
   };
 }
 

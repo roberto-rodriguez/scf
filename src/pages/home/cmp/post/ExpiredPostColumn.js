@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import PostExpired from "./post/PostExpired";
+import PostExpired from "./PostExpired";
 
 class ExpiredPostColumn extends React.Component {
   render() {

@@ -51,126 +51,152 @@ export function updateRegion(region) {
 //-------------  TEST API ------------------------
 
 export function apiListPosts(page = 0, params = {}) {
-  var postList = buildList(params);
+  var postList = buildList(page, params);
 
   postList = postList.map(p => {
     p.cityList = object.listToObject(p.cityList);
     return p;
   });
 
-  var expiredPostList = buildList(params);
+  var expiredPostList = buildList(page, params);
 
-  return { postList, expiredPostList };
+  return { postList: [...postList], expiredPostList: [...expiredPostList] };
 }
 
-function buildList(params) {
-  var list = [
-    {
-      city: "Venice",
-      country: "Italy",
-      region: 2
-    },
-    {
-      city: "Copenhagen",
-      country: "Denmark",
-      region: 2
-    },
-    {
-      city: "Tokyo",
-      country: "Japan",
-      region: 3
-    },
-    {
-      city: "New York",
-      country: "United States",
-      region: 1
-    },
-    {
-      city: "Frankfurt",
-      country: "Germany",
-      region: 2
-    },
-    {
-      city: "San Francisco",
-      country: "United States",
-      region: 1
-    },
-    {
-      city: "Phuket",
-      country: "Thailand",
-      region: 3
-    },
-    {
-      city: "Viena",
-      country: "Austria",
-      region: 2
-    },
-    {
-      city: "Honolulu",
-      country: "Hawaii",
-      region: 4
-    },
-    {
-      city: "Varadero",
-      country: "Cuba",
-      region: 5
-    }
-  ];
+function buildList(page, params) {
+  var list = buildCityList();
+
+  list = list.map((c, i) => ({
+    ...c,
+    cityList: list.filter(city => city.country == c.country),
+    id: (page + 1) * 10 + i, 
+    foundDate: "5 hours ago" 
+  }));
 
   var resultList = [];
 
   do {
-    var filteredList = list.filter(
-      item => !params.region || params.region == item.region
-    );
-    resultList = resultList.concat(filteredList);
-  } while (filteredList != 0 && resultList.length < 10);
-
-  return resultList.map(item => ({
-    ...item,
-    id: ++id,
-    price: 300 + id,
-    avg: 100,
-    foundDate: "5 hours ago",
-    originCity: "San Francisco",
-    cityList: buildCityList()
-  }));
+  var filteredList = list.filter(
+    item => !params.region || params.region == item.region
+  );
+  resultList = resultList.concat(filteredList);
+} while (filteredList != 0 && resultList.length < 10);
+ 
+return resultList.slice(0, 10);
 }
 
 export function buildCityList() {
   return [
     {
+      originCity: "Atlanta",
+      city: "Phnom Penh",
+      price: 234,
+      id: "PhnomPenh",
+      cityCode: "PNH",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Cambodia",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "Miami",
+      city: "Beijing",
+      price: 333,
+      id: "Beijing",
+      cityCode: "PEK",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "China",
+      avg: 700,
+      region: 3
+    },
+    {
       originCity: "San Francisco",
+      city: "Hong Kong",
+      price: 340,
+      id: "HongKong",
+      cityCode: "HKG",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "China",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "Denver",
+      city: "Tianjin",
+      price: 447,
+      id: "Tianjin",
+      cityCode: "TSN",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "China",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "New York (JFK)",
+      city: "Shenzhen",
+      price: 1233,
+      id: "Shenzhen",
+      cityCode: "SZX",
+      departureDate: "Jun 2019",
+      arrivalDate: "Jul 2019",
+      country: "China",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "Houston",
+      city: "Shanghai",
+      price: 1143,
+      id: "Shanghai",
+      cityCode: "SHA",
+      departureDate: "Jun 2019",
+      arrivalDate: "Jul 2019",
+      country: "China",
+      avg: 700,
+      region: 3
+    },
+
+    // ----------- AFRICA ---------------
+
+    {
+      originCity: "New York (LGA)",
       city: "Nairobi",
       price: 234,
       id: "Nairobi",
       cityCode: "NBO",
       departureDate: "Jun 3",
       arrivalDate: "Jun 12",
-      image: "v1556212244",
-      avg: 700
+      country: "Kenya",
+      avg: 700,
+      region: 7
     },
     {
-      originCity: "San Francisco",
+      originCity: "Toronto",
       city: "Antananarivo",
       price: 333,
       id: "Antananarivo",
       cityCode: "TNR",
       departureDate: "Jun 3",
       arrivalDate: "Jun 12",
-      image: "v1556212036",
-      avg: 700
+      country: "Madagascar",
+      avg: 700,
+      region: 7
     },
     {
-      originCity: "San Francisco",
+      originCity: "Ontario",
       city: "Rabat",
       price: 340,
       id: "Rabat",
       cityCode: "RBA",
       departureDate: "Jun 3",
       arrivalDate: "Jun 12",
-      image: "v1556210366",
-      avg: 700
+      country: "Morocco",
+      avg: 700,
+      region: 7
     },
     {
       originCity: "San Francisco",
@@ -180,19 +206,33 @@ export function buildCityList() {
       cityCode: "CPT",
       departureDate: "Jun 3",
       arrivalDate: "Jun 12",
-      image: "v1556316155",
-      avg: 700
+      country: "South Africa",
+      avg: 700,
+      region: 7
     },
     {
-      originCity: "San Francisco",
+      originCity: "Las Vegas",
+      city: "Johannesburg",
+      price: 447,
+      id: "Johannesburg",
+      cityCode: "JNB",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "South Africa",
+      avg: 700,
+      region: 7
+    },
+    {
+      originCity: "Los Angeles",
       city: "Cairo",
       price: 1233,
       id: "Cairo",
       cityCode: "CAI",
       departureDate: "Jun 2019",
       arrivalDate: "Jul 2019",
-      image: "v1556075068",
-      avg: 700
+      country: "Egypt",
+      avg: 700,
+      region: 7
     }
   ];
 }

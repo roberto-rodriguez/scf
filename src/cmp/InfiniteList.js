@@ -99,9 +99,9 @@ class InfiniteList extends Component {
     var page = reset ? 0 : this.state.page;
 
     this.props.loader(page, items => {
-      // if (_this.isObject(items)) {
-      //   items = Object.values(items);
-      // }
+      if (_this.isObject(items)) {
+        items = Object.values(items);
+      }
 
       // if (page === -1 && items.length === 0) {
       //   _this.moreFeed(true);
@@ -141,12 +141,16 @@ class InfiniteList extends Component {
 
     if (loading) {
       return <h1>Loading...</h1>;
-    } 
+    }
 
     return (
       <div className={wrapperClass}>
         {feed.map((data, i) => builder(i + 1, data))}
-        {reachEnd ? (<h1>Reach End</h1>) : (<h3 key={1000}>Infinite Loading...</h3>)}
+        {reachEnd ? (
+          <h6>TODO Put some nice reach end component here</h6>
+        ) : (
+          <h6 key={1000}>TODO Put some nice spinner here</h6>
+        )}
       </div>
     );
   }

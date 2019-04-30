@@ -9,16 +9,18 @@ import { Link } from "react-router-dom";
 class PostCityPrice extends React.Component {
   render() {
     var { CityLink, props } = this;
-    var { sampleSearchCity } = props;
-    var { city, price } = sampleSearchCity;
+    var { sampleSearchCity, selectedCity } = props;
+    var { city, price, cityCode } = sampleSearchCity;
     var formattedPrice = price && string.formatAmount(price);
+
+    var isSelectedCity = selectedCity == cityCode;
 
     //onClick={this.onClick}
     return (
       <li >
-        {CityLink(city, "yellow-text")}
+        {CityLink(city, (isSelectedCity ? 'white-text' : 'yellow-text'))}
         <div>
-         {CityLink(formattedPrice, "city-price icon fa fa-dollar yellow-text")}
+         {CityLink(formattedPrice, `city-price icon fa fa-dollar ${isSelectedCity ? 'white-text' : 'yellow-text'}`)}
         </div>
       </li>
     );
@@ -66,6 +68,7 @@ PostCityPrice.propTypes = {
   originCity: PropTypes.string, 
   country: PropTypes.string, 
   postId: PropTypes.string,
+  selectedCity: PropTypes.string,
   cityCode: PropTypes.string,
   loadCityIfNotExist: PropTypes.func
 };
