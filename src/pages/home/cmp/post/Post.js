@@ -24,14 +24,14 @@ class Post extends React.Component {
                 <i className="fa fa-long-arrow-right" />
               </td>
               <td style={{ textAlign: "right" }}>
-                <span className="pDestination pink-text">{city}</span>
+                <span className="pDestination pink-text bold-text">{city}</span>
               </td>
             </tr>
           </tbody>
         </table>
         <div className="thumbnail">
           <span className="country-text">{country}</span>
-          <div className="post-header pink-text icon">
+          <div className="post-header pink-text bold-text icon">
             ${price} <span className="regular-price">${avg}</span>
           </div>
           <div className="post-text post-botom-left">{foundDate}</div>

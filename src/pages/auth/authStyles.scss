@@ -2,4 +2,27 @@
  .auth-header {
     background: no-repeat url('./images/authheader.jpg') center; 
   }
+
+  @media (min-width: 1200px){
+    .cities-panel-container {
+      max-width: 65%!important; 
+  }
+  }
+
+
+  .selected-city{
+    margin-right: 15px;
+    
+    span{
+      margin-left: 10px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    }
+  }
+
+  .select-origin-tab-panel:after{
+    width: auto!important; 
+  }
+
  

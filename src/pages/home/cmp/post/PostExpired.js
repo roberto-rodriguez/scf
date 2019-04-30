@@ -17,7 +17,7 @@ const PostExpired = () => {
               <i className="fa fa-long-arrow-right" />
             </td>
             <td style={{ textAlign: "right" }}>
-              <span className="pDestination pink-text">Wellington</span>
+              <span className="pDestination pink-text bold-text">Wellington</span>
             </td>
           </tr>
         </tbody>
@@ -27,7 +27,7 @@ const PostExpired = () => {
         <div className="premium-post-overlay">
           <p className="absolute-left-text white-text">EXPIRED</p>
         </div>
-        <div className="post-header pink-text">
+        <div className="post-header pink-text bold-text">
           $253 <span className="regular-price">$750</span>
         </div>
         <div

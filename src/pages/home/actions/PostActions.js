@@ -14,7 +14,6 @@ const updateRegionAction = region => ({ type: "REGION_UPDATE", region });
 
 export function listPost(page, callback, params) {
   return function(dispatch, getState) {
-    
     var { postReducer } = getState();
 
     var freePostObj = postReducer.postList;
@@ -128,18 +127,18 @@ function buildList(params) {
   } while (filteredList != 0 && resultList.length < 10);
 
   return resultList.map(item => ({
-    ...item, 
+    ...item,
     id: ++id,
     price: 300 + id,
     avg: 100,
     foundDate: "5 hours ago",
     originCity: "San Francisco",
-    cityList: buildCityList() 
+    cityList: buildCityList()
   }));
 }
 
 export function buildCityList() {
-  var list = [
+  return [
     {
       originCity: "San Francisco",
       city: "Nairobi",
@@ -196,5 +195,4 @@ export function buildCityList() {
       avg: 700
     }
   ];
- 
 }

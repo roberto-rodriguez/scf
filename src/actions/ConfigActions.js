@@ -3,8 +3,8 @@ const setRegionsAction = regions => ({
   data: { regions }
 });
 
-export function loadRegions() {
-  return function(dispatch) {
+export function loadConfigs() {
+  return function(dispatch) { 
     dispatch(setRegionsAction(loadRegionsAPI()));
   };
 }
@@ -46,7 +46,7 @@ function loadRegionsAPI() {
       { name: "Denver", code: "DEN" },
       { name: "Houston", code: "HOU@03l2n@houa" },
       { name: "Las Vegas", code: "LAS" },
-      { name: "Salt Lake (Utah)", code: "SLC" }
+      { name: "Salt Lake", code: "SLC" }
     ],
     5: [
       { name: "Portland", code: "PDX" },

@@ -6,6 +6,26 @@
   }
 }
 
+.width100{
+  width:100%!important;
+}
+
+.cursor-pointer{
+  cursor: pointer;;
+}
+
+.h-margin-20{
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.margin-right-10{ 
+  margin-right: 10px;
+}
+
+.margin-left-10{ 
+  margin-left: 10px;
+}
 
 .page-header {
   height: 500px;
@@ -33,10 +53,22 @@
   color: black
 }
 
+.bold-text {
+  font-weight: bold; 
+}
+
 .pink-text {
-  color: "#c62a82"; 
+  color: #c62a82!important; 
 } 
 
 .font-weight-normal{
   font-weight: normal !important; 
 } 
+
+.float-left{
+  float:left;
+}
+
+.float-right{
+  float:left;
+}
