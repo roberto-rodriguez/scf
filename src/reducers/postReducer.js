@@ -63,20 +63,12 @@ export default function postReducer(state = initialState.deals, action) {
         }
       };
 
-    // case "LOAD_NEARBY_CITY_LIST":
-    //   var { postId, nearbyCityList } = data;
-    //   post = state.postList[postId] || { cityList: {} };
-    //   return {
-    //     ...state,
-    //     postList: {
-    //       ...state.postList,
-    //       [postId]: {
-    //         ...post,
-    //         nearbyCitiesLoaded: true,
-    //         nearbyCityList
-    //       }
-    //     }
-    //   };
+    case "CLEAN_POST_LIST":
+      return {
+        ...state,
+        postList: {},
+        expiredPostList: {}
+      };
 
     default:
       return state;

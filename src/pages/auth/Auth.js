@@ -25,7 +25,7 @@ class Auth extends React.Component {
         </ul>
         <br />
         <br />
-        <Register/>
+        <Login/>
       </div>
     );
   }

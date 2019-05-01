@@ -1,11 +1,8 @@
-const setRegionsAction = regions => ({
-  type: "SET_REGIONS",
-  data: { regions }
-});
+import * as configActionsCreator from "./config.actions_creator";
 
 export function loadConfigs() {
-  return function(dispatch) { 
-    dispatch(setRegionsAction(loadRegionsAPI()));
+  return function(dispatch) {
+    dispatch(configActionsCreator.setRegionsAction(loadRegionsAPI()));
   };
 }
 

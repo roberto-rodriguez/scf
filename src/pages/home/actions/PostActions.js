@@ -1,20 +1,11 @@
+import * as postActionsCreator from "../../../actions/post.actions_creator";
 import * as object from "../../../utils/object";
-
-var id = 1;
-
-const addPostListAction = response => ({
-  type: "POST_LIST_ADD",
-  data: {
-    postList: object.listToObject(response.postList),
-    expiredPostList: object.listToObject(response.expiredPostList)
-  }
-});
 
 const updateRegionAction = region => ({ type: "REGION_UPDATE", region });
 
 export function listPost(page, callback, params) {
   return function(dispatch, getState) {
-    var { postReducer } = getState();
+    var { postReducer, authReducer } = getState();
 
     var freePostObj = postReducer.postList;
     var postList = Object.values(freePostObj);
@@ -29,6 +20,7 @@ export function listPost(page, callback, params) {
     if (postList.length >= end) {
       callback(postList.slice(start, end));
     } else {
+      params.principal = authReducer.id;
       var listPostResult = apiListPosts(page, params);
 
       var res = postList.concat(listPostResult.postList);
@@ -36,14 +28,13 @@ export function listPost(page, callback, params) {
 
       callback(res);
 
-      dispatch(addPostListAction(listPostResult));
+      dispatch(postActionsCreator.addPostListAction(listPostResult));
     }
   };
 }
 
 export function updateRegion(region) {
   return function(dispatch) {
-    console.log("PostActions::updateRegion -> region = " + region);
     dispatch(updateRegionAction(region));
   };
 }
@@ -52,15 +43,16 @@ export function updateRegion(region) {
 
 export function apiListPosts(page = 0, params = {}) {
   var postList = buildList(page, params);
-
-  postList = postList.map(p => {
-    p.cityList = object.listToObject(p.cityList);
-    return p;
+  var newList = postList.map(p => {
+    return {
+      ...p,
+      cityList: object.listToObject([...p.cityList])
+    };
   });
 
   var expiredPostList = buildList(page, params);
 
-  return { postList: [...postList], expiredPostList: [...expiredPostList] };
+  return { postList: newList, expiredPostList: [...expiredPostList] };
 }
 
 function buildList(page, params) {
@@ -69,20 +61,32 @@ function buildList(page, params) {
   list = list.map((c, i) => ({
     ...c,
     cityList: list.filter(city => city.country == c.country),
-    id: (page + 1) * 10 + i, 
-    foundDate: "5 hours ago" 
+    id: (page + 1) * 10 + i,
+    foundDate: "5 hours ago"
   }));
 
   var resultList = [];
 
   do {
-  var filteredList = list.filter(
-    item => !params.region || params.region == item.region
-  );
-  resultList = resultList.concat(filteredList);
-} while (filteredList != 0 && resultList.length < 10);
- 
-return resultList.slice(0, 10);
+    var filteredList = list.filter(item => {
+      if (params.principal) {
+        if (!(item.originCity == "Atlanta" || item.originCity == "Miami")) {
+          return false;
+        }
+      }
+
+      if (params.region) {
+        if (params.region != item.region) {
+          return false;
+        }
+      }
+
+      return true;
+    });
+    resultList = resultList.concat([...filteredList]);
+  } while (filteredList != 0 && resultList.length < 10);
+
+  return resultList.slice(0, 10);
 }
 
 export function buildCityList() {

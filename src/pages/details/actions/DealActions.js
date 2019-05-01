@@ -1,21 +1,9 @@
+import * as dealActionsCreator from "../../../actions/deal.actions_creator";
 import * as object from "../../../utils/object";
 import * as dates from "../../../utils/dates";
 import * as postActions from "../../home/actions/PostActions";
 
-const loadCityAction = (postId, sampleSearchCity) => ({
-  type: "LOAD_SAMPLE_SEARCH_CITY",
-  data: { postId, sampleSearchCity }
-});
 
-const loadPostAction = post => ({
-  type: "LOAD_POST",
-  data: { post }
-});
-
-// const loadNearbyCityListAction = (postId, nearbyCityList) => ({
-//   type: "LOAD_NEARBY_CITY_LIST",
-//   data: { postId, nearbyCityList }
-// });
 
 export function loadPost(postId, sampleSearchCityId, callback) {
   return function(dispatch, getState) {
@@ -26,7 +14,7 @@ export function loadPost(postId, sampleSearchCityId, callback) {
     var post = postObj[postId];
 
     setTimeout(function() {
-      dispatch(loadPostAction(post));
+      dispatch(dealActionsCreator.loadPostAction(post));
     
       setTimeout(function() {
         loadCityIfNotExist(postId, sampleSearchCityId)(dispatch, getState); 
@@ -62,7 +50,7 @@ export function loadCityIfNotExist(postId, sampleSearchCityId) {
         });
       }
 
-      dispatch(loadCityAction(postId, newSampleSearchCity));
+      dispatch(dealActionsCreator.loadCityAction(postId, newSampleSearchCity));
     }
 
     // setTimeout(function() {

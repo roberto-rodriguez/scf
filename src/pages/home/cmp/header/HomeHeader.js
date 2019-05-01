@@ -40,7 +40,7 @@ class HomeHeader extends React.Component {
           <br />
           <br />
           <a className="button button-primary button-circle" href="#">
-            Subscribe FREE
+            Enjoy Premium
           </a>
           <br />
           <br />
