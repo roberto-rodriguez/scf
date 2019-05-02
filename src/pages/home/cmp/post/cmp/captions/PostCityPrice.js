@@ -1,9 +1,8 @@
-import React from "react";
-import "./postStyles.scss";
+import React from "react"; 
 import { connect } from "react-redux";
-import * as dealActions from "../../../details/actions/DealActions";
+import * as dealActions from "../../../../../details/actions/DealActions";
 import PropTypes from "prop-types";
-import * as string from "../../../../utils/string";
+import * as string from "../../../../../../utils/string";
 import { Link } from "react-router-dom";
 
 class PostCityPrice extends React.Component {
@@ -25,13 +24,6 @@ class PostCityPrice extends React.Component {
       </li>
     );
   }
-
-  // onClick = (e) => {
-  //   var { postId, sampleSearchCity, loadCityIfNotExist} = this.props;
-  //   var { id } = sampleSearchCity;
-
-  //   loadCityIfNotExist(postId, id);
-  // }
  
   CityLink = (text, className) => {
     var {

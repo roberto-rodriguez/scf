@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import PostExpired from "./PostExpired";
+import Post from "./Post";
 
 class ExpiredPostColumn extends React.Component {
   render() {
@@ -18,7 +18,7 @@ class ExpiredPostColumn extends React.Component {
         </div>
         <div className="row post-column text-lg-left">
           {postList.map((post, i) => (
-            <PostExpired key={i} post={post} />
+            <Post key={i} post={post} />
           ))}
         </div>
       </div>

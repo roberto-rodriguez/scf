@@ -12,25 +12,29 @@ class PostColumn extends React.Component {
       region: null
     };
   }
-  
+
   shouldComponentUpdate(nextProps, nextState) {
     var { region } = this.state;
     return region == null || region != nextProps.region;
   }
 
   render() {
-    var reload = this.state.region != this.props.region;
+    var { plan, region } = this.props;
+    var reload = this.state.region != region;
 
     return (
       <div className="row-wrapper">
-        <h5 className={"blue-text"} style={{ textAlign: "right" }}>
-          {"Free Deals"}
-        </h5>
+        {!plan && (
+          <h5 className={"blue-text"} style={{ textAlign: "right" }}>
+            {"Free Deals"}
+          </h5>
+        )}
+
         <InfiniteList
           loader={this.doList}
           reload={reload}
           builder={(i, post) => <Post key={i} reload post={post} />}
-          wrapperClass={"row post-column text-lg-left"}
+          wrapperClass={`row text-lg-left ${plan ? 'post-full' : 'post-column'}`}
           emptyElement={<h1> Empty Element </h1>}
         />
       </div>
@@ -38,7 +42,7 @@ class PostColumn extends React.Component {
   }
 
   doList = (page, infiniteListCallback) => {
-    var { region, listPost } = this.props; 
+    var { region, listPost } = this.props;
     listPost(
       page,
       resultList => {
@@ -52,13 +56,15 @@ class PostColumn extends React.Component {
 
 PostColumn.propTypes = {
   region: PropTypes.number,
+  plan: PropTypes.number,
   listPost: PropTypes.func
 };
 
-function mapStateToProps({ postReducer }) {
+function mapStateToProps({ postReducer, authReducer }) {
   return {
     postList: postReducer.postList,
-    region: postReducer.region
+    region: postReducer.region,
+    plan: authReducer.plan
   };
 }
 

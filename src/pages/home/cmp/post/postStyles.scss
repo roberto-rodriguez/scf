@@ -1,9 +1,10 @@
  .post-max-height{
-   max-height: 280px!important;
+   max-height: 250px;
+   min-height: 250px;
  }
  
- .post-header {
-   top: 10px;
+ .post-price {
+   top: 50px;
    right: 10px;
    padding: 3px 7px;
    position: absolute;
@@ -12,60 +13,48 @@
    z-index: 1000;
  }
 
+ .post-badge{
+  position: absolute;
+  top: 50;
+  left: 10;
+  color: white;
+  text-align: left;
+  padding: 15px;
+}
+
+ .post-header{
+   padding: 8px 10px 4px 10px;
+ }
+
+ .post-footer{
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent 1%,#00000090 99%);
+
+  table tbody tr td{
+    font-size: 18px;
+  }
+ }
+
  .thumbnail:hover .post-text,
  .thumbnail:hover .country-text {
    display: none;
- }
-
- .post-text{ 
-   position: absolute; 
-   color: yellow;
-   padding: 0px 2px;
-   z-index: 1000;
- }
-
- .post-top-left{
-  top: 10px;
-  left: 10px; 
-}
-
-.post-botom-left{
-  bottom: 10px;
-  left: 10px; 
-}
-
+ } 
+  
  .premium-post-overlay {
+   margin-top: 37px;
    position: absolute;
    background-color: rgba(0, 0, 0, 0.45);
    top: 0;
    bottom: 0;
    left: 0;
-   right: 0;
+   right: 0; 
  }
-
- .absolute-left-text {
-   position: absolute;
-   top: 0;
-   left: 0;
-   color: white;
-   text-align: left;
-   padding: 15px;
- }
-
- .white-text {
-   color: white;
- }
-
- .country-text {
-   color: white;
-   padding: 0px 10px 10px 0px;
-   position: absolute;
-   bottom: 0;
-   right: 0;
-   border-radius: 0px
- }
-
-
+   
  .premium-post-ad {
    text-align: center;
    color: yellow;
@@ -80,14 +69,40 @@
    font-size: 14px;
  }
 
- @media screen and (max-width:1400px) {
+ @media screen and (max-width:1600px) {
+  .post-max-height{
+    height: 240px;
+    max-height: 240px;
+    min-height: 240px;
+  }
+}
+
+@media screen and (min-width:1400px) { 
+  .col-x1400-4{
+    flex: 0 0 25%!important;
+    max-width: 25%!important;
+   }
+  }   
+
+ @media screen and (max-width:1400px) { 
+  .col-x1400-4{
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+   }
+
+  .post-max-height{
+    height: 215px;
+    max-height: 215px;
+    min-height: 215px;
+  }
+
    .premium-post-ad {
      font-size: 16px;
      margin-bottom: 3px;
    }
 
-   .post-header {
-     top: 5px;
+   .post-price {
+     top: 45px;
      right: 5px;
      padding: 1px 3px;
      font-size: 13px;
@@ -124,12 +139,27 @@
      font-weight: normal;
      bottom: 5px;
      right: 5px;
-   }
-
+   } 
  }
 
 
+ 
+ @media screen and (max-width:1300px) {
+  .post-max-height{
+    height: 190px;
+    max-height: 190px;
+    min-height: 190px;
+  }
+}
+
+
  @media screen and (max-width:1200px) {
+  .post-max-height{
+    height: 280px;
+    max-height: 280px;
+    min-height: 280px;
+  }
+
    .see-premium-link{
     display:none;
    }
@@ -138,7 +168,7 @@
      font-size: 16px;
    }
 
-   .post-header {
+   .post-price {
      top: 1px;
      right: 1px;
      padding: 0px 1px;
@@ -201,7 +231,7 @@
    text-align: right;
  }
 
- .thumbnail:hover .post-header {
+ .thumbnail:hover .post-price {
    display: none;
  }
 
@@ -234,4 +264,14 @@
 
  .city-price:before {
    font-size: 14px;
+ }
+ 
+  
+ 
+ @media screen and (max-width:992px) { //just 2 columns
+  .post-max-height{
+    height: 240px;
+    max-height: 240px;
+    min-height: 240px;
+  }
  }

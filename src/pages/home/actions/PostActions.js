@@ -43,9 +43,10 @@ export function updateRegion(region) {
 
 export function apiListPosts(page = 0, params = {}) {
   var postList = buildList(page, params);
-  var newList = postList.map(p => {
+  var newList = postList.map((p, i) => {
     return {
       ...p,
+      status: 1,
       cityList: object.listToObject([...p.cityList])
     };
   });
@@ -69,11 +70,11 @@ function buildList(page, params) {
 
   do {
     var filteredList = list.filter(item => {
-      if (params.principal) {
-        if (!(item.originCity == "Atlanta" || item.originCity == "Miami")) {
-          return false;
-        }
-      }
+      // if (params.principal) {
+      //   if (!(item.originCity == "Atlanta" || item.originCity == "Miami")) {
+      //     return false;
+      //   }
+      // }
 
       if (params.region) {
         if (params.region != item.region) {

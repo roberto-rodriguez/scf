@@ -24,6 +24,7 @@ function loginAPI(username, password) {
       resultMessage: "Success",
       data: {
         id: 1,
+        plan: 1, //trial
         firstName: "Tito",
         lastName: "Robe"
       }
