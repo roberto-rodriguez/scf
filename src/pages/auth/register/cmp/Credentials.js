@@ -1,11 +1,27 @@
 import React from "react";
 import { connect } from "react-redux";
-import "../../../authStyles.scss";
+import "../../authStyles.scss";
 import PropTypes from "prop-types";
 
 class Credentials extends React.Component {
+  state = {
+    //use state just for validation latter
+    email: "",
+    password: "",
+    repassword: ""
+  };
+
+  updateInputValue = (field, evt) => {
+    var value = evt.target.value;
+    var { onUpdate } = this.props;
+
+    this.setState({ [field]: evt.target.value });
+    onUpdate(field, value);
+  };
+
   render() {
-    var { onNext } = this.props;
+    var { onNext, data } = this.props;
+    var { email, password, repassword } = data;
 
     return (
       <div>
@@ -45,6 +61,8 @@ class Credentials extends React.Component {
                   Email
                 </label>
                 <input
+                  value={email}
+                  onChange={evt => this.updateInputValue("email", evt)}
                   className="form-input form-input-gray form-control-has-validation form-control-last-child"
                   id="login"
                   type="text"
@@ -60,6 +78,8 @@ class Credentials extends React.Component {
                   Password
                 </label>
                 <input
+                  value={password}
+                  onChange={evt => this.updateInputValue("password", evt)}
                   className="form-input form-input-gray form-control-has-validation form-control-last-child"
                   id="password"
                   type="password"
@@ -73,6 +93,8 @@ class Credentials extends React.Component {
                   Confirm Password
                 </label>
                 <input
+                  value={repassword}
+                  onChange={evt => this.updateInputValue("repassword", evt)}
                   className="form-input form-input-gray form-control-has-validation form-control-last-child"
                   id="repassword"
                   type="password"
@@ -94,7 +116,9 @@ class Credentials extends React.Component {
 }
 
 Credentials.propTypes = {
-  onNext: PropTypes.func
+  onNext: PropTypes.func,
+  onUpdate: PropTypes.func,
+  data: PropTypes.object
 };
 
 export default connect()(Credentials);

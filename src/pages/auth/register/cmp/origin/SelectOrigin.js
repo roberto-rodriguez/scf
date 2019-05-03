@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import "../../../../authStyles.scss";
+import "../../../authStyles.scss";
 import PropTypes from "prop-types";
 
 import { UsMapPanel, CitiesPanel, SelectedCities } from "./cmp/";
@@ -12,7 +12,7 @@ class SelectOrigin extends React.Component {
     this.state = {
       country: "us", //or 'canada'
       region: null,
-      selectedCities: []
+      departureCities: [...props.data.departureCities]
     };
   }
 
@@ -21,35 +21,53 @@ class SelectOrigin extends React.Component {
   selectRegion = region => this.setState({ region });
 
   selectCity = city => {
-    if (this.state.selectedCities.length < 4) {
-      this.setState({ selectedCities: [...this.state.selectedCities, city] });
+    var { departureCities } = this.state;
+
+    if (departureCities.length < 4) {
+      var newList = [...this.state.departureCities, city];
+      this.setState({ departureCities: newList });
+      this.callOnUpdate(newList);
     }
   };
 
   deleteCity = city => {
-    var newList = this.state.selectedCities.filter(c => c.code != city.code);
-    this.setState({ selectedCities: [...newList] });
+    var { departureCities } = this.state;
+
+    var newList = [...departureCities.filter(c => c.code != city.code)];
+    this.setState({ departureCities: newList });
+    this.callOnUpdate(newList);
   };
 
+  callOnUpdate = newList => this.props.onUpdate("departureCities", newList);
+
   render() {
-    var { country, region, selectedCities } = this.state;
-    var { onNext, onBack } = this.props;
+    var { country, region, departureCities } = this.state;
+    var { onNext, onBack, onRegister } = this.props;
 
     return (
       <div>
         <br />
         <div>
           <h5 className="text-center h-margin-20 hr-title">
-            <span className=" button-xs float-left cursor-pointer"  onClick={onBack}>
+            <span
+              className=" button-xs float-left cursor-pointer"
+              onClick={onBack}
+            >
               <span className="bold-text pink-text margin-left-10">
                 {"Back"}
               </span>
               <i className="fa fa-long-arrow-left float-left bold-text pink-text" />
             </span>
-            Select upto 4 departing cities
-            <span className=" button-xs float-right cursor-pointer" onClick={onNext}>
-              <span className="bold-text pink-text margin-right-10">
-                {"Next"}
+            Select upto 4 departure cities
+            <span
+              className=" button-xs float-right cursor-pointer"
+              onClick={onNext}
+            >
+              <span
+                className="bold-text pink-text margin-right-10"
+                onClick={() => onRegister()}
+              >
+                {"Finish"}
               </span>
               <i className="fa fa-long-arrow-right float-right bold-text pink-text" />
             </span>
@@ -62,7 +80,7 @@ class SelectOrigin extends React.Component {
           style={{ display: "block", width: "100%" }}
         >
           <SelectedCities
-            selectedCities={selectedCities}
+            departureCities={departureCities}
             deleteCity={this.deleteCity}
           />
           <br />
@@ -96,7 +114,7 @@ class SelectOrigin extends React.Component {
             <CitiesPanel
               regionId={region}
               selectCity={this.selectCity}
-              selectedCities={selectedCities}
+              departureCities={departureCities}
             />
           </div>
         ) : (
@@ -105,7 +123,7 @@ class SelectOrigin extends React.Component {
             <CitiesPanel
               regionId={6}
               selectCity={this.selectCity}
-              selectedCities={selectedCities}
+              departureCities={departureCities}
             />
           </div>
         )}
@@ -118,7 +136,10 @@ class SelectOrigin extends React.Component {
 
 SelectOrigin.propTypes = {
   onNext: PropTypes.func,
+  onRegister: PropTypes.func,
+  onUpdate: PropTypes.func,
+  data: PropTypes.object,
   onBack: PropTypes.any
-}; 
+};
 
 export default connect()(SelectOrigin);

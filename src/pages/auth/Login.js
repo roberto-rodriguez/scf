@@ -46,7 +46,7 @@ class Login extends React.Component {
             <span className="rd-mailform rd-form text-left">
               <div className="form-wrap has-error">
                 <label className="form-label-outside" htmlFor="login">
-                  Username or e-mail
+                  E-mail
                 </label>
                 <input
                   value={username}
@@ -98,7 +98,8 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  login: PropTypes.func
+  login: PropTypes.func,
+  history: PropTypes.any
 };
 
 export default connect(

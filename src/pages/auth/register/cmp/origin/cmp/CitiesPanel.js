@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import "../../../../../authStyles.scss";
+import "../../../../authStyles.scss";
 import PropTypes from "prop-types";
 import FAQCanNotFindCity from "./FAQCanNotFindCity";
 
 class CitiesPanel extends React.Component {
   render() {
-    var { cityList, selectCity, selectedCities } = this.props;
-    var selectedCityCodes = selectedCities.map(c => c.code);
+    var { cityList, selectCity, departureCities } = this.props;
+    var selectedCityCodes = departureCities.map(c => c.code);
     return (
       <div className="container cities-panel-container">
         <div className="row row-30 row-offset-1 text-lg-left">
@@ -36,7 +36,7 @@ class CitiesPanel extends React.Component {
 CitiesPanel.propTypes = {
   regionId: PropTypes.any,
   cityList: PropTypes.any,
-  selectedCities: PropTypes.any,
+  departureCities: PropTypes.any,
   selectCity: PropTypes.func
 };
 

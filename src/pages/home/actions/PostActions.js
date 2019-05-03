@@ -10,7 +10,7 @@ export function listPost(page, callback, params) {
     var freePostObj = postReducer.postList;
     var postList = Object.values(freePostObj);
 
-    if (params.region) {
+    if (params.region) { //TODO externalize the filter to a function to be used by the API dev too
       postList = postList.filter(post => post.region == params.region);
     }
 
@@ -21,6 +21,15 @@ export function listPost(page, callback, params) {
       callback(postList.slice(start, end));
     } else {
       params.principal = authReducer.id;
+
+      if(postList.length % 10 != 0){
+        params.start = start + postList.length % 10;
+      }else{
+        params.start = start;
+      }
+       
+      
+      params.end = end;
       var listPostResult = apiListPosts(page, params);
 
       var res = postList.concat(listPostResult.postList);
@@ -68,7 +77,7 @@ function buildList(page, params) {
 
   var resultList = [];
 
-  do {
+  //do {
     var filteredList = list.filter(item => {
       // if (params.principal) {
       //   if (!(item.originCity == "Atlanta" || item.originCity == "Miami")) {
@@ -84,14 +93,177 @@ function buildList(page, params) {
 
       return true;
     });
-    resultList = resultList.concat([...filteredList]);
-  } while (filteredList != 0 && resultList.length < 10);
+  //  resultList = resultList.concat([...filteredList]);
+  //} while (filteredList != 0 && resultList.length < 10);
 
-  return resultList.slice(0, 10);
+  return filteredList.slice(params.start, params.end); // resultList.slice(0, 10);
 }
 
 export function buildCityList() {
   return [
+     //--------- Japan
+     {
+      originCity: "Miami",
+      city: "Rio de Janeiro",
+      // city: "Tokyo",
+      price: 333,
+      id: "Tokyo",
+      cityCode: "TYO@07dfk@tyoa",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Japan",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Osaka",
+      price: 340,
+      id: "Osaka",
+      cityCode: "ITM",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Japan",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "Denver",
+      city: "Hiroshima",
+      price: 447,
+      id: "Hiroshima",
+      cityCode: "HIJ",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Japan",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "New York-JFK",
+      city: "Sapporo",
+      price: 1233,
+      id: "Sapporo",
+      cityCode: "CTS",
+      departureDate: "Jun 2019",
+      arrivalDate: "Jul 2019",
+      country: "Japan",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "Houston",
+      city: "Fukuoka",
+      price: 1143,
+      id: "Fukuoka",
+      cityCode: "FUK",
+      departureDate: "Jun 2019",
+      arrivalDate: "Jul 2019",
+      country: "Japan",
+      avg: 700,
+      region: 3
+    },
+     //--------- Israel
+     {
+      originCity: "Miami",
+      city: "Tel Aviv",
+      price: 333,
+      id: "TelAviv",
+      cityCode: "TLV",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Israel",
+      avg: 700,
+      region: 3
+    },
+    //--------- Indonesia
+    {
+      originCity: "Miami",
+      city: "Jakarta",
+      price: 333,
+      id: "Jakarta",
+      cityCode: "CGK",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Indonesia",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Bali",
+      price: 340,
+      id: "Bali",
+      cityCode: "DPS",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Indonesia",
+      avg: 700,
+      region: 3
+    },
+    //--------- India
+    {
+      originCity: "Miami",
+      city: "New Delhi",
+      price: 333,
+      id: "NewDelhi",
+      cityCode: "DEL",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "India",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Bangalore",
+      price: 340,
+      id: "Bangalore",
+      cityCode: "BLR",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "India",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "Denver",
+      city: "Hyderabad",
+      price: 447,
+      id: "Hyderabad",
+      cityCode: "HYD",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "India",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "New York-JFK",
+      city: "Chennai",
+      price: 1233,
+      id: "Chennai",
+      cityCode: "MAA",
+      departureDate: "Jun 2019",
+      arrivalDate: "Jul 2019",
+      country: "India",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "Houston",
+      city: "Mumbai",
+      price: 1143,
+      id: "Mumbai",
+      cityCode: "BOM",
+      departureDate: "Jun 2019",
+      arrivalDate: "Jul 2019",
+      country: "India",
+      avg: 700,
+      region: 3
+    },
+
+    //---------------
     {
       originCity: "Atlanta",
       city: "Phnom Penh",
@@ -104,6 +276,7 @@ export function buildCityList() {
       avg: 700,
       region: 3
     },
+    //------ China
     {
       originCity: "Miami",
       city: "Beijing",
@@ -141,7 +314,7 @@ export function buildCityList() {
       region: 3
     },
     {
-      originCity: "New York (JFK)",
+      originCity: "New York-JFK",
       city: "Shenzhen",
       price: 1233,
       id: "Shenzhen",
@@ -168,7 +341,7 @@ export function buildCityList() {
     // ----------- AFRICA ---------------
 
     {
-      originCity: "New York (LGA)",
+      originCity: "New York-LGA",
       city: "Nairobi",
       price: 234,
       id: "Nairobi",
@@ -192,7 +365,7 @@ export function buildCityList() {
       region: 7
     },
     {
-      originCity: "Ontario",
+      originCity: "Las Vegas",
       city: "Rabat",
       price: 340,
       id: "Rabat",

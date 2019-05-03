@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import PropTypes from "prop-types";
 import "./homeStyles.scss";
 import { PostColumn, ExpiredPostColumn, HomeHeader } from "./cmp/";
 
@@ -22,7 +22,7 @@ class Home extends React.Component {
               data-isotope-group="gallery"
               style={{ display: "inline-flex" }}
             >
-              {plan ? (
+              {plan > 1 ? (
                 <PostColumn />
               ) : (
                 <table className="post-table" cellSpacing="10">
@@ -45,6 +45,12 @@ class Home extends React.Component {
     );
   }
 }
+
+
+Home.propTypes = { 
+  plan: PropTypes.number 
+};
+
 
 const mapStateToProps = ({ authReducer }) => ({
   plan: authReducer.plan

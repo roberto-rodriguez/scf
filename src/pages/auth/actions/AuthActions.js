@@ -15,6 +15,20 @@ export function login(username, password, callback) {
   };
 }
 
+export function register(data, callback) {
+  return function(dispatch, getState) {
+    // var result = loginAPI(username, password);
+
+    dispatch(postActionsCreator.cleanPostListAction());
+
+    data.plan = 2; //trial
+
+    dispatch(authActionsCreator.setAuthAction(data));
+
+    callback( );
+  };
+}
+
 //--------- Provissional API ----------
 
 function loginAPI(username, password) {
@@ -24,7 +38,7 @@ function loginAPI(username, password) {
       resultMessage: "Success",
       data: {
         id: 1,
-        plan: 1, //trial
+        plan: 2, //trial  ->  0-visitor, 1-free, 2-trial, 3-premium,
         firstName: "Tito",
         lastName: "Robe"
       }

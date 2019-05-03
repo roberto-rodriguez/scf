@@ -3,7 +3,7 @@ import initialState from "./initialState";
 // {
 //   principal:{
 //     id: 1,
-//     plan: 0-free, 1-trial, 2-premium,
+//     plan: 0-visitor, 1-free, 2-trial, 3-premium,
 //     firstName: '',
 //     lastName: ''
 //   }

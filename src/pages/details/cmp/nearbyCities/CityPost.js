@@ -47,11 +47,12 @@ class CityPost extends React.Component {
       >
         <div className="col-xl-12 col-md-6">
           <div className="thumbnail-btn details-city-thumbnail">
-            <div className="post-header pink-text bold-text">
-              {`$${price} `}
-              <span className="regular-price">{`$${avg} `}</span>
+            <div className="post-price white-text bold-text icon" style={{top:0}}>
+              ${price} <span className="regular-price">${avg}</span>
             </div>
-            <div className="post-text post-top-left">{city}</div>
+            <div className="post-badge yellow-text" style={{ fontSize: 18 }}>
+              {city}
+            </div>
             <img
               className="img-responsive center-block thumbnail-img details-city-img"
               src={`http://res.cloudinary.com/fsc/image/upload/c_scale,w_360/v1/${cityCode}.jpg`}

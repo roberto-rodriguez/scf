@@ -1,10 +1,10 @@
 import React from "react";
-import "../../../../../authStyles.scss";
+import "../../../../authStyles.scss";
 import PropTypes from "prop-types";
 
 class SelectedCities extends React.Component {
   render() {
-    var selectedCities = this.props.selectedCities || [];
+    var departureCities = this.props.departureCities || [];
     var deleteCity = this.props.deleteCity;
     return (
       <div className="container cities-panel-container">
@@ -12,7 +12,7 @@ class SelectedCities extends React.Component {
           className="row row-30 row-offset-1 text-lg-center"
           style={{ display: "block" }}
         >
-          {selectedCities.slice(0, 4).map((city, i) => (
+          {departureCities.slice(0, 4).map((city, i) => (
             <span
               className="button button-primary button-circle selected-city"
               key={i}
@@ -32,7 +32,7 @@ class SelectedCities extends React.Component {
 
 SelectedCities.propTypes = {
   deleteCity: PropTypes.func,
-  selectedCities: PropTypes.any
+  departureCities: PropTypes.any
 };
 
 export default SelectedCities;

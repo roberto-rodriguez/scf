@@ -32,11 +32,11 @@
   width: 100%;
 }
 
-.white-text {
+.white-text, .white-text:before {
   color: white !important;
 }
 
-.yellow-text {
+.yellow-text, .yellow-text:before {
   color: yellow !important;
 }
 

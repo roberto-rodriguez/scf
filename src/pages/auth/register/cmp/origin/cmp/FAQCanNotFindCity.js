@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../../../authStyles.scss";
+import "../../../../authStyles.scss";
 
 class FAQCanNotFindCity extends React.Component {
   constructor(props) {

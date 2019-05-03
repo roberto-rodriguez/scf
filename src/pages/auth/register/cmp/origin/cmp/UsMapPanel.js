@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import "../../../../../authStyles.scss";
+import "../../../../authStyles.scss";
 import USAMap from "react-usa-map";
 import PropTypes from "prop-types";
 

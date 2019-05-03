@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as postActions from "../../actions/PostActions";
+import * as postActions from "../../../actions/PostActions";
 import PropTypes from "prop-types";
 
 class HeaderRegion extends React.Component {

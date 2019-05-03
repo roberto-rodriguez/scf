@@ -24,7 +24,7 @@ class Post extends React.Component {
     return (
       <div
         className={`${
-          plan
+          plan > 1
             ? "col-12 col-md-6 col-lg-4 col-xl-4 col-x1400-4 "
             : "col-12 col-md-12 col-lg-12 col-xl-6"
         } isotope-item`}
@@ -35,14 +35,14 @@ class Post extends React.Component {
             <table style={{ width: "100%" }}>
               <tbody>
                 <tr>
-                  <td style={{ textAlign: "left" }}>
+                  <td width="45%" style={{ textAlign: "left" }}>
                     <span className="pOrigin">{originCity}</span>
                   </td>
-                  <td>
-                    <i className="fa fa-long-arrow-right" />
+                  <td width="10%"  align="center">
+                    <i className="fa fa-long-arrow-right"/>
                   </td>
-                  <td style={{ textAlign: "right" }}>
-                    <span className="pDestination pink-text bold-text">
+                  <td  width="45%" style={{ textAlign: "right" }}>
+                    <span className="pDestination pink-text text-bold">
                       {city}
                     </span>
                   </td>
@@ -52,7 +52,7 @@ class Post extends React.Component {
           </div>
           {!status && <div className="premium-post-overlay"> </div>}
           <PostBadge status={status}/>
-          <div className="post-price pink-text bold-text icon">
+          <div className="post-price white-text bold-text icon">
             ${price} <span className="regular-price">${avg}</span>
           </div>
           <div className="post-footer">

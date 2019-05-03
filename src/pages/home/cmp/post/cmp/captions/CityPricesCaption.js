@@ -19,7 +19,19 @@ class CityPricesCaption extends React.Component {
     return (
       <div className="caption">
         <ul className="list-marked list-marked-no-padding list-marked-flex text-base cities-list">
-          {cities.map((city, i) => (
+        {cities.filter(c => c.cityCode == cityCode).map((city, i) => (
+            <PostCityPrice
+              key={i}
+              selectedCity={cityCode}
+              sampleSearchCity={city}
+              originCity={originCity}
+              country={country}
+              avg={avg}
+              postId={id + ""}
+            />
+          ))}
+          <hr style={{width:'100%', color: 'rgba(255,255,255,0.01)'}}/>
+          {cities.filter(c => c.cityCode != cityCode).map((city, i) => (
             <PostCityPrice
               key={i}
               selectedCity={cityCode}
@@ -31,6 +43,7 @@ class CityPricesCaption extends React.Component {
             />
           ))}
         </ul>
+        <br/> 
       </div>
     );
   }

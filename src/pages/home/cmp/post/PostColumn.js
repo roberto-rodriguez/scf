@@ -24,7 +24,7 @@ class PostColumn extends React.Component {
 
     return (
       <div className="row-wrapper">
-        {!plan && (
+        {plan <= 1 && (
           <h5 className={"blue-text"} style={{ textAlign: "right" }}>
             {"Free Deals"}
           </h5>

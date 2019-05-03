@@ -18,6 +18,7 @@ class UnlockPremiumCaption extends React.Component {
       <span className="premium-post-login">
         Already a member? <span className="link">LogIn</span>
       </span>
+      <br/> 
     </div>
     );
   }
