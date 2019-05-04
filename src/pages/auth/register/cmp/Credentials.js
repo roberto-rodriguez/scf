@@ -64,9 +64,9 @@ class Credentials extends React.Component {
                   value={email}
                   onChange={evt => this.updateInputValue("email", evt)}
                   className="form-input form-input-gray form-control-has-validation form-control-last-child"
-                  id="login"
+                  id="email"
                   type="text"
-                  name="login"
+                  name="email"
                   data-constraints="@Required"
                 />
                 <span className="form-validation">

@@ -19,7 +19,7 @@ class HomeHeader extends React.Component {
 
         <section style={{ paddingTop: 130 }}>
           <h3 style={{ color: "white", fontFamily: "Courgette, cursive" }}>
-            Find the TOP 20 chepest flights
+            Find the TOP chepest flights
           </h3>
           <br />
           <span

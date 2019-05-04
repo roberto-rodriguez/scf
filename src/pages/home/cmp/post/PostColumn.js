@@ -9,7 +9,8 @@ class PostColumn extends React.Component {
     super(props);
 
     this.state = {
-      region: null
+      region: null,
+      mounted: false
     };
   }
 
@@ -18,9 +19,15 @@ class PostColumn extends React.Component {
     return region == null || region != nextProps.region;
   }
 
+  componentDidMount() {
+    this.setState({ mounted: true });
+  }
+
   render() {
-    var { plan, region } = this.props;
+    var { plan, region, appStarted } = this.props;
     var reload = this.state.region != region;
+
+    var postCls = plan ? "post-full" : "post-column";
 
     return (
       <div className="row-wrapper">
@@ -30,41 +37,63 @@ class PostColumn extends React.Component {
           </h5>
         )}
 
-        <InfiniteList
-          loader={this.doList}
-          reload={reload}
-          builder={(i, post) => <Post key={i} reload post={post} />}
-          wrapperClass={`row text-lg-left ${plan ? 'post-full' : 'post-column'}`}
-          emptyElement={<h1> Empty Element </h1>}
-        />
+        {appStarted && (
+          <InfiniteList
+            loader={this.doList}
+            reload={reload}
+            builder={(i, post) => <Post key={i} reload post={post} />}
+            wrapperClass={"row text-lg-left " + postCls}
+            emptyElement={<h1> Empty Element </h1>}
+          />
+        )}
       </div>
     );
   }
 
+  // doList = (page, infiniteListCallback) => {
+  //   var { region, listPost } = this.props;
+  //   listPost(
+  //     page,
+  //     resultList => {
+  //       this.setState({ region });
+  //       infiniteListCallback(resultList);
+  //     },
+  //     { region }
+  //   );
+  // };
+
   doList = (page, infiniteListCallback) => {
+    var { mounted } = this.state;
     var { region, listPost } = this.props;
-    listPost(
-      page,
-      resultList => {
-        this.setState({ region });
-        infiniteListCallback(resultList);
-      },
-      { region }
-    );
+
+    mounted &&
+      listPost(
+        page,
+        resultList => {
+          if (this.state.region != region) {
+            this.setState({ region });
+          }
+
+          infiniteListCallback(resultList);
+        },
+        { region }
+      );
   };
 }
 
 PostColumn.propTypes = {
   region: PropTypes.number,
   plan: PropTypes.number,
-  listPost: PropTypes.func
+  listPost: PropTypes.func,
+  appStarted: PropTypes.bool
 };
 
 function mapStateToProps({ postReducer, authReducer }) {
   return {
     postList: postReducer.postList,
     region: postReducer.region,
-    plan: authReducer.plan
+    plan: authReducer.plan,
+    appStarted: authReducer.appStarted
   };
 }
 

@@ -6,8 +6,16 @@ import PropTypes from "prop-types";
 import * as authActions from "../../../pages/auth/actions/AuthActions";
 
 class LoginButton extends React.Component {
+  onLogout = () => {
+    var { logout, history } = this.props;
+
+    logout(() => {
+      history.push("/");
+    });
+  };
+
   render() {
-    var { plan, email } = this.props;
+    var { plan } = this.props;
 
     if (!plan) {
       return (
@@ -19,9 +27,14 @@ class LoginButton extends React.Component {
 
     return (
       <li className="rd-navbar--has-dropdown rd-navbar-submenu">
-        <a href="#">{email}</a>
+        <i
+          className="icon mdi mdi-account-circle white-text"
+          style={{ fontSize: 22 }}
+        >
+          {" "}
+        </i>
         <span className="rd-navbar-submenu-toggle" />
-        <ul className="rd-navbar-dropdown">
+        <ul className="rd-navbar-dropdown" style={{ left: -177 }}>
           <li>
             <a href="overview.html">Profile</a>
           </li>
@@ -32,7 +45,7 @@ class LoginButton extends React.Component {
             <a href="overview.html">Notifications</a>
           </li>
           <li>
-            <a href="faq.html">Log Out</a>
+            <span onClick={this.onLogout}>Log Out</span>
           </li>
         </ul>
       </li>
@@ -42,7 +55,9 @@ class LoginButton extends React.Component {
 
 LoginButton.propTypes = {
   plan: PropTypes.number,
-  email: PropTypes.string
+  email: PropTypes.string,
+  logout: PropTypes.func,
+  history: PropTypes.any
 };
 
 function mapStateToProps({ authReducer }) {

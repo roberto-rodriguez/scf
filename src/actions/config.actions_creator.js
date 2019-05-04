@@ -1,4 +1,4 @@
-export const setRegionsAction = regions => ({
-  type: "SET_REGIONS",
-  data: { regions }
+export const initConfigsAction = configs => ({
+  type: "INIT_CONFIGS",
+  data: { configs }
 });

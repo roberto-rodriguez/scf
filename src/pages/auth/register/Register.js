@@ -13,7 +13,11 @@ class Register extends React.Component {
     this.state = {
       page: 1,
       data: {
-        departureCities: []
+        departureCities: [],
+        email: "",
+        password: "",
+        repassword: "",
+        selectedRegion: 0 //this is just ofr the registering flow
       }
     };
   }
@@ -34,12 +38,20 @@ class Register extends React.Component {
     }
   };
 
-  onUpdate = (field, value) => this.setState({ [field]: value });
+  onUpdate = (field, value) => {
+    this.setState(prevState => ({
+      ...prevState,
+      data: {
+        ...prevState.data,
+        [field]: value
+      }
+    }));
+  };
 
   onRegister = () => {
     var { register, history } = this.props;
     var { data } = this.state;
-    register(data, () => history.push("/"));
+    register({ ...data }, () => history.push("/"));
   };
 
   render() {

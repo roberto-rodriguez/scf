@@ -1,5 +1,7 @@
 import * as authActionsCreator from "../../../actions/auth.actions_creator";
 import * as postActionsCreator from "../../../actions/post.actions_creator";
+import { TOKEN_COOKIE } from "../../../constants/Constants";
+import cookie from "react-cookies"; 
 
 export function login(username, password, callback) {
   return function(dispatch, getState) {
@@ -16,8 +18,7 @@ export function login(username, password, callback) {
 }
 
 export function register(data, callback) {
-  return function(dispatch, getState) {
-    // var result = loginAPI(username, password);
+  return function(dispatch, getState) { 
 
     dispatch(postActionsCreator.cleanPostListAction());
 
@@ -26,6 +27,16 @@ export function register(data, callback) {
     dispatch(authActionsCreator.setAuthAction(data));
 
     callback( );
+  };
+}
+
+ 
+export function logout(username, password, callback) {
+  return function(dispatch, getState) { 
+
+    cookie.save(TOKEN_COOKIE, '');
+    dispatch(postActionsCreator.cleanPostListAction());
+    dispatch(authActionsCreator.setAuthAction({plan:0})); 
   };
 }
 
@@ -40,7 +51,8 @@ function loginAPI(username, password) {
         id: 1,
         plan: 2, //trial  ->  0-visitor, 1-free, 2-trial, 3-premium,
         firstName: "Tito",
-        lastName: "Robe"
+        lastName: "Robe",
+        [TOKEN_COOKIE]: TOKEN_COOKIE + "_" + (new Date()).getTime()
       }
     };
   } else {

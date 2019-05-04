@@ -10,13 +10,10 @@ export default function postReducer(state = initialState.configs, action) {
   var { type, data } = action;
 
   switch (type) {
-    case "SET_REGIONS":
-      var { regions } = data;
+    case "INIT_CONFIGS": 
       return {
         ...state,
-        regions: {
-          ...regions
-        }
+        ...data.configs 
       };
 
     default:

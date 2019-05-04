@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as dealActions from "../../actions/DealActions";
-
+import * as Constants from "../../../../constants/Constants";
 class CityPost extends React.Component {
   onCLick = () => {
     var {
@@ -50,12 +50,14 @@ class CityPost extends React.Component {
             <div className="post-price white-text bold-text icon" style={{top:0}}>
               ${price} <span className="regular-price">${avg}</span>
             </div>
-            <div className="post-badge yellow-text" style={{ fontSize: 18 }}>
+            <div className="nearby-city-post-badge" >
               {city}
             </div>
             <img
               className="img-responsive center-block thumbnail-img details-city-img"
-              src={`http://res.cloudinary.com/fsc/image/upload/c_scale,w_360/v1/${cityCode}.jpg`}
+              src={`http://res.cloudinary.com/fsc/image/upload/c_scale,w_360/v${
+                Constants.TIMESTAMP
+              }/${cityCode}.jpg`}
             />
             <div className="caption datails-city-caption">
               <span

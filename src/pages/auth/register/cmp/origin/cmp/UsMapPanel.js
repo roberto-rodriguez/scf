@@ -9,7 +9,7 @@ class SelectOrigin extends React.Component {
     super(props);
 
     this.state = {
-      region: null
+      region: props.selectedRegion
     };
   }
 
@@ -138,7 +138,8 @@ class SelectOrigin extends React.Component {
 }
 
 SelectOrigin.propTypes = {
-  selectRegion: PropTypes.func
+  selectRegion: PropTypes.func,
+  selectedRegion: PropTypes.any
 };
 
 export default connect()(SelectOrigin);

@@ -8,7 +8,16 @@ class PostBadge extends React.Component {
 
     switch (status) {
       case 0:
-        cmp = (<p className="post-badge white-text">EXPIRED</p>);
+        cmp = <p className="post-badge white-text">EXPIRED</p>;
+        break;
+      case 2:
+        cmp = (
+          <div className="premium-badge">
+            <span className="white-text">  
+              PREMIUM
+            </span>
+          </div>
+        );
         break;
     }
 

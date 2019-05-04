@@ -22168,20 +22168,26 @@ html:not(.ie-10) .not-animated {
 }
 
 .rd-navbar-static .rd-navbar-dropdown > li > a,
-.rd-navbar-fullwidth .rd-navbar-dropdown > li > a {
+.rd-navbar-fullwidth .rd-navbar-dropdown > li > a,
+.rd-navbar-static .rd-navbar-dropdown > li > span,
+.rd-navbar-fullwidth .rd-navbar-dropdown > li > span {
 	display: block;
 	color: #fff;
 	background: transparent;
 }
 
 .rd-navbar-static .rd-navbar-dropdown > li > a:hover,
-.rd-navbar-fullwidth .rd-navbar-dropdown > li > a:hover {
+.rd-navbar-fullwidth .rd-navbar-dropdown > li > a:hover,
+.rd-navbar-static .rd-navbar-dropdown > li > span:hover,
+.rd-navbar-fullwidth .rd-navbar-dropdown > li > span:hover {
 	color: #42d4ec;
 	background: #1f2746;
 }
 
 .rd-navbar-static .rd-navbar-dropdown > li.focus > a,
-.rd-navbar-fullwidth .rd-navbar-dropdown > li.focus > a {
+.rd-navbar-fullwidth .rd-navbar-dropdown > li.focus > a,
+.rd-navbar-static .rd-navbar-dropdown > li.focus > span,
+.rd-navbar-fullwidth .rd-navbar-dropdown > li.focus > span {
 	color: #42d4ec;
 	background: #1f2746;
 }
@@ -22336,7 +22342,11 @@ html:not(.ie-10) .not-animated {
 .rd-navbar-static .rd-navbar-dropdown a,
 .rd-navbar-static .rd-navbar-megamenu a,
 .rd-navbar-fullwidth .rd-navbar-dropdown a,
-.rd-navbar-fullwidth .rd-navbar-megamenu a {
+.rd-navbar-fullwidth .rd-navbar-megamenu a,
+.rd-navbar-static .rd-navbar-dropdown span,
+.rd-navbar-static .rd-navbar-megamenu span,
+.rd-navbar-fullwidth .rd-navbar-dropdown span,
+.rd-navbar-fullwidth .rd-navbar-megamenu span {
 	position: relative;
 	padding: 13px 20px 13px 38px;
 	transition: .3s;
@@ -22345,14 +22355,22 @@ html:not(.ie-10) .not-animated {
 .rd-navbar-static .rd-navbar-dropdown a:hover,
 .rd-navbar-static .rd-navbar-megamenu a:hover,
 .rd-navbar-fullwidth .rd-navbar-dropdown a:hover,
-.rd-navbar-fullwidth .rd-navbar-megamenu a:hover {
+.rd-navbar-fullwidth .rd-navbar-megamenu a:hover,
+.rd-navbar-static .rd-navbar-dropdown span:hover,
+.rd-navbar-static .rd-navbar-megamenu span:hover,
+.rd-navbar-fullwidth .rd-navbar-dropdown span:hover,
+.rd-navbar-fullwidth .rd-navbar-megamenu span:hover {
 	padding-left: 68px;
 }
 
 .rd-navbar-static .rd-navbar-dropdown a:hover:before,
 .rd-navbar-static .rd-navbar-megamenu a:hover:before,
 .rd-navbar-fullwidth .rd-navbar-dropdown a:hover:before,
-.rd-navbar-fullwidth .rd-navbar-megamenu a:hover:before {
+.rd-navbar-fullwidth .rd-navbar-megamenu a:hover:before,
+.rd-navbar-static .rd-navbar-dropdown span:hover:before,
+.rd-navbar-static .rd-navbar-megamenu span:hover:before,
+.rd-navbar-fullwidth .rd-navbar-dropdown span:hover:before,
+.rd-navbar-fullwidth .rd-navbar-megamenu span:hover:before {
 	left: 40px;
 	opacity: 1;
 }
@@ -22360,7 +22378,11 @@ html:not(.ie-10) .not-animated {
 .rd-navbar-static .rd-navbar-dropdown a:before,
 .rd-navbar-static .rd-navbar-megamenu a:before,
 .rd-navbar-fullwidth .rd-navbar-dropdown a:before,
-.rd-navbar-fullwidth .rd-navbar-megamenu a:before {
+.rd-navbar-fullwidth .rd-navbar-megamenu a:before,
+.rd-navbar-static .rd-navbar-dropdown span:before,
+.rd-navbar-static .rd-navbar-megamenu span:before,
+.rd-navbar-fullwidth .rd-navbar-dropdown span:before,
+.rd-navbar-fullwidth .rd-navbar-megamenu span:before {
 	left: 34px;
 	top: 50%;
 	transform: translateY(-50%);

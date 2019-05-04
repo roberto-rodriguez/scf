@@ -13,12 +13,13 @@ class InfiniteList extends Component {
       firstLoad: true,
       feed: [],
       showLoadIndicator: true,
-      reachEnd: false
+      reachEnd: false,
+      _mounted: false
     };
   }
 
   componentWillReceiveProps(newProps) {
-    if (!this._mounted) return;
+    if (!this.state._mounted) return;
 
     console.log(
       "InfiniteList:componentWillReceiveProps newProps.reload -> " +
@@ -35,36 +36,32 @@ class InfiniteList extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    // if(nextProps.reset){
-    //   this.moreFeed(true);
-    // }
-    var shouldComponentUpdate =
-      this._mounted &&
-      (this.state.firstLoad ||
-        this.state.loading ||
-        this.state.page <= 0 ||
-        (nextProps.reload || false));
+    var { _mounted, firstLoad, loading, page } = this.state;
 
-    console.log(
-      "InfiniteList:shouldComponentUpdate -> " +
-        shouldComponentUpdate +
-        " ,this.state.loading = " +
-        this.state.loading
-    );
+    var shouldComponentUpdate =
+      _mounted &&
+      (firstLoad || loading || page <= 0 || (nextProps.reload || false));
+
     return shouldComponentUpdate;
   }
 
   componentDidMount(props) {
     this.HEIGHT = window.innerHeight;
-    console.log("InfiniteList:componentDidMount -> this.moreFeed");
-    setTimeout(this.moreFeed, 100);
-    this._mounted = true;
 
-    window.addEventListener("scroll", this.handleScroll);
+    var _this = this;
+
+    this.setState(
+      {
+        _mounted: true
+      },
+      () => {
+        _this.moreFeed();
+        window.addEventListener("scroll", this.handleScroll);
+      }
+    );
   }
 
   componentWillUnmount() {
-    this._mounted = false;
     window.removeEventListener("scroll", this.handleScroll);
   }
 
@@ -147,7 +144,7 @@ class InfiniteList extends Component {
       <div className={wrapperClass}>
         {feed.map((data, i) => builder(i + 1, data))}
         {reachEnd ? (
-          <h6>TODO Put some nice reach end component here</h6>
+          <div />
         ) : (
           <h6 key={1000}>TODO Put some nice spinner here</h6>
         )}

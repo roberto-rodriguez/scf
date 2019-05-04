@@ -9,7 +9,7 @@ import initialState from "./initialState";
 //   }
 // }
 
-export default function postReducer(state = initialState.auth, action) {
+export default function authReducer(state = initialState.auth, action) {
   var { type, data } = action;
 
   switch (type) {

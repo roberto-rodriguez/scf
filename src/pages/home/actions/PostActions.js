@@ -10,7 +10,8 @@ export function listPost(page, callback, params) {
     var freePostObj = postReducer.postList;
     var postList = Object.values(freePostObj);
 
-    if (params.region) { //TODO externalize the filter to a function to be used by the API dev too
+    if (params.region) {
+      //TODO externalize the filter to a function to be used by the API dev too
       postList = postList.filter(post => post.region == params.region);
     }
 
@@ -21,14 +22,14 @@ export function listPost(page, callback, params) {
       callback(postList.slice(start, end));
     } else {
       params.principal = authReducer.id;
+      params.plan = authReducer.plan;
 
-      if(postList.length % 10 != 0){
-        params.start = start + postList.length % 10;
-      }else{
+      if (postList.length % 10 != 0) {
+        params.start = start + (postList.length % 10);
+      } else {
         params.start = start;
       }
-       
-      
+
       params.end = end;
       var listPostResult = apiListPosts(page, params);
 
@@ -55,7 +56,8 @@ export function apiListPosts(page = 0, params = {}) {
   var newList = postList.map((p, i) => {
     return {
       ...p,
-      status: 1,
+      //status 0-Expired 1-Normal 2-Premium
+      status: params.plan > 1 ? (i % 2) + 1 : 1,
       cityList: object.listToObject([...p.cityList])
     };
   });
@@ -78,21 +80,21 @@ function buildList(page, params) {
   var resultList = [];
 
   //do {
-    var filteredList = list.filter(item => {
-      // if (params.principal) {
-      //   if (!(item.originCity == "Atlanta" || item.originCity == "Miami")) {
-      //     return false;
-      //   }
-      // }
+  var filteredList = list.filter(item => {
+    // if (params.principal) {
+    //   if (!(item.originCity == "Atlanta" || item.originCity == "Miami")) {
+    //     return false;
+    //   }
+    // }
 
-      if (params.region) {
-        if (params.region != item.region) {
-          return false;
-        }
+    if (params.region) {
+      if (params.region != item.region) {
+        return false;
       }
+    }
 
-      return true;
-    });
+    return true;
+  });
   //  resultList = resultList.concat([...filteredList]);
   //} while (filteredList != 0 && resultList.length < 10);
 
@@ -101,35 +103,35 @@ function buildList(page, params) {
 
 export function buildCityList() {
   return [
-       //--------- Malaysia
-       {
-        originCity: "San Diego",
-        city: "Kuala Lumpur", 
-        price: 333,
-        id: "KualaLumpur",
-        cityCode: "KUL",
-        departureDate: "Jun 3",
-        arrivalDate: "Jun 12",
-        country: "Malaysia",
-        avg: 700,
-        region: 3
-      },
-      {
-        originCity: "San Francisco",
-        city: "Kota Kinabalu",
-        price: 340,
-        id: "KotaKinabalu",
-        cityCode: "BKI",
-        departureDate: "Jun 3",
-        arrivalDate: "Jun 12",
-        country: "Malaysia",
-        avg: 700,
-        region: 3
-      }, 
-     //--------- Lebanon
-     {
+    //--------- Malaysia
+    {
       originCity: "San Diego",
-      city: "Beirut", 
+      city: "Kuala Lumpur",
+      price: 333,
+      id: "KualaLumpur",
+      cityCode: "KUL",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Malaysia",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Kota Kinabalu",
+      price: 340,
+      id: "KotaKinabalu",
+      cityCode: "BKI",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Malaysia",
+      avg: 700,
+      region: 3
+    },
+    //--------- Lebanon
+    {
+      originCity: "San Diego",
+      city: "Beirut",
       price: 333,
       id: "Beirut",
       cityCode: "BEY",
@@ -139,10 +141,10 @@ export function buildCityList() {
       avg: 700,
       region: 3
     },
-     //--------- Japan
-     {
+    //--------- Japan
+    {
       originCity: "Miami",
-     city: "Tokyo",
+      city: "Tokyo",
       price: 333,
       id: "Tokyo",
       cityCode: "TYO@07dfk@tyoa",
@@ -200,8 +202,8 @@ export function buildCityList() {
       avg: 700,
       region: 3
     },
-     //--------- Israel
-     {
+    //--------- Israel
+    {
       originCity: "Miami",
       city: "Tel Aviv",
       price: 333,

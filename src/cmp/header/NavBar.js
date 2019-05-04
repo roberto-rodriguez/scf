@@ -52,10 +52,13 @@ class NavBar extends React.Component {
       }
     }
 
-    // <h5 style={{ float: "left", margin: "24px 0px 0px 20px", color:'white'}}>
-    // <span style={{color:'#c62a82', fontWeight:'bold'}}>Fly </span>
-    // Super Cheap
-    // </h5>
+    //   <img
+    //   src={require("./images/logo.png")}
+    //   className="img-responsive center-block thumbnail-image"
+    //   style={{ float: "left", margin: "18px 0px 0px 20px" }}
+    //   width="230"
+    //   alt=""
+    // />
 
     return (
       <div
@@ -89,13 +92,28 @@ class NavBar extends React.Component {
           data-xxl-stick-up="true"
         >
           <NavLink exact to="/">
-            <img
-              src={require("./images/logo.png")}
-              className="img-responsive center-block thumbnail-image"
-              style={{ float: "left", margin: "18px 0px 0px 20px" }}
-              width="230"
-              alt=""
-            />
+            <h5
+              style={{
+                float: "left",
+                margin: "24px 0px 0px 20px",
+                color: "white",
+                fontFamily: "Courgette, serif",
+                fontSize: 25 
+              }}
+            >
+              <span
+                style={{
+                  color: "#c62a82",
+                  fontWeight: "bold",
+                  fontFamily: "Courgette, serif",
+                  paddingRight: 8
+                }}
+              > 
+                Fly
+              </span>
+              Super Cheap
+              <i className="icon fa fa-paper-plane pink-text" style={{marginLeft: 10 }}/>
+            </h5>
           </NavLink>
           <div
             className="rd-navbar-inner"

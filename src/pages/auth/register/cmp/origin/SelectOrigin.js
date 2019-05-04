@@ -18,7 +18,10 @@ class SelectOrigin extends React.Component {
 
   selectCountry = country => this.setState({ country });
 
-  selectRegion = region => this.setState({ region });
+  selectRegion = region => {
+    this.setState({ region });
+    this.props.onUpdate("selectedRegion", region);
+  };
 
   selectCity = city => {
     var { departureCities } = this.state;
@@ -42,7 +45,7 @@ class SelectOrigin extends React.Component {
 
   render() {
     var { country, region, departureCities } = this.state;
-    var { onNext, onBack, onRegister } = this.props;
+    var { onNext, onBack, onRegister, data } = this.props;
 
     return (
       <div>
@@ -65,7 +68,7 @@ class SelectOrigin extends React.Component {
             >
               <span
                 className="bold-text pink-text margin-right-10"
-                onClick={() => onRegister()}
+                onClick={onRegister}
               >
                 {"Finish"}
               </span>
@@ -110,7 +113,10 @@ class SelectOrigin extends React.Component {
 
         {country == "us" ? (
           <div>
-            <UsMapPanel selectRegion={this.selectRegion} />
+            <UsMapPanel
+              selectRegion={this.selectRegion}
+              selectedRegion={data.selectedRegion}
+            />
             <CitiesPanel
               regionId={region}
               selectCity={this.selectCity}

@@ -21,6 +21,28 @@
   text-align: left;
   padding: 15px;
   z-index: 1000;
+  font-size: 15px;
+}
+
+ .premium-badge{
+  position: absolute;
+  left: 0px;
+  top: 38px;
+  padding: 2px 6px;
+  border-radius: 0px 0px 7px 0px;
+  background-color: #c62a82;
+}
+
+ .nearby-city-post-badge{
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  padding: 0px 0px 12px 15px;
+  height: 32px;
+  width: 100%;
+  z-index: 100;
+  color:yellow;
+  background: linear-gradient(transparent 1%,#00000090 99%);
 }
 
  .post-header{
