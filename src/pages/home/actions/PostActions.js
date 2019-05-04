@@ -101,11 +101,48 @@ function buildList(page, params) {
 
 export function buildCityList() {
   return [
+       //--------- Malaysia
+       {
+        originCity: "San Diego",
+        city: "Kuala Lumpur", 
+        price: 333,
+        id: "KualaLumpur",
+        cityCode: "KUL",
+        departureDate: "Jun 3",
+        arrivalDate: "Jun 12",
+        country: "Malaysia",
+        avg: 700,
+        region: 3
+      },
+      {
+        originCity: "San Francisco",
+        city: "Kota Kinabalu",
+        price: 340,
+        id: "KotaKinabalu",
+        cityCode: "BKI",
+        departureDate: "Jun 3",
+        arrivalDate: "Jun 12",
+        country: "Malaysia",
+        avg: 700,
+        region: 3
+      }, 
+     //--------- Lebanon
+     {
+      originCity: "San Diego",
+      city: "Beirut", 
+      price: 333,
+      id: "Beirut",
+      cityCode: "BEY",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Lebanon",
+      avg: 700,
+      region: 3
+    },
      //--------- Japan
      {
       originCity: "Miami",
-      city: "Rio de Janeiro",
-      // city: "Tokyo",
+     city: "Tokyo",
       price: 333,
       id: "Tokyo",
       cityCode: "TYO@07dfk@tyoa",

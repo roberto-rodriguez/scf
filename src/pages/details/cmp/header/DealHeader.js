@@ -7,6 +7,9 @@ class DealHeader extends React.Component {
   render() {
     var { cityCode } = this.props;
   
+//TODO in the future put a desc of the city and a link to Google travels
+//https://www.google.com/destination?dest_mid=/m/04swd
+
     return (
       <header
         className="page-header deal-header"
