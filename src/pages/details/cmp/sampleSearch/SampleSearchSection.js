@@ -13,27 +13,25 @@ class SampleSearchSection extends React.Component {
     kiwi: { name: "Kiwi.com", image: "kiwi.png" }
   };
 
-  // componentDidMount() {
-  //   var {
-  //     sampleSearchList,
-  //     sampleSearchCityId,
-  //     postId,
-  //     loadCityIfNotExist
-  //   } = this.props;
-
-  //   if (!sampleSearchList) {
-  //     loadCityIfNotExist(postId, sampleSearchCityId);
-  //   }
-  // }
-
   render() {
-    var sampleSearchList = this.props.sampleSearchList || [];
+    var { originCode, cityCode, sampleSearchList } = this.props;
 
     return (
       <ul className="list-tickets">
-        {sampleSearchList.map((s, i) => (
-          <SampleSearch sampleSearch={Object.assign({}, s)} id={i} key={i} />
-        ))}
+        {sampleSearchList &&
+          sampleSearchList.map((s, i) => (
+            <SampleSearch
+              sampleSearch={Object.assign(
+                {
+                  originCode,
+                  cityCode
+                },
+                s
+              )}
+              id={i}
+              key={i}
+            />
+          ))}
       </ul>
     );
   }
@@ -41,6 +39,8 @@ class SampleSearchSection extends React.Component {
 
 SampleSearchSection.propTypes = {
   sampleSearchCityId: PropTypes.string,
+  originCode: PropTypes.string,
+  cityCode: PropTypes.string,
   postId: PropTypes.any,
   sampleSearchList: PropTypes.any,
   loadCityIfNotExist: PropTypes.func

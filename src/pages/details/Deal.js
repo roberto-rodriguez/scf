@@ -42,6 +42,7 @@ class Deal extends React.Component {
     country = country || sampleSearchCity.country;
     originCity = originCity || sampleSearchCity.originCity;
     city = city || sampleSearchCity.city;
+    var originCode = sampleSearchCity.originCode;
     cityCode = cityCode || sampleSearchCity.cityCode;
     avg = avg || sampleSearchCity.avg;
     price = price || sampleSearchCity.price;
@@ -49,15 +50,16 @@ class Deal extends React.Component {
 
     var { departureDate, arrivalDate } = sampleSearchCity;
 
+    // <TitleBar originCity={originCity} city={city} country={country} />
     return (
       <div>
-        <DealHeader image={image} cityCode={cityCode} />
-        <section className="section-80 section-lg-60 bg-gray-lighter">
+        <DealHeader cityCode={cityCode}  originCity={originCity} city={city} country={country}/>
+        <section className="section-80 section-lg-30 bg-gray-lighter">
           <div className="container container-wide details-container">
             <div className="row row-50 text-xl-left">
               <div className="col-xl-9">
                 <div className="inset-xxl-right-80">
-                  <TitleBar originCity={originCity} city={city} country={country} />
+                 
 
                   <ToolBar
                     avg={avg}
@@ -68,6 +70,8 @@ class Deal extends React.Component {
                   <SampleSearchSection
                     postId={postId}
                     sampleSearchCityId={sampleSearchCityId}
+                    originCode={originCode}
+                    cityCode={cityCode}
                   />
                 </div>
               </div>

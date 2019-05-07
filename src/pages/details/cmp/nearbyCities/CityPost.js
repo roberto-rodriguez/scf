@@ -47,8 +47,8 @@ class CityPost extends React.Component {
       >
         <div className="col-xl-12 col-md-6">
           <div className="thumbnail-btn details-city-thumbnail">
-            <div className="post-price white-text bold-text icon" style={{top:0}}>
-              ${price} <span className="regular-price">${avg}</span>
+            <div className="post-price yellow-text bold-text icon" style={{top:0}}>
+              ${price} <span className="regular-price white-text">${avg}</span>
             </div>
             <div className="nearby-city-post-badge" >
               {city}

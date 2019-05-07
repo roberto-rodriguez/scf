@@ -16,11 +16,10 @@ class Post extends React.Component {
       price,
       avg,
       foundDate,
-      cityList,
       cityCode,
       status // 0-expired 1-free 2-premium
     } = post;
- 
+
     return (
       <div
         className={`${
@@ -30,7 +29,7 @@ class Post extends React.Component {
         } isotope-item`}
         data-filter="Type 3"
       >
-        <div className="thumbnail"> 
+        <div className="thumbnail">
           <div className="post-header">
             <table style={{ width: "100%" }}>
               <tbody>
@@ -38,10 +37,10 @@ class Post extends React.Component {
                   <td width="45%" style={{ textAlign: "left" }}>
                     <span className="pOrigin">{originCity}</span>
                   </td>
-                  <td width="10%"  align="center">
-                    <i className="fa fa-long-arrow-right"/>
+                  <td width="10%" align="center">
+                    <i className="fa fa-long-arrow-right" />
                   </td>
-                  <td  width="45%" style={{ textAlign: "right" }}>
+                  <td width="45%" style={{ textAlign: "right" }}>
                     <span className="pDestination pink-text text-bold">
                       {city}
                     </span>
@@ -51,15 +50,23 @@ class Post extends React.Component {
             </table>
           </div>
           {!status && <div className="premium-post-overlay"> </div>}
-          <PostBadge status={status}/>
-          <div className="post-price white-text bold-text icon">
-            ${price} <span className="regular-price">${avg}</span>
+          <PostBadge status={status} />
+          <div className="post-price yellow-text">
+            ${price} <span className="regular-price" style={{marginRight:10}}>${avg}</span>
+            {'  '}
+            <span style={{ color: "orange", fontSize: 14 }}>
+              54% OFF
+            </span>
           </div>
+        
           <div className="post-footer">
             <table style={{ width: "100%" }}>
               <tbody>
                 <tr>
-                  <td className="white-text" style={{ textAlign: "left" }}>
+                  <td
+                    className="white-text"
+                    style={{ textAlign: "left"}}
+                  >
                     {foundDate}
                   </td>
                   <td style={{ textAlign: "right" }}>
@@ -70,7 +77,7 @@ class Post extends React.Component {
             </table>
           </div>
           <img
-            width="100%" 
+            width="100%"
             className="img-responsive thumbnail-img post-max-height"
             src={`http://res.cloudinary.com/fsc/image/upload/c_scale,w_360/v${
               Constants.TIMESTAMP

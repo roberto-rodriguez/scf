@@ -79,10 +79,7 @@ export function loadCityIfNotExist(postId, sampleSearchCityId) {
 function apiLoadSampleSearchCity(id) {
   var cityObj = object.listToObject(postActions.buildCityList());
 
-  var city = cityObj[id];
-  city.originCity = "San Francisco";
-  city.avg = 500;
-  city.country = "Italy";
+  var city = cityObj[id]; 
 
   var sampleSearchList = [];
 

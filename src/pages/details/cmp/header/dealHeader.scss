@@ -2,3 +2,22 @@
   height:80vh!important;
   background-size: 100% auto!important;
 }
+
+.details-header-title{
+  width: 100%;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 20vh;
+  padding: 12px; 
+
+  ul li{
+    display: inline;
+     margin-right: 60px; 
+
+     a{
+      color: white; 
+      cursor:pointer;
+     }
+  }
+}

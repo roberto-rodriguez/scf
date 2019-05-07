@@ -12,7 +12,7 @@ class ExpiredPostColumn extends React.Component {
         <div>
           <h5 className={"blue-text"} style={{ textAlign: "left" }}>
              Premium Deals from{" "}
-            <span style={{ color: "#c62a82" }}>3 days ago</span>
+            <span style={{ color: "#FF8C00" }}>3 days ago</span>
             <span className="see-premium-link">{"See today's deals for FREE"}</span>
           </h5>
         </div>

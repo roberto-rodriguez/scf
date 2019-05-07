@@ -8,9 +8,14 @@
    right: 0px;
    padding: 3px 7px;
    position: absolute; 
-  background: rgba(0,0,0,.40);
+  background: rgba(0,0,0,.50);
    border-radius: 0px 0px 0px 4px;
    z-index: 1000;
+   font-weight: bold;
+ }
+
+ .col-xl-6 .thumbnail  .post-price {
+  font-weight: normal;
  }
 
  .post-badge{
@@ -51,17 +56,21 @@
 
  .post-footer{
   width: 100%;
-  padding: 10px;
+  padding: 10px 10px 5px 10px;
   position: absolute;
   bottom: 0;
   left: 0;
-  right: 0;
+  right: 0; 
   background: linear-gradient(transparent 1%,#00000090 99%);
 
   table tbody tr td{
     font-size: 18px;
   }
  }
+
+ .col-xl-6 .thumbnail .post-footer table tbody tr td{
+  font-size: 16px!important; 
+}
 
  .thumbnail:hover .post-text,
  .thumbnail:hover .country-text {
@@ -153,7 +162,7 @@
 
  .regular-price {
    text-decoration: line-through;
-   color: rgba(255, 255, 255, 0.8);
+   color: rgba(255, 255, 255, 0.9);
    margin-left: 5px;
    font-size: 13px;
  }

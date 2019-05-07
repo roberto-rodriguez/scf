@@ -2,9 +2,14 @@ import * as configActionsCreator from "./config.actions_creator";
 import * as authActionsCreator from "./auth.actions_creator";
 import { TOKEN_COOKIE } from "../constants/Constants";
 import cookie from "react-cookies";
+var CryptoJS = require("crypto-js");
+//https://stackoverflow.com/questions/42826782/how-to-encrypt-and-decrypt-a-text-in-react-native
 
 export function loadConfigs() {
   return function(dispatch) {
+    var ciphertext = CryptoJS.AES.encrypt('1', 'secret key 123');
+    console.log("encrypted text", ciphertext.toString());
+
     var token = cookie.load(TOKEN_COOKIE);
 
     var result = loadConfigsAPI(token);

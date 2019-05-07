@@ -103,6 +103,221 @@ function buildList(page, params) {
 
 export function buildCityList() {
   return [
+      //--------- Vietnam
+     
+      {
+        originCity: "San Francisco",
+        city: "Hanoi",
+        price: 340,
+        id: "Hanoi",
+        cityCode: "HAN",
+        departureDate: "Jun 3",
+        arrivalDate: "Jun 12",
+        country: "Vietnam",
+        avg: 700,
+        region: 3
+      },
+      {
+        originCity: "Denver",
+        city: "Ho Chi Minh",
+        price: 447,
+        id: "Ho_Chi_Minh",
+        cityCode: "SGN",
+        departureDate: "Jun 3",
+        arrivalDate: "Jun 12",
+        country: "Vietnam",
+        avg: 700,
+        region: 3
+      },
+      {
+        originCity: "New York-JFK",
+        city: "Da Nang",
+        price: 1233,
+        id: "Da_Nang",
+        cityCode: "DAD",
+        departureDate: "Jun 2019",
+        arrivalDate: "Jul 2019",
+        country: "Vietnam",
+        avg: 700,
+        region: 3
+      },
+      //--------- Thailand 
+      {
+        originCity: "San Francisco",
+        city: "Bangkok",
+        price: 340,
+        id: "Bangkok",
+        cityCode: "BKK",
+        departureDate: "Jun 3",
+        arrivalDate: "Jun 12",
+        country: "Thailand",
+        avg: 700,
+        region: 3
+      },
+      {
+        originCity: "Denver",
+        city: "Phuket",
+        price: 447,
+        id: "Phuket",
+        cityCode: "HKT",
+        departureDate: "Jun 3",
+        arrivalDate: "Jun 12",
+        country: "Thailand",
+        avg: 700,
+        region: 3
+      },
+      {
+        originCity: "New York-JFK",
+        city: "Chiang Mai",
+        price: 1233,
+        id: "Chiang_Mai",
+        cityCode: "CNX",
+        departureDate: "Jun 2019",
+        arrivalDate: "Jul 2019",
+        country: "Thailand",
+        avg: 700,
+        region: 3
+      },
+      //--------- Taiwan 
+      {
+        originCity: "Chicago",
+        city: "Taipei",
+        price: 340,
+        id: "Taipei",
+        cityCode: "TPE",
+        departureDate: "Jun 3",
+        arrivalDate: "Jun 12",
+        country: "Taiwan",
+        avg: 700,
+        region: 3
+      },
+      //--------- South Korea
+     
+      {
+        originCity: "San Francisco",
+        city: "Seoul",
+        price: 340,
+        id: "Seoul",
+        cityCode: "GMP",
+        departureDate: "Jun 3",
+        arrivalDate: "Jun 12",
+        country: "South Korea",
+        avg: 700,
+        region: 3
+      },
+      {
+        originCity: "Denver",
+        city: "Gwangju",
+        price: 447,
+        id: "Gwangju",
+        cityCode: "KWJ",
+        departureDate: "Jun 3",
+        arrivalDate: "Jun 12",
+        country: "South Korea",
+        avg: 700,
+        region: 3
+      },
+      {
+        originCity: "New York-JFK",
+        city: "Busan",
+        price: 1233,
+        id: "Busan",
+        cityCode: "PUS",
+        departureDate: "Jun 2019",
+        arrivalDate: "Jul 2019",
+        country: "South Korea",
+        avg: 700,
+        region: 3
+      },
+      {
+        originCity: "Miami",
+        city: "Jeju City",
+        price: 333,
+        id: "Jeju_City",
+        cityCode: "CJU",
+        departureDate: "Jun 3",
+        arrivalDate: "Jun 12",
+        country: "South Korea",
+        avg: 700,
+        region: 3
+      },
+       //--------- Singapore
+       {
+        originCity: "Miami",
+        city: "Singapore",
+        price: 333,
+        id: "Singapore",
+        cityCode: "SIN",
+        departureDate: "Jun 3",
+        arrivalDate: "Jun 12",
+        country: "Singapore",
+        avg: 700,
+        region: 3
+      },
+       //--------- Saudi Arabia
+       {
+        originCity: "Miami",
+        city: "Riyadh",
+        price: 333,
+        id: "Riyadh",
+        cityCode: "RUH",
+        departureDate: "Jun 3",
+        arrivalDate: "Jun 12",
+        country: "Saudi Arabia",
+        avg: 700,
+        region: 3
+      },
+     //--------- Philippines
+     {
+      originCity: "Miami",
+      city: "Manila",
+      price: 333,
+      id: "Manila",
+      cityCode: "MNL",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Philippines",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Cebu",
+      price: 340,
+      id: "Cebu",
+      cityCode: "CEB",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Philippines",
+      avg: 700,
+      region: 3
+    },
+     //--------- Nepal
+     {
+      originCity: "New York-JFK",
+      city: "Kathmandu",
+      price: 333,
+      id: "Kathmandu",
+      cityCode: "KTM",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Nepal",
+      avg: 700,
+      region: 3
+    },
+     //--------- Maldives
+     {
+      originCity: "Denver",
+      city: "Male",
+      price: 333,
+      id: "Male",
+      cityCode: "MLE",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Maldives",
+      avg: 700,
+      region: 3
+    },
     //--------- Malaysia
     {
       originCity: "San Diego",
