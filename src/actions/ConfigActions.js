@@ -6,7 +6,7 @@ var CryptoJS = require("crypto-js");
 //https://stackoverflow.com/questions/42826782/how-to-encrypt-and-decrypt-a-text-in-react-native
 
 export function loadConfigs() {
-  return function(dispatch) {
+  return function(dispatch, getState) {
     var ciphertext = CryptoJS.AES.encrypt('1', 'secret key 123');
     console.log("encrypted text", ciphertext.toString());
 

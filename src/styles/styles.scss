@@ -77,3 +77,11 @@
 .thumbnail{
   box-shadow: 0 10px 30px 0 rgba(0,0,0,0.5)!important;
 }
+
+.yellow-button {
+  background: linear-gradient(0deg,orange,yellow);
+  background-color: orange;
+  border-color: orange;
+  color: maroon;
+  box-shadow: 0 10px 30px 0 rgba(0,0,0,0.8)!important;
+}

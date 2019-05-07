@@ -101,9 +101,9 @@ class NavBar extends React.Component {
                 fontSize: 25 
               }}
             >
-              <span
-                style={{
-                  color: "#c62a82",
+              <span 
+                className="yellow-text"
+                style={{ 
                   fontWeight: "bold",
                   fontFamily: "Courgette, serif",
                   paddingRight: 8
@@ -112,7 +112,7 @@ class NavBar extends React.Component {
                 Fly
               </span>
               Super Cheap
-              <i className="icon fa fa-paper-plane pink-text" style={{marginLeft: 10 }}/>
+              <i className="icon fa fa-paper-plane yellow-text" style={{marginLeft: 10 }}/>
             </h5>
           </NavLink>
           <div

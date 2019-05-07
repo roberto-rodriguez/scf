@@ -14,9 +14,7 @@
    font-weight: bold;
  }
 
- .col-xl-6 .thumbnail  .post-price {
-  font-weight: normal;
- }
+
 
  .post-badge{
   position: absolute;
@@ -118,9 +116,9 @@
   }   
 
  @media screen and (max-width:1400px) { 
-  .pDestination{
+  .pDestination, .col-xl-6 .thumbnail  .post-price {
     font-weight: normal!important;
-  }
+  } 
 
   .col-x1400-4{
     flex: 0 0 33.33333%;

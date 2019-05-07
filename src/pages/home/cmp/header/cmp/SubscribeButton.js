@@ -13,7 +13,7 @@ class SubscribeButton extends React.Component {
       case 0:
         cmp = (
           <NavLink exact to="/subscribe">
-            <span className="button button-primary button-circle" href="#">
+            <span className="button yellow-button button-circle" href="#">
               Subscribe Free
             </span>
           </NavLink>
@@ -21,7 +21,7 @@ class SubscribeButton extends React.Component {
         break;
       case 1:
         cmp = (
-          <span className="button button-primary button-circle" href="#">
+          <span className="button yellow-button button-circle" href="#">
             Get Premium
           </span>
         );
