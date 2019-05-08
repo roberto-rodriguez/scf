@@ -33,20 +33,34 @@ export function listPost(page, callback, params) {
 
       params.end = end;
 
-      // var listPostResult = apiListPosts(page, params);
-      Proxy.get(`post/list?start=${start}&limit=${10}`, response => {
-        var listPostResult = response.List || [];
+      //-------- MOCK --------------
+      var listPostResult = apiListPosts(page, params);
 
-        var res = postList.concat(listPostResult);
-        res = res.slice(start, end);
+      var res = postList.concat(listPostResult.postList);
+      res = res.slice(start, end);
 
-        callback(res);
+      callback(res);
 
-        dispatch(postActionsCreator.addPostListAction(listPostResult));
-      });
+      dispatch(postActionsCreator.addPostListAction(listPostResult));
+
+
+      //--------- REAL -----------------
+ 
+      // Proxy.get(`post/list?start=${start}&limit=${10}`, response => {
+      //   var listPostResult = response.List || [];
+ 
+      //   var res = postList.concat(listPostResult);
+      //   res = res.slice(start, end);
+
+      //   callback(res);
+
+      //   dispatch(postActionsCreator.addPostListAction(listPostResult));
+      // });
     }
   };
 }
+
+ 
 
 export function updateRegion(region) {
   return function(dispatch) {
@@ -106,8 +120,580 @@ function buildList(page, params) {
 
 export function buildCityList() {
   return [
-    //--------- Vietnam
+//******************** EUROPE 
 
+ //--------- Ukraine 
+ {
+  originCity: "San Francisco",
+  city: "Kiev",
+  price: 340,
+  id: "Kiev",
+  cityCode: "IEV@02sn34@kiev",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Ukraine",
+  avg: 700,
+  region: 3
+},
+
+ //--------- United Kingdom 
+ {
+  originCity: "San Francisco",
+  city: "London",
+  price: 340,
+  id: "London",
+  cityCode: "LON@04jpl@lond",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "United Kingdom",
+  avg: 700,
+  region: 3
+},
+{
+  originCity: "Denver",
+  city: "Liverpool",
+  price: 447,
+  id: "Liverpool",
+  cityCode: "LPL",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "United Kingdom",
+  avg: 700,
+  region: 3
+},
+{
+  originCity: "Denver",
+  city: "Manchester",
+  price: 447,
+  id: "Manchester",
+  cityCode: "MAN",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "United Kingdom",
+  avg: 700,
+  region: 3
+},
+{
+  originCity: "Denver",
+  city: "Edinburgh",
+  price: 447,
+  id: "Edinburgh",
+  cityCode: "EDI",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "United Kingdom",
+  avg: 700,
+  region: 3
+},
+ //--------- Turkey 
+{
+  originCity: "San Francisco",
+  city: "Istanbul",
+  price: 340,
+  id: "Istanbul",
+  cityCode: "IST",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Turkey",
+  avg: 700,
+  region: 3
+},
+{
+  originCity: "San Francisco",
+  city: "Ankara",
+  price: 340,
+  id: "Ankara",
+  cityCode: "ESB",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Turkey",
+  avg: 700,
+  region: 3
+},
+ //--------- Switzerland 
+{
+  originCity: "San Francisco",
+  city: "Zurich",
+  price: 340,
+  id: "Zurich",
+  cityCode: "ZRH",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Switzerland",
+  avg: 700,
+  region: 3
+},
+ //--------- Sweden 
+{
+  originCity: "San Francisco",
+  city: "Stockholm",
+  price: 340,
+  id: "Stockholm",
+  cityCode: "STO@06mxs@stoc",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Sweden",
+  avg: 700,
+  region: 3
+},
+ //--------- Spain 
+{
+  originCity: "San Francisco",
+  city: "Barcelona",
+  price: 340,
+  id: "Barcelona",
+  cityCode: "BCN",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Spain",
+  avg: 700,
+  region: 3
+},
+{
+  originCity: "Denver",
+  city: "Malaga",
+  price: 447,
+  id: "Malaga",
+  cityCode: "AGP",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Spain",
+  avg: 700,
+  region: 3
+},
+{
+  originCity: "Denver",
+  city: "Ibiza",
+  price: 447,
+  id: "Ibiza",
+  cityCode: "IBZ",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Spain",
+  avg: 700,
+  region: 3
+},
+ //--------- Russia
+ {
+  originCity: "Miami",
+  city: "Moscow",
+  price: 333,
+  id: "Moscow",
+  cityCode: "MOW@04swd@mosc",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Russia",
+  avg: 700,
+  region: 3
+},
+{
+  originCity: "San Francisco",
+  city: "Saint Petersburg",
+  price: 340,
+  id: "Saint Petersburg",
+  cityCode: "LED@06pr6@led",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Russia",
+  avg: 700,
+  region: 3
+},
+{
+  originCity: "Denver",
+  city: "Sochi",
+  price: 447,
+  id: "Sochi",
+  cityCode: "AER",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Russia",
+  avg: 700,
+  region: 3
+},
+ // ----------- Portugal --------------- 
+ {
+  originCity: "New York-LGA",
+  city: "Lisbon",
+  price: 234,
+  id: "Lisbon",
+  cityCode: "LIS",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Portugal",
+  avg: 700,
+  region: 7
+},
+ // ----------- Poland --------------- 
+ {
+  originCity: "New York-LGA",
+  city: "Warsaw",
+  price: 234,
+  id: "Warsaw",
+  cityCode: "WAW",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Poland",
+  avg: 700,
+  region: 7
+},
+ // ----------- Norway --------------- 
+ {
+  originCity: "New York-LGA",
+  city: "Oslo",
+  price: 234,
+  id: "Oslo",
+  cityCode: "OSL@05l64@oslo",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Norway",
+  avg: 700,
+  region: 7
+},
+ // ----------- Netherlands --------------- 
+ {
+  originCity: "New York-LGA",
+  city: "Amsterdam",
+  price: 234,
+  id: "Amsterdam",
+  cityCode: "AMS",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Netherlands",
+  avg: 700,
+  region: 7
+},
+ // ----------- Italy --------------- 
+ {
+  originCity: "New York-LGA",
+  city: "Rome",
+  price: 234,
+  id: "Rome",
+  cityCode: "ROM@06c62@rome",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Italy",
+  avg: 700,
+  region: 7
+},
+{
+  originCity: "Toronto",
+  city: "Milan",
+  price: 333,
+  id: "Milan",
+  cityCode: "MIL@0947l@mila",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Italy",
+  avg: 700,
+  region: 7
+},
+{
+  originCity: "Las Vegas",
+  city: "Venice",
+  price: 340,
+  id: "Venice",
+  cityCode: "VCE@07_pf@veni",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Italy",
+  avg: 700,
+  region: 7
+},
+{
+  originCity: "San Francisco",
+  city: "Florence",
+  price: 447,
+  id: "Florence",
+  cityCode: "FLR",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Italy",
+  avg: 700,
+  region: 7
+},
+{
+  originCity: "Las Vegas",
+  city: "Pisa",
+  price: 447,
+  id: "Pisa",
+  cityCode: "PSA",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Italy",
+  avg: 700,
+  region: 7
+},
+ //--------- Ireland
+ {
+  originCity: "Miami",
+  city: "Dublin",
+  price: 333,
+  id: "Dublin",
+  cityCode: "DUB",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Ireland",
+  avg: 700,
+  region: 3
+},
+ //--------- Iceland
+ {
+  originCity: "Miami",
+  city: "Reykjavik",
+  price: 333,
+  id: "Reykjavik",
+  cityCode: "KEF",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Iceland",
+  avg: 700,
+  region: 3
+},
+ //--------- Hungary
+ {
+  originCity: "Miami",
+  city: "Budapest",
+  price: 333,
+  id: "Budapest",
+  cityCode: "BUD",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Hungary",
+  avg: 700,
+  region: 3
+},
+ //--------- Greece
+ {
+  originCity: "Miami",
+  city: "Athens",
+  price: 333,
+  id: "Athens",
+  cityCode: "ATH",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Greece",
+  avg: 700,
+  region: 3
+},
+ //--------- Germany
+ {
+  originCity: "Miami",
+  city: "Berlin",
+  price: 333,
+  id: "Berlin",
+  cityCode: "BER@0156q@berl",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Germany",
+  avg: 700,
+  region: 3
+},
+{
+  originCity: "San Francisco",
+  city: "Munich",
+  price: 340,
+  id: "Munich",
+  cityCode: "MUC",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Germany",
+  avg: 700,
+  region: 3
+},
+{
+  originCity: "Denver",
+  city: "Hamburg",
+  price: 447,
+  id: "Hamburg",
+  cityCode: "HAM",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Germany",
+  avg: 700,
+  region: 3
+},
+{
+  originCity: "New York-JFK",
+  city: "Frankfurt",
+  price: 1233,
+  id: "Frankfurt",
+  cityCode: "FRA",
+  departureDate: "Jun 2019",
+  arrivalDate: "Jul 2019",
+  country: "Germany",
+  avg: 700,
+  region: 3
+},
+
+ //--------- France
+ {
+  originCity: "Miami",
+  city: "Paris",
+  price: 333,
+  id: "Paris",
+  cityCode: "PAR@05qtj@pari",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "France",
+  avg: 700,
+  region: 3
+},
+{
+  originCity: "San Francisco",
+  city: "Marseille",
+  price: 340,
+  id: "Marseille",
+  cityCode: "MRS",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "France",
+  avg: 700,
+  region: 3
+},
+{
+  originCity: "Denver",
+  city: "Bordeaux",
+  price: 447,
+  id: "Bordeaux",
+  cityCode: "BOD",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "France",
+  avg: 700,
+  region: 3
+},
+   //--------- Finland
+   {
+    originCity: "Miami",
+    city: "Helsinki",
+    price: 447,
+    id: "Helsinki",
+    cityCode: "HEL",
+    departureDate: "Jun 3",
+    arrivalDate: "Jun 12",
+    country: "Finland",
+    avg: 700,
+    region: 3
+  },
+   //--------- Denmark
+   {
+    originCity: "Miami",
+    city: "Copenhagen",
+    price: 447,
+    id: "Copenhagen",
+    cityCode: "CPH",
+    departureDate: "Jun 3",
+    arrivalDate: "Jun 12",
+    country: "Denmark",
+    avg: 700,
+    region: 3
+  },
+   //--------- Croatia
+   {
+    originCity: "New Jork-LGA",
+    city: "Zagreb",
+    price: 447,
+    id: "Zagreb",
+    cityCode: "ZAG",
+    departureDate: "Jun 3",
+    arrivalDate: "Jun 12",
+    country: "Croatia",
+    avg: 700,
+    region: 3
+  },
+   //--------- Canary Islands 
+   {
+    originCity: "Denver",
+    city: "Prague",
+    price: 447,
+    id: "Prague",
+    cityCode: "PRG",
+    departureDate: "Jun 3",
+    arrivalDate: "Jun 12",
+    country: "Czech Republic",
+    avg: 700,
+    region: 3
+  },
+   //--------- Canary Islands 
+   {
+    originCity: "San Francisco",
+    city: "Las Palmas",
+    price: 340,
+    id: "LasPalmas",
+    cityCode: "LPA",
+    departureDate: "Jun 3",
+    arrivalDate: "Jun 12",
+    country: "Canary Islands",
+    avg: 700,
+    region: 3
+  },
+  {
+    originCity: "Denver",
+    city: "Tenerife",
+    price: 447,
+    id: "Tenerife",
+    cityCode: "TFN",
+    departureDate: "Jun 3",
+    arrivalDate: "Jun 12",
+    country: "Canary Islands",
+    avg: 700,
+    region: 3
+  },
+  {
+    originCity: "New York-JFK",
+    city: "Lanzarote",
+    price: 1233,
+    id: "Lanzarote",
+    cityCode: "ACE",
+    departureDate: "Jun 2019",
+    arrivalDate: "Jul 2019",
+    country: "Canary Islands",
+    avg: 700,
+    region: 3
+  },
+//------ Bulgaria 
+{
+  originCity: "San Francisco",
+  city: "Sofia",
+  price: 340,
+  id: "Sofia",
+  cityCode: "SOF",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Bulgaria",
+  avg: 700,
+  region: 3
+},
+//------ Belgium 
+{
+  originCity: "San Francisco",
+  city: "Brussels",
+  price: 340,
+  id: "Brussels",
+  cityCode: "BRU",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Belgium",
+  avg: 700,
+  region: 3
+},
+//------ Austria 
+{
+  originCity: "San Francisco",
+  city: "Vienna",
+  price: 340,
+  id: "Vienna",
+  cityCode: "VIE",
+  departureDate: "Jun 3",
+  arrivalDate: "Jun 12",
+  country: "Austria",
+  avg: 700,
+  region: 3
+},
+
+// *********************** ASIA ***************
+
+    //--------- Vietnam 
     {
       originCity: "San Francisco",
       city: "Hanoi",
