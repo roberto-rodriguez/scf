@@ -17,7 +17,7 @@
     "lint": "esw webpack.config.* src tools --color",
     "lint:watch": "npm run lint -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
-    "remove-dist": "rimraf ./dist", 
+    "remove-dist": "rimraf ./dist",
     "prebuild": "npm run lint && npm run test && npm run clean-dist",
     "build": "babel-node tools/build.js && npm run open:dist",
     "heroku-prebuild": "",
@@ -33,6 +33,8 @@
   "author": "Roberto Rodriguez",
   "license": "Propietary",
   "dependencies": {
+    "axios": "0.18.0",
+    "axios-jsonp": "1.0.2",
     "connected-react-router": "4.4.1",
     "crypto-js": "3.1.9-1",
     "express": "4.16.4",

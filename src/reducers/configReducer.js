@@ -1,4 +1,4 @@
-import objectAssign from "object-assign";
+ 
 import initialState from "./initialState";
 
 // IMPORTANT: Note that with Redux, state should NEVER be changed.
