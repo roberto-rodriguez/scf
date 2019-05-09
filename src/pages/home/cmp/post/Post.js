@@ -8,8 +8,7 @@ import * as Constants from "../../../../constants/Constants";
 class Post extends React.Component {
   render() {
     var { post, plan } = this.props;
-    var {
-      id,
+    var { 
       originCity,
       city,
       country,

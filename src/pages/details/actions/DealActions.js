@@ -1,31 +1,34 @@
 import * as dealActionsCreator from "../../../actions/deal.actions_creator";
 import * as object from "../../../utils/object";
 import * as dates from "../../../utils/dates";
-import * as postActions from "../../home/actions/PostActions";
+import * as Proxy from "../../../actions/Proxy";
+import * as postListBuilder from "../../../devData/PostListBuilder";
 
-
-
-export function loadPost(postId, sampleSearchCityId, callback) {
+export function loadPost(postIdx) {
   return function(dispatch, getState) {
     //TODO make an API that return the post with the selected city
-    var allPost = postActions.apiListPosts();
-    var postObj = object.listToObject(allPost.postList);
-
-    var post = postObj[postId];
-
-    setTimeout(function() {
+    Proxy.get("post/loadPost/" + postIdx, post => {
       dispatch(dealActionsCreator.loadPostAction(post));
-    
-      setTimeout(function() {
-        loadCityIfNotExist(postId, sampleSearchCityId)(dispatch, getState); 
-      }, 1000); 
-    }, 1000); 
-
-   
- 
- 
+    });
   };
 }
+// export function loadPost(postId, sampleSearchCityId, callback) {
+//   return function(dispatch, getState) {
+//     //TODO make an API that return the post with the selected city
+//     var allPost = postActions.apiListPosts();
+//     var postObj = object.listToObject(allPost.postList);
+
+//     var post = postObj[postId];
+
+//     setTimeout(function() {
+//       dispatch(dealActionsCreator.loadPostAction(post));
+
+//       setTimeout(function() {
+//         loadCityIfNotExist(postId, sampleSearchCityId)(dispatch, getState);
+//       }, 1000);
+//     }, 1000);
+//   };
+// }
 
 export function loadCityIfNotExist(postId, sampleSearchCityId) {
   return function(dispatch, getState) {
@@ -59,27 +62,12 @@ export function loadCityIfNotExist(postId, sampleSearchCityId) {
   };
 }
 
-// export function loadNearbyCitiesIfNotExist(postId) {
-//   return function(dispatch, getState) {
-//     var { postReducer } = getState();
-
-//     var postObj = postReducer.postList;
-//     var post = postObj && postObj[postId];
-
-//     var nearbyCitiesLoaded = post && post.nearbyCitiesLoaded;
-
-//     if (!nearbyCitiesLoaded) {
-//       dispatch(loadNearbyCityListAction(postId, buildCityList()));
-//     }
-//   };
-// }
-
 //-------------  TEST API ------------------------
 
 function apiLoadSampleSearchCity(id) {
-  var cityObj = object.listToObject(postActions.buildCityList());
+  var cityObj = object.listToObject(postListBuilder.buildCityList());
 
-  var city = cityObj[id]; 
+  var city = cityObj[id];
 
   var sampleSearchList = [];
 
@@ -120,5 +108,3 @@ function apiLoadSampleSearchCity(id) {
 
   return city;
 }
-
- 

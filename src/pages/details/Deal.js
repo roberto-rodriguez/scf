@@ -32,7 +32,7 @@ class Deal extends React.Component {
 
     var { postId, sampleSearchCityId } = props.match && props.match.params;
     var query = props.location.query || {};
-    var { country, originCity, city, cityCode, avg, price, image } = query;
+    var { country, originCity, city, cityCode, avg, price } = query;
 
     var post = this.props.post || {};
     var cityList = post.cityList || {};
@@ -45,8 +45,7 @@ class Deal extends React.Component {
     var originCode = sampleSearchCity.originCode;
     cityCode = cityCode || sampleSearchCity.cityCode;
     avg = avg || sampleSearchCity.avg;
-    price = price || sampleSearchCity.price;
-    image = image || sampleSearchCity.image;
+    price = price || sampleSearchCity.price; 
 
     var { departureDate, arrivalDate } = sampleSearchCity;
 

@@ -43,8 +43,7 @@ class PostCityPrice extends React.Component {
             country,  
             city: sampleSearchCity.city, 
             price: sampleSearchCity.price,
-            avg: sampleSearchCity.avg, 
-            image: sampleSearchCity.image,
+            avg: sampleSearchCity.avg,  
             cityCode: sampleSearchCity.cityCode
           }
         }}

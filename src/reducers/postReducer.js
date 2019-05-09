@@ -36,7 +36,7 @@ export default function postReducer(state = initialState.deals, action) {
         ...state,
         postList: {
           ...state.postList,
-          [post.id]: {
+          [post.idx]: {
             ...post
           }
         }
