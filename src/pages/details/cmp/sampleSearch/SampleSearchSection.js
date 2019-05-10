@@ -19,14 +19,14 @@ class SampleSearchSection extends React.Component {
     return (
       <ul className="list-tickets">
         {sampleSearchList &&
-          sampleSearchList.map((s, i) => (
+          sampleSearchList.map((sampleSearch, i) => (
             <SampleSearch
               sampleSearch={Object.assign(
                 {
                   originCode,
                   cityCode
                 },
-                s
+                sampleSearch
               )}
               id={i}
               key={i}
@@ -46,16 +46,16 @@ SampleSearchSection.propTypes = {
   loadCityIfNotExist: PropTypes.func
 };
 
-function mapStateToProps({ postReducer }, props) {
-  var { postId, sampleSearchCityId } = props;
-  var post = postReducer.postList[postId];
-  var city = (post && post.cityList && post.cityList[sampleSearchCityId]) || {};
-  var sampleSearchList = city.sampleSearchList;
+// function mapStateToProps({ postReducer }, props) {
+//   var { postId, sampleSearchCityId } = props;
+//   var post = postReducer.postList[postId];
+//   var city = (post && post.cityList && post.cityList[sampleSearchCityId]) || {};
+//   var sampleSearchList = city.sampleSearchList;
 
-  return { sampleSearchList };
-}
+//   return { sampleSearchList };
+// }
 
 export default connect(
-  mapStateToProps,
+  null, // mapStateToProps,
   dealActions
 )(SampleSearchSection);

@@ -1,13 +1,12 @@
 import * as dealActionsCreator from "../../../actions/deal.actions_creator";
-import * as object from "../../../utils/object";
-import * as dates from "../../../utils/dates";
+import * as object from "../../../utils/object"; 
 import * as Proxy from "../../../actions/Proxy";
 import * as postListBuilder from "../../../devData/PostListBuilder";
 
-export function loadPost(postIdx) {
+export function loadPost(postIdx, cityCode) {
   return function(dispatch, getState) {
     //TODO make an API that return the post with the selected city
-    Proxy.get("post/loadPost/" + postIdx, post => {
+    Proxy.get("post/loadPost/" + postIdx + "/" + cityCode, post => {
       dispatch(dealActionsCreator.loadPostAction(post));
     });
   };
@@ -30,37 +29,53 @@ export function loadPost(postIdx) {
 //   };
 // }
 
-export function loadCityIfNotExist(postId, sampleSearchCityId) {
+export function loadCityIfNotExist(postIdx, cityCode) {
   return function(dispatch, getState) {
     var { postReducer } = getState();
 
     var postObj = postReducer.postList;
-    var post = postObj && postObj[postId];
-    var sampleSearchCity = post && post.cityList[sampleSearchCityId];
+    var post = postObj && postObj[postIdx];
+    var sampleSearchCity = post && post.cityList[cityCode];
 
     if (!sampleSearchCity || !sampleSearchCity.loaded) {
-      var temp = apiLoadSampleSearchCity(sampleSearchCityId);
-
-      var newSampleSearchCity = { ...temp };
-      if (newSampleSearchCity.sampleSearchList) {
-        newSampleSearchCity.sampleSearchList.map(sampleSearch => {
-          sampleSearch["formattedDepartureDate"] = dates.formatWithTimezone(
-            sampleSearch.departureDate
+      Proxy.get(
+        "sampleSearchCity/loadPost/" + postIdx + "/" + cityCode,
+        newSampleSearchCity => {
+          dispatch(
+            dealActionsCreator.loadCityAction(postIdx, newSampleSearchCity)
           );
-          sampleSearch["formattedArrivalDate"] = dates.formatWithTimezone(
-            sampleSearch.arrivalDate
-          );
-        });
-      }
-
-      dispatch(dealActionsCreator.loadCityAction(postId, newSampleSearchCity));
+        }
+      );
     }
-
-    // setTimeout(function() {
-    //   loadNearbyCitiesIfNotExist(postId)(dispatch, getState);
-    // }, 300);
   };
 }
+// export function loadCityIfNotExist(postId, sampleSearchCityId) {
+//   return function(dispatch, getState) {
+//     var { postReducer } = getState();
+
+//     var postObj = postReducer.postList;
+//     var post = postObj && postObj[postId];
+//     var sampleSearchCity = post && post.cityList[sampleSearchCityId];
+
+//     if (!sampleSearchCity || !sampleSearchCity.loaded) {
+//       var temp = apiLoadSampleSearchCity(sampleSearchCityId);
+
+//       var newSampleSearchCity = { ...temp };
+//       if (newSampleSearchCity.sampleSearchList) {
+//         newSampleSearchCity.sampleSearchList.map(sampleSearch => {
+//           sampleSearch["formattedDepartureDate"] = dates.formatWithTimezone(
+//             sampleSearch.departureDate
+//           );
+//           sampleSearch["formattedArrivalDate"] = dates.formatWithTimezone(
+//             sampleSearch.arrivalDate
+//           );
+//         });
+//       }
+
+//       dispatch(dealActionsCreator.loadCityAction(postId, newSampleSearchCity));
+//     }
+//   };
+// }
 
 //-------------  TEST API ------------------------
 

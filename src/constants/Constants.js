@@ -1,6 +1,4 @@
-
- 
-
-export const TIMESTAMP = (new Date()).getTime();
-export var TOKEN_COOKIE = 't0k3n'
-export var baseURL = 'http://localhost:8088/MT/admin/web/'
+export const PROD = false;
+export const TIMESTAMP = new Date().getTime();
+export var TOKEN_COOKIE = "t0k3n";
+export var baseURL = "http://localhost:8088/MT/admin/web/";

@@ -37,9 +37,9 @@ class PostCityPrice extends React.Component {
       <Link
         className={className}
         to={{
-          pathname: "/deal/" + postId + '/' + sampleSearchCity.id,
+          pathname: "/deal/" + postId + '/' + sampleSearchCity.cityCode,
           query: {
-            originCity, 
+            originCity,  
             country,  
             city: sampleSearchCity.city, 
             price: sampleSearchCity.price,
@@ -56,7 +56,7 @@ class PostCityPrice extends React.Component {
 
 PostCityPrice.propTypes = {
   sampleSearchCity: PropTypes.object,
-  originCity: PropTypes.string, 
+  originCity: PropTypes.string,   
   country: PropTypes.string, 
   postId: PropTypes.string,
   selectedCity: PropTypes.string,

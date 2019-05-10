@@ -4,13 +4,7 @@ import * as dealActions from "./actions/DealActions";
 import "./dealStyles.scss";
 import PropTypes from "prop-types";
 
-import {
-  DealHeader,
-  TitleBar,
-  ToolBar,
-  SampleSearchSection,
-  NearbyCities
-} from "./cmp";
+import { DealHeader, ToolBar, SampleSearchSection, NearbyCities } from "./cmp";
 
 class Deal extends React.Component {
   componentDidMount() {
@@ -31,35 +25,41 @@ class Deal extends React.Component {
     var props = this.props;
 
     var { postId, sampleSearchCityId } = props.match && props.match.params;
-    var query = props.location.query || {};
-    var { country, originCity, city, cityCode, avg, price } = query;
+
+    var queryData = props.location.query || {};
 
     var post = this.props.post || {};
     var cityList = post.cityList || {};
-
     var sampleSearchCity = cityList[sampleSearchCityId] || {};
 
-    country = country || sampleSearchCity.country;
-    originCity = originCity || sampleSearchCity.originCity;
-    city = city || sampleSearchCity.city;
-    var originCode = sampleSearchCity.originCode;
-    cityCode = cityCode || sampleSearchCity.cityCode;
-    avg = avg || sampleSearchCity.avg;
-    price = price || sampleSearchCity.price; 
+    var data = sampleSearchCityId == post.cityCode ? post : sampleSearchCity;
+
+    var country = queryData.country || data.country;
+    var originCity = post.originCity;
+    var originCode = queryData.originCode || data.originCode;
+    var city = queryData.city || data.city;
+    var cityCode = queryData.cityCode || data.cityCode;
+    var avg = queryData.avg || data.avg;
+    var price = queryData.price || data.price;
+
+    var sampleSearchCityData = sampleSearchCity.data || {};
+    var sampleSearchList = sampleSearchCityData.sampleSearchList || [];
 
     var { departureDate, arrivalDate } = sampleSearchCity;
 
-    // <TitleBar originCity={originCity} city={city} country={country} />
     return (
       <div>
-        <DealHeader cityCode={cityCode}  originCity={originCity} city={city} country={country}/>
+        <DealHeader
+          cityCode={cityCode}
+          originCity={originCity}
+          city={city}
+          country={country}
+        />
         <section className="section-80 section-lg-30 bg-gray-lighter">
           <div className="container container-wide details-container">
             <div className="row row-50 text-xl-left">
               <div className="col-xl-9">
                 <div className="inset-xxl-right-80">
-                 
-
                   <ToolBar
                     avg={avg}
                     price={price}
@@ -67,15 +67,17 @@ class Deal extends React.Component {
                     arrivalDate={arrivalDate}
                   />
                   <SampleSearchSection
-                    postId={postId}
-                    sampleSearchCityId={sampleSearchCityId}
+                    sampleSearchList={sampleSearchList}
                     originCode={originCode}
                     cityCode={cityCode}
                   />
                 </div>
               </div>
               <div className="col-xl-3 tickets-aside">
-                <NearbyCities postId={postId} sampleSearchCityId={sampleSearchCityId}/>
+                <NearbyCities
+                  postId={postId}
+                  sampleSearchCityId={sampleSearchCityId}
+                />
               </div>
             </div>
           </div>

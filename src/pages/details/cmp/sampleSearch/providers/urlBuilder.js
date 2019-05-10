@@ -49,8 +49,8 @@ var builders = {
     originCode = getCode(originCode, 2);
     cityCode = getCode(cityCode, 2);
 
-    formattedDepartureDate = dates.formatWithTimezone(departureDate, 'YYMMDD');
-    formattedArrivalDate == dates.formatWithTimezone(arrivalDate, 'YYMMDD'); 
+    formattedDepartureDate = dates.formatWithTimezone(departureDate, "YYMMDD");
+    formattedArrivalDate == dates.formatWithTimezone(arrivalDate, "YYMMDD");
 
     return `https://www.skyscanner.com/transport/flights/${originCode}/${cityCode}/${formattedDepartureDate}/${formattedArrivalDate}`;
   }
@@ -80,20 +80,24 @@ export function buildUrl(provider, sampleSearch) {
       )
     );
   } else {
-    return builders[provider](
-      originCode,
-      cityCode,
-      formattedDepartureDate,
-      formattedArrivalDate,
-      departureDate,
-      arrivalDate,
-      skyLink
+    var builder = provider && builders[provider];
+    return (
+      builder &&
+      builder(
+        originCode,
+        cityCode,
+        formattedDepartureDate,
+        formattedArrivalDate,
+        departureDate,
+        arrivalDate,
+        skyLink
+      )
     );
   }
 }
 
 function getCode(code, index) {
-  if (code.indexOf("@") > 0) {
+  if (code && code.indexOf("@") > 0) {
     var parts = code.split("@");
 
     if (index == 1) {
@@ -104,4 +108,3 @@ function getCode(code, index) {
   }
   return code;
 }
- 

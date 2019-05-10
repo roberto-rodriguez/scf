@@ -1,6 +1,7 @@
 import * as Proxy from "../../../actions/Proxy";
 import * as postActionsCreator from "../../../actions/post.actions_creator";
 import * as object from "../../../utils/object";
+import * as constants from "../../../constants/Constants";
 import * as postListBuilder from "../../../devData/PostListBuilder";
 
 const updateRegionAction = region => ({ type: "REGION_UPDATE", region });
@@ -36,28 +37,27 @@ export function listPost(page, callback, params) {
 
       params.start = start;
 
-      //-------- MOCK --------------
-      // params.end = end;
-      // var listPostResult = apiListPosts(page, params);
+      if (constants.PROD) {
+        Proxy.get(`post/list?start=${start}&limit=${10}`, response => {
+          var listPostResult = response.List || [];
 
-      // var res = postList.concat(listPostResult.postList);
-      // res = res.slice(start, end);
+          var res = existentPostList.concat(listPostResult);
 
-      // callback(res);
+          callback(res);
 
-      // dispatch(postActionsCreator.addPostListAction(listPostResult));
+          dispatch(postActionsCreator.addPostListAction(listPostResult));
+        });
+      } else {
+        params.end = end;
+        var listPostResult = apiListPosts(page, params);
 
-      //--------- REAL -----------------
- 
-      Proxy.get(`post/list?start=${start}&limit=${10}`, response => {
-        var listPostResult = response.List || [];
-
-        var res = existentPostList.concat(listPostResult);
+        var res = postList.concat(listPostResult.postList);
+        res = res.slice(start, end);
 
         callback(res);
 
         dispatch(postActionsCreator.addPostListAction(listPostResult));
-      });
+      }
     }
   };
 }
@@ -93,7 +93,7 @@ function buildList(page, params) {
     ...c,
     cityList: list.filter(city => city.country == c.country),
     id: (page + 1) * 10 + i,
-    idx:'idx_' + (page + 1) * 10 + i,
+    postId: "idx_" + (page + 1) * 10 + i,
     foundDate: "5 hours ago"
   }));
 

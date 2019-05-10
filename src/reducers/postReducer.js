@@ -36,7 +36,7 @@ export default function postReducer(state = initialState.deals, action) {
         ...state,
         postList: {
           ...state.postList,
-          [post.idx]: {
+          [post.postId]: {
             ...post
           }
         }
@@ -53,8 +53,8 @@ export default function postReducer(state = initialState.deals, action) {
             ...post,
             cityList: {
               ...post.cityList,
-              [sampleSearchCity.id]: {
-                ...post.cityList[sampleSearchCity.id],
+              [sampleSearchCity.cityCode]: {
+                ...post.cityList[sampleSearchCity.cityCode],
                 ...sampleSearchCity,
                 loaded: true
               }

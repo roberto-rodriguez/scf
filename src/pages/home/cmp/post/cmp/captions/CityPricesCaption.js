@@ -6,8 +6,8 @@ class CityPricesCaption extends React.Component {
   render() {
     var { post } = this.props;
     var {
-      idx,
-      originCity, 
+      postId,
+      originCity,  
       country, 
       avg, 
       cityList,
@@ -24,10 +24,10 @@ class CityPricesCaption extends React.Component {
               key={i}
               selectedCity={cityCode}
               sampleSearchCity={city}
-              originCity={originCity}
+              originCity={originCity} 
               country={country}
               avg={avg}
-              postId={idx + ""}
+              postId={postId}
             />
           ))}
           <hr style={{width:'100%', color: 'rgba(255,255,255,0.01)'}}/>
@@ -36,10 +36,10 @@ class CityPricesCaption extends React.Component {
               key={i}
               selectedCity={cityCode}
               sampleSearchCity={city}
-              originCity={originCity}
+              originCity={originCity} 
               country={country}
               avg={avg}
-              postId={idx + ""}
+              postId={postId}
             />
           ))}
         </ul>
