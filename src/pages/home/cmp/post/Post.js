@@ -14,9 +14,11 @@ class Post extends React.Component {
       country,
       price,
       avg,
+      percent,
       foundDate,
       cityCode,
-      status // 0-expired 1-free 2-premium
+      status, // 0-expired 1-active
+      premium
     } = post;
 
     return (
@@ -49,12 +51,12 @@ class Post extends React.Component {
             </table>
           </div>
           {!status && <div className="premium-post-overlay"> </div>}
-          <PostBadge status={status} />
+          <PostBadge status={status} premium/>
           <div className="post-price yellow-text">
             ${price} <span className="regular-price" style={{marginRight:10}}>${avg}</span>
             {'  '}
             <span style={{ color: "orange", fontSize: 14 }}>
-              54% OFF
+              {`${100 - percent}% OFF`}
             </span>
           </div>
         

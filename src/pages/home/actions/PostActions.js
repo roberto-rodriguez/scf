@@ -37,8 +37,8 @@ export function listPost(page, callback, params) {
 
       params.start = start;
 
-      if (constants.PROD) {
-        Proxy.get(`post/list?start=${start}&limit=${10}`, response => {
+      if (constants.PROD) { 
+        Proxy.get(`post/list/${start}/${10}`, response => {
           var listPostResult = response.List || [];
 
           var res = existentPostList.concat(listPostResult);

@@ -6,7 +6,7 @@ import * as postListBuilder from "../../../devData/PostListBuilder";
 export function loadPost(postIdx, cityCode) {
   return function(dispatch, getState) {
     //TODO make an API that return the post with the selected city
-    Proxy.get("post/loadPost/" + postIdx + "/" + cityCode, post => {
+    Proxy.get("post/load/" + postIdx + "/" + cityCode, post => {
       dispatch(dealActionsCreator.loadPostAction(post));
     });
   };
@@ -39,7 +39,7 @@ export function loadCityIfNotExist(postIdx, cityCode) {
 
     if (!sampleSearchCity || !sampleSearchCity.loaded) {
       Proxy.get(
-        "sampleSearchCity/loadPost/" + postIdx + "/" + cityCode,
+        "sampleSearchCity/load/" + postIdx + "/" + cityCode,
         newSampleSearchCity => {
           dispatch(
             dealActionsCreator.loadCityAction(postIdx, newSampleSearchCity)
