@@ -11,15 +11,22 @@ export function listPost(page, callback, params) {
     var { postReducer, authReducer } = getState();
 
     var freePostObj = postReducer.postList;
+    var currentPage = postReducer.currentPage;
     var postList = Object.values(freePostObj);
 
-    if (params.region) {
-      //TODO externalize the filter to a function to be used by the API dev too
-      postList = postList.filter(post => post.region == params.region);
+    if (currentPage && page == 0) {
+      callback(postList, page); //If this happen, it is comming back from another page to home, then not need to look in hte server
+      return;
     }
+
+    // if (params.region) {
+    //   //TODO externalize the filter to a function to be used by the API dev too
+    //   postList = postList.filter(post => post.region == params.region);
+    // }
 
     var start = page * 10;
     var end = start + 10;
+    var limit = 10;
 
     if (postList.length >= end) {
       callback(postList.slice(start, end));
@@ -29,23 +36,22 @@ export function listPost(page, callback, params) {
 
       var existentPostList = [];
 
-      if (postList.length % 10 != 0) {
+      var offset = postList.length % 10;
+
+      if (offset != 0) {
         existentPostList = [...postList.slice(start)];
 
-        start += postList.length % 10;
+        start += offset;
+        limit = 10 - offset;
       }
 
-      params.start = start;
+      if (constants.PROD) {
+        Proxy.get(`post/list/${start}/${limit}`, response => {
+          var callbackList = existentPostList.concat(response.postList);
 
-      if (constants.PROD) { 
-        Proxy.get(`post/list/${start}/${10}`, response => {
-          var listPostResult = response.List || [];
+          callback(callbackList);
 
-          var res = existentPostList.concat(listPostResult);
-
-          callback(res);
-
-          dispatch(postActionsCreator.addPostListAction(listPostResult));
+          dispatch(postActionsCreator.addPostListAction(response, page));
         });
       } else {
         params.end = end;

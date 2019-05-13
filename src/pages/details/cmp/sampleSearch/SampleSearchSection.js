@@ -16,22 +16,34 @@ class SampleSearchSection extends React.Component {
   render() {
     var { originCode, cityCode, sampleSearchList } = this.props;
 
+    var assignedProvider = false;
+
     return (
       <ul className="list-tickets">
         {sampleSearchList &&
-          sampleSearchList.map((sampleSearch, i) => (
-            <SampleSearch
-              sampleSearch={Object.assign(
-                {
-                  originCode,
-                  cityCode
-                },
-                sampleSearch
-              )}
-              id={i}
-              key={i}
-            />
-          ))}
+          sampleSearchList.map((sampleSearch, i) => {
+            var { provider } = sampleSearch;
+
+            if (!provider && !assignedProvider) {
+              provider = "google";
+              assignedProvider = true;
+            }
+
+            return (
+              <SampleSearch
+                sampleSearch={Object.assign(
+                  {
+                    originCode,
+                    cityCode,
+                    provider
+                  },
+                  sampleSearch
+                )}
+                id={i}
+                key={i}
+              />
+            );
+          })}
       </ul>
     );
   }

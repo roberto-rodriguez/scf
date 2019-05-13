@@ -13,11 +13,10 @@ export default function authReducer(state = initialState.auth, action) {
   var { type, data } = action;
 
   switch (type) {
-    case "SET_AUTH":
-      var { auth } = data;
+    case "SET_AUTH": 
       return {
         ...state,
-        ...auth
+        ...data
       };
 
     default:

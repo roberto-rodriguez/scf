@@ -7,35 +7,35 @@ import * as authActions from "./actions/AuthActions";
 
 class Login extends React.Component {
   state = {
-    username: "",
+    email: "",
     password: "",
-    requiredUsername: false,
+    requiredEmail: false,
     requiredPassword: false
   };
 
   onLogin = () => {
-    var { username, password } = this.state;
+    var { email, password } = this.state;
     var { login, history } = this.props;
 
-    if (!username || !password) {
+    if (!email || !password) {
       this.setState({
-        requiredUsername: !username,
+        requiredEmail: !email,
         requiredPassword: !password
       });
     } else {
       this.setState({
-        requiredUsername: false,
+        requiredEmail: false,
         requiredPassword: false
       });
 
-      login(username, password, (resutCode, resultMessage) => { 
-        history.push('/');
+      login(email, password, (resutCode, resultMessage) => {
+        history.push("/");
       });
     }
   };
 
   render() {
-    var { username, password, requiredUsername, requiredPassword } = this.state;
+    var { email, password, requiredEmail, requiredPassword } = this.state;
     return (
       <div>
         <AuthHeader />
@@ -49,15 +49,15 @@ class Login extends React.Component {
                   E-mail
                 </label>
                 <input
-                  value={username}
-                  onChange={evt => this.updateInputValue("username", evt)}
+                  value={email}
+                  onChange={evt => this.updateInputValue("email", evt)}
                   className="form-input form-input-gray form-control-has-validation form-control-last-child"
                   id="login"
                   type="text"
                   name="login"
                   data-constraints="@Required"
                 />
-                {requiredUsername && (
+                {requiredEmail && (
                   <span className="form-validation">Username is required.</span>
                 )}
               </div>

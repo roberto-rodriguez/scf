@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const PostExpired = props => {
   var { post } = props;
-  var { cityCode, originCity, city, country, price, avg, foundDate } = post;
+  var { cityCode, originCity, city, country, price, avg } = post;
 
   return (
     <div

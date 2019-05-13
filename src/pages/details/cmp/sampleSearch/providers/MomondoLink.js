@@ -5,7 +5,7 @@ import * as urlBuilder from "./urlBuilder";
 
 class MomondoLink extends React.Component {
   render() {
-    var { sampleSearch, small } = this.props; 
+    var { sampleSearch, small, showProviderPrice } = this.props; 
     var { momondoPrice } = sampleSearch;
 
     return (
@@ -14,6 +14,7 @@ class MomondoLink extends React.Component {
         price={momondoPrice}
         url={urlBuilder.buildUrl("momondo", sampleSearch)}
         small={small}
+        showProviderPrice={showProviderPrice}
       />
     );
   }
@@ -22,6 +23,7 @@ class MomondoLink extends React.Component {
 
 MomondoLink.propTypes = {
   small: PropTypes.bool,
+  showProviderPrice: PropTypes.bool,
   sampleSearch: PropTypes.object
 };
 

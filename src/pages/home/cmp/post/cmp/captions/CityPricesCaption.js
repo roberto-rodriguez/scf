@@ -6,6 +6,7 @@ class CityPricesCaption extends React.Component {
   render() {
     var { post } = this.props;
     var {
+      id,
       postId,
       originCity,  
       country, 
@@ -28,6 +29,7 @@ class CityPricesCaption extends React.Component {
               country={country}
               avg={avg}
               postId={postId}
+              id={id}
             />
           ))}
           <hr style={{width:'100%', color: 'rgba(255,255,255,0.01)'}}/>

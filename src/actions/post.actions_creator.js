@@ -1,11 +1,12 @@
 import * as object from "../utils/object";
  
 
-export const addPostListAction = response => ({
+export const addPostListAction = (response, currentPage) => ({
   type: "POST_LIST_ADD",
   data: {
-    postList: object.listToObject(response.postList || []),
-    expiredPostList: object.listToObject(response.expiredPostList || [])
+    currentPage,
+    postList: object.listToObject(response.postList || [], 'postId'),
+    expiredPostList: object.listToObject(response.expiredPostList || [], 'postId')
   }
 });
 

@@ -1,31 +1,43 @@
 const axios = require("axios");
 import { baseURL, TOKEN_COOKIE } from "../constants/Constants";
+import cookie from "react-cookies";
 
 export function get(url, callback) {
-  var separator = url.indexOf("?") >= 0 ? "&" : "?";
-  url += separator + "token=" + "token_goes_here";
+  var token = cookie.load(TOKEN_COOKIE);
 
-  axios
-    .create({ baseURL })
-    .get(url)
-    .then(function(response) {
-      callback && callback(response.data);
-    })
-    .catch(function(error) {});
+  if (token) {
+    var separator = url.indexOf("?") >= 0 ? "&" : "?";
+    url += separator + "token=" + token;
+  }
+
+  send(url, callback);
 }
 
 export function post(url, data, callback) {
-  // var separator = url.indexOf("?") >= 0 ? "&" : "?";
-  // url += separator + "token=" + "token_goes_here";
+  var token = cookie.load(TOKEN_COOKIE);
 
-  axios
-    .create({ baseURL })
-    .post(url, data)
+  if (token) {
+    data.token = token;
+  }
+
+  send(url, callback, data);
+}
+
+function send(url, callback, data) {
+  var instance = axios.create({ baseURL });
+
+  var promise = data ? instance.post(url, data) : instance.get(url);
+
+  promise
     .then(function(response) {
-      debugger;
-      callback && callback(response.data);
+      var result = response.data;
+
+      if (result) {
+        //TODO add && result.status is OK
+        var { data, status, statusMessage } = result;
+
+        callback && callback(data, status, statusMessage);
+      }
     })
-    .catch(function(error) {
-      debugger;
-    });
+    .catch(function(error) {});
 }

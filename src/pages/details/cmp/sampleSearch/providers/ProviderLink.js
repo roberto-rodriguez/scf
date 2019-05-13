@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 class ProviderLink extends React.Component {
   render() {
-    var { provider, price, url, small } = this.props;
+    var { provider, price, url, small,  showProviderPrice} = this.props;
 
     return (
       <a
@@ -15,7 +15,7 @@ class ProviderLink extends React.Component {
         <div className="list-item-content-left">
           <span className={small ? "small" : ""}>
             {`${provider} `}
-            {small && price && (
+            {showProviderPrice && price > 0 && (
               <span className={"provider-link-price"} >
                <span className={"icon fa fa-dollar"} />
                 {` ${price}`}

@@ -14,7 +14,7 @@ class PostColumn extends React.Component {
     };
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     var { region } = this.state;
     return region == null || region != nextProps.region;
   }
@@ -28,7 +28,7 @@ class PostColumn extends React.Component {
     var reload = this.state.region != region;
 
     var postCls = plan ? "post-full" : "post-column";
-
+ 
     return (
       <div className="row-wrapper">
         {plan <= 1 && (
@@ -49,18 +49,6 @@ class PostColumn extends React.Component {
       </div>
     );
   }
-
-  // doList = (page, infiniteListCallback) => {
-  //   var { region, listPost } = this.props;
-  //   listPost(
-  //     page,
-  //     resultList => {
-  //       this.setState({ region });
-  //       infiniteListCallback(resultList);
-  //     },
-  //     { region }
-  //   );
-  // };
 
   doList = (page, infiniteListCallback) => {
     var { mounted } = this.state;

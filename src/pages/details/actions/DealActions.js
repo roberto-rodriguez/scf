@@ -1,5 +1,6 @@
 import * as dealActionsCreator from "../../../actions/deal.actions_creator";
-import * as object from "../../../utils/object"; 
+import * as viewStateActionsCreator from "../../../actions/viewState.actions_creator";
+import * as object from "../../../utils/object";
 import * as Proxy from "../../../actions/Proxy";
 import * as postListBuilder from "../../../devData/PostListBuilder";
 
@@ -47,6 +48,12 @@ export function loadCityIfNotExist(postIdx, cityCode) {
         }
       );
     }
+  };
+}
+
+export function setSelectedPostId(id) {
+  return function(dispatch) {
+    dispatch(viewStateActionsCreator.setViewStateAction("selectedPostId", id));
   };
 }
 // export function loadCityIfNotExist(postId, sampleSearchCityId) {

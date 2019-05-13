@@ -1,4 +1,4 @@
-export const setAuthAction = auth => ({
+export const setAuthAction = data => ({
   type: "SET_AUTH",
-  data: { auth }
+  data
 });

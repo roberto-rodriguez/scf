@@ -64,8 +64,13 @@ export function buildUrl(provider, sampleSearch) {
     formattedArrivalDate,
     departureDate,
     arrivalDate,
-    skyLink
+    skyLink,
+    kiwiLink
   } = sampleSearch;
+
+  if (provider == "kiwi") {
+    return kiwiLink;
+  }
 
   if (provider === "all") {
     return Object.values(builders).map(func =>

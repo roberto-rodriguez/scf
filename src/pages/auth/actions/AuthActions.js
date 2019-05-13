@@ -1,24 +1,31 @@
 import * as authActionsCreator from "../../../actions/auth.actions_creator";
 import * as postActionsCreator from "../../../actions/post.actions_creator";
+import * as configActions from "../../../actions/ConfigActions";
 import { TOKEN_COOKIE } from "../../../constants/Constants";
+import * as string from "../../../utils/string";
 import cookie from "react-cookies";
 import * as Proxy from "../../../actions/Proxy";
 
-export function login(username, password, callback) {
+export function init() {
   return function(dispatch, getState) {
-    Proxy.post("auth/login", { username: "aaa", password: "bbb" }, response => {
-      debugger;
+    Proxy.post("auth/init", {}, data => {
+      data.appStarted = true;
+
+      var token = string.buildToken(data[TOKEN_COOKIE]);
+
+      data.token = token;
+      cookie.save(TOKEN_COOKIE, token);
+
+      dispatch(authActionsCreator.setAuthAction(data));
+
+      setTimeout(() => configActions.loadConfig()(dispatch, getState), 3000);
     });
+  };
+}
 
-    // var result = loginAPI(username, password);
-
-    // if (result.resultCode == 0) {
-    //   dispatch(postActionsCreator.cleanPostListAction());
-
-    //   dispatch(authActionsCreator.setAuthAction(result.data));
-    // }
-
-    // callback(result && result.resultCode);
+export function login(email, password, callback) {
+  return function(dispatch, getState) {
+    Proxy.post("auth/login", { email, password }, callback);
   };
 }
 
@@ -26,26 +33,32 @@ export function register(data, callback) {
   return function(dispatch, getState) {
     dispatch(postActionsCreator.cleanPostListAction());
 
-    data.plan = 2; //trial
+    Proxy.post("auth/register", data, (data, status, statusMessage) => {
+      if (!status) {
+        dispatch(authActionsCreator.setAuthAction(data));
+      }
 
-    dispatch(authActionsCreator.setAuthAction(data));
-
-    callback();
+      callback(status, statusMessage);
+    });
   };
 }
 
-export function logout(username, password, callback) {
-  return function(dispatch, getState) {
-    cookie.save(TOKEN_COOKIE, "");
-    dispatch(postActionsCreator.cleanPostListAction());
-    dispatch(authActionsCreator.setAuthAction({ plan: 0 }));
+export function logout(callback) {
+  return function(dispatch) {
+    Proxy.get("auth/logout", response => {
+      dispatch(postActionsCreator.cleanPostListAction());
+      cookie.save(TOKEN_COOKIE, response.token);
+      dispatch(authActionsCreator.setAuthAction(response));
+
+      callback();
+    });
   };
 }
 
 //--------- Provissional API ----------
 
-function loginAPI(username, password) {
-  if (username && password) {
+function loginAPI(useremailname, password) {
+  if (email && password) {
     return {
       resultCode: 0,
       resultMessage: "Success",

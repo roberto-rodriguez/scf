@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import "./homeStyles.scss";
 import { PostColumn, ExpiredPostColumn, HomeHeader } from "./cmp/";
-
+import * as viewStateActions from "../../actions/ViewStateActions";
 class Home extends React.Component {
   render() {
     var { plan } = this.props;
@@ -12,10 +12,7 @@ class Home extends React.Component {
       <div>
         <HomeHeader />
         <section className="section-80 section-lg-120 home-body">
-          <div
-            className="home-container isotope-wrap"
-            style={{ pading: 0 }}
-          >
+          <div className="home-container isotope-wrap" style={{ pading: 0 }}>
             <div
               className="isotope"
               data-isotope-layout="fitRows"
@@ -44,16 +41,20 @@ class Home extends React.Component {
       </div>
     );
   }
+ 
 }
 
-
-Home.propTypes = { 
+Home.propTypes = {
   plan: PropTypes.number 
 };
 
+ 
 
 const mapStateToProps = ({ authReducer }) => ({
-  plan: authReducer.plan
+  plan: authReducer.plan 
 });
 
-export default connect(mapStateToProps)(Home);
+export default connect(
+  mapStateToProps,
+  viewStateActions
+)(Home);

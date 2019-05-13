@@ -1,7 +1,3 @@
-// import {
-//   POST_LIST_FREE_ADD,
-//   POST_LIST_EXPIRED_ADD
-// } from "../constants/actionTypes";
 import objectAssign from "object-assign";
 import initialState from "./initialState";
 
@@ -15,9 +11,10 @@ export default function postReducer(state = initialState.deals, action) {
 
   switch (type) {
     case "POST_LIST_ADD":
-      var { postList, expiredPostList } = data;
+      var { postList, expiredPostList, currentPage } = data;
 
       var newState = objectAssign({}, state, {
+        currentPage,
         postList: objectAssign({}, state.postList, postList),
         expiredPostList: objectAssign(
           {},
@@ -66,6 +63,7 @@ export default function postReducer(state = initialState.deals, action) {
     case "CLEAN_POST_LIST":
       return {
         ...state,
+        currentPage: 0,
         postList: {},
         expiredPostList: {}
       };

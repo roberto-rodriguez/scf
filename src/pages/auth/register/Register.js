@@ -51,7 +51,14 @@ class Register extends React.Component {
   onRegister = () => {
     var { register, history } = this.props;
     var { data } = this.state;
-    register({ ...data }, () => history.push("/"));
+
+    register(
+      {
+        ...data,
+        departureCities: data.departureCities.map(c => c.code).join("|")
+      },
+      () => history.push("/")
+    );
   };
 
   render() {

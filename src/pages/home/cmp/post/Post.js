@@ -5,17 +5,19 @@ import PropTypes from "prop-types";
 import PostBadge from "./cmp/PostBadge";
 import { CityPricesCaption, UnlockPremiumCaption } from "./cmp/captions";
 import * as Constants from "../../../../constants/Constants";
+import moment from "moment";
 class Post extends React.Component {
   render() {
     var { post, plan } = this.props;
-    var { 
+    var {
+      id,
       originCity,
       city,
       country,
       price,
       avg,
       percent,
-      foundDate,
+      creationDate,
       cityCode,
       status, // 0-expired 1-active
       premium
@@ -23,6 +25,7 @@ class Post extends React.Component {
 
     return (
       <div
+        id={id}
         className={`${
           plan > 1
             ? "col-12 col-md-6 col-lg-4 col-xl-4 col-x1400-4 "
@@ -51,24 +54,24 @@ class Post extends React.Component {
             </table>
           </div>
           {!status && <div className="premium-post-overlay"> </div>}
-          <PostBadge status={status} premium/>
+          <PostBadge status={status} premium={premium} />
           <div className="post-price yellow-text">
-            ${price} <span className="regular-price" style={{marginRight:10}}>${avg}</span>
-            {'  '}
+            ${price}{" "}
+            <span className="regular-price" style={{ marginRight: 10 }}>
+              ${avg}
+            </span>
+            {"  "}
             <span style={{ color: "orange", fontSize: 14 }}>
-              {`${100 - percent}% OFF`}
+              {`${percent}% OFF`}
             </span>
           </div>
-        
+
           <div className="post-footer">
             <table style={{ width: "100%" }}>
               <tbody>
                 <tr>
-                  <td
-                    className="white-text"
-                    style={{ textAlign: "left"}}
-                  >
-                    {foundDate}
+                  <td className="white-text" style={{ textAlign: "left" }}>
+                    {creationDate && moment(creationDate).fromNow()}
                   </td>
                   <td style={{ textAlign: "right" }}>
                     <span className="pDestination yellow-text">{country}</span>
@@ -93,16 +96,27 @@ class Post extends React.Component {
       </div>
     );
   }
+
+  componentDidMount() {
+    var { scrollToMe, post } = this.props;
+
+    if (scrollToMe) {
+      document.getElementById("" + post.id).scrollIntoView();
+      window.scrollBy(0, -window.innerHeight / 2);
+    }
+  }
 }
 
 Post.propTypes = {
   index: PropTypes.number,
   plan: PropTypes.number,
-  post: PropTypes.object
+  post: PropTypes.object,
+  scrollToMe: PropTypes.bool
 };
 
-const mapStateToProps = ({ authReducer }) => ({
-  plan: authReducer.plan
+const mapStateToProps = ({ authReducer, viewStateReducer }, props) => ({
+  plan: authReducer.plan,
+  scrollToMe: props.post.id == viewStateReducer.selectedPostId
 });
 
 export default connect(mapStateToProps)(Post);

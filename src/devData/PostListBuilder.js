@@ -1,5 +1,179 @@
 export function buildCityList() {
   return [
+    //************** OCEANIA  */
+    //--------------- Australia
+    {
+      originCity: "San Francisco",
+      city: "Sydney",
+      id: "Sydney",
+      price: 340,
+      cityCode: "SYD",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Australia",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Canberra",
+      id: "Canberra",
+      price: 340,
+      cityCode: "CBR",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Australia",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Melbourne",
+      id: "Melbourne",
+      price: 340,
+      cityCode: "MEL",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Australia",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Brisbane",
+      id: "Brisbane",
+      price: 340,
+      cityCode: "BNE",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Australia",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Tasmania",
+      id: "Tasmania",
+      price: 340,
+      cityCode: "HBA",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Australia",
+      avg: 700,
+      region: 3
+    },
+    //--------------- Fiji
+    {
+      originCity: "San Francisco",
+      city: "Suva",
+      id: "Suva",
+      price: 340,
+      cityCode: "SUV",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Fiji",
+      avg: 700,
+      region: 3
+    },
+    //--------------- Hawaii
+    {
+      originCity: "San Francisco",
+      city: "Honolulu",
+      id: "Honolulu",
+      price: 340,
+      cityCode: "HNL",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Hawaii",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Kailua",
+      id: "Kailua",
+      price: 340,
+      cityCode: "KOA",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Hawaii",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Kahului",
+      id: "Kahului",
+      price: 340,
+      cityCode: "OGG",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Hawaii",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Kauai",
+      id: "Kauai",
+      price: 340,
+      cityCode: "LIH",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "Hawaii",
+      avg: 700,
+      region: 3
+    },
+    //--------------- New Zealand
+    {
+      originCity: "San Francisco",
+      city: "Auckland",
+      id: "Auckland",
+      price: 340,
+      cityCode: "AKL",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "New Zealand",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Wellington",
+      id: "Wellington",
+      price: 340,
+      cityCode: "WLG",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "New Zealand",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Christchurch",
+      id: "Christchurch",
+      price: 340,
+      cityCode: "CHC",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "New Zealand",
+      avg: 700,
+      region: 3
+    },
+    {
+      originCity: "San Francisco",
+      city: "Queenstown",
+      id: "Queenstown",
+      price: 340,
+      cityCode: "ZQN",
+      departureDate: "Jun 3",
+      arrivalDate: "Jun 12",
+      country: "New Zealand",
+      avg: 700,
+      region: 3
+    },
+
     //******************** South America
     //--------------- Argentina
     {

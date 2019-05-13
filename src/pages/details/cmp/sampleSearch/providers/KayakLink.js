@@ -5,7 +5,7 @@ import * as urlBuilder from "./urlBuilder";
 
 class KayakLink extends React.Component {
   render() {
-    var { sampleSearch, small } = this.props;
+    var { sampleSearch, small, showProviderPrice } = this.props;
     var { kayakPrice } = sampleSearch;
 
     return (
@@ -14,6 +14,7 @@ class KayakLink extends React.Component {
         price={kayakPrice}
         url={urlBuilder.buildUrl("kayak", sampleSearch)}
         small={small}
+        showProviderPrice={showProviderPrice}
       />
     );
   }
@@ -21,6 +22,7 @@ class KayakLink extends React.Component {
 
 KayakLink.propTypes = {
   small: PropTypes.bool,
+  showProviderPrice: PropTypes.bool,
   sampleSearch: PropTypes.object
 };
 

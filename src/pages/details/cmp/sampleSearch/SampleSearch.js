@@ -19,7 +19,7 @@ class SampleSearch extends React.Component {
     kayak: { name: "Kayak" },
     kiwi: { name: "Kiwi.com", image: "kiwi.png" }
   };
- 
+
   render() {
     var { sampleSearch } = this.props;
 
@@ -33,7 +33,8 @@ class SampleSearch extends React.Component {
       price
     } = sampleSearch;
 
-   
+    var showProviderPrice = !!provider;
+
     var providerInfo = (provider && this.providers[provider]) || {};
 
     return (
@@ -59,7 +60,7 @@ class SampleSearch extends React.Component {
                   <div className="text-base">
                     {dates.format(departureDate, "MMM Do")}
                   </div>
-                  <span className="small d-block">{originCode}</span>
+                  <span className="small d-block">{this.getCode(originCode)}</span>
                 </div>
                 <div className="list-item-content-line-wrapper small">
                   <div className="list-item-content-line-top">
@@ -71,20 +72,20 @@ class SampleSearch extends React.Component {
                   <div className="text-base black-text">
                     {dates.format(arrivalDate, "MMM Do")}
                   </div>
-                  <span className="small d-block">{cityCode}</span>
+                  <span className="small d-block">{this.getCode(cityCode)}</span>
                 </div>
               </div>
             </div>
             <hr className="divider divider-wide" />
             <div className="list-item-bottom">
               <div className="list-item-content sample-search-justify-left provider-link-list">
-                <GoogleLink small sampleSearch={sampleSearch} />
-                <SkyLink small sampleSearch={sampleSearch} />
-                <MomondoLink small sampleSearch={sampleSearch} />
+                <GoogleLink small sampleSearch={sampleSearch} showProviderPrice={showProviderPrice}/>
+                <SkyLink small sampleSearch={sampleSearch}  showProviderPrice={showProviderPrice}/>
+                <MomondoLink small sampleSearch={sampleSearch}  showProviderPrice={showProviderPrice}/>
                 {sampleSearch.kiwiPrice ? (
-                  <KiwiLink small sampleSearch={sampleSearch} />
+                  <KiwiLink small sampleSearch={sampleSearch}  showProviderPrice={showProviderPrice}/>
                 ) : (
-                  <KayakLink small sampleSearch={sampleSearch} />
+                  <KayakLink small sampleSearch={sampleSearch}  showProviderPrice={showProviderPrice}/>
                 )}
               </div>
             </div>
@@ -102,6 +103,13 @@ class SampleSearch extends React.Component {
       </li>
     );
   }
+
+  getCode = code => {
+    if (code && code.indexOf("@") >= 0) {
+      return code.split("@")[0];
+    }
+    return code;
+  };
 }
 
 SampleSearch.propTypes = {

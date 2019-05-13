@@ -5,7 +5,7 @@ import * as urlBuilder from "./urlBuilder";
 
 class GoogleLink extends React.Component {
   render() {
-    var { sampleSearch, small } = this.props; 
+    var { sampleSearch, small, showProviderPrice } = this.props; 
     var { googlePrice } = sampleSearch;
 
     return (
@@ -14,6 +14,7 @@ class GoogleLink extends React.Component {
         price={googlePrice}
         url={urlBuilder.buildUrl('google', sampleSearch)}
         small={small}
+        showProviderPrice={showProviderPrice}
       />
     );
   } 
@@ -21,6 +22,7 @@ class GoogleLink extends React.Component {
 
 GoogleLink.propTypes = {
   small: PropTypes.bool,
+  showProviderPrice: PropTypes.bool,
   sampleSearch: PropTypes.object
 };
 

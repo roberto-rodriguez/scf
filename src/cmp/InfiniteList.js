@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 class InfiniteList extends Component {
   constructor(props) {
     super(props);
- 
+
     this.state = {
       page: 0,
       reload: true,
@@ -21,9 +21,7 @@ class InfiniteList extends Component {
   componentWillReceiveProps(newProps) {
     if (!this.state._mounted) return;
 
- 
-    if (newProps.reload) { 
-
+    if (newProps.reload) {
       console.log(
         "InfiniteList:componentWillReceiveProps calling -> this.moreFeed(true); "
       );
@@ -51,7 +49,9 @@ class InfiniteList extends Component {
         _mounted: true
       },
       () => {
-        console.log('InfiniteList::componentDidMount -> calling _this.moreFeed(); ' )
+        console.log(
+          "InfiniteList::componentDidMount -> calling _this.moreFeed(); "
+        );
         _this.moreFeed();
         window.addEventListener("scroll", this.handleScroll);
       }
@@ -60,6 +60,8 @@ class InfiniteList extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
+
+    console.log("InfiniteList:: componentWillUnmount -> window.scrollY = " + window.scrollY);
   }
 
   handleScroll = event => {
@@ -68,11 +70,14 @@ class InfiniteList extends Component {
     if ((loading, reachEnd)) return;
 
     var scroll = window.scrollY;
- 
 
-    if (!this.state.loading && document.body.scrollHeight - this.HEIGHT - scroll < this.HEIGHT * 2) {
+    if (
+      !this.state.loading &&
+      document.body.scrollHeight - this.HEIGHT - scroll < this.HEIGHT * 2
+    ) {
       console.log(
-        "handleScroll: ---------- TRIGGER SCROLL ----------- this.moreFeed(false) -> page = " + this.state.page  
+        "handleScroll: ---------- TRIGGER SCROLL ----------- this.moreFeed(false) -> page = " +
+          this.state.page
       );
 
       this.moreFeed(false);
@@ -80,21 +85,23 @@ class InfiniteList extends Component {
   };
 
   moreFeed = reset => {
-    
     var _this = this;
 
     this.state.loading = true;
     var page = reset ? 0 : this.state.page;
 
     console.log(
-      "((((((((((  MORE FEED     reset = " + reset + ", page = " + page +"     )))))))))) "  
+      "((((((((((  MORE FEED     reset = " +
+        reset +
+        ", page = " +
+        page +
+        "     )))))))))) "
     );
 
-    this.props.loader(page, items => {
+    this.props.loader(page, (items, currentPage) => {
       if (_this.isObject(items)) {
         items = Object.values(items);
       }
- 
 
       _this.setState(prevState => {
         var newFeedList = reset ? items : prevState.feed.concat(items);
@@ -106,12 +113,11 @@ class InfiniteList extends Component {
           loading: false,
           feed: newFeedList,
           firstLoad: false,
-          page: reset ? 1 : prevState.page + 1,
+          page: currentPage || (reset ? 1 : prevState.page + 1),
           showLoadIndicator: items.length === 10,
           reachEnd: items.length === 0
         };
       });
- 
     });
   };
 

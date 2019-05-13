@@ -11,9 +11,11 @@ class ExpiredPostColumn extends React.Component {
       <div className="row-wrapper">
         <div>
           <h5 className={"blue-text"} style={{ textAlign: "left" }}>
-             Premium Deals from{" "}
+            Premium Deals from{" "}
             <span style={{ color: "#FF8C00" }}>3 days ago</span>
-            <span className="see-premium-link">{"See today's deals for FREE"}</span>
+            <span className="see-premium-link">
+              {"See today's deals for FREE"}
+            </span>
           </h5>
         </div>
         <div className="row post-column text-lg-left">
@@ -23,7 +25,7 @@ class ExpiredPostColumn extends React.Component {
         </div>
       </div>
     );
-  }
+  } 
 }
 
 ExpiredPostColumn.propTypes = {
@@ -31,10 +33,10 @@ ExpiredPostColumn.propTypes = {
 };
 
 function mapStateToProps({ postReducer }) {
-  var { region, expiredPostList } = postReducer;
+  var { region, expiredPostList, currentPage } = postReducer;
   var postList = Object.values(expiredPostList);
   postList = postList.filter(p => region == 0 || p.region == region);
-  postList = postList.slice(0, postList.length);
+  postList = postList.slice(0, (currentPage + 3) * 10);
 
   return { postList };
 }

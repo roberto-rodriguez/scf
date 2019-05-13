@@ -5,7 +5,7 @@ import * as urlBuilder from "./urlBuilder";
 
 class SkyLink extends React.Component {
   render() {
-    var { sampleSearch, small } = this.props;
+    var { sampleSearch, small, showProviderPrice } = this.props;
     var { skyPrice } = sampleSearch;
 
     return (
@@ -14,6 +14,7 @@ class SkyLink extends React.Component {
         price={skyPrice}
         url={urlBuilder.buildUrl("sky", sampleSearch)}
         small={small}
+        showProviderPrice={showProviderPrice}
       />
     );
   } 
@@ -21,6 +22,7 @@ class SkyLink extends React.Component {
 
 SkyLink.propTypes = {
   small: PropTypes.bool,
+  showProviderPrice: PropTypes.bool,
   sampleSearch: PropTypes.object
 };
 

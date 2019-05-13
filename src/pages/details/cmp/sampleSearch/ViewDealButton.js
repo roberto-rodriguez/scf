@@ -21,7 +21,7 @@ class ViewDealButton extends React.Component {
 
     return sampleSearch.provider ? (
       <a
-        className="button button-primary button-xs button-no-shadow"
+        className="button button-primary button-xs button-no-shadow white-text"
         href={urlBuilder.buildUrl(sampleSearch.provider, sampleSearch)}
         target="_blank"
         rel="noopener noreferrer"

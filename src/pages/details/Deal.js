@@ -8,12 +8,21 @@ import { DealHeader, ToolBar, SampleSearchSection, NearbyCities } from "./cmp";
 
 class Deal extends React.Component {
   componentDidMount() {
-    var { post, match, loadPost, loadCityIfNotExist } = this.props;
+    var {
+      post,
+      match,
+      loadPost,
+      loadCityIfNotExist,
+      setSelectedPostId
+    } = this.props;
     var { postId, sampleSearchCityId } = match && match.params;
 
     if (!post) {
       loadPost(postId, sampleSearchCityId);
     } else {
+      //if the post exist, then is comming from home, then store the post id, to scroll to that post when go back home
+      setSelectedPostId(post.id);
+
       var sampleSearchCity = post.cityList && post.cityList[sampleSearchCityId];
       if (!sampleSearchCity || !sampleSearchCity.loaded) {
         loadCityIfNotExist(postId, sampleSearchCityId);
@@ -90,6 +99,7 @@ class Deal extends React.Component {
 Deal.propTypes = {
   loadPost: PropTypes.func,
   loadCityIfNotExist: PropTypes.func,
+  setSelectedPostId: PropTypes.func,
   post: PropTypes.object,
   match: PropTypes.object,
   location: PropTypes.object

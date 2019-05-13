@@ -3,12 +3,10 @@ import PropTypes from "prop-types";
 import { ConnectedRouter } from "connected-react-router";
 import { connect, Provider } from "react-redux";
 import App from "./App";
-import * as configActions from "./actions/ConfigActions"; 
+import * as authActions from "./pages/auth/actions/AuthActions";
 class Root extends Component {
   componentDidMount() {
-    var { loadConfigs } = this.props;
-
-    loadConfigs();
+    this.props.init();
   }
 
   render() {
@@ -17,7 +15,7 @@ class Root extends Component {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
-           {appStarted ? <App /> : null} 
+          {appStarted ? <App /> : null}
         </ConnectedRouter>
       </Provider>
     );
@@ -31,11 +29,11 @@ const mapStateToProps = ({ authReducer }) => ({
 Root.propTypes = {
   store: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  loadConfigs: PropTypes.func,
+  init: PropTypes.func,
   appStarted: PropTypes.bool
 };
 
 export default connect(
   mapStateToProps,
-  configActions
+  authActions
 )(Root);

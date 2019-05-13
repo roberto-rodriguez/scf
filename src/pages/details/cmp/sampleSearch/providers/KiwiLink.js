@@ -5,7 +5,7 @@ import * as urlBuilder from "./urlBuilder";
 
 class KiwiLink extends React.Component {
   render() {
-    var { sampleSearch, small } = this.props;
+    var { sampleSearch, small, showProviderPrice } = this.props;
     var { kiwiPrice } = sampleSearch;
 
     return (
@@ -14,6 +14,7 @@ class KiwiLink extends React.Component {
         price={kiwiPrice}
         url={sampleSearch.kiwiLink}
         small={small}
+        showProviderPrice={showProviderPrice}
       />
     );
   }
@@ -21,7 +22,8 @@ class KiwiLink extends React.Component {
 
 KiwiLink.propTypes = {
   sampleSearch: PropTypes.object,
-  small: PropTypes.bool
+  small: PropTypes.bool,
+  showProviderPrice: PropTypes.bool
 };
 
 export default KiwiLink;
