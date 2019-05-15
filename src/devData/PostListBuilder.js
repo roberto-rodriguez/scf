@@ -13,19 +13,7 @@ export function buildCityList() {
       country: "Australia",
       avg: 700,
       region: 3
-    },
-    {
-      originCity: "San Francisco",
-      city: "Canberra",
-      id: "Canberra",
-      price: 340,
-      cityCode: "CBR",
-      departureDate: "Jun 3",
-      arrivalDate: "Jun 12",
-      country: "Australia",
-      avg: 700,
-      region: 3
-    },
+    }, 
     {
       originCity: "San Francisco",
       city: "Melbourne",
@@ -49,19 +37,7 @@ export function buildCityList() {
       country: "Australia",
       avg: 700,
       region: 3
-    },
-    {
-      originCity: "San Francisco",
-      city: "Tasmania",
-      id: "Tasmania",
-      price: 340,
-      cityCode: "HBA",
-      departureDate: "Jun 3",
-      arrivalDate: "Jun 12",
-      country: "Australia",
-      avg: 700,
-      region: 3
-    },
+    }, 
     //--------------- Fiji
     {
       originCity: "San Francisco",
