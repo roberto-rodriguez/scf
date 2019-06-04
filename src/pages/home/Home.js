@@ -17,7 +17,7 @@ class Home extends React.Component {
               className="isotope"
               data-isotope-layout="fitRows"
               data-isotope-group="gallery"
-              style={{ display: "inline-flex" }}
+              style={{ display: "inline-flex", width:'100%' }}
             >
               {plan > 1 ? (
                 <PostColumn />

@@ -1,8 +1,10 @@
 import * as dealActionsCreator from "../../../actions/deal.actions_creator";
 import * as viewStateActionsCreator from "../../../actions/viewState.actions_creator";
 import * as object from "../../../utils/object";
+import * as dates from "../../../utils/dates";
 import * as Proxy from "../../../actions/Proxy";
 import * as postListBuilder from "../../../devData/PostListBuilder";
+
 
 export function loadPost(postIdx, cityCode) {
   return function(dispatch, getState) {
@@ -41,7 +43,7 @@ export function loadCityIfNotExist(postIdx, cityCode) {
     if (!sampleSearchCity || !sampleSearchCity.loaded) {
       Proxy.get(
         "sampleSearchCity/load/" + postIdx + "/" + cityCode,
-        newSampleSearchCity => {
+        newSampleSearchCity => { 
           dispatch(
             dealActionsCreator.loadCityAction(postIdx, newSampleSearchCity)
           );

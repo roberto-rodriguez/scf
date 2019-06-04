@@ -35,7 +35,7 @@ class InfiniteList extends Component {
     var shouldComponentUpdate =
       _mounted &&
       (firstLoad || loading || page <= 0 || (nextProps.reload || false));
-
+ 
     return shouldComponentUpdate;
   }
 
@@ -61,7 +61,10 @@ class InfiniteList extends Component {
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
 
-    console.log("InfiniteList:: componentWillUnmount -> window.scrollY = " + window.scrollY);
+    console.log(
+      "InfiniteList:: componentWillUnmount -> window.scrollY = " +
+        window.scrollY
+    );
   }
 
   handleScroll = event => {
@@ -94,31 +97,35 @@ class InfiniteList extends Component {
       "((((((((((  MORE FEED     reset = " +
         reset +
         ", page = " +
-        page +
+        page + 
         "     )))))))))) "
     );
 
-    this.props.loader(page, (items, currentPage) => {
-      if (_this.isObject(items)) {
-        items = Object.values(items);
-      }
+    this.props.loader(
+      page,
+      (items, currentPage) => {
+        if (_this.isObject(items)) {
+          items = Object.values(items);
+        }
 
-      _this.setState(prevState => {
-        var newFeedList = reset ? items : prevState.feed.concat(items);
+        _this.setState(prevState => {
+          var newFeedList = reset ? items : prevState.feed.concat(items);
 
-        console.log("InfiniteList:: reset = " + reset + ", items = " + items);
+          console.log("InfiniteList:: reset = " + reset + ", items = " + items);
 
-        return {
-          ...prevState,
-          loading: false,
-          feed: newFeedList,
-          firstLoad: false,
-          page: currentPage || (reset ? 1 : prevState.page + 1),
-          showLoadIndicator: items.length === 10,
-          reachEnd: items.length === 0
-        };
-      });
-    });
+          return {
+            ...prevState,
+            loading: false,
+            feed: newFeedList,
+            firstLoad: false,
+            page: currentPage || (reset ? 1 : prevState.page + 1),
+            showLoadIndicator: items.length === 10,
+            reachEnd: items.length === 0
+          };
+        });
+      },
+      reset
+    );
   };
 
   render() {
@@ -130,7 +137,11 @@ class InfiniteList extends Component {
     console.log("InfiniteList: render() size = " + size);
 
     if (loading) {
-      return <h1>Loading...</h1>;
+      return (<h5>Loading...</h5>);
+    }
+
+    if(size == 0){
+      return (<h5>There are not elements to show</h5>);
     }
 
     return (
@@ -139,7 +150,7 @@ class InfiniteList extends Component {
         {reachEnd ? (
           <div />
         ) : (
-          <h6 key={1000}>TODO Put some nice spinner here</h6>
+          <div />
         )}
       </div>
     );

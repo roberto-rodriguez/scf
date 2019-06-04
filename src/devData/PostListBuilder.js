@@ -51,7 +51,7 @@ export function buildCityList() {
       avg: 700,
       region: 3
     },
-    //--------------- Hawaii
+    //--------------- Hawaii  ++++ Continue from here
     {
       originCity: "San Francisco",
       city: "Honolulu",
