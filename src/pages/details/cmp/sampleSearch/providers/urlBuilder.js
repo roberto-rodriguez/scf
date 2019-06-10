@@ -59,14 +59,15 @@ var builders = {
 export function buildUrl(provider, sampleSearch) {
   var {
     originCode,
-    cityCode,
-    formattedDepartureDate,
-    formattedArrivalDate,
+    cityCode, 
     departureDate,
     arrivalDate,
     skyLink,
     kiwiLink
   } = sampleSearch;
+
+  var formattedDepartureDate = dates.formatWithTimezone(departureDate);
+  var formattedArrivalDate = dates.formatWithTimezone(arrivalDate);
 
   if (provider == "kiwi") {
     return kiwiLink;

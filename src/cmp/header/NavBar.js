@@ -2,11 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./header.scss";
 import PropTypes from "prop-types";
-import { LoginButton } from "./cmp";
+import { LoginButton, Logo } from "./cmp";
 class NavBar extends React.Component {
   constructor(props) {
-    super(props);
-    // Don't call this.setState() here!
+    super(props); 
     this.state = {
       navSolidBackground: null,
       liFocus: false
@@ -42,13 +41,17 @@ class NavBar extends React.Component {
 
   render() {
     var { navBck } = this.props;
+    var { navSolidBackground } = this.state;
     var navCls = "rd-navbar-wrap";
+    var darkNavLink = false;
 
-    if (this.state.navSolidBackground) {
+    if (navSolidBackground) {
       navCls += " bg-gray-dark";
     } else {
       if (navBck) {
         navCls += " nav-bck";
+      } else {
+        darkNavLink = true;
       }
     }
 
@@ -91,38 +94,17 @@ class NavBar extends React.Component {
           data-xl-stick-up="true"
           data-xxl-stick-up="true"
         >
-          <NavLink exact to="/">
-            <h5
-              style={{
-                float: "left",
-                margin: "24px 0px 0px 20px",
-                color: "white",
-                fontFamily: "Courgette, serif",
-                fontSize: 25 
-              }}
-            >
-              <span 
-                className="yellow-text"
-                style={{ 
-                  fontWeight: "bold",
-                  fontFamily: "Courgette, serif",
-                  paddingRight: 8
-                }}
-              > 
-                Fly
-              </span>
-              Super Cheap
-              <i className="icon fa fa-paper-plane yellow-text" style={{marginLeft: 10 }}/>
-            </h5>
-          </NavLink>
+          <Logo navSolidBackground={navBck || navSolidBackground} />
           <div
             className="rd-navbar-inner"
             style={{ paddingTop: 10, float: "right" }}
           >
             <div className="rd-navbar-nav-wrap toggle-original-elements">
               <ul className="rd-navbar-nav">
-                <li className="rd-navbar--has-dropdown rd-navbar-submenu">
-                  <a href="#">About</a>
+                <li className={`rd-navbar--has-dropdown rd-navbar-submenu ${darkNavLink ? 'dark-nav-link': ''}`}>
+                  <a href="#" >
+                    About
+                  </a>
                   <span className="rd-navbar-submenu-toggle" />
                   <ul className="rd-navbar-dropdown">
                     <li>
@@ -136,7 +118,7 @@ class NavBar extends React.Component {
                     </li>
                   </ul>
                 </li>
-                <LoginButton />
+                <LoginButton darkNavLink={darkNavLink}/>
               </ul>
             </div>
           </div>

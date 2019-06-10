@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "../../../../authStyles.scss";
 import USAMap from "react-usa-map";
 import PropTypes from "prop-types";
-
+import * as utils from "../../../../../../utils/util";
 class SelectOrigin extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +30,7 @@ class SelectOrigin extends React.Component {
       selectRegion(regionId);
 
       if (window.scrollY < 300) {
-        this.scrollBy(500, 1000);
+        utils.scrollTo(500, 1000);
       }
     }
   };
@@ -115,26 +115,7 @@ class SelectOrigin extends React.Component {
     ],
     0: ["AK", "HI"]
   };
-
-  scrollBy(distance, duration) {
-    var initialY = window.scrollY;
-    var y = initialY + distance;
-    var baseY = (initialY + y) * 0.5;
-    var difference = initialY - baseY;
-    var startTime = performance.now();
-
-    function step() {
-      var normalizedTime = (performance.now() - startTime) / duration;
-      if (normalizedTime > 1) normalizedTime = 1;
-
-      window.scrollTo(
-        0,
-        baseY + difference * Math.cos(normalizedTime * Math.PI)
-      );
-      if (normalizedTime < 1) window.requestAnimationFrame(step);
-    }
-    window.requestAnimationFrame(step);
-  }
+ 
 }
 
 SelectOrigin.propTypes = {

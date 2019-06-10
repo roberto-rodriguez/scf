@@ -27,6 +27,8 @@ class PostColumn extends React.Component {
     var { plan, region, appStarted } = this.props;
     var reload = this.state.region != region;
 
+    console.log('PostColumn -> reload = ' + reload);
+
     var postCls = plan ? "post-full" : "post-column";
  
     return (
@@ -50,7 +52,7 @@ class PostColumn extends React.Component {
     );
   }
 
-  doList = (page, infiniteListCallback) => {
+  doList = (page, infiniteListCallback, reload) => {
     var { mounted } = this.state;
     var { region, listPost } = this.props;
 
@@ -64,7 +66,7 @@ class PostColumn extends React.Component {
 
           infiniteListCallback(resultList);
         },
-        { region }
+        reload
       );
   };
 }
