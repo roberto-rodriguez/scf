@@ -15,28 +15,28 @@ class LoginButton extends React.Component {
   };
 
   render() {
-    var { plan } = this.props;
+    var { plan, darkNavLink } = this.props;
 
     if (!plan) {
       return (
-        <li>
+        <li className={darkNavLink ? 'dark-nav-link': ''}>
           <NavLink to="/login">Login</NavLink>
         </li>
       );
     }
 
     return (
-      <li className="rd-navbar--has-dropdown rd-navbar-submenu">
+      <li className={`rd-navbar--has-dropdown rd-navbar-submenu ${darkNavLink ? 'dark-nav-link': ''}`}>
         <i
           className="icon mdi mdi-account-circle white-text"
-          style={{ fontSize: 22 }}
+          style={{fontSize: 22}}
         >
           {" "}
         </i>
         <span className="rd-navbar-submenu-toggle" />
         <ul className="rd-navbar-dropdown" style={{ left: -177 }}>
           <li>
-            <a href="overview.html">Profile</a>
+            <a href="overview.html" >Profile</a>
           </li>
           <li>
             <a href="overview.html">Departure Cities</a>
@@ -57,7 +57,8 @@ LoginButton.propTypes = {
   plan: PropTypes.number,
   email: PropTypes.string,
   logout: PropTypes.func,
-  history: PropTypes.any
+  history: PropTypes.any,
+  darkNavLink: PropTypes.bool
 };
 
 function mapStateToProps({ authReducer }) {

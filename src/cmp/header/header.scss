@@ -10,3 +10,17 @@
  .nav-bck{
    background-color: rgba(0,0,0,0.3);
  }
+
+ .dark-nav-link a, 
+ .dark-nav-link .rd-navbar-submenu-toggle:before,
+.dark-nav-link i:before{
+  color: #1f2746!important;
+  font-weight: bold!important;
+ }
+
+ .dark-nav-link:hover a, 
+ .dark-nav-link:hover .rd-navbar-submenu-toggle:before,
+ .dark-nav-link:hover i:before{
+  color: white!important;
+  font-weight: normal!important;
+ }

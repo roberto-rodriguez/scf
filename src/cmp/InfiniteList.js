@@ -21,15 +21,12 @@ class InfiniteList extends Component {
   componentWillReceiveProps(newProps) {
     if (!this.state._mounted) return;
 
-    if (newProps.reload) {
-      console.log(
-        "InfiniteList:componentWillReceiveProps calling -> this.moreFeed(true); "
-      );
+    if (newProps.reload) { 
       this.moreFeed(true);
     }
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     var { _mounted, firstLoad, loading, page } = this.state;
 
     var shouldComponentUpdate =
@@ -39,7 +36,7 @@ class InfiniteList extends Component {
     return shouldComponentUpdate;
   }
 
-  componentDidMount(props) {
+  componentDidMount() {
     this.HEIGHT = window.innerHeight;
 
     var _this = this;
@@ -48,10 +45,7 @@ class InfiniteList extends Component {
       {
         _mounted: true
       },
-      () => {
-        console.log(
-          "InfiniteList::componentDidMount -> calling _this.moreFeed(); "
-        );
+      () => { 
         _this.moreFeed();
         window.addEventListener("scroll", this.handleScroll);
       }
@@ -59,12 +53,7 @@ class InfiniteList extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-
-    console.log(
-      "InfiniteList:: componentWillUnmount -> window.scrollY = " +
-        window.scrollY
-    );
+    window.removeEventListener("scroll", this.handleScroll); 
   }
 
   handleScroll = event => {
@@ -92,14 +81,7 @@ class InfiniteList extends Component {
 
     this.state.loading = true;
     var page = reset ? 0 : this.state.page;
-
-    console.log(
-      "((((((((((  MORE FEED     reset = " +
-        reset +
-        ", page = " +
-        page + 
-        "     )))))))))) "
-    );
+ 
 
     this.props.loader(
       page,
@@ -110,9 +92,7 @@ class InfiniteList extends Component {
 
         _this.setState(prevState => {
           var newFeedList = reset ? items : prevState.feed.concat(items);
-
-          console.log("InfiniteList:: reset = " + reset + ", items = " + items);
-
+  
           return {
             ...prevState,
             loading: false,
@@ -132,9 +112,7 @@ class InfiniteList extends Component {
     var { builder, wrapperClass } = this.props; //, emptyElement
     var { feed, loading, reachEnd } = this.state; //showLoadIndicator,
 
-    var size = feed.length;
-
-    console.log("InfiniteList: render() size = " + size);
+    var size = feed.length; 
 
     if (loading) {
       return (<h5>Loading...</h5>);

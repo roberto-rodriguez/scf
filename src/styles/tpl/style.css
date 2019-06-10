@@ -802,42 +802,6 @@ address {
 	background-color: #1f2746;
 }
 
-@media (min-width: 992px) {
-	.bg-image-01 {
-		background-size: cover;
-		background: #1f2746 url("../images/overview-02.jpg") center no-repeat;
-	}
-}
-
-@media (min-width: 992px) {
-	.bg-image-02 {
-		background: no-repeat url("../images/background-01.jpg") center bottom;
-		background-size: cover;
-	}
-}
-
-@media (min-width: 1200px) {
-	.bg-image-04 {
-		background: no-repeat url("../images/background-04.jpg") center bottom;
-		background-size: cover;
-	}
-}
-
-.bg-image-03 {
-	background: no-repeat url("../images/background-02.jpg") center;
-	background-size: cover;
-}
-
-.bg-image-05 {
-	background: no-repeat url("../images/background-07.jpg") center;
-	background-size: cover;
-}
-
-.bg-image-06 {
-	background: no-repeat url("../images/breadcrumbs-01.jpg") center;
-	background-size: cover;
-}
-
 .page .text-primary {
 	color: #c62a82 !important;
 }
@@ -22350,6 +22314,7 @@ html:not(.ie-10) .not-animated {
 	position: relative;
 	padding: 13px 20px 13px 38px;
 	transition: .3s;
+	cursor: pointer;
 }
 
 .rd-navbar-static .rd-navbar-dropdown a:hover,
@@ -22361,6 +22326,7 @@ html:not(.ie-10) .not-animated {
 .rd-navbar-fullwidth .rd-navbar-dropdown span:hover,
 .rd-navbar-fullwidth .rd-navbar-megamenu span:hover {
 	padding-left: 68px;
+	cursor: pointer;
 }
 
 .rd-navbar-static .rd-navbar-dropdown a:hover:before,
@@ -22373,6 +22339,7 @@ html:not(.ie-10) .not-animated {
 .rd-navbar-fullwidth .rd-navbar-megamenu span:hover:before {
 	left: 40px;
 	opacity: 1;
+	cursor: pointer;
 }
 
 .rd-navbar-static .rd-navbar-dropdown a:before,
@@ -22394,6 +22361,7 @@ html:not(.ie-10) .not-animated {
 	margin-right: 17px;
 	transition: left .3s,  opacity .3s;
 	opacity: 0;
+	cursor: pointer;
 }
 
 .rd-navbar-static .rd-navbar-dropdown,
@@ -25068,35 +25036,11 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 	-webkit-overflow-scrolling: touch;
 	overflow: auto;
 }
-
-.lg-outer .lg-has-vimeo .lg-video-play {
-	background: url("../images/vimeo-play.png") no-repeat scroll 0 0 transparent;
-}
-
-.lg-outer .lg-has-vimeo:hover .lg-video-play {
-	background: url("../images/vimeo-play.png") no-repeat scroll 0 -58px transparent;
-}
-
-.lg-outer .lg-has-html5 .lg-video-play {
-	background: transparent url("../images/video-play.png") no-repeat scroll 0 0;
-	height: 64px;
-	margin-left: -32px;
-	margin-top: -32px;
-	width: 64px;
-	opacity: 0.8;
-}
-
+ 
 .lg-outer .lg-has-html5:hover .lg-video-play {
 	opacity: 1;
 }
-
-.lg-outer .lg-has-youtube .lg-video-play {
-	background: url("../images/youtube-play.png") no-repeat scroll 0 0 transparent;
-}
-
-.lg-outer .lg-has-youtube:hover .lg-video-play {
-	background: url("../images/youtube-play.png") no-repeat scroll 0 -60px transparent;
-}
+ 
 
 .lg-outer .lg-video-object {
 	width: 100% !important;
@@ -26653,11 +26597,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 	top: 0;
 	white-space: nowrap;
 }
-
-.lg-outer .lg-item {
-	background: url("../images/loading.gif") no-repeat scroll center center transparent;
-	display: none !important;
-}
+ 
 
 .lg-outer.lg-css3 .lg-prev-slide, .lg-outer.lg-css3 .lg-current, .lg-outer.lg-css3 .lg-next-slide {
 	display: inline-block !important;

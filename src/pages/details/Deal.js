@@ -109,7 +109,12 @@ function mapStateToProps({ postReducer }, props) {
   var { postId, sampleSearchCityId } = props.match && props.match.params;
 
   if (postId && sampleSearchCityId) {
-    return { post: postReducer.postList[postId] };
+    var post = postReducer.postList[postId];
+
+    if (!post && postReducer.expiredPostList) {
+      post = postReducer.expiredPostList[postId];
+    }
+    return { post };
   }
 }
 
