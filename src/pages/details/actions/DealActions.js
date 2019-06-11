@@ -1,5 +1,4 @@
-import * as dealActionsCreator from "../../../actions/deal.actions_creator";
-import * as viewStateActionsCreator from "../../../actions/viewState.actions_creator"; 
+import * as dealActionsCreator from "../../../actions/deal.actions_creator"; 
 import * as Proxy from "../../../actions/Proxy"; 
 
 
@@ -33,9 +32,9 @@ export function loadCityIfNotExist(postIdx, cityCode) {
   };
 }
 
-export function setSelectedPostId(id) {
+export function setSelectedPostId(postId) {
   return function(dispatch) {
-    dispatch(viewStateActionsCreator.setViewStateAction("selectedPostId", id));
+    dispatch(dealActionsCreator.setSelectedPostId(postId));
   };
 }
  

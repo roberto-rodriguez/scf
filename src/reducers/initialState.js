@@ -1,6 +1,7 @@
 export default {
   deals: {
     region:0,
+    selectedPostId: null,
     expiredPostList: {},
     postList: {}
   },
