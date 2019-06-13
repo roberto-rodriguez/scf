@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SampleSearch from "./SampleSearch";
-import { connect } from "react-redux";
-import * as dealActions from "../../actions/DealActions";
 
 class SampleSearchSection extends React.Component {
   providers = {
@@ -14,14 +12,26 @@ class SampleSearchSection extends React.Component {
   };
 
   render() {
-    var { originCode, cityCode, sampleSearchList } = this.props;
+    var { originCode, cityCode, sampleSearchList, sortBy } = this.props;
+
+    var sortedList = [...sampleSearchList].sort((a, b) => {
+      if (a[sortBy] == b[sortBy]) {
+        if (a.provider) {
+          return -1;
+        } else {
+          return 1;
+        }
+      } else {
+        return a[sortBy] > b[sortBy] ? 1 : -1;
+      }
+    });
 
     var assignedProvider = false;
 
     return (
       <ul className="list-tickets">
-        {sampleSearchList &&
-          sampleSearchList.map((sampleSearch, i) => {
+        {sortedList &&
+          sortedList.map((sampleSearch, i) => {
             var { provider } = sampleSearch;
 
             if (!provider && !assignedProvider) {
@@ -51,23 +61,11 @@ class SampleSearchSection extends React.Component {
 
 SampleSearchSection.propTypes = {
   sampleSearchCityId: PropTypes.string,
+  sortBy: PropTypes.string,
   originCode: PropTypes.string,
   cityCode: PropTypes.string,
   postId: PropTypes.any,
-  sampleSearchList: PropTypes.any,
-  loadCityIfNotExist: PropTypes.func
+  sampleSearchList: PropTypes.any
 };
 
-// function mapStateToProps({ postReducer }, props) {
-//   var { postId, sampleSearchCityId } = props;
-//   var post = postReducer.postList[postId];
-//   var city = (post && post.cityList && post.cityList[sampleSearchCityId]) || {};
-//   var sampleSearchList = city.sampleSearchList;
-
-//   return { sampleSearchList };
-// }
-
-export default connect(
-  null, // mapStateToProps,
-  dealActions
-)(SampleSearchSection);
+export default SampleSearchSection;

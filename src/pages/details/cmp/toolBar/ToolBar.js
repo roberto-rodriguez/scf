@@ -1,9 +1,12 @@
-import React from "react"; 
+import React from "react";
 import PropTypes from "prop-types";
-
+import moment from "moment";
 class ToolBar extends React.Component {
   render() {
-    var { avg, price, departureDate, arrivalDate } = this.props;
+    var { avg, price, startDate, endDate, onSortChange } = this.props;
+
+    var formattedStartDate = startDate ? moment(startDate).format("MMM YYYY") : '';
+    var formattedEndDate = endDate ? moment(endDate).format("MMM YYYY") : '';
 
     return (
       <table style={{ width: "100%" }}>
@@ -21,7 +24,7 @@ class ToolBar extends React.Component {
             </td>
             <td style={{ textAlign: "center" }}>
               <h6>
-                {departureDate} — {arrivalDate}
+                {`${formattedStartDate} — ${formattedEndDate}`} 
               </h6>
             </td>
             <td>
@@ -31,10 +34,11 @@ class ToolBar extends React.Component {
                   data-placeholder="Select an option"
                   data-minimum-results-for-search="Infinity"
                   data-constraints="@Required"
+                  onChange={e => onSortChange(e.target.value)}
                 >
-                  <option>Sort by Price</option>
-                  <option value="2">Sort by Date</option>
-                  <option value="3">Sort by Nights</option>
+                  <option value="price">Sort by Price</option>
+                  <option value="departureDate">Sort by Date</option>
+                  <option value="nights">Sort by Nights</option>
                 </select>
               </div>
 
@@ -64,8 +68,9 @@ class ToolBar extends React.Component {
 ToolBar.propTypes = {
   avg: PropTypes.number,
   price: PropTypes.number,
-  departureDate: PropTypes.string,
-  arrivalDate: PropTypes.string
+  startDate: PropTypes.string,
+  endDate: PropTypes.string,
+  onSortChange: PropTypes.func
 };
 
 export default ToolBar;

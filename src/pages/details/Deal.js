@@ -7,6 +7,14 @@ import PropTypes from "prop-types";
 import { DealHeader, ToolBar, SampleSearchSection, NearbyCities } from "./cmp";
 
 class Deal extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sortBy: "price"
+    };
+  }
+
   componentDidMount() {
     var {
       post,
@@ -21,11 +29,13 @@ class Deal extends React.Component {
       loadPost(postId, sampleSearchCityId);
     } else {
       //if the post exist, then is comming from home, then store the post id, to scroll to that post when go back home
-      setSelectedPostId(post.id);
+      // setTimeout(() => setSelectedPostId(post.id), 2000);
 
       var sampleSearchCity = post.cityList && post.cityList[sampleSearchCityId];
       if (!sampleSearchCity || !sampleSearchCity.loaded) {
         loadCityIfNotExist(postId, sampleSearchCityId);
+      }else{
+        setSelectedPostId(post.postId);
       }
     }
   }
@@ -44,17 +54,19 @@ class Deal extends React.Component {
     var data = sampleSearchCityId == post.cityCode ? post : sampleSearchCity;
 
     var country = queryData.country || data.country;
-    var originCity = post.originCity;
+    var originCity = queryData.originCity || data.originCity;
     var originCode = queryData.originCode || data.originCode;
     var city = queryData.city || data.city;
     var cityCode = queryData.cityCode || data.cityCode;
     var avg = queryData.avg || data.avg;
-    var price = queryData.price || data.price;
+    var price = queryData.price || data.price; 
 
     var sampleSearchCityData = sampleSearchCity.data || {};
     var sampleSearchList = sampleSearchCityData.sampleSearchList || [];
 
-    var { departureDate, arrivalDate } = sampleSearchCity;
+    var { startDate, endDate } = sampleSearchCity; 
+
+    var hasNearbyCities = Object.keys(cityList).length > 1;
 
     return (
       <div>
@@ -65,28 +77,32 @@ class Deal extends React.Component {
           country={country}
         />
         <section className="section-80 section-lg-30 bg-gray-lighter">
-          <div className="container container-wide details-container">
-            <div className="row row-50 text-xl-left">
+          <div className='container container-wide details-container'>
+            <div className={`row row-50 text-xl-left ${hasNearbyCities ? '' : 'centered'}`}>
               <div className="col-xl-9">
                 <div className="inset-xxl-right-80">
                   <ToolBar
                     avg={avg}
                     price={price}
-                    departureDate={departureDate}
-                    arrivalDate={arrivalDate}
+                    startDate={startDate}
+                    endDate={endDate}
+                    onSortChange={this.onSortChange}
                   />
                   <SampleSearchSection
                     sampleSearchList={sampleSearchList}
                     originCode={originCode}
                     cityCode={cityCode}
+                    sortBy={this.state.sortBy}
                   />
                 </div>
               </div>
               <div className="col-xl-3 tickets-aside">
-                <NearbyCities
-                  postId={postId}
-                  sampleSearchCityId={sampleSearchCityId}
-                />
+                {hasNearbyCities && (
+                  <NearbyCities
+                    postId={postId}
+                    sampleSearchCityId={sampleSearchCityId}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -94,6 +110,8 @@ class Deal extends React.Component {
       </div>
     );
   }
+
+  onSortChange = sortBy => this.setState({ sortBy });
 }
 
 Deal.propTypes = {

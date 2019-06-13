@@ -8,6 +8,7 @@ class Logo extends React.Component {
     var { navSolidBackground } = this.props; 
 
     var darkerColor = navSolidBackground ? 'white-text': 'blue-text';
+    var lighterColor = navSolidBackground ? 'yellow-text': 'pink-text';
   
     return (
       <NavLink exact to="/">
@@ -20,7 +21,7 @@ class Logo extends React.Component {
         }}
       >
         <span 
-          className='pink-text' 
+          className={lighterColor} 
           style={{ 
             fontWeight: "bold",
             fontFamily: "Courgette, serif",
@@ -30,7 +31,7 @@ class Logo extends React.Component {
           Fly
         </span>
         Super Cheap
-        <i className={`icon fa fa-paper-plane pink-text`} style={{marginLeft: 10 }}/>
+        <i className={`icon fa fa-paper-plane ${lighterColor}`} style={{marginLeft: 10 }}/>
       </h5>
     </NavLink>
     );

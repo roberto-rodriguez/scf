@@ -12,4 +12,4 @@ export const addPostListAction = (response, currentPage) => ({
 
 export const cleanPostListAction = () => ({
   type: "CLEAN_POST_LIST" 
-});
+}); 

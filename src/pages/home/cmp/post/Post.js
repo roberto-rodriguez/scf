@@ -9,8 +9,8 @@ import moment from "moment";
 class Post extends React.Component {
   render() {
     var { post, plan } = this.props;
-    var {
-      id,
+    var { 
+      postId,
       originCity,
       city,
       country,
@@ -25,7 +25,7 @@ class Post extends React.Component {
 
     return (
       <div
-        id={id}
+        id={postId}
         className={`${
           plan > 1
             ? "col-12 col-md-6 col-lg-4 col-xl-4 col-x1400-4 "
@@ -101,7 +101,7 @@ class Post extends React.Component {
     var { scrollToMe, post } = this.props;
 
     if (scrollToMe) {
-      document.getElementById("" + post.id).scrollIntoView();
+      document.getElementById("" + post.postId).scrollIntoView();
       window.scrollBy(0, -window.innerHeight / 2);
     }
   }
@@ -114,9 +114,9 @@ Post.propTypes = {
   scrollToMe: PropTypes.bool
 };
 
-const mapStateToProps = ({ authReducer, viewStateReducer }, props) => ({
+const mapStateToProps = ({ authReducer, postReducer }, props) => ({
   plan: authReducer.plan,
-  scrollToMe: props.post.id == viewStateReducer.selectedPostId
+  scrollToMe: props.post.postId == postReducer.selectedPostId
 });
 
 export default connect(mapStateToProps)(Post);
