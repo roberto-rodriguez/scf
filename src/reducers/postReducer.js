@@ -31,6 +31,7 @@ export default function postReducer(state = initialState.deals, action) {
       var { post } = data;
       return {
         ...state,
+        selectedPostId: post.postId,
         postList: {
           ...state.postList,
           [post.postId]: {
@@ -44,6 +45,7 @@ export default function postReducer(state = initialState.deals, action) {
       post = state.postList[postId] || { cityList: {} };
       return {
         ...state,
+        selectedPostId: postId,
         postList: {
           ...state.postList,
           [postId]: {
@@ -60,9 +62,17 @@ export default function postReducer(state = initialState.deals, action) {
         }
       };
 
+      case "SET_SELECTED_POST":
+        return {
+          ...state,
+          selectedPostId: data 
+        };
+  
+
     case "CLEAN_POST_LIST":
       return {
         ...state,
+        selectedPostId: null,
         currentPage: 0,
         postList: {},
         expiredPostList: {}

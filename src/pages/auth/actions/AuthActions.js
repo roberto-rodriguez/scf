@@ -1,5 +1,5 @@
 import * as authActionsCreator from "../../../actions/auth.actions_creator";
-import * as postActionsCreator from "../../../actions/post.actions_creator";
+import * as postActionsCreator from "../../../actions/post.actions_creator"; 
 import * as configActions from "../../../actions/ConfigActions";
 import { TOKEN_COOKIE } from "../../../constants/Constants";
 import * as string from "../../../utils/string";
@@ -24,8 +24,14 @@ export function init() {
 }
 
 export function login(email, password, callback) {
-  return function(dispatch, getState) {
-    Proxy.post("auth/login", { email, password }, callback);
+  return function(dispatch, getState) { 
+    dispatch(postActionsCreator.cleanPostListAction());
+
+    Proxy.post("auth/login", { email, password },  (data, status, statusMessage) => {
+      dispatch(authActionsCreator.setAuthAction(data));
+ 
+      callback(data);
+    });
   };
 }
 
@@ -47,6 +53,7 @@ export function logout(callback) {
   return function(dispatch) {
     Proxy.get("auth/logout", response => {
       dispatch(postActionsCreator.cleanPostListAction());
+
       cookie.save(TOKEN_COOKIE, response.token);
       dispatch(authActionsCreator.setAuthAction(response));
 
@@ -54,26 +61,4 @@ export function logout(callback) {
     });
   };
 }
-
-//--------- Provissional API ----------
-
-function loginAPI(useremailname, password) {
-  if (email && password) {
-    return {
-      resultCode: 0,
-      resultMessage: "Success",
-      data: {
-        id: 1,
-        plan: 2, //trial  ->  0-visitor, 1-free, 2-trial, 3-premium,
-        firstName: "Tito",
-        lastName: "Robe",
-        [TOKEN_COOKIE]: TOKEN_COOKIE + "_" + new Date().getTime()
-      }
-    };
-  } else {
-    return {
-      resultCode: 403,
-      resultMessage: "Invalid Login Credentials"
-    };
-  }
-}
+ 

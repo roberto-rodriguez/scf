@@ -7,7 +7,7 @@
 }
  
  .home-header {
-   background: no-repeat url('./images/background-05.jpg') center; 
+   background: no-repeat url('../../styles/images/header.jpg') center; 
  }
  
  .home-body{
@@ -30,6 +30,7 @@
  .post-table {
    border-collapse: separate;
    border-spacing: 50px 0;
+   width: 100%;
 
    td{
     vertical-align: top;
