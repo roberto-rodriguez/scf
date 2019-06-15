@@ -68,8 +68,8 @@ class ToolBar extends React.Component {
 ToolBar.propTypes = {
   avg: PropTypes.number,
   price: PropTypes.number,
-  startDate: PropTypes.string,
-  endDate: PropTypes.string,
+  startDate: PropTypes.number,
+  endDate: PropTypes.number,
   onSortChange: PropTypes.func
 };
 

@@ -10,7 +10,8 @@ class PostColumn extends React.Component {
 
     this.state = {
       region: null,
-      mounted: false
+      mounted: false,
+      isEmpty: false
     };
   }
 
@@ -24,17 +25,17 @@ class PostColumn extends React.Component {
   }
 
   render() {
+    var { isEmpty } = this.state;
     var { plan, region, appStarted } = this.props;
     var reload = this.state.region != region;
-
-    console.log('PostColumn -> reload = ' + reload);
-
-    var postCls = plan ? "post-full" : "post-column";
  
+    var postCls = plan ? "post-full" : "post-column  border-green";
+    var wrapperCls = isEmpty ? '' : "row text-lg-left " + postCls;
+
     return (
       <div className="row-wrapper">
-        {plan <= 1 && (
-          <h5 className={"blue-text"} style={{ textAlign: "right" }}>
+        {plan <= 1 && !isEmpty && (
+          <h5 className={"green-text"} style={{ textAlign: "right" }}>
             {"Free Deals"}
           </h5>
         )}
@@ -44,7 +45,7 @@ class PostColumn extends React.Component {
             loader={this.doList}
             reload={reload}
             builder={(i, post) => <Post key={i} reload post={post} />}
-            wrapperClass={"row text-lg-left " + postCls}
+            wrapperClass={wrapperCls}
             emptyElement={<h1> Empty Element </h1>}
           />
         )}
@@ -60,8 +61,17 @@ class PostColumn extends React.Component {
       listPost(
         page,
         resultList => {
+          var isEmpty = page == 0 && resultList.length == 0;
+
           if (this.state.region != region) {
-            this.setState({ region });
+            this.setState({
+              region,
+              isEmpty
+            });
+          } else {
+            if (isEmpty) {
+              this.setState({ isEmpty });
+            }
           }
 
           infiniteListCallback(resultList);

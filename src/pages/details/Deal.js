@@ -78,7 +78,7 @@ class Deal extends React.Component {
         />
         <section className="section-80 section-lg-30 bg-gray-lighter">
           <div className='container container-wide details-container'>
-            <div className={`row row-50 text-xl-left ${hasNearbyCities ? '' : 'centered'}`}>
+            <div className={'row row-50 text-xl-left' + (hasNearbyCities ? '' : 'centered')}>
               <div className="col-xl-9">
                 <div className="inset-xxl-right-80">
                   <ToolBar

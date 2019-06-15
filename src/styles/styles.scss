@@ -10,6 +10,10 @@
   width:100%!important;
 }
 
+.heigth100{
+  height:100%!important;
+}
+
 .cursor-pointer{
   cursor: pointer;;
 }
@@ -32,12 +36,17 @@
   width: 100%;
 }
 
+//Common Text Styles
 .white-text, .white-text:before {
   color: white !important;
 }
 
 .yellow-text, .yellow-text:before {
   color: yellow !important;
+}
+
+.green-text{
+  color: green !important;
 }
 
 .blue-text {
@@ -64,6 +73,16 @@
 .font-weight-normal{
   font-weight: normal !important; 
 } 
+
+//Common Border Styles
+
+.border-green{
+  border: 1px solid green;
+}
+
+.border-pink{
+  border: 1px solid #c62a82;
+}
 
 .float-left{
   float:left;

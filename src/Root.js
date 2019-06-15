@@ -10,12 +10,12 @@ class Root extends Component {
   }
 
   render() {
-    const { store, history, appStarted } = this.props;
+    const { store, history } = this.props;
 
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          {appStarted ? <App /> : null}
+           <App />
         </ConnectedRouter>
       </Provider>
     );

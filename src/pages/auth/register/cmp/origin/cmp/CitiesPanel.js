@@ -8,13 +8,19 @@ class CitiesPanel extends React.Component {
   render() {
     var { cityList, selectCity, departureCities } = this.props;
     var selectedCityCodes = departureCities.map(c => c.code);
+
     return (
       <div className="container cities-panel-container">
         <div className="row row-30 row-offset-1 text-lg-left">
           {cityList.map((city, i) => (
             <div className="col-3" key={i}>
               <span
-                className={`button button-${selectedCityCodes.indexOf(city.code) >= 0 ? 'primary' : 'default'} button-rounded button-sm`}
+                className={
+                  "button button-rounded button-sm button-" +
+                  (selectedCityCodes.indexOf(city.code) >= 0
+                    ? "primary"
+                    : "default")
+                }
                 onClick={() => selectCity({ ...city })}
               >
                 {city.name}

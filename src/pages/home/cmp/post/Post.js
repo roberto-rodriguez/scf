@@ -9,7 +9,7 @@ import moment from "moment";
 class Post extends React.Component {
   render() {
     var { post, plan } = this.props;
-    var { 
+    var {
       postId,
       originCity,
       city,

@@ -17,3 +17,4 @@ export function scrollTo(distance, duration) {
   }
   window.requestAnimationFrame(step);
 }
+

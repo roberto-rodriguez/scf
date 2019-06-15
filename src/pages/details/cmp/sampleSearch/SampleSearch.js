@@ -24,8 +24,8 @@ class SampleSearch extends React.Component {
     var { sampleSearch } = this.props;
 
     var {
-      departureDate,
-      arrivalDate,
+      departureDateStr,
+      arrivalDateStr,
       nights,
       originCode,
       cityCode,
@@ -58,19 +58,19 @@ class SampleSearch extends React.Component {
 
                 <div className="list-item-content-left">
                   <div className="text-base">
-                    {dates.format(departureDate, "MMM Do")}
+                    {dates.formatStringDate(departureDateStr, "MMM Do")}
                   </div>
                   <span className="small d-block">{this.getCode(originCode)}</span>
                 </div>
                 <div className="list-item-content-line-wrapper small">
                   <div className="list-item-content-line-top">
-                    {nights} nights
+                    {nights} days
                   </div>
                   <div className="list-item-content-line" />
                 </div>
                 <div className="list-item-content-right">
                   <div className="text-base black-text">
-                    {dates.format(arrivalDate, "MMM Do")}
+                    {dates.formatStringDate(arrivalDateStr, "MMM Do")}
                   </div>
                   <span className="small d-block">{this.getCode(cityCode)}</span>
                 </div>

@@ -1,46 +1,29 @@
 import * as dates from "../../../../../utils/dates";
 
 var builders = {
-  google: function(
-    originCode,
-    cityCode,
-    formattedDepartureDate,
-    formattedArrivalDate
-  ) {
+  google: function(originCode, cityCode, departureDateStr, arrivalDateStr) {
     originCode = getCode(originCode, 1);
     cityCode = getCode(cityCode, 1);
 
-    return `https://www.google.com/flights#flt=${originCode}.${cityCode}.${formattedDepartureDate}*${cityCode}.${originCode}.${formattedArrivalDate};c:USD;e:1;sd:1;t:f`;
+    return `https://www.google.com/flights#flt=${originCode}.${cityCode}.${departureDateStr}*${cityCode}.${originCode}.${arrivalDateStr};c:USD;e:1;sd:1;t:f`;
   },
-  kayak: function(
-    originCode,
-    cityCode,
-    formattedDepartureDate,
-    formattedArrivalDate
-  ) {
+  kayak: function(originCode, cityCode, departureDateStr, arrivalDateStr) {
     originCode = getCode(originCode, 0);
     cityCode = getCode(cityCode, 0);
 
-    return `https://kayak.com/flights/${originCode}-${cityCode}/${formattedDepartureDate}/${formattedArrivalDate}?sort=price_a`;
+    return `https://kayak.com/flights/${originCode}-${cityCode}/${departureDateStr}/${arrivalDateStr}?sort=price_a`;
   },
-  momondo: function(
-    originCode,
-    cityCode,
-    formattedDepartureDate,
-    formattedArrivalDate
-  ) {
+  momondo: function(originCode, cityCode, departureDateStr, arrivalDateStr) {
     originCode = getCode(originCode, 0);
     cityCode = getCode(cityCode, 0);
 
-    return `https://www.momondo.com/flight-search/${originCode}-${cityCode}/${formattedDepartureDate}/${formattedArrivalDate}?sort=price_a`;
+    return `https://www.momondo.com/flight-search/${originCode}-${cityCode}/${departureDateStr}/${arrivalDateStr}?sort=price_a`;
   },
   sky: function(
     originCode,
     cityCode,
-    formattedDepartureDate,
-    formattedArrivalDate,
-    departureDate,
-    arrivalDate,
+    departureDateStr,
+    arrivalDateStr,
     skyLink
   ) {
     if (skyLink) {
@@ -49,8 +32,8 @@ var builders = {
     originCode = getCode(originCode, 2);
     cityCode = getCode(cityCode, 2);
 
-    formattedDepartureDate = dates.formatWithTimezone(departureDate, "YYMMDD");
-    formattedArrivalDate == dates.formatWithTimezone(arrivalDate, "YYMMDD");
+    var formattedDepartureDate = dates.formatStringDate(departureDateStr, "YYMMDD");
+    var formattedArrivalDate = dates.formatStringDate(arrivalDateStr, "YYMMDD");
 
     return `https://www.skyscanner.com/transport/flights/${originCode}/${cityCode}/${formattedDepartureDate}/${formattedArrivalDate}`;
   }
@@ -60,44 +43,25 @@ export function buildUrl(provider, sampleSearch) {
   var {
     originCode,
     cityCode, 
-    departureDate,
-    arrivalDate,
+    departureDateStr,
+    arrivalDateStr,
     skyLink,
     kiwiLink
   } = sampleSearch;
-
-  var formattedDepartureDate = dates.formatWithTimezone(departureDate);
-  var formattedArrivalDate = dates.formatWithTimezone(arrivalDate);
-
+ 
   if (provider == "kiwi") {
     return kiwiLink;
   }
 
   if (provider === "all") {
     return Object.values(builders).map(func =>
-      func(
-        originCode,
-        cityCode,
-        formattedDepartureDate,
-        formattedArrivalDate,
-        departureDate,
-        arrivalDate,
-        skyLink
-      )
+      func(originCode, cityCode, departureDateStr, arrivalDateStr, skyLink)
     );
   } else {
     var builder = provider && builders[provider];
     return (
       builder &&
-      builder(
-        originCode,
-        cityCode,
-        formattedDepartureDate,
-        formattedArrivalDate,
-        departureDate,
-        arrivalDate,
-        skyLink
-      )
+      builder(originCode, cityCode, departureDateStr, arrivalDateStr, skyLink)
     );
   }
 }

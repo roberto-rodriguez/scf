@@ -12,15 +12,15 @@ class ExpiredPostColumn extends React.Component {
     return (
       <div className="row-wrapper">
         <div>
-          <h5 className={"blue-text"} style={{ textAlign: "left" }}>
-            Premium Deals from{" "}
-            <span style={{ color: "#FF8C00" }}>3 days ago</span>
+          <h5 className={"pink-text"} style={{ textAlign: "left" }}>
+            Premium Deals{" "}
+            <span style={{ color: "#FF8C00" }}>from 3 days ago</span>
             <span className="see-premium-link">
               {"See today's deals for FREE"}
             </span>
           </h5>
         </div>
-        <div className="row post-column text-lg-left">
+        <div className="row post-column text-lg-left border-pink">
           {postList.map((post, i) => (
             <Post key={i} post={post} />
           ))}

@@ -37,4 +37,10 @@ export function setSelectedPostId(postId) {
     dispatch(dealActionsCreator.setSelectedPostId(postId));
   };
 }
+
+export function logProviderLinkClick() {
+  return function() {
+    Proxy.get("log/partnerLinkClick" );
+  };
+}
  

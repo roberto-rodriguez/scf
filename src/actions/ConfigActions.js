@@ -1,25 +1,19 @@
-import * as configActionsCreator from "./config.actions_creator"; 
-import { TOKEN_COOKIE } from "../constants/Constants"; 
+import * as configActionsCreator from "./config.actions_creator";
+import { TOKEN_COOKIE } from "../constants/Constants";
 import * as Proxy from "./Proxy";
 
 export function loadConfig() {
   return function(dispatch) {
-    Proxy.get("config/load", data => {
-      dispatch(configActionsCreator.initConfigsAction(data));
-    });
+    // Proxy.get("config/load", data => {
+    dispatch(configActionsCreator.initConfigsAction(loadConfigsAPI()));
+    // });
   };
 }
 
 //-------------  TEST API ------------------------
 
-function loadConfigsAPI(token) {
-  return {
-    auth: {
-      plan: token ? 2 : 0, //2-trial  0-visitor
-      email: "user@gmail.com",
-      [TOKEN_COOKIE]: TOKEN_COOKIE + "_" + new Date().getTime()
-    },
-    configs: {
+function loadConfigsAPI() {
+  return { 
       regions: {
         1: [
           { name: "Atlanta", code: "ATL" },
@@ -73,7 +67,6 @@ function loadConfigsAPI(token) {
           { name: "Montreal", code: "YMQ@052p7@ymqa" },
           { name: "Winnipeg", code: "YWG" }
         ]
-      }
-    }
+      } 
   };
 }
