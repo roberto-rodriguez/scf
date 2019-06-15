@@ -4,13 +4,14 @@ import "./authStyles.scss";
 import PropTypes from "prop-types";
 import { AuthHeader } from "./cmp/";
 import * as authActions from "./actions/AuthActions";
-
+import { Alert } from "reactstrap";
 class Login extends React.Component {
   state = {
     email: "",
     password: "",
     requiredEmail: false,
-    requiredPassword: false
+    requiredPassword: false,
+    invalidCredentials: false
   };
 
   onLogin = () => {
@@ -29,13 +30,23 @@ class Login extends React.Component {
       });
 
       login(email, password, (resutCode, resultMessage) => {
-        history.push("/");
+        if (resutCode) {
+          this.setState({ invalidCredentials: true });
+        } else {
+          history.push("/");
+        }
       });
     }
   };
 
   render() {
-    var { email, password, requiredEmail, requiredPassword } = this.state;
+    var {
+      email,
+      password,
+      requiredEmail,
+      requiredPassword,
+      invalidCredentials
+    } = this.state;
     return (
       <div>
         <AuthHeader />
@@ -45,6 +56,10 @@ class Login extends React.Component {
           <div className="col-md-6 col-lg-4 col-xl-3 col-9">
             <span className="rd-mailform rd-form text-left">
               <div className="form-wrap has-error">
+                {invalidCredentials && (
+                  <Alert color="primary">Invalid Login Credentials</Alert>
+                )}
+
                 <label className="form-label-outside" htmlFor="login">
                   E-mail
                 </label>

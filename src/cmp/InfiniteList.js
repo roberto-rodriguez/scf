@@ -116,11 +116,7 @@ class InfiniteList extends Component {
 
     if (loading) {
       return (<h5>Loading...</h5>);
-    }
-
-    if(size == 0){
-      return (<h5>There are not elements to show</h5>);
-    }
+    } 
 
     return (
       <div className={wrapperClass}>

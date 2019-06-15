@@ -2,10 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./header.scss";
 import PropTypes from "prop-types";
-import { LoginButton, Logo } from "./cmp";
+import { LoginButton, FilterButton, Logo } from "./cmp";
+import { connect } from "react-redux";
+import DealsFilter from "../../pages/home/cmp/header/cmp/DealsFilter";
 class NavBar extends React.Component {
   constructor(props) {
-    super(props); 
+    super(props);
     this.state = {
       navSolidBackground: null,
       liFocus: false
@@ -40,7 +42,7 @@ class NavBar extends React.Component {
   }
 
   render() {
-    var { navBck } = this.props;
+    var { navBck, appStarted } = this.props;
     var { navSolidBackground } = this.state;
     var navCls = "rd-navbar-wrap";
     var darkNavLink = false;
@@ -76,7 +78,7 @@ class NavBar extends React.Component {
         }}
       >
         <nav
-          className="rd-navbar rd-navbar-minimal rd-navbar-static"
+          className="rd-navbar rd-navbar-minimal rd-navbar-static heigth100"
           data-layout="rd-navbar-fixed"
           data-sm-layout="rd-navbar-fixed"
           data-md-layout="rd-navbar-fixed"
@@ -94,34 +96,43 @@ class NavBar extends React.Component {
           data-xl-stick-up="true"
           data-xxl-stick-up="true"
         >
-          <Logo navSolidBackground={navBck || navSolidBackground} />
-          <div
-            className="rd-navbar-inner"
-            style={{ paddingTop: 10, float: "right" }}
-          >
-            <div className="rd-navbar-nav-wrap toggle-original-elements">
-              <ul className="rd-navbar-nav">
-                <li className={`rd-navbar--has-dropdown rd-navbar-submenu ${darkNavLink ? 'dark-nav-link': ''}`}>
-                  <a href="#" >
-                    About
-                  </a>
-                  <span className="rd-navbar-submenu-toggle" />
-                  <ul className="rd-navbar-dropdown">
-                    <li>
-                      <NavLink to="/about">Overview</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/about">Testimonials</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="/about">FAQ</NavLink>
-                    </li>
-                  </ul>
-                </li>
-                <LoginButton darkNavLink={darkNavLink}/>
-              </ul>
+          {appStarted && (
+            <div className="rd-navbar-inner heigth100">
+              <div
+                className="rd-navbar-nav-wrap toggle-original-elements heigth100 width100"
+                style={{ justifyContent: "space-between" }}
+              >
+                <Logo navSolidBackground={navBck || navSolidBackground} />
+
+                <FilterButton />
+
+                <ul className="rd-navbar-nav" style={{ float: "right" }}>
+                  <li
+                    className={`rd-navbar--has-dropdown rd-navbar-submenu ${
+                      darkNavLink ? "dark-nav-link" : ""
+                    }`}
+                  >
+                    <a href="#">About</a>
+                    <span className="rd-navbar-submenu-toggle" />
+                    <ul className="rd-navbar-dropdown">
+                      <li>
+                        <NavLink to="/about">Overview</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/about">Testimonials</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/about">FAQ</NavLink>
+                      </li>
+                    </ul>
+                  </li>
+                  <LoginButton darkNavLink={darkNavLink} />
+                </ul>
+              </div>
+
+              {false && ( <DealsFilter />)}
             </div>
-          </div>
+          )}
         </nav>
       </div>
     );
@@ -129,7 +140,12 @@ class NavBar extends React.Component {
 }
 
 NavBar.propTypes = {
-  navBck: PropTypes.bool
+  navBck: PropTypes.bool,
+  appStarted: PropTypes.bool
 };
 
-export default NavBar;
+const mapStateToProps = ({ authReducer }) => ({
+  appStarted: authReducer.appStarted
+});
+
+export default connect(mapStateToProps)(NavBar);

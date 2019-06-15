@@ -1,6 +1,10 @@
 import React from "react";
 import NavBar from "../../../../cmp/header/NavBar";
+import * as utils from "../../../../utils/util";
 import { HeaderRegion, SubscribeButton } from "./cmp";
+import "./homeHeaderStyles.scss";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 var regions = [
   "All Deals to:",
@@ -11,51 +15,76 @@ var regions = [
   "America", //6
   "Africa" //7
 ];
-class HomeHeader extends React.Component {
+class HomeHeader2 extends React.Component {
   render() {
+    var { appStarted } = this.props;
+
     return (
-      <header className="page-header home-header">
+      <header className="home-header2">
         <NavBar />
 
-        <section style={{ paddingTop: 130 }}>
-          <h3 style={{ color: "white", fontFamily: "Courgette, cursive" }}>
-            Find the TOP chepest flights
-          </h3>
-          <br />
-          <span
-            style={{
-              color: "white",
-              fontSize: 22,
-              fontFamily: "Overlock, cursive"
-            }}
-          >
-            Departing from your home city
-          </span>
+        <div className="home-header-wrap">
+          <div className="home-header-top">
+            <div className="home-header-top-inner">
+              <div className="home-header-top-title">
+                <h3
+                  className="blue-text"
+                  style={{ fontFamily: "Courgette, cursive" }}
+                >
+                  We help you to
+                  <span
+                    className="pink-text"
+                    style={{ fontFamily: "Courgette, cursive" }}
+                  >
+                    {" Fly Super Cheap "}
+                  </span> 
+                </h3>
+                <br />
+                <h4 className="blue-text">Finding the BEST DEALS departing from your home city</h4>
+                <br />
+                <h4
+                  className="home-header-sub-title"
+                  style={{ color: "maroon" }}
+                >
+                  Deals up to 70% OFF
+                </h4>
+              </div>
 
-          <br />
-          <br />
-          <span
-            className="text text-italic"
-            style={{ color: "white", fontFamily: "Overlock, cursive" }}
-          >
-            Updated Daily
-          </span>
+              {appStarted && <SubscribeButton />}
+            </div>
+          </div>
 
-          <br />
-          <br />
-          <SubscribeButton />
-          <br />
-          <br />
-          <br />
-        </section>
+          <div className="home-header-bottom">
+            <div className="isotope-filters isotope-filters-horizontal">
+              <ul className="nav-custom" style={{ backgroundColor: "white" }}>
+                {appStarted &&
+                  regions.map((r, i) => (
+                    <HeaderRegion key={i} id={i + 1} text={r} />
+                  ))}
+              </ul>
+            </div>
 
-        <div className="isotope-filters isotope-filters-horizontal">
-          <ul className="nav-custom" style={{ backgroundColor: "white" }}>
-            {regions.map((r, i) => (
-              <HeaderRegion key={i} id={i + 1} text={r} />
-            ))}
-          </ul>
+            {appStarted && (
+              <div
+                className="arrow bounce cursor-pointer"
+                onClick={() => utils.scrollTo(600, 1000)}
+              >
+                <span className="fa fa-chevron-down fa-2x" />
+              </div>
+            )}
+          </div>
         </div>
+
+        <a
+          href="https://unsplash.com/@simonmigaj?utm_source=trello&amp;utm_medium=referral&amp;utm_campaign=api-credit"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Simon Migaj"
+          className="hide-on-tablet"
+          style={{ position: "absolute", bottom: 10, right: 10 }}
+        >
+          Photo by: Simon Migaj
+        </a>
       </header>
     );
   }
@@ -63,4 +92,8 @@ class HomeHeader extends React.Component {
   onUpdateRegion = region => this.setState(region);
 }
 
-export default HomeHeader;
+const mapStateToProps = ({ authReducer }) => ({
+  appStarted: authReducer.appStarted
+});
+
+export default connect(mapStateToProps)(HomeHeader2);

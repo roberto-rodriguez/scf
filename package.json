@@ -36,6 +36,7 @@
     "axios": "0.18.0",
     "axios-jsonp": "1.0.2",
     "connected-react-router": "4.4.1",
+    "detect-browser": "4.5.1",
     "express": "4.16.4",
     "moment": "2.24.0",
     "object-assign": "4.1.1",

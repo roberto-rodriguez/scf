@@ -1,11 +1,10 @@
 import * as Proxy from "../../../actions/Proxy";
-import * as postActionsCreator from "../../../actions/post.actions_creator"; 
+import * as postActionsCreator from "../../../actions/post.actions_creator";
 
 const updateRegionAction = region => ({ type: "REGION_UPDATE", region });
 
 export function listPost(page, callback, reload) {
   return function(dispatch, getState) {
- 
     var { postReducer } = getState();
 
     var freePostObj = postReducer.postList;
@@ -14,13 +13,16 @@ export function listPost(page, callback, reload) {
     var postList = Object.values(freePostObj);
     var request = {};
 
-    if (!reload && currentPage >= 0 && page == 0 && postList.length != 0) {  
+    if (!reload && currentPage >= 0 && page == 0 && postList.length != 0) {
       callback(postList, page); //If this happen, it is comming back from another page to home, then not need to look in the server
       return;
     }
 
-    if (reload && region >= 2) {
-      postList = postList.filter(post => post.region == region);
+    if (region >= 2) {
+      // if (reload) {
+          postList = postList.filter(post => post.region == region);
+      // }
+
       request.region = region;
     }
 
@@ -35,12 +37,13 @@ export function listPost(page, callback, reload) {
 
       var offset = postList.length % 10;
 
-      if (region != 1 && offset != 0) { //When region == 1 is Requesting All Deals, in that case reload 
-       
+      if (region != 1 && offset != 0) {
+        //When region == 1 is Requesting All Deals, in that case reload
+
         start += offset;
         limit = 10 - offset;
       }
- 
+
       Proxy.post(`post/list/${start}/${limit}`, request, response => {
         var callbackList = [];
 
@@ -53,7 +56,7 @@ export function listPost(page, callback, reload) {
         callback(callbackList);
 
         dispatch(postActionsCreator.addPostListAction(response, page));
-      }); 
+      });
     }
   };
 }
@@ -63,4 +66,3 @@ export function updateRegion(region) {
     dispatch(updateRegionAction(region));
   };
 }
- 

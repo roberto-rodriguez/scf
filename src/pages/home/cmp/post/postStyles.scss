@@ -52,6 +52,11 @@
    padding: 8px 10px 4px 10px;
  }
 
+ .post-header table tbody tr td span{
+  white-space: nowrap;
+  overflow: hidden;
+ }
+
  .post-footer{
   width: 100%;
   padding: 10px 10px 5px 10px;

@@ -21740,8 +21740,8 @@ html:not(.ie-10) .not-animated {
 
 .rd-navbar-minimal.rd-navbar-static .rd-navbar-inner {
 	max-width: 1800px;
-	padding-top: 24px;
-	padding-bottom: 24px;
+	/* padding-top: 24px;
+	padding-bottom: 24px; */
 	background-color: transparent;
 }
 
@@ -21761,14 +21761,14 @@ html:not(.ie-10) .not-animated {
 }
 
 .rd-navbar-minimal.rd-navbar-static .rd-navbar-nav {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	margin-right: 10px;
+	/* margin-top: 10px; */
+	/* margin-bottom: 10px;
+	margin-right: 10px; */
 }
 
 @media (min-width: 1200px) {
 	.rd-navbar-minimal.rd-navbar-static .rd-navbar-nav {
-		margin-right: 42px;
+		/* margin-right: 42px; */
 	}
 }
 
@@ -22016,8 +22016,8 @@ html:not(.ie-10) .not-animated {
 	align-items: center;
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: 15px;
-	padding-right: 15px;
+	/* padding-left: 15px;
+	padding-right: 15px; */
 	max-width: 1770px;
 }
 
@@ -22735,7 +22735,7 @@ html:not(.ie-10) .not-animated {
 }
 
 .rd-navbar-static .rd-navbar-nav {
-	margin-right: 32px;
+	 /* margin-right: 32px; */
 }
 
 .rd-navbar-static .rd-navbar-nav > li {

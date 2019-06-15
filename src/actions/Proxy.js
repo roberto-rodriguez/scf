@@ -3,22 +3,20 @@ import { baseURL, TOKEN_COOKIE } from "../constants/Constants";
 import cookie from "react-cookies";
 
 export function get(url, callback) {
-  var token = cookie.load(TOKEN_COOKIE);
+  var token = cookie.load(TOKEN_COOKIE); 
 
   if (token) {
     var separator = url.indexOf("?") >= 0 ? "&" : "?";
-    url += separator + "token=" + token;
+    url += separator + TOKEN_COOKIE + "=" + token ;
   }
 
   send(url, callback);
 }
 
 export function post(url, data, callback) {
-  var token = cookie.load(TOKEN_COOKIE);
+  var token = cookie.load(TOKEN_COOKIE); 
 
-  if (token) {
-    data.token = token;
-  }
+  data[TOKEN_COOKIE] = token; 
 
   send(url, callback, data);
 }

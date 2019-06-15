@@ -6,7 +6,7 @@ import NavBar from "../../cmp/header/NavBar";
   render() { 
     return (
       <header className="basic-header bg-gray-dark">
-        <NavBar /> 
+        <NavBar navBck/> 
       </header>
     );
   }
