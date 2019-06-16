@@ -20,7 +20,7 @@ export function listPost(page, callback, reload) {
 
     if (region >= 2) {
       // if (reload) {
-          postList = postList.filter(post => post.region == region);
+      postList = postList.filter(post => post.region == region);
       // }
 
       request.region = region;
@@ -65,4 +65,45 @@ export function updateRegion(region) {
   return function(dispatch) {
     dispatch(updateRegionAction(region));
   };
+}
+
+//-------------- Filter
+
+export function updateFilter(name, val) {
+  return function(dispatch, getState) {
+    var { postReducer } = getState();
+    var filters = { ...postReducer.filters };
+
+    switch (name) {
+      case "originNotIn":
+      case "regionNotIn":
+        filters[name] = addRemoveFromList(filters[name], val);
+        break;
+      default:
+        filters[name] = val;
+    }
+
+    dispatch(postActionsCreator.updateFiltersAction(filters));
+  };
+}
+
+
+//----- Util functions --------
+function addRemoveFromList(list, val) {
+  var found = false;
+  var newList = [];
+
+  list.forEach(elem => {
+    if (elem == val) {
+      found = true;
+    } else {
+      newList.push(elem);
+    }
+  });
+
+  if (!found) {
+    newList.push(val);
+  }
+
+  return newList;
 }

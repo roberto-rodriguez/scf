@@ -4,7 +4,7 @@ import "./header.scss";
 import PropTypes from "prop-types";
 import { LoginButton, FilterButton, Logo } from "./cmp";
 import { connect } from "react-redux";
-import DealsFilter from "../../pages/home/cmp/header/cmp/DealsFilter";
+import DealsFilter from "../../pages/home/cmp/header/dealsFilter/DealsFilter";
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -130,7 +130,7 @@ class NavBar extends React.Component {
                 </ul>
               </div>
 
-              {false && ( <DealsFilter />)}
+              <DealsFilter />
             </div>
           )}
         </nav>

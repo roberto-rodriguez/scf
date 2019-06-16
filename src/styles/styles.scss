@@ -1,4 +1,10 @@
 
+.centered{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
 
 @media (max-width: 876px) {
   .hide-on-tablet{
@@ -21,6 +27,11 @@
 .h-margin-20{
   margin-left: 20%;
   margin-right: 20%;
+}
+
+.h-margin-20px{
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .margin-right-10{ 
@@ -84,12 +95,16 @@
   border: 1px solid #c62a82;
 }
 
+.bck-text {
+  background-color: #c62a82!important; 
+} 
+
 .float-left{
   float:left;
 }
 
 .float-right{
-  float:left;
+  float:right;
 }
 
 

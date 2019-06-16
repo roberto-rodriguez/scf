@@ -1,4 +1,12 @@
  
+/*   Template Override      */
+
+.rd-navbar-nav-wrap{
+	padding: 0px 25px;
+}
+
+/* End of template override */
+
 html *:first-child {
 	margin-top: 0;
 }

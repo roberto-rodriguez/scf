@@ -62,12 +62,11 @@ export default function postReducer(state = initialState.deals, action) {
         }
       };
 
-      case "SET_SELECTED_POST":
-        return {
-          ...state,
-          selectedPostId: data 
-        };
-  
+    case "SET_SELECTED_POST":
+      return {
+        ...state,
+        selectedPostId: data
+      };
 
     case "CLEAN_POST_LIST":
       return {
@@ -76,6 +75,12 @@ export default function postReducer(state = initialState.deals, action) {
         currentPage: 0,
         postList: {},
         expiredPostList: {}
+      };
+
+    case "UPDATE_FILTERS":
+      return {
+        ...state,
+        filters: { ...data }
       };
 
     default:

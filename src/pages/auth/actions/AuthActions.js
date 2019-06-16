@@ -27,9 +27,9 @@ export function init() {
       cookie.save(TOKEN_COOKIE, token);
 
       dispatch(authActionsCreator.setAuthAction(data));
-
-      setTimeout(() => configActions.loadConfig()(dispatch, getState), 3000);
     });
+
+    configActions.loadConfig()(dispatch, getState);
   };
 }
 

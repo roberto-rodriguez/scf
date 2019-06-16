@@ -29,10 +29,10 @@ class FilterButton extends React.Component {
           >
             <span className="white-text">
               <span className="icon fa fa-filter margin-right-10" />
-              Filter Deals
+              Filter
             </span>
           </li>
-        </ul> 
+        </ul>
       </span>
     );
   }
