@@ -11,12 +11,12 @@ export default function postReducer(state = initialState.deals, action) {
 
   switch (type) {
     case "POST_LIST_ADD":
-      var { postList, expiredPostList, currentPage } = data;
+      var { postList, expiredPostList, currentPage, reload } = data;
 
       var newState = objectAssign({}, state, {
         currentPage,
-        postList: objectAssign({}, state.postList, postList),
-        expiredPostList: objectAssign(
+        postList: reload ? postList : objectAssign({}, state.postList, postList),
+        expiredPostList: reload ? expiredPostList : objectAssign(
           {},
           state.expiredPostList,
           expiredPostList
@@ -62,12 +62,11 @@ export default function postReducer(state = initialState.deals, action) {
         }
       };
 
-      case "SET_SELECTED_POST":
-        return {
-          ...state,
-          selectedPostId: data 
-        };
-  
+    case "SET_SELECTED_POST":
+      return {
+        ...state,
+        selectedPostId: data
+      };
 
     case "CLEAN_POST_LIST":
       return {
@@ -77,6 +76,14 @@ export default function postReducer(state = initialState.deals, action) {
         postList: {},
         expiredPostList: {}
       };
+
+    case "UPDATE_FILTERS":
+      return {
+        ...state,
+        filters: { ...data }
+      };
+
+   
 
     default:
       return state;

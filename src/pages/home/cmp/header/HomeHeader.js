@@ -15,13 +15,13 @@ var regions = [
   "America", //6
   "Africa" //7
 ];
-class HomeHeader2 extends React.Component {
+class HomeHeader extends React.Component {
   render() {
     var { appStarted } = this.props;
 
     return (
       <header className="home-header2">
-        <NavBar />
+        <NavBar hasFilters={true} />
 
         <div className="home-header-wrap">
           <div className="home-header-top">
@@ -37,10 +37,12 @@ class HomeHeader2 extends React.Component {
                     style={{ fontFamily: "Courgette, cursive" }}
                   >
                     {" Fly Super Cheap "}
-                  </span> 
+                  </span>
                 </h3>
                 <br />
-                <h4 className="blue-text">Finding the BEST DEALS departing from your home city</h4>
+                <h4 className="blue-text">
+                  Finding the BEST DEALS departing from your home city
+                </h4>
                 <br />
                 <h4
                   className="home-header-sub-title"
@@ -92,8 +94,12 @@ class HomeHeader2 extends React.Component {
   onUpdateRegion = region => this.setState(region);
 }
 
+HomeHeader.propTypes = {
+  appStarted: PropTypes.bool
+};
+
 const mapStateToProps = ({ authReducer }) => ({
   appStarted: authReducer.appStarted
 });
 
-export default connect(mapStateToProps)(HomeHeader2);
+export default connect(mapStateToProps)(HomeHeader);

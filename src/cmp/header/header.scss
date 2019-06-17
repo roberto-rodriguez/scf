@@ -28,6 +28,14 @@
  .nav-filter-button{
    border: 1px solid white;
    border-radius: 20px;
+
+    span{
+    font-size: 14px;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: .3s;
+   }
 }
 
 .nav-filter-button a:before{

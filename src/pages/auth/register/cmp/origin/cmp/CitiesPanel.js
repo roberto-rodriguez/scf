@@ -47,9 +47,12 @@ CitiesPanel.propTypes = {
 };
 
 function mapStateToProps({ configReducer }, props) {
-  var { regions } = configReducer;
+  var cities = configReducer.cities || {};
+  var cityList = Object.values(cities).filter(
+    city => city.region == props.regionId
+  );
 
-  return { cityList: (regions && regions[props.regionId]) || [] };
+  return { cityList: cityList || [] };
 }
 
 export default connect(mapStateToProps)(CitiesPanel);

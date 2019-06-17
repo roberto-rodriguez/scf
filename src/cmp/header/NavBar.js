@@ -2,7 +2,14 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./header.scss";
 import PropTypes from "prop-types";
+<<<<<<< HEAD
 import { LoginButton, Logo } from "./cmp";
+=======
+import { LoginButton, FilterButton, Logo } from "./cmp";
+import { connect } from "react-redux";
+import DealsFilter from "../../pages/home/cmp/header/dealsFilter/DealsFilter";
+
+>>>>>>> 7a9f5844f123730a579c4b992c7875a4f4e5bea1
 class NavBar extends React.Component {
   constructor(props) {
     super(props); 
@@ -40,7 +47,11 @@ class NavBar extends React.Component {
   }
 
   render() {
+<<<<<<< HEAD
     var { navBck } = this.props;
+=======
+    var { navBck, appStarted, hasFilters, showFilters } = this.props;
+>>>>>>> 7a9f5844f123730a579c4b992c7875a4f4e5bea1
     var { navSolidBackground } = this.state;
     var navCls = "rd-navbar-wrap";
     var darkNavLink = false;
@@ -94,6 +105,7 @@ class NavBar extends React.Component {
           data-xl-stick-up="true"
           data-xxl-stick-up="true"
         >
+<<<<<<< HEAD
           <Logo navSolidBackground={navBck || navSolidBackground} />
           <div
             className="rd-navbar-inner"
@@ -120,6 +132,43 @@ class NavBar extends React.Component {
                 </li>
                 <LoginButton darkNavLink={darkNavLink}/>
               </ul>
+=======
+          {appStarted && (
+            <div className="rd-navbar-inner heigth100">
+              <div
+                className="rd-navbar-nav-wrap toggle-original-elements heigth100 width100"
+                style={{ justifyContent: "space-between" }}
+              >
+                <Logo navSolidBackground={navBck || navSolidBackground} />
+
+                {hasFilters && <FilterButton />}
+
+                <ul className="rd-navbar-nav" style={{ float: "right" }}>
+                  <li
+                    className={`rd-navbar--has-dropdown rd-navbar-submenu ${
+                      darkNavLink ? "dark-nav-link" : ""
+                    }`}
+                  >
+                    <a href="#">About</a>
+                    <span className="rd-navbar-submenu-toggle" />
+                    <ul className="rd-navbar-dropdown">
+                      <li>
+                        <NavLink to="/about">Overview</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/about">Testimonials</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/about">FAQ</NavLink>
+                      </li>
+                    </ul>
+                  </li>
+                  <LoginButton darkNavLink={darkNavLink} />
+                </ul>
+              </div>
+
+              {hasFilters && showFilters && <DealsFilter />}
+>>>>>>> 7a9f5844f123730a579c4b992c7875a4f4e5bea1
             </div>
           </div>
         </nav>
@@ -129,7 +178,23 @@ class NavBar extends React.Component {
 }
 
 NavBar.propTypes = {
+<<<<<<< HEAD
   navBck: PropTypes.bool
 };
 
 export default NavBar;
+=======
+  navBck: PropTypes.bool,
+  appStarted: PropTypes.bool,
+  showFilters: PropTypes.bool,
+  hasFilters: PropTypes.bool,
+  setViewState: PropTypes.func
+};
+
+const mapStateToProps = ({ authReducer, viewReducer }) => ({
+  appStarted: authReducer.appStarted,
+  showFilters: viewReducer.showFilters
+});
+
+export default connect(mapStateToProps)(NavBar);
+>>>>>>> 7a9f5844f123730a579c4b992c7875a4f4e5bea1

@@ -2,13 +2,13 @@ import { combineReducers } from "redux";
 import postReducer from "./postReducer";
 import configReducer from "./configReducer";
 import authReducer from "./authReducer";
-import viewStateReducer from "./viewStateReducer";
+import viewReducer from "./viewReducer";
 
 const rootReducer = combineReducers({
   postReducer,
   configReducer,
   authReducer,
-  viewStateReducer
+  viewReducer
 });
 
 export default rootReducer;
