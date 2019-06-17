@@ -17,10 +17,12 @@ class Register extends React.Component {
         email: "",
         password: "",
         repassword: "",
-        selectedRegion: 0 //this is just ofr the registering flow
+        selectedRegion: 0, //this is just ofr the registering flow
+        cityName:""
       }
     };
   }
+
 
   onNext = () => {
     var { page } = this.state;

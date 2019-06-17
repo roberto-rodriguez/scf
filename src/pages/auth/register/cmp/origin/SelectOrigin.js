@@ -45,7 +45,7 @@ class SelectOrigin extends React.Component {
 
   render() {
     var { country, region, departureCities } = this.state;
-    var { onNext, onBack, onRegister, data } = this.props;
+    var { onNext, onBack, onRegister, data, onUpdate } = this.props;
 
     return (
       <div>
@@ -121,7 +121,8 @@ class SelectOrigin extends React.Component {
               regionId={region}
               selectCity={this.selectCity}
               departureCities={departureCities}
-            />
+              data={data}
+              onUpdate={onUpdate}/>
           </div>
         ) : (
           <div>
@@ -130,7 +131,8 @@ class SelectOrigin extends React.Component {
               regionId={6}
               selectCity={this.selectCity}
               departureCities={departureCities}
-            />
+              data={data}
+              onUpdate={onUpdate}/>
           </div>
         )}
 

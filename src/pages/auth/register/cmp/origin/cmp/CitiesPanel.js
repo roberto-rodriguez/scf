@@ -6,7 +6,7 @@ import FAQCanNotFindCity from "./FAQCanNotFindCity";
 
 class CitiesPanel extends React.Component {
   render() {
-    var { cityList, selectCity, departureCities } = this.props;
+    var { cityList, selectCity, departureCities ,data , onUpdate} = this.props;
     var selectedCityCodes = departureCities.map(c => c.code);
 
     return (
@@ -32,7 +32,9 @@ class CitiesPanel extends React.Component {
           <br />
           <br />
           <br />
-          {cityList.length && <FAQCanNotFindCity />}
+          {cityList.length && <FAQCanNotFindCity
+            data={data}
+            onUpdate={onUpdate}/>}
         </div>
       </div>
     );
@@ -43,7 +45,9 @@ CitiesPanel.propTypes = {
   regionId: PropTypes.any,
   cityList: PropTypes.any,
   departureCities: PropTypes.any,
-  selectCity: PropTypes.func
+  selectCity: PropTypes.func,
+  onUpdate:PropTypes.func,
+  data: PropTypes.object
 };
 
 function mapStateToProps({ configReducer }, props) {
