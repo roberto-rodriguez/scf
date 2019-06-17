@@ -1,18 +1,28 @@
 import React from "react";
 import "../../../../authStyles.scss";
+import PropTypes from "prop-types";
 
 class FAQCanNotFindCity extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      show: false
+      show: false,
+      cityName:""
     };
   }
-
   toggle = () => this.setState({ show: !this.state.show });
 
+  updateInputValue = (field, evt) => {
+    var value = evt.target.value;
+    var { onUpdate } = this.props;
+
+    this.setState({ [field]: evt.target.value });
+    onUpdate(field, value);
+  };
   render() {
+    var { data} = this.props;
+    var {cityName }= data;
     return (
       <div
         className="responsive-tabs responsive responsive-tabs-classic resp-easy-accordion"
@@ -53,8 +63,13 @@ class FAQCanNotFindCity extends React.Component {
               </label>
               <input
                 className="form-input form-control-has-validation form-control-last-child"
-                id="subscribe-email"
-              />
+                id="cityName"
+                value={cityName}
+                onChange={evt => this.updateInputValue("cityName", evt)}
+                
+                type="text"
+                name="cityName"
+                />
             </div>
           </div>
         </div>
@@ -62,5 +77,9 @@ class FAQCanNotFindCity extends React.Component {
     );
   }
 }
+FAQCanNotFindCity.propTypes = {
+  onUpdate: PropTypes.func,
+  data: PropTypes.object
+};
 
 export default FAQCanNotFindCity;
