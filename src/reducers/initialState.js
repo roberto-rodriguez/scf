@@ -3,15 +3,14 @@ export default {
     selectedPostId: null,
     expiredPostList: {},
     postList: {},
-    region: 0,
-    filterCount: 0, //Used to notify home to update when filters change
+    region: 0, 
     filters: {
-      originNotIn: [],
-      regionNotIn: [],
-      cityOrCountry: null,
-      fromMonth: null,
-      toMonth: null,
-      hollyday: null
+      // originNotIn: [],
+      // regionNotIn: [],
+      // cityOrCountry: null,
+      // fromMonth: null,
+      // toMonth: null,
+      // holiday: null
     }
   },
   configs: {},
@@ -21,6 +20,7 @@ export default {
     departureCities: null
   },
   viewState: {
-    showFilters: false
+    showFilters: false,
+    filterCount: 0, //Used to notify home to update when filters change
   }
 };

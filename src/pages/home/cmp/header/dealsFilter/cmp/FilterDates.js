@@ -4,23 +4,9 @@ import * as postActions from "../../../../actions/PostActions";
 import PropTypes from "prop-types";
 import "../dealsFilterStyles.scss";
 import Select from "../../../../../../cmp/Select";
+import moment from "moment";
 
-const months = [
-  { name: "January", value: 0 },
-  { name: "February", value: 1 },
-  { name: "March", value: 2 },
-  { name: "April", value: 3 },
-  { name: "May", value: 4 },
-  { name: "June", value: 5 },
-  { name: "Jaly", value: 6 },
-  { name: "August", value: 7 },
-  { name: "September", value: 8 },
-  { name: "October", value: 9 },
-  { name: "November", value: 10 },
-  { name: "December", value: 11 }
-];
-
-const hollydays = [
+const holidays = [
   { name: "New Year's Day (Jan 1)", value: "01-01-2020" },
   { name: "Martin Luther King, Jr. Day (Jan 20)", value: "01-20-2020" },
   { name: "George Washington’s Birthday (Feb 17)", value: "02-17-2020" },
@@ -50,19 +36,48 @@ class FilterDates extends React.Component {
   }
 
   render() {
-    var { fromMonth, toMonth, hollyday } = this.pops;
+    var { fromMonth, toMonth, holiday, updateFilter } = this.props;
+
+    var fromDates = [];
+    var toDates = [];
+    var currentDate = moment();
+
+    for (var i = 0; i < 12; i++) {
+      var futureMonth = moment(currentDate).add(i, "M");
+      var futureMonthStart = moment(futureMonth).startOf("month");
+      var futureMonthEnd = moment(futureMonth).endOf("month");
+      fromDates.push({
+        name: moment(futureMonthStart).format("MMMM-YYYY"),
+        value: moment(futureMonthStart).format("MM-DD-YYYY")
+      });
+      toDates.push({
+        name: moment(futureMonthEnd).format("MMMM-YYYY"),
+        value: moment(futureMonthEnd).format("MM-DD-YYYY")
+      });
+    }
 
     return (
       <div
         className="height100 width100 filter-origin centered"
         style={{ paddingTop: 15 }}
       >
-        <Select label={"From Month"} items={months} style={{ marginTop: 25 }} />
-        <Select label={"To Month"} items={months} style={{ marginTop: 25 }} />
         <Select
-          label={"Around Hollydays"}
-          items={hollydays}
-          style={{ marginTop: 25 }}
+          label={"From Month"}
+          items={fromDates}
+          value={fromMonth}
+          onChange={value => updateFilter("fromMonth", value)}
+        />
+        <Select
+          label={"To Month"}
+          items={toDates}
+          value={toMonth}
+          onChange={value => updateFilter("toMonth", value)}
+        />
+        <Select
+          label={"Around Holidays"}
+          items={holidays}
+          value={holiday}
+          onChange={value => updateFilter("holiday", value)}
         />
       </div>
     );
@@ -70,15 +85,19 @@ class FilterDates extends React.Component {
 }
 
 FilterDates.propTypes = {
-  fromMonth: PropTypes.number,
-  toMonth: PropTypes.number,
-  hollyday: PropTypes.number
+  fromMonth: PropTypes.string,
+  toMonth: PropTypes.string,
+  holiday: PropTypes.string,
+  updateFilter: PropTypes.func
 };
 
 const mapStateToProps = ({ postReducer }) => ({
-  fromMonth: postReducer.fromMonth,
-  toMonth: postReducer.toMonth,
-  hollyday: postReducer.hollyday
+  fromMonth: postReducer.filters.fromMonth,
+  toMonth: postReducer.filters.toMonth,
+  holiday: postReducer.filters.holiday
 });
 
-export default connect(mapStateToProps)(FilterDates);
+export default connect(
+  mapStateToProps,
+  postActions
+)(FilterDates);

@@ -1,12 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as postActions from "../../../actions/PostActions";
+import * as viewActions from "../../../../../actions/ViewActions";
 import PropTypes from "prop-types";
 import "./dealsFilterStyles.scss";
 import { FilterOrigin, FilterDestination, FilterDates } from "./cmp/";
 
 class DealsFilter extends React.Component {
   render() {
+    var { setViewState, doFilter } = this.props;
+
     return (
       <div className="deals-filter">
         <div className="container container-wide heigth100">
@@ -36,22 +38,21 @@ class DealsFilter extends React.Component {
             <div>
               <span
                 className="button button-primary button-xs float-right"
-                href="#"
+                onClick={doFilter}
               >
-                <span className="icon fa fa-search" />
+                <span
+                  className="icon fa fa-search"
+                />
                 Search
               </span>
-              <span
-                className="button button-default button-xs float-right"
-                href="#"
-              >
+              <span className="button button-default button-xs float-right"
+                  onClick={() => setViewState("showFilters", false)}>
                 <span className="icon fa fa-close" />
                 Close
               </span>
 
               <span
                 className="button button-default button-xs float-left"
-                href="#"
               >
                 Change Departure Preferences
               </span>
@@ -63,13 +64,12 @@ class DealsFilter extends React.Component {
   }
 }
 
-DealsFilter.propTypes = {};
-
-function mapStateToProps({ postReducer }) {
-  return {};
-}
+DealsFilter.propTypes = {
+  setViewState: PropTypes.func,
+  doFilter: PropTypes.func
+};
 
 export default connect(
-  mapStateToProps,
-  postActions
+  null,
+  viewActions
 )(DealsFilter);

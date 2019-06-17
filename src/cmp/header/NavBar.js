@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { LoginButton, FilterButton, Logo } from "./cmp";
 import { connect } from "react-redux";
 import DealsFilter from "../../pages/home/cmp/header/dealsFilter/DealsFilter";
+
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -42,7 +43,7 @@ class NavBar extends React.Component {
   }
 
   render() {
-    var { navBck, appStarted } = this.props;
+    var { navBck, appStarted, hasFilters, showFilters } = this.props;
     var { navSolidBackground } = this.state;
     var navCls = "rd-navbar-wrap";
     var darkNavLink = false;
@@ -104,7 +105,7 @@ class NavBar extends React.Component {
               >
                 <Logo navSolidBackground={navBck || navSolidBackground} />
 
-                <FilterButton />
+                {hasFilters && <FilterButton />}
 
                 <ul className="rd-navbar-nav" style={{ float: "right" }}>
                   <li
@@ -130,7 +131,7 @@ class NavBar extends React.Component {
                 </ul>
               </div>
 
-              <DealsFilter />
+              {hasFilters && showFilters && <DealsFilter />}
             </div>
           )}
         </nav>
@@ -141,11 +142,15 @@ class NavBar extends React.Component {
 
 NavBar.propTypes = {
   navBck: PropTypes.bool,
-  appStarted: PropTypes.bool
+  appStarted: PropTypes.bool,
+  showFilters: PropTypes.bool,
+  hasFilters: PropTypes.bool,
+  setViewState: PropTypes.func
 };
 
-const mapStateToProps = ({ authReducer }) => ({
-  appStarted: authReducer.appStarted
+const mapStateToProps = ({ authReducer, viewReducer }) => ({
+  appStarted: authReducer.appStarted,
+  showFilters: viewReducer.showFilters
 });
 
 export default connect(mapStateToProps)(NavBar);

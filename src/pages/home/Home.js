@@ -2,15 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import "./homeStyles.scss";
-import { PostColumn, ExpiredPostColumn, HomeHeader } from "./cmp/";
-import * as viewStateActions from "../../actions/ViewStateActions";
+import { PostColumn, ExpiredPostColumn, HomeHeader } from "./cmp/"; 
 class Home extends React.Component {
   render() {
-    var { plan } = this.props;
+    var { plan, appStarted } = this.props;
 
     return (
       <div>
         <HomeHeader />
+
+        {appStarted && (
         <section className="section-80 section-lg-120 home-body">
           <div className="home-container isotope-wrap" style={{ pading: 0 }}>
             <div
@@ -38,6 +39,7 @@ class Home extends React.Component {
             </div>
           </div>
         </section>
+        )}
       </div>
     );
   }
@@ -45,16 +47,17 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  plan: PropTypes.number 
+  plan: PropTypes.number,
+  appStarted: PropTypes.bool
 };
 
  
 
 const mapStateToProps = ({ authReducer }) => ({
-  plan: authReducer.plan 
+  plan: authReducer.plan,
+  appStarted: authReducer.appStarted,
 });
 
 export default connect(
-  mapStateToProps,
-  viewStateActions
+  mapStateToProps 
 )(Home);

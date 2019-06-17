@@ -48,7 +48,7 @@ const mapStateToProps = ({ authReducer, configReducer, postReducer }) => {
   return {
     departureCities: authReducer.departureCities,
     cities: configReducer.cities,
-    originNotIn: postReducer.filters.originNotIn
+    originNotIn: postReducer.filters.originNotIn || []
   };
 };
 

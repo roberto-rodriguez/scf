@@ -88,6 +88,7 @@ class FilterDestination extends React.Component {
           <input
             className="form-input form-control-has-validation form-control-last-child"
             id="subscribe-email"
+            onChange={e => updateFilter("cityOrCountry", e.target.value)}
           />
         </div>
       </div>
@@ -102,7 +103,7 @@ FilterDestination.propTypes = {
 
 const mapStateToProps = ({ postReducer }) => {
   return {
-    regionNotIn: postReducer.filters.regionNotIn
+    regionNotIn: postReducer.filters.regionNotIn || []
   };
 };
 
