@@ -51,7 +51,7 @@ class FilterDestination extends React.Component {
               </td>
               <td>
                 <SwitchCmp
-                  label={"Oceania"}
+                  label={"Caribean"}
                   value={regionNotIn.indexOf(5) == -1}
                   onChange={() => updateFilter("regionNotIn", 5)}
                   key={5}

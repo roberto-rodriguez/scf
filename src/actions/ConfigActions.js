@@ -50,7 +50,10 @@ function loadConfigsAPI() {
     { name: "Vancouver", code: "YVR", region: 6 },
     { name: "Edmonton", code: "YEG", region: 6 },
     { name: "Montreal", code: "YMQ@052p7@ymqa", region: 6 },
-    { name: "Winnipeg", code: "YWG", region: 6 }
+    { name: "Winnipeg", code: "YWG", region: 6 },
+    { name: "Halifax", code: "YHZ", region: 6 },
+    { name: "St John's", code: "YYT", region: 6 },
+    { name: "Calgary", code: "YYC", region: 6 } 
   ];
   return { cities: object.listToObject(cities, "code") };
 }

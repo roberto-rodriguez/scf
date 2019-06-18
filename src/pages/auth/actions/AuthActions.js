@@ -24,6 +24,7 @@ export function init() {
 
       data[TOKEN_COOKIE] = token;
 
+      cookie.remove(TOKEN_COOKIE);
       cookie.save(TOKEN_COOKIE, token);
 
       dispatch(authActionsCreator.setAuthAction(data));
