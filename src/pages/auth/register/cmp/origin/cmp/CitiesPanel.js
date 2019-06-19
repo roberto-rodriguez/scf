@@ -32,7 +32,7 @@ class CitiesPanel extends React.Component {
           <br />
           <br />
           <br />
-          {cityList.length && <FAQCanNotFindCity />}
+          {cityList.length > 0 && <FAQCanNotFindCity />}
         </div>
       </div>
     );

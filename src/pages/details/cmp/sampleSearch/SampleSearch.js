@@ -16,7 +16,7 @@ class SampleSearch extends React.Component {
     google: { name: "Google Flights", image: "google.png" },
     sky: { name: "Sky Scanner", image: "skyscanner.jpg" },
     momondo: { name: "Momondo", image: "momondo.png" },
-    kayak: { name: "Kayak" },
+    kayak: { name: "Kayak", image: "kayak.png" },
     kiwi: { name: "Kiwi.com", image: "kiwi.png" }
   };
 

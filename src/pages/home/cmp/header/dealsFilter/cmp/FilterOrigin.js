@@ -44,13 +44,11 @@ FilterOrigin.propTypes = {
   updateFilter: PropTypes.func
 };
 
-const mapStateToProps = ({ authReducer, configReducer, postReducer }) => {
-  return {
-    departureCities: authReducer.departureCities,
-    cities: configReducer.cities,
-    originNotIn: postReducer.filters.originNotIn || []
-  };
-};
+const mapStateToProps = ({ authReducer, configReducer, postReducer }) => ({
+  departureCities: authReducer.departureCities,
+  cities: configReducer.cities,
+  originNotIn: postReducer.filters.originNotIn || []
+});
 
 export default connect(
   mapStateToProps,

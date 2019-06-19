@@ -13,10 +13,17 @@ export default function authReducer(state = initialState.auth, action) {
   var { type, data } = action;
 
   switch (type) {
-    case "SET_AUTH": 
+    case "SET_AUTH":
       return {
         ...state,
         ...data
+      };
+    case "LOG_OUT":
+      return {
+        appStarted: true,
+        token: data,
+        plan: 0,
+        departureCities: null
       };
 
     default:

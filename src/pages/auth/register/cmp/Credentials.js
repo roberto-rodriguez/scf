@@ -69,9 +69,11 @@ class Credentials extends React.Component {
                   name="email"
                   data-constraints="@Required"
                 />
-                <span className="form-validation">
-                  The text field is required.
-                </span>
+                {false && (
+                  <span className="form-validation">
+                    The text field is required.
+                  </span>
+                )}
               </div>
               <div className="form-wrap">
                 <label className="form-label-outside" htmlFor="password">

@@ -72,19 +72,10 @@ class PostColumn extends React.Component {
         page,
         (resultList, reload) => {
           var isEmpty = resultList.length == 0 && (page == 0 || reload);
-
-          // if (this.state.region != region) {
-          //   this.setState({
-          //     region,
-          //     isEmpty,
-          //     filterCount
-          //   });
-          // } else {
+ 
           if (isEmpty) {
             this.setState({ isEmpty });
-          }
-          // }
-
+          } 
           infiniteListCallback(resultList);
         },
         reload

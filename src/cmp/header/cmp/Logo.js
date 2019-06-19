@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../header.scss";
 import PropTypes from "prop-types";
+import { Badge } from "reactstrap";
+
 class Logo extends React.Component {
   render() {
     var { navSolidBackground } = this.props;
@@ -36,6 +38,9 @@ class Logo extends React.Component {
             style={{ marginLeft: 10 }}
           />
         </h5>
+        <Badge color="warning" className={"margin-left-10"}>
+          BETA
+        </Badge>
       </NavLink>
     );
   }

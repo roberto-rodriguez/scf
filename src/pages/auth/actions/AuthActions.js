@@ -70,7 +70,7 @@ export function logout(callback) {
       dispatch(postActionsCreator.cleanPostListAction());
 
       cookie.save(TOKEN_COOKIE, response.token);
-      dispatch(authActionsCreator.setAuthAction(response));
+      dispatch(authActionsCreator.logoutAction(response));
 
       callback();
     });

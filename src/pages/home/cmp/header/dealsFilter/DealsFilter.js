@@ -3,11 +3,16 @@ import { connect } from "react-redux";
 import * as viewActions from "../../../../../actions/ViewActions";
 import PropTypes from "prop-types";
 import "./dealsFilterStyles.scss";
-import { FilterOrigin, FilterDestination, FilterDates } from "./cmp/";
+import {
+  FilterOrigin,
+  FilterDestination,
+  FilterDates,
+  NotSubscribedPanel
+} from "./cmp/";
 
 class DealsFilter extends React.Component {
   render() {
-    var { setViewState, doFilter } = this.props;
+    var { setViewState, doFilter, plan } = this.props;
 
     return (
       <div className="deals-filter">
@@ -25,7 +30,7 @@ class DealsFilter extends React.Component {
           </div>
           <div className="row row-30 row-offset-1 text-lg-left deals-filter-body">
             <div className="col-12">
-              <FilterOrigin />
+              {plan ? <FilterOrigin /> : <NotSubscribedPanel />}
             </div>
             <div className="col-12">
               <FilterDestination />
@@ -40,22 +45,22 @@ class DealsFilter extends React.Component {
                 className="button button-primary button-xs float-right"
                 onClick={doFilter}
               >
-                <span
-                  className="icon fa fa-search"
-                />
+                <span className="icon fa fa-search" />
                 Search
               </span>
-              <span className="button button-default button-xs float-right"
-                  onClick={() => setViewState("showFilters", false)}>
+              <span
+                className="button button-default button-xs float-right"
+                onClick={() => setViewState("showFilters", false)}
+              >
                 <span className="icon fa fa-close" />
                 Close
               </span>
 
-              <span
-                className="button button-default button-xs float-left"
-              >
-                Change Departure Preferences
-              </span>
+              {plan && (
+                <span className="button button-default button-xs float-left">
+                  Change Departure Preferences
+                </span>
+              )}
             </div>
           </div>
         </div>
@@ -66,10 +71,15 @@ class DealsFilter extends React.Component {
 
 DealsFilter.propTypes = {
   setViewState: PropTypes.func,
-  doFilter: PropTypes.func
+  doFilter: PropTypes.func,
+  plan: PropTypes.number
 };
 
+const mapStateToProps = ({ authReducer }) => ({
+  plan: authReducer.plan
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   viewActions
 )(DealsFilter);

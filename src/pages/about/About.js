@@ -1,25 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
 import Header from "../../cmp/header/Header";
-//<div className="page text-center">
+
 const About = () => {
   return (
     <div>
       <Header />
       <div>
-        <h2 className="alt-header">About</h2>
-        <p>
-          This example app is part of the{" "}
-          <a href="https://github.com/coryhouse/react-slingshot">
-            React-Slingshot starter kit
-          </a>
-          .
-        </p>
-        <p>
-          <Link to="/badlink">Click this bad link</Link> to see the 404 page.
-        </p>
-        
+        <br />
+        <br />
+        <br />
+        <h4 className="alt-header">We're Getting Ready to Launch</h4>
+        <br />
+        <br />
+        <br />
+        <div className="centered">
+          <h5 className="alt-header" style={{ maxWidth: "60%" }}>
+            Our website is under construction, we are working very hard to give
+            you the best experience on our new web site.
+          </h5>
+
+          <img
+            src={require("../../styles/images/launch.gif")}
+            style={{ marginTop: 40 }}
+            alt="Almost there!!!"
+          />
+        </div>
       </div>
     </div>
   );

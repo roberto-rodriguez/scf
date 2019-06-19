@@ -133,8 +133,35 @@ class SelectOrigin extends React.Component {
             />
           </div>
         )}
-
-        <div style={{ height: 300, width: 300 }} />
+        <br />
+        <div>
+          <h5 className="text-center h-margin-20">
+            <span
+              className=" button-xs float-left cursor-pointer"
+              onClick={onBack}
+            >
+              <span className="bold-text pink-text margin-left-10">
+                {"Back"}
+              </span>
+              <i className="fa fa-long-arrow-left float-left bold-text pink-text" />
+            </span>
+            <span
+              className=" button-xs float-right cursor-pointer"
+              onClick={onNext}
+            >
+              <span
+                className="bold-text pink-text margin-right-10"
+                onClick={onRegister}
+              >
+                {"Finish"}
+              </span>
+              <i className="fa fa-long-arrow-right float-right bold-text pink-text" />
+            </span>
+          </h5>
+        </div>
+        <br />
+        <br />
+        <br />
       </div>
     );
   }

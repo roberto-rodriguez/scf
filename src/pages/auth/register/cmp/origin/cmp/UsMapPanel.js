@@ -30,7 +30,7 @@ class SelectOrigin extends React.Component {
       selectRegion(regionId);
 
       if (window.scrollY < 300) {
-        utils.scrollTo(500, 1000);
+        utils.scrollTo(300, 1000);
       }
     }
   };

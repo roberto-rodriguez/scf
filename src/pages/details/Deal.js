@@ -61,9 +61,8 @@ class Deal extends React.Component {
     var { mounted } = this.state;
 
     if (appStarted) {
-      console.log("Deal -> componentDidUpdate  appStarted");
       if (!mounted) {
-        console.log("Deal -> componentDidUpdate  !mounted");
+        window.scrollTo(0, 0);
         var { postId, sampleSearchCityId } = match && match.params;
 
         if (!post) {
