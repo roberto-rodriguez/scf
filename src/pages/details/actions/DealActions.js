@@ -9,12 +9,13 @@ export function loadPost(postIdx, cityCode) {
   };
 }
 
-export function loadCityIfNotExist(postIdx, cityCode) {
+export function loadCityIfNotExist(postIdx, cityCode, postListName) {
   return function(dispatch, getState) {
     var { postReducer } = getState();
 
-    var postObj = postReducer.postList;
+    var postObj = postReducer[postListName];
     var post = postObj && postObj[postIdx];
+ 
     var sampleSearchCity = post && post.cityList[cityCode];
 
     if (!sampleSearchCity || !sampleSearchCity.loaded) {
@@ -22,7 +23,7 @@ export function loadCityIfNotExist(postIdx, cityCode) {
         "sampleSearchCity/load/" + postIdx + "/" + cityCode,
         newSampleSearchCity => {
           dispatch(
-            dealActionsCreator.loadCityAction(postIdx, newSampleSearchCity)
+            dealActionsCreator.loadCityAction(postIdx, newSampleSearchCity, postListName)
           );
         }
       );

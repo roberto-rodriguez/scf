@@ -60,8 +60,7 @@ PostCityPrice.propTypes = {
   country: PropTypes.string, 
   postId: PropTypes.string,
   selectedCity: PropTypes.string,
-  cityCode: PropTypes.string,
-  loadCityIfNotExist: PropTypes.func
+  cityCode: PropTypes.string 
 };
 
 export default connect(null, dealActions)(PostCityPrice);

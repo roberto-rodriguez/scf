@@ -1,6 +1,6 @@
-export const loadCityAction = (postId, sampleSearchCity) => ({
+export const loadCityAction = (postId, sampleSearchCity, postListName) => ({
   type: "LOAD_SAMPLE_SEARCH_CITY",
-  data: { postId, sampleSearchCity }
+  data: { postId, sampleSearchCity, postListName }
 });
 
 export const loadPostAction = post => ({

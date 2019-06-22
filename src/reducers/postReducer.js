@@ -29,10 +29,13 @@ export default function postReducer(state = initialState.deals, action) {
 
     case "LOAD_POST":
       var { post } = data;
+
+      var listType = post.status == 0 ? 'expiredPostList' : 'postList';
+
       return {
         ...state,
         selectedPostId: post.postId,
-        postList: {
+        [listType]: {
           ...state.postList,
           [post.postId]: {
             ...post
@@ -41,13 +44,14 @@ export default function postReducer(state = initialState.deals, action) {
       };
 
     case "LOAD_SAMPLE_SEARCH_CITY":
-      var { postId, sampleSearchCity } = data;
-      post = state.postList[postId] || { cityList: {} };
+      var { postId, sampleSearchCity, postListName } = data;
+      post = state[postListName][postId] || { cityList: {} };  
+
       return {
         ...state,
         selectedPostId: postId,
-        postList: {
-          ...state.postList,
+        [postListName]: {
+          ...state[postListName],
           [postId]: {
             ...post,
             cityList: {

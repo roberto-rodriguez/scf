@@ -42,13 +42,13 @@ class PostColumn extends React.Component {
     var reload =
       this.state.region != region || this.state.filterCount != filterCount;
 
-    var postCls = plan ? "post-full" : "post-column  border-green";
+    var postCls = plan ? "post-full" : "post-column border-grey";
     var wrapperCls = isEmpty ? "" : "row text-lg-left " + postCls;
 
     return (
       <div className="row-wrapper width100">
         {plan <= 1 && !isEmpty && (
-          <h5 className={"green-text"} style={{ textAlign: "right" }}>
+          <h5 className={"grey-text"} style={{ textAlign: "right" }}>
             {"Free Deals"}
           </h5>
         )}

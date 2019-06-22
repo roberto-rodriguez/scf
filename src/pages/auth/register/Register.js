@@ -66,15 +66,47 @@ class Register extends React.Component {
   }
 
   render() {
+    var { state, onBack, onNext, onRegister } = this;
+
+    var title = state.page == 1 ? "Set Credentials" : "Select up to 4 cities";
+
     return (
       <div>
         <AuthHeader />
         <br />
         <br />
+        <div>
+          <h5 className={"text-center h-margin-20 hr-title"}>
+            <span
+              className="button-xs bold-text pink-text float-left cursor-pointer"
+              onClick={onBack}
+            >
+              {this.state.page > 1 && (
+                <span>
+                  {"Back"}
+                  <i className="fa fa-long-arrow-left float-left bold-text pink-text margin-right-10" />
+                </span>
+              )}
+            </span>
+
+            {title}
+
+            <span
+              className="button-xs bold-text pink-text  float-right cursor-pointer"
+              onClick={this.state.page == 2 ? onRegister : onNext}
+            >
+              {this.state.page == 2 ? "Finish" : "Next"}
+              <i className="fa fa-long-arrow-right float-right bold-text pink-text margin-left-10" />
+            </span>
+          </h5>
+        </div>
+
         {this.buildBody()}
+
+         
       </div>
     );
-  }
+  } 
 
   buildBody = () => {
     var { page, data } = this.state;

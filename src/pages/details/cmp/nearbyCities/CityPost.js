@@ -10,11 +10,13 @@ class CityPost extends React.Component {
       postId,
       sampleSearchCityId,
       sampleSearchCity,
-      loadCityIfNotExist
+      loadCityIfNotExist,
+      postStatus,
+      postListName
     } = this.props;
 
     if (!sampleSearchCity || !sampleSearchCity.loaded) {
-      loadCityIfNotExist(postId, sampleSearchCityId);
+      loadCityIfNotExist(postId, sampleSearchCityId, postStatus, postListName);
     }
   };
 
@@ -77,17 +79,19 @@ class CityPost extends React.Component {
 CityPost.propTypes = {
   sampleSearchCity: PropTypes.object,
   sampleSearchCityId: PropTypes.string,
+  postListName: PropTypes.string,
   postId: PropTypes.string,
-  loadCityIfNotExist: PropTypes.func
+  loadCityIfNotExist: PropTypes.func,
+  postStatus: PropTypes.number
 };
 
 function mapStateToProps({ postReducer }, props) {
-  var { postId, sampleSearchCityId } = props;
-  var post = postReducer.postList[postId] || {};
+  var { postId, sampleSearchCityId, postListName } = props;
+  var post = postReducer[postListName][postId] || {}; 
   var cityList = post.cityList || {};
   var sampleSearchCity = cityList[sampleSearchCityId] || {};
 
-  return { sampleSearchCity };
+  return { sampleSearchCity, postStatus: post.status };
 }
 
 export default connect(

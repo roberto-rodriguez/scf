@@ -14,7 +14,7 @@ class SelectedCities extends React.Component {
         >
           {departureCities.slice(0, 4).map((city, i) => (
             <span
-              className="button button-primary button-circle selected-city"
+              className="button button-primary button-circle button-xs selected-city"
               key={i}
             >
               {city.name}

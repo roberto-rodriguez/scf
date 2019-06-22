@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import "../../../authStyles.scss";
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"; 
 
 import { UsMapPanel, CitiesPanel, SelectedCities } from "./cmp/";
 
@@ -45,37 +45,10 @@ class SelectOrigin extends React.Component {
 
   render() {
     var { country, region, departureCities } = this.state;
-    var { onNext, onBack, onRegister, data } = this.props;
+    var { data } = this.props;
 
     return (
-      <div>
-        <br />
-        <div>
-          <h5 className="text-center h-margin-20 hr-title">
-            <span
-              className=" button-xs float-left cursor-pointer"
-              onClick={onBack}
-            >
-              <span className="bold-text pink-text margin-left-10">
-                {"Back"}
-              </span>
-              <i className="fa fa-long-arrow-left float-left bold-text pink-text" />
-            </span>
-            Select upto 4 departure cities
-            <span
-              className=" button-xs float-right cursor-pointer"
-              onClick={onNext}
-            >
-              <span
-                className="bold-text pink-text margin-right-10"
-                onClick={onRegister}
-              >
-                {"Finish"}
-              </span>
-              <i className="fa fa-long-arrow-right float-right bold-text pink-text" />
-            </span>
-          </h5>
-        </div>
+      <div> 
 
         <div
           className="responsive-tabs responsive responsive-tabs-classic horizontal text-left"
@@ -117,6 +90,7 @@ class SelectOrigin extends React.Component {
               selectRegion={this.selectRegion}
               selectedRegion={data.selectedRegion}
             />
+
             <CitiesPanel
               regionId={region}
               selectCity={this.selectCity}
@@ -133,46 +107,17 @@ class SelectOrigin extends React.Component {
             />
           </div>
         )}
-        <br />
-        <div>
-          <h5 className="text-center h-margin-20">
-            <span
-              className=" button-xs float-left cursor-pointer"
-              onClick={onBack}
-            >
-              <span className="bold-text pink-text margin-left-10">
-                {"Back"}
-              </span>
-              <i className="fa fa-long-arrow-left float-left bold-text pink-text" />
-            </span>
-            <span
-              className=" button-xs float-right cursor-pointer"
-              onClick={onNext}
-            >
-              <span
-                className="bold-text pink-text margin-right-10"
-                onClick={onRegister}
-              >
-                {"Finish"}
-              </span>
-              <i className="fa fa-long-arrow-right float-right bold-text pink-text" />
-            </span>
-          </h5>
-        </div>
-        <br />
-        <br />
-        <br />
+        <br/>
+        <br/>
+        <br/>
       </div>
     );
   }
 }
 
 SelectOrigin.propTypes = {
-  onNext: PropTypes.func,
-  onRegister: PropTypes.func,
   onUpdate: PropTypes.func,
-  data: PropTypes.object,
-  onBack: PropTypes.any
+  data: PropTypes.object
 };
 
 export default connect()(SelectOrigin);

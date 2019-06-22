@@ -20,33 +20,11 @@ class Credentials extends React.Component {
   };
 
   render() {
-    var { onNext, data } = this.props;
+    var {  data } = this.props;
     var { email, password, repassword } = data;
 
     return (
-      <div>
-        <br />
-        <div>
-          <h5 className="text-center h-margin-20 hr-title">
-            <span className=" button-xs float-left cursor-pointer">
-              <span className="bold-text white-text margin-left-10">
-                {"Back"}
-              </span>
-              <i className="fa fa-long-arrow-left float-left bold-text white-text" />
-            </span>
-            Create Login Creentials
-            <span
-              className=" button-xs float-right cursor-pointer"
-              onClick={onNext}
-            >
-              <span className="bold-text pink-text margin-right-10">
-                {"Next"}
-              </span>
-              <i className="fa fa-long-arrow-right float-right bold-text pink-text" />
-            </span>
-          </h5>
-        </div>
-
+      <div> 
         <div
           className="row row-offset-4 justify-content-sm-center"
           style={{ marginBottom: 160 }}
@@ -106,11 +84,7 @@ class Credentials extends React.Component {
                 <span className="form-validation" />
               </div>
             </form>
-          </div>
-          <br />
-
-          <br />
-          <br />
+          </div> 
         </div>
       </div>
     );

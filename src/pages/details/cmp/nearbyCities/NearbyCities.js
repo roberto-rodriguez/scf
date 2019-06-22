@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 class NearbyCities extends React.Component {
   render() {
-    var { postId, cityListIds } = this.props;
+    var { postId, cityListIds, postListName } = this.props;
   
     return (
       <div>
@@ -15,7 +15,7 @@ class NearbyCities extends React.Component {
 
         <div className="row row-30">
           {cityListIds.map((sampleSearchCityId, i) => (
-            <CityPost key={i} postId={postId + ''} sampleSearchCityId={sampleSearchCityId} />
+            <CityPost key={i} postId={postId + ''} sampleSearchCityId={sampleSearchCityId} postListName={postListName}/>
           ))}
         </div>
       </div>
@@ -25,13 +25,14 @@ class NearbyCities extends React.Component {
 
 NearbyCities.propTypes = {
   postId: PropTypes.string,
+  postListName: PropTypes.string,
   sampleSearchCityId: PropTypes.string,
   cityListIds: PropTypes.any
 };
 
 function mapStateToProps({ postReducer }, props) {
   var { postId, sampleSearchCityId } = props;
-  var post = postReducer.postList[postId] || {};
+  var post = postReducer[props.postListName][postId] || {};
   var cityList = post.cityList || {};
 
   return { cityListIds: Object.keys(cityList).filter(id => id != sampleSearchCityId) };

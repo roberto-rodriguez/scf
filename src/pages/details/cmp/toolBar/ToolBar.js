@@ -40,23 +40,7 @@ class ToolBar extends React.Component {
                   <option value="departureDate">Sort by Date</option>
                   <option value="nights">Sort by Nights</option>
                 </select>
-              </div>
-
-              <div
-                style={{
-                  float: "right",
-                  maxWidth: 180,
-                  marginRight: 10
-                }}
-              >
-                <span
-                  className="filter-button button button-icon button-icon-left button-no-shadow  button-sm"
-                  href="#"
-                >
-                  <span className="icon fa fa-filter" />
-                  <span>Filter</span>
-                </span>
-              </div>
+              </div> 
             </td>
           </tr>
         </tbody>

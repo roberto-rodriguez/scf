@@ -23,14 +23,19 @@ class Post extends React.Component {
       premium
     } = post;
 
+    if (!originCity || !city || !country || !price) {
+      return null;
+    }
+
     return (
       <div
         id={postId}
-        className={`${
-          plan > 1
+        className={
+          "isotope-item" +
+          (plan > 1
             ? "col-12 col-md-6 col-lg-4 col-xl-4 col-x1400-4 "
-            : "col-12 col-md-12 col-lg-12 col-xl-6"
-        } isotope-item`}
+            : "col-12 col-md-12 col-lg-12 col-xl-6")
+        }
         data-filter="Type 3"
       >
         <div className="thumbnail">
@@ -87,7 +92,7 @@ class Post extends React.Component {
               Constants.TIMESTAMP
             }/${cityCode}.jpg`}
           />
-          {status ? (
+          {true || status ? (
             <CityPricesCaption post={post} />
           ) : (
             <UnlockPremiumCaption />
@@ -101,8 +106,12 @@ class Post extends React.Component {
     var { scrollToMe, post } = this.props;
 
     if (scrollToMe) {
-      document.getElementById("" + post.postId).scrollIntoView();
-      window.scrollBy(0, -window.innerHeight / 2);
+      var elem = document.getElementById("" + post.postId);
+
+      if (elem) {
+        elem.scrollIntoView();
+        window.scrollBy(0, -window.innerHeight / 2);
+      }
     }
   }
 }

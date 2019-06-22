@@ -16,7 +16,7 @@ class CitiesPanel extends React.Component {
             <div className="col-3" key={i}>
               <span
                 className={
-                  "button button-rounded button-sm button-" +
+                  "button button-xs button-" +
                   (selectedCityCodes.indexOf(city.code) >= 0
                     ? "primary"
                     : "default")

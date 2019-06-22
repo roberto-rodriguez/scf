@@ -4,7 +4,13 @@ import * as dealActions from "./actions/DealActions";
 import "./dealStyles.scss";
 import PropTypes from "prop-types";
 
-import { DealHeader, ToolBar, SampleSearchSection, NearbyCities } from "./cmp";
+import {
+  DealHeader,
+  ToolBar,
+  SampleSearchSection,
+  NearbyCities,
+  ExpiredDealNotice
+} from "./cmp";
 
 class Deal extends React.Component {
   constructor(props) {
@@ -17,45 +23,19 @@ class Deal extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   var {
-  //     post,
-  //     match,
-  //     loadPost,
-  //     loadCityIfNotExist,
-  //     setSelectedPostId
-  //   } = this.props;
-  //   var { postId, sampleSearchCityId } = match && match.params;
-
-  //   if (!post) {
-  //     loadPost(postId, sampleSearchCityId);
-  //   } else {
-  //     //if the post exist, then is comming from home, then store the post id, to scroll to that post when go back home
-  //     // setTimeout(() => setSelectedPostId(post.id), 2000);
-
-  //     var sampleSearchCity = post.cityList && post.cityList[sampleSearchCityId];
-  //     if (!sampleSearchCity || !sampleSearchCity.loaded) {
-  //       loadCityIfNotExist(postId, sampleSearchCityId);
-  //     }else{
-  //       setSelectedPostId(post.postId);
-  //     }
-  //   }
-  // }
-
   componentDidMount() {
-    console.log("Deal -> componentDidMount");
     this.setState({ triggerUpdate: true });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("Deal -> componentDidUpdate");
     var {
       post,
       match,
       loadPost,
       loadCityIfNotExist,
       setSelectedPostId,
-      appStarted
+      appStarted,
+      postListName
     } = this.props;
 
     var { mounted } = this.state;
@@ -67,14 +47,12 @@ class Deal extends React.Component {
 
         if (!post) {
           loadPost(postId, sampleSearchCityId);
-        } else {
-          //if the post exist, then is comming from home, then store the post id, to scroll to that post when go back home
-          // setTimeout(() => setSelectedPostId(post.id), 2000);
-
+        } else { 
+          
           var sampleSearchCity =
             post.cityList && post.cityList[sampleSearchCityId];
           if (!sampleSearchCity || !sampleSearchCity.loaded) {
-            loadCityIfNotExist(postId, sampleSearchCityId);
+            loadCityIfNotExist(postId, sampleSearchCityId, postListName);
           } else {
             setSelectedPostId(post.postId);
           }
@@ -142,6 +120,8 @@ class Deal extends React.Component {
                       endDate={endDate}
                       onSortChange={this.onSortChange}
                     />
+
+                    {post.status == 0 && <ExpiredDealNotice />}
                     <SampleSearchSection
                       sampleSearchList={sampleSearchList}
                       originCode={originCode}
@@ -155,6 +135,7 @@ class Deal extends React.Component {
                     <NearbyCities
                       postId={postId}
                       sampleSearchCityId={sampleSearchCityId}
+                      postListName={this.props.postListName}
                     />
                   )}
                 </div>
@@ -176,21 +157,25 @@ Deal.propTypes = {
   post: PropTypes.object,
   match: PropTypes.object,
   location: PropTypes.object,
-  appStarted: PropTypes.bool
+  appStarted: PropTypes.bool,
+  postListName: PropTypes.string
 };
 
 function mapStateToProps({ postReducer, authReducer }, props) {
   var { postId, sampleSearchCityId } = props.match && props.match.params;
+  var postListName = 'postList';
 
   if (postId && sampleSearchCityId) {
     var post = postReducer.postList[postId];
 
     if (!post && postReducer.expiredPostList) {
       post = postReducer.expiredPostList[postId];
+      postListName = 'expiredPostList';
     }
     return {
       post,
-      appStarted: authReducer.appStarted
+      appStarted: authReducer.appStarted,
+      postListName
     };
   }
 }
