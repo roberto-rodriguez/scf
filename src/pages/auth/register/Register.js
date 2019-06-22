@@ -102,11 +102,9 @@ class Register extends React.Component {
         </div>
 
         {this.buildBody()}
-
-         
       </div>
     );
-  } 
+  }
 
   buildBody = () => {
     var { page, data } = this.state;
@@ -129,7 +127,8 @@ class Register extends React.Component {
             onBack={this.onBack}
             onUpdate={this.onUpdate}
             onRegister={this.onRegister}
-            data={data}
+            selectedRegion={data.selectedRegion}
+            departureCities={data.departureCities}
           />
         );
     }

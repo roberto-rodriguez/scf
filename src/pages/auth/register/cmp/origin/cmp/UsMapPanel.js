@@ -4,11 +4,19 @@ import "../../../../authStyles.scss";
 import USAMap from "react-usa-map";
 import PropTypes from "prop-types";
 import * as utils from "../../../../../../utils/util";
+import CitiesPanel from "./CitiesPanel";
 
 // chili-pepper, orange light, Galaxy Blue, Quetzal Green, Lime Punch
-//  const colors = ['#9B1B30', '#E08119', '#2A4B7C', '#006E6D', '#00A591', '#9B1B30']
+const colors = [
+  "#9B1B30",
+  "#E08119",
+  "#2A4B7C",
+  "#006E6D",
+  "#00A591",
+  "#9B1B30"
+];
 //const colors = ['#B4B7BA', '#C0AB8E', '#B4B7BA', '#F0EDE5', '#F3D6E4', '#EDCDC2']
-class SelectOrigin extends React.Component {
+class UsMapPanel extends React.Component {
   constructor(props) {
     super(props);
 
@@ -39,6 +47,11 @@ class SelectOrigin extends React.Component {
     }
   };
 
+  onBackToMap = () => {
+    this.setState({region: 0});
+    this.props.selectRegion(0);
+  }
+
   /* optional customization of filling per state and calling custom callbacks per state */
   statesCustomConfig = () => {
     var config = {};
@@ -51,8 +64,8 @@ class SelectOrigin extends React.Component {
             region == 0
               ? "#FFFFFF"
               : region == selectedRegion
-              ?  "#22a9bf"
-              : "rgba(1,1,1, 0.2)" //" " + (0.1 + 0.08 * (i + 1)) + ")"  //
+              ? "gray" // "#22a9bf"
+              : colors[region] // "rgba(1,1,1, 0.2)" //" " + (0.1 + 0.08 * (i + 1)) + ")"  //
         };
         return obj;
       }, config)
@@ -62,17 +75,31 @@ class SelectOrigin extends React.Component {
   };
 
   render() {
-    return (
-      <div>
+    var { region } = this.state;
+    var { selectCity, departureCities } = this.props;
+
+    if (region == 0) {
+      return (
         <USAMap
-        title="Select Region"
-          width={screen.width/3}
-          height={screen.width/3 - 120}
+          title="Select Region"
+          width={screen.width / 3}
+          height={screen.width / 3 - 120}
           customize={this.statesCustomConfig()}
           onClick={this.mapHandler}
         />
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div>
+          <CitiesPanel
+            regionId={region}
+            selectCity={selectCity}
+            departureCities={departureCities}
+            onBackToMap={this.onBackToMap}
+          /> 
+        </div>
+      );
+    }
   }
 
   stateAbbreviations = {
@@ -120,12 +147,14 @@ class SelectOrigin extends React.Component {
     ],
     0: ["AK", "HI"]
   };
- 
 }
 
-SelectOrigin.propTypes = {
+UsMapPanel.propTypes = {
   selectRegion: PropTypes.func,
-  selectedRegion: PropTypes.any
+  selectedRegion: PropTypes.any,
+  regionId: PropTypes.any,
+  selectCity: PropTypes.func,
+  departureCities: PropTypes.any
 };
 
-export default connect()(SelectOrigin);
+export default connect()(UsMapPanel);

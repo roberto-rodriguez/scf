@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as viewActions from "../../../../../actions/ViewActions";
 import PropTypes from "prop-types";
 import "./dealsFilterStyles.scss";
+import { NavLink } from "react-router-dom";
 import {
   FilterOrigin,
   FilterDestination,
@@ -12,7 +13,7 @@ import {
 
 class DealsFilter extends React.Component {
   render() {
-    var { setViewState, doFilter, plan } = this.props;
+    var { setViewState, doFilter, hasDepartureCities } = this.props;
 
     return (
       <div className="deals-filter">
@@ -30,7 +31,7 @@ class DealsFilter extends React.Component {
           </div>
           <div className="row row-30 row-offset-1 text-lg-left deals-filter-body">
             <div className="col-12">
-              {plan ? <FilterOrigin /> : <NotSubscribedPanel />}
+              {hasDepartureCities ? <FilterOrigin /> : <NotSubscribedPanel />}
             </div>
             <div className="col-12">
               <FilterDestination />
@@ -56,10 +57,12 @@ class DealsFilter extends React.Component {
                 Close
               </span>
 
-              {plan && (
-                <span className="button button-default button-xs float-left">
-                  Change Departure Preferences
-                </span>
+              {hasDepartureCities && (
+                <NavLink exact to="/departures">
+                  <span className="button button-default button-xs float-left">
+                    Change Departure Preferences
+                  </span>
+                </NavLink>
               )}
             </div>
           </div>
@@ -72,11 +75,13 @@ class DealsFilter extends React.Component {
 DealsFilter.propTypes = {
   setViewState: PropTypes.func,
   doFilter: PropTypes.func,
-  plan: PropTypes.number
+  hasDepartureCities: PropTypes.bool
 };
 
 const mapStateToProps = ({ authReducer }) => ({
-  plan: authReducer.plan
+  hasDepartureCities: authReducer.departureCities
+    ? authReducer.departureCities.length > 0
+    : false
 });
 
 export default connect(

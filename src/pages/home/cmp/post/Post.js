@@ -92,7 +92,7 @@ class Post extends React.Component {
               Constants.TIMESTAMP
             }/${cityCode}.jpg`}
           />
-          {true || status ? (
+          {status || 1 > 0 ? ( //Made this intentional
             <CityPricesCaption post={post} />
           ) : (
             <UnlockPremiumCaption />

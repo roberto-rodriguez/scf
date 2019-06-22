@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { LoginButton, FilterButton, Logo } from "./cmp";
 import { connect } from "react-redux";
 import DealsFilter from "../../pages/home/cmp/header/dealsFilter/DealsFilter";
- 
+
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -104,7 +104,7 @@ class NavBar extends React.Component {
                 style={{ justifyContent: "space-between" }}
               >
                 <Logo navSolidBackground={navBck || navSolidBackground} />
- 
+
                 {hasFilters && <FilterButton />}
 
                 <ul className="rd-navbar-nav" style={{ float: "right" }}>
@@ -121,6 +121,11 @@ class NavBar extends React.Component {
                       </li>
                       <li>
                         <NavLink to="/about">Testimonials</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/departures">
+                          Select Departure Cities
+                        </NavLink>
                       </li>
                       <li>
                         <NavLink to="/about">FAQ</NavLink>

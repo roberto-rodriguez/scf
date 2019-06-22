@@ -7,3 +7,4 @@ export const logoutAction = data => ({
   type: "LOG_OUT",
   data
 });
+

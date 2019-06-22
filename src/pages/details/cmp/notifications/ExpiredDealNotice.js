@@ -10,7 +10,7 @@ class ExpiredDealNotice extends React.Component {
   render() { 
     return (
       <div
-        className="centered  margin-top-10"
+        className="centered-column  margin-top-10"
         style={{
           color: "green",
           backgroundColor: "#d4edda",

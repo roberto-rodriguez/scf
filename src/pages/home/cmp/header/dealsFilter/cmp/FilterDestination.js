@@ -19,7 +19,7 @@ class FilterDestination extends React.Component {
     var { regionNotIn, updateFilter } = this.props;
 
     return (
-      <div className="height100 width100 filter-origin centered">
+      <div className="height100 width100 filter-origin centered-column">
         <table cellPadding="10">
           <tbody>
             <tr>

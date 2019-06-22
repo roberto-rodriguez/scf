@@ -43,7 +43,12 @@ class PostColumn extends React.Component {
       this.state.region != region || this.state.filterCount != filterCount;
 
     var postCls = plan ? "post-full" : "post-column border-grey";
-    var wrapperCls = isEmpty ? "" : "row text-lg-left " + postCls;
+    var wrapperCls = "row text-lg-left ";
+
+    // if (!isEmpty) {
+      wrapperCls += postCls;
+    // }
+
 
     return (
       <div className="row-wrapper width100">

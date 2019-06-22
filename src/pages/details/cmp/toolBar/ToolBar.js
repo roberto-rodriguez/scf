@@ -5,8 +5,10 @@ class ToolBar extends React.Component {
   render() {
     var { avg, price, startDate, endDate, onSortChange } = this.props;
 
-    var formattedStartDate = startDate ? moment(startDate).format("MMM YYYY") : '';
-    var formattedEndDate = endDate ? moment(endDate).format("MMM YYYY") : '';
+    var formattedStartDate = startDate
+      ? moment(startDate).format("MMM YYYY")
+      : "";
+    var formattedEndDate = endDate ? moment(endDate).format("MMM YYYY") : "";
 
     return (
       <table style={{ width: "100%" }}>
@@ -23,9 +25,7 @@ class ToolBar extends React.Component {
               </h5>
             </td>
             <td style={{ textAlign: "center" }}>
-              <h6>
-                {`${formattedStartDate} — ${formattedEndDate}`} 
-              </h6>
+              <h6>{`${formattedStartDate} — ${formattedEndDate}`}</h6>
             </td>
             <td>
               <div style={{ float: "right", maxWidth: 180 }}>
@@ -38,9 +38,9 @@ class ToolBar extends React.Component {
                 >
                   <option value="price">Sort by Price</option>
                   <option value="departureDate">Sort by Date</option>
-                  <option value="nights">Sort by Nights</option>
+                  <option value="nights">Sort by Days</option>
                 </select>
-              </div> 
+              </div>
             </td>
           </tr>
         </tbody>

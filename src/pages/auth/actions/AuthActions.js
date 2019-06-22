@@ -27,6 +27,12 @@ export function init() {
       cookie.remove(TOKEN_COOKIE);
       cookie.save(TOKEN_COOKIE, token);
 
+      if (data.departureCities) {
+        cookie.save("departureCities", data.departureCities);
+      } else {
+        data.departureCities = cookie.load("departureCities");
+      }
+
       dispatch(authActionsCreator.setAuthAction(data));
     });
 
@@ -42,6 +48,10 @@ export function login(email, password, callback) {
       "auth/login",
       { email, password },
       (data, status, statusMessage) => {
+        if (data.departureCities) {
+          cookie.save("departureCities", data.departureCities);
+        }
+
         dispatch(authActionsCreator.setAuthAction(data));
 
         callback(status, statusMessage);
@@ -51,11 +61,15 @@ export function login(email, password, callback) {
 }
 
 export function register(data, callback) {
-  return function(dispatch, getState) {
+  return function(dispatch) {
     dispatch(postActionsCreator.cleanPostListAction());
 
     Proxy.post("auth/register", data, (data, status, statusMessage) => {
       if (!status) {
+        if (data.departureCities) {
+          cookie.save("departureCities", data.departureCities);
+        }
+
         dispatch(authActionsCreator.setAuthAction(data));
       }
 

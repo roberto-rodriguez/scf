@@ -1,9 +1,29 @@
 import * as configActionsCreator from "./config.actions_creator";
+import * as viewActionsCreator from "./view.actions_creator";
+import * as postActionsCreator from "./post.actions_creator";
+import * as Proxy from "./Proxy";
 import * as object from "../utils/object";
+import cookie from "react-cookies";
 
 export function loadConfig() {
   return function(dispatch) {
     dispatch(configActionsCreator.initConfigsAction(loadConfigsAPI()));
+  };
+}
+
+export function updateDepartureCities(key, departureCities) {
+  return function(dispatch) {
+    if (key == "departureCities") {
+      departureCities = departureCities.map(c => c.code).join("|");
+      cookie.save("departureCities", departureCities);
+      dispatch(
+        configActionsCreator.updateDepartureCitiesAction(departureCities)
+      );
+      dispatch(viewActionsCreator.increaseFilterCountAction(departureCities));
+      dispatch(postActionsCreator.cleanPostListAction());
+
+      Proxy.post("config/updateDepartureCities", { departureCities });
+    }
   };
 }
 
@@ -53,7 +73,7 @@ function loadConfigsAPI() {
     { name: "Winnipeg", code: "YWG", region: 6 },
     { name: "Halifax", code: "YHZ", region: 6 },
     { name: "St John's", code: "YYT", region: 6 },
-    { name: "Calgary", code: "YYC", region: 6 } 
+    { name: "Calgary", code: "YYC", region: 6 }
   ];
   return { cities: object.listToObject(cities, "code") };
 }

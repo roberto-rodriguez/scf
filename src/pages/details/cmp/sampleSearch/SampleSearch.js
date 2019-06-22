@@ -60,11 +60,13 @@ class SampleSearch extends React.Component {
                   <div className="text-base">
                     {dates.formatStringDate(departureDateStr, "MMM Do")}
                   </div>
-                  <span className="small d-block">{this.getCode(originCode)}</span>
+                  <span className="small d-block">
+                    {this.getCode(originCode)}
+                  </span>
                 </div>
                 <div className="list-item-content-line-wrapper small">
                   <div className="list-item-content-line-top">
-                    {nights} days
+                    {Math.abs(nights)} days
                   </div>
                   <div className="list-item-content-line" />
                 </div>
@@ -72,20 +74,42 @@ class SampleSearch extends React.Component {
                   <div className="text-base black-text">
                     {dates.formatStringDate(arrivalDateStr, "MMM Do")}
                   </div>
-                  <span className="small d-block">{this.getCode(cityCode)}</span>
+                  <span className="small d-block">
+                    {this.getCode(cityCode)}
+                  </span>
                 </div>
               </div>
             </div>
             <hr className="divider divider-wide" />
             <div className="list-item-bottom">
               <div className="list-item-content sample-search-justify-left provider-link-list">
-                <GoogleLink small sampleSearch={sampleSearch} showProviderPrice={showProviderPrice}/>
-                <SkyLink small sampleSearch={sampleSearch}  showProviderPrice={showProviderPrice}/>
-                <MomondoLink small sampleSearch={sampleSearch}  showProviderPrice={showProviderPrice}/>
+                <GoogleLink
+                  small
+                  sampleSearch={sampleSearch}
+                  showProviderPrice={showProviderPrice}
+                />
+                <SkyLink
+                  small
+                  sampleSearch={sampleSearch}
+                  showProviderPrice={showProviderPrice}
+                />
+                <MomondoLink
+                  small
+                  sampleSearch={sampleSearch}
+                  showProviderPrice={showProviderPrice}
+                />
                 {sampleSearch.kiwiPrice ? (
-                  <KiwiLink small sampleSearch={sampleSearch}  showProviderPrice={showProviderPrice}/>
+                  <KiwiLink
+                    small
+                    sampleSearch={sampleSearch}
+                    showProviderPrice={showProviderPrice}
+                  />
                 ) : (
-                  <KayakLink small sampleSearch={sampleSearch}  showProviderPrice={showProviderPrice}/>
+                  <KayakLink
+                    small
+                    sampleSearch={sampleSearch}
+                    showProviderPrice={showProviderPrice}
+                  />
                 )}
               </div>
             </div>

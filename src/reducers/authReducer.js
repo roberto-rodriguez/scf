@@ -25,6 +25,11 @@ export default function authReducer(state = initialState.auth, action) {
         plan: 0,
         departureCities: null
       };
+    case "UPDATE_DEPARTURE_CITIES":
+      return {
+        ...state,
+        departureCities: data
+      };
 
     default:
       return state;

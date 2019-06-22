@@ -15,7 +15,7 @@ const About = () => {
         <br />
         <br />
         <br />
-        <div className="centered">
+        <div className="centered-column">
           <h5 className="alt-header" style={{ maxWidth: "60%" }}>
             Our website is under construction, we are working very hard to give
             you the best experience on our new web site.

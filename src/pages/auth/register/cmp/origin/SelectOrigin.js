@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import * as object from "../../../../../utils/object";
 import "../../../authStyles.scss";
-import PropTypes from "prop-types"; 
+import PropTypes from "prop-types";
 
 import { UsMapPanel, CitiesPanel, SelectedCities } from "./cmp/";
 
@@ -11,8 +12,7 @@ class SelectOrigin extends React.Component {
 
     this.state = {
       country: "us", //or 'canada'
-      region: null,
-      departureCities: [...props.data.departureCities]
+      region: null
     };
   }
 
@@ -24,32 +24,40 @@ class SelectOrigin extends React.Component {
   };
 
   selectCity = city => {
-    var { departureCities } = this.state;
+    var { departureCities } = this.props;
 
-    if (departureCities.length < 4) {
-      var newList = [...this.state.departureCities, city];
-      this.setState({ departureCities: newList });
-      this.callOnUpdate(newList);
+    var containsCity = object.listContainsObjWithPropEqualTo(
+      departureCities,
+      "code",
+      city.code
+    );
+
+    if (containsCity) {
+      this.deleteCity(city);
+    } else {
+      if (departureCities.length < 4) {
+        var newList = [...departureCities, city];
+        this.callOnUpdate(newList);
+      }
     }
   };
 
   deleteCity = city => {
-    var { departureCities } = this.state;
+    var { departureCities } = this.props;
 
     var newList = [...departureCities.filter(c => c.code != city.code)];
-    this.setState({ departureCities: newList });
     this.callOnUpdate(newList);
   };
 
   callOnUpdate = newList => this.props.onUpdate("departureCities", newList);
 
   render() {
-    var { country, region, departureCities } = this.state;
-    var { data } = this.props;
+    var { departureCities } = this.props;
+    var { country, region } = this.state;
+    var selectedRegion = this.props.selectedRegion || 0;
 
     return (
-      <div> 
-
+      <div>
         <div
           className="responsive-tabs responsive responsive-tabs-classic horizontal text-left"
           data-type="horizontal"
@@ -62,9 +70,9 @@ class SelectOrigin extends React.Component {
           <br />
           <ul className="resp-tabs-list tabs-1 text-center tabs-group-default select-origin-tab-panel">
             <li
-              className={`resp-tab-item ${
-                country == "us" ? "resp-tab-active" : ""
-              }`}
+              className={
+                "resp-tab-item" + (country == "us" ? "resp-tab-active" : "")
+              }
               aria-controls="tab_item-0"
               role="tab"
               onClick={() => this.selectCountry("us")}
@@ -72,9 +80,9 @@ class SelectOrigin extends React.Component {
               United States
             </li>
             <li
-              className={`resp-tab-item ${
-                country == "canada" ? "resp-tab-active" : ""
-              }`}
+              className={
+                "resp-tab-item" + (country == "canada" ? "resp-tab-active" : "")
+              }
               aria-controls="tab_item-1"
               role="tab"
               onClick={() => this.selectCountry("canada")}
@@ -88,28 +96,22 @@ class SelectOrigin extends React.Component {
           <div>
             <UsMapPanel
               selectRegion={this.selectRegion}
-              selectedRegion={data.selectedRegion}
-            />
-
-            <CitiesPanel
+              selectedRegion={selectedRegion}
               regionId={region}
               selectCity={this.selectCity}
               departureCities={departureCities}
             />
           </div>
         ) : (
-          <div>
-            <br /> <br /> <br />
-            <CitiesPanel
-              regionId={6}
-              selectCity={this.selectCity}
-              departureCities={departureCities}
-            />
-          </div>
+          <CitiesPanel
+            regionId={6}
+            selectCity={this.selectCity}
+            departureCities={departureCities}
+          />
         )}
-        <br/>
-        <br/>
-        <br/>
+        <br />
+        <br />
+        <br />
       </div>
     );
   }
@@ -117,7 +119,8 @@ class SelectOrigin extends React.Component {
 
 SelectOrigin.propTypes = {
   onUpdate: PropTypes.func,
-  data: PropTypes.object
+  departureCities: PropTypes.any,
+  selectedRegion: PropTypes.any
 };
 
 export default connect()(SelectOrigin);

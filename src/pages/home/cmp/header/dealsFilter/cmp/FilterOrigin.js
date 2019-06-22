@@ -10,7 +10,7 @@ class FilterOrigin extends React.Component {
     var { departureCities, cities, originNotIn, updateFilter } = this.props;
 
     return (
-      <div className="height100 width100 filter-origin centered">
+      <div className="height100 width100 filter-origin centered-column">
         <div>
           {departureCities &&
             cities &&

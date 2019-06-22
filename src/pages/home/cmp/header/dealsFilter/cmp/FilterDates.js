@@ -58,7 +58,7 @@ class FilterDates extends React.Component {
 
     return (
       <div
-        className="height100 width100 filter-origin centered"
+        className="height100 width100 filter-origin centered-column"
         style={{ paddingTop: 15 }}
       >
         <Select

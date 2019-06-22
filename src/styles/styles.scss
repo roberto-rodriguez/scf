@@ -1,10 +1,14 @@
 
 .centered{
-  display:flex;
-  flex-direction:column;
+  display:flex; 
   align-items:center;
   justify-content:center;
 }
+
+.centered-column{
+  @extend .centered;
+  flex-direction:column;
+} 
 
 @media (max-width: 876px) {
   .hide-on-tablet{
@@ -34,17 +38,27 @@
   margin-right: 20px;
 }
 
+.margin-top-3{ //To be used by icons
+  margin-top: 3px!important;
+}
+
 .margin-top-10{ 
   margin-top: 10px!important;
 }
 
 .margin-right-10{ 
-  margin-right: 10px;
+  margin-right: 10px!important;
 }
 
 .margin-left-10{ 
-  margin-left: 10px;
+  margin-left: 10px!important;
+} 
+
+.margin-bottom-30{ 
+  margin-bottom: 30px!important;
 }
+
+
 
 .page-header {
   height: 500px;
@@ -87,6 +101,15 @@
 .pink-text {
   color: #c62a82!important; 
 } 
+
+.bold-light-blue{
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 700;
+  color: #22a9bf;
+  text-align: left;
+  cursor:pointer;
+}
 
 .font-weight-normal{
   font-weight: normal !important; 

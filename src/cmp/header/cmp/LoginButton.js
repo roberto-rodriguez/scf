@@ -19,30 +19,31 @@ class LoginButton extends React.Component {
 
     if (!plan) {
       return (
-        <li className={darkNavLink ? 'dark-nav-link': ''}>
+        <li className={darkNavLink ? "dark-nav-link" : ""}>
           <NavLink to="/login">Login</NavLink>
         </li>
       );
     }
 
     return (
-      <li className={`rd-navbar--has-dropdown rd-navbar-submenu ${darkNavLink ? 'dark-nav-link': ''}`}>
+      <li
+        className={`rd-navbar--has-dropdown rd-navbar-submenu ${
+          darkNavLink ? "dark-nav-link" : ""
+        }`}
+      >
         <i
           className="icon mdi mdi-account-circle white-text"
-          style={{fontSize: 22}}
+          style={{ fontSize: 22 }}
         >
           {" "}
         </i>
         <span className="rd-navbar-submenu-toggle" />
         <ul className="rd-navbar-dropdown" style={{ left: -177 }}>
           <li>
-            <a href="overview.html" >Profile</a>
+            <NavLink to="/about">Profile</NavLink>
           </li>
           <li>
-            <a href="overview.html">Departure Cities</a>
-          </li>
-          <li>
-            <a href="overview.html">Notifications</a>
+            <NavLink to="/departures">Select Departure Cities</NavLink>
           </li>
           <li>
             <span onClick={this.onLogout}>Log Out</span>
