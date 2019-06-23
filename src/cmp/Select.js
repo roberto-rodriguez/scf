@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 import "./cmpStyles.scss";
 
 class Select extends React.Component {
-  handleChange = () => {};
-
+ 
   render() {
     var { value, label, items, onChange, style } = this.props;
 

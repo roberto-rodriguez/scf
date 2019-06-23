@@ -3,7 +3,7 @@ export default {
     selectedPostId: null,
     expiredPostList: {},
     postList: {},
-    region: 0, 
+    region: 0,
     filters: {
       // originNotIn: [],
       // regionNotIn: [],
@@ -22,5 +22,7 @@ export default {
   viewState: {
     showFilters: false,
     filterCount: 0, //Used to notify home to update when filters change
+    showTour: false,
+    showWelcome: true
   }
 };

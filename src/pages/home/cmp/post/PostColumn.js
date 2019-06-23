@@ -51,7 +51,7 @@ class PostColumn extends React.Component {
 
 
     return (
-      <div className="row-wrapper width100">
+      <div className="row-wrapper width100 main-post-column">
         {plan <= 1 && !isEmpty && (
           <h5 className={"grey-text"} style={{ textAlign: "right" }}>
             {"Free Deals"}

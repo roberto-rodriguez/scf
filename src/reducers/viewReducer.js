@@ -15,6 +15,11 @@ export default function viewReducer(state = initialState.viewState, action) {
         ...state,
         [data.prop]: data.value
       };
+    case "SET_VIEW_STATE_PROPS":
+      return {
+        ...state,
+        ...data
+      };
 
     case "INCREASE_FILTER_COUNT":
       return {

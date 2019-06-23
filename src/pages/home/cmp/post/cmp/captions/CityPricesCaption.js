@@ -14,7 +14,7 @@ class CityPricesCaption extends React.Component {
     mainCity = mainCity || {};
 
     return (
-      <div className="caption">
+      <div className={"caption"}>
         {cities.length <= 4 && (
           <Link
             className={"city-price-caption-header"}
@@ -35,7 +35,7 @@ class CityPricesCaption extends React.Component {
         )}
 
         <ul className="list-marked list-marked-no-padding list-marked-flex text-base cities-list">
-          <PostCityPrice 
+          <PostCityPrice
             selectedCity={cityCode}
             sampleSearchCity={mainCity}
             originCity={originCity}

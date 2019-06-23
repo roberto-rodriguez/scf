@@ -11,7 +11,7 @@ class ExpiredPostColumn extends React.Component {
     if (postList.length == 0) return null;
 
     return (
-      <div className="row-wrapper">
+      <div className="row-wrapper expired-post-column">
         <div>
           <h5 className={"pink-text"} style={{ textAlign: "left" }}>
             Premium Deals{" "}

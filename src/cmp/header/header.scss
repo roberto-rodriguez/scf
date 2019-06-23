@@ -1,4 +1,11 @@
- .rd-navbar--has-dropdown:hover ul {
+.logo{
+  float: left; 
+  margin-top: 10px;
+  font-family: "Courgette, serif";
+  font-size: 25px;
+}
+
+.rd-navbar--has-dropdown:hover ul {
    visibility: visible !important;
    opacity: 1 !important;
  }

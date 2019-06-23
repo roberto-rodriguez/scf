@@ -28,10 +28,10 @@ class Post extends React.Component {
     }
 
     return (
-      <div
+      <div 
         id={postId}
         className={
-          "isotope-item" +
+          "home-post isotope-item " +
           (plan > 1
             ? "col-12 col-md-6 col-lg-4 col-xl-4 col-x1400-4 "
             : "col-12 col-md-12 col-lg-12 col-xl-6")

@@ -27,7 +27,7 @@ class Deal extends React.Component {
     this.setState({ triggerUpdate: true });
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate( ) {
     var {
       post,
       match,

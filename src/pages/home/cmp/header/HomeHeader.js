@@ -5,6 +5,8 @@ import { HeaderRegion, SubscribeButton } from "./cmp";
 import "./homeHeaderStyles.scss";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import WelcomePanel from "../../../../cmp/onboarding/WelcomePanel";
+import OnboardingTour from "../../../../cmp/onboarding/OnboardingTour";
 
 var regions = [
   "All Deals to:",
@@ -17,42 +19,46 @@ var regions = [
 ];
 class HomeHeader extends React.Component {
   render() {
-    var { appStarted } = this.props;
+    var { appStarted, showWelcome, showTour } = this.props;
 
     return (
       <header className="home-header2">
-        <NavBar hasFilters={true} />
+        {!showWelcome && <NavBar hasFilters={true} />}
 
         <div className="home-header-wrap">
           <div className="home-header-top">
+            {showWelcome && <WelcomePanel />}
+            <OnboardingTour />
             <div className="home-header-top-inner">
-              <div className="home-header-top-title">
-                <h3
-                  className="blue-text"
-                  style={{ fontFamily: "Courgette, cursive" }}
-                >
-                  We help you to
-                  <span
-                    className="pink-text"
+              {!showWelcome && (
+                <div className="home-header-top-title">
+                  <h3
+                    className="blue-text"
                     style={{ fontFamily: "Courgette, cursive" }}
                   >
-                    {" Fly Super Cheap "}
-                  </span>
-                </h3>
-                <br />
-                <h4 className="blue-text">
-                  Finding the BEST DEALS departing from your home city
-                </h4>
-                <br />
-                <h4
-                  className="home-header-sub-title"
-                  style={{ color: "maroon" }}
-                >
-                  Deals up to 70% OFF
-                </h4>
-              </div>
+                    We help you to
+                    <span
+                      className="pink-text"
+                      style={{ fontFamily: "Courgette, cursive" }}
+                    >
+                      {" Fly Super Cheap "}
+                    </span>
+                  </h3>
+                  <br />
+                  <h4 className="blue-text">
+                    Finding the BEST DEALS departing from your home city
+                  </h4>
+                  <br />
+                  <h4
+                    className="home-header-sub-title"
+                    style={{ color: "maroon" }}
+                  >
+                    Deals up to 70% OFF
+                  </h4>
+                </div>
+              )}
 
-              {appStarted && <SubscribeButton />}
+              {!showWelcome && appStarted && <SubscribeButton />}
             </div>
           </div>
 
@@ -95,11 +101,15 @@ class HomeHeader extends React.Component {
 }
 
 HomeHeader.propTypes = {
-  appStarted: PropTypes.bool
+  appStarted: PropTypes.bool,
+  showTour: PropTypes.bool,
+  showWelcome: PropTypes.bool
 };
 
-const mapStateToProps = ({ authReducer }) => ({
-  appStarted: authReducer.appStarted
+const mapStateToProps = ({ authReducer, viewReducer }) => ({
+  appStarted: authReducer.appStarted,
+  showWelcome: viewReducer.showWelcome,
+  showTour: viewReducer.showTour
 });
 
 export default connect(mapStateToProps)(HomeHeader);
