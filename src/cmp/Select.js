@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import "./cmpStyles.scss";
 
 class Select extends React.Component {
- 
   render() {
     var { value, label, items, onChange, style } = this.props;
 
@@ -23,5 +22,13 @@ class Select extends React.Component {
     );
   }
 }
+
+Select.propTypes = {
+  value: PropTypes.any,
+  label: PropTypes.string,
+  items: PropTypes.any,
+  onChange: PropTypes.func,
+  style: PropTypes.any
+};
 
 export default connect()(Select);

@@ -74,6 +74,21 @@ class OnboardingTour extends React.Component {
       )
     },
     {
+      selector: ".post-price",
+      content: (
+        <div>
+          These are:
+          <br />
+          <br />
+          <ul style={{ listStyle: "disc" }}>
+            <li>Price</li>
+            <li>Average Price</li>
+            <li>% OFF the average</li>
+          </ul>
+        </div>
+      )
+    },
+    {
       selector: ".isotope-filters-horizontal",
       content: (
         <p>

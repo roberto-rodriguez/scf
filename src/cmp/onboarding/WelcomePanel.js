@@ -64,13 +64,10 @@ class WelcomePanel extends React.Component {
             Every day we analyze all flight combinations from your home city to
             <span className="pink-text">{" +200 "}</span> cities around the
             world for the next 12 months, and post here the{" "}
-            <span className="pink-text">Best Deals</span>, and the details on
-            how to book them.
+            <span className="pink-text">Best Deals</span>, up to <span className="pink-text">70% OFF</span> the original price.
           </p>
           Let us show you the most popular features you can take advantage of on
-          our site.
-          <br />
-          It will just take a minute!
+          our site. It will just take a minute!
           <br />
           <br />
           <b

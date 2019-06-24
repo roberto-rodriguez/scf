@@ -5,6 +5,7 @@ import { Credentials, SelectOrigin } from "./cmp/";
 import { AuthHeader } from "../cmp/";
 import * as authAction from "../actions/AuthActions";
 import PropTypes from "prop-types";
+import validator from "email-validator";
 
 class Register extends React.Component {
   constructor(props) {
@@ -12,21 +13,47 @@ class Register extends React.Component {
 
     this.state = {
       page: 1,
+      errorsObj: null,
       data: {
         departureCities: [],
         email: "",
         password: "",
-        repassword: "",
-        selectedRegion: 0 //this is just ofr the registering flow
+        repassword: ""
       }
     };
   }
 
   onNext = () => {
-    var { page } = this.state;
+    var { page, data } = this.state;
 
-    if (page <= 2) {
-      this.setState({ page: page + 1 });
+    var errorsObj = {};
+    var hasErrors = false;
+
+    for (var prop in data) {
+      if (!data[prop]) {
+        errorsObj[prop] = "This field is required";
+        hasErrors = true;
+      }
+    }
+
+    if (!hasErrors) {
+      if (data.password != data.repassword) {
+        errorsObj["password"] = "Password doesn't match";
+        hasErrors = true;
+      }
+
+      if (!validator.validate(data.email)) {
+        errorsObj["email"] = "Invalid Email";
+        hasErrors = true;
+      }
+    }
+
+    if (hasErrors) {
+      this.setState({ errorsObj });
+    } else {
+      if (page <= 2) {
+        this.setState({ page: page + 1 });
+      }
     }
   };
 
@@ -107,7 +134,7 @@ class Register extends React.Component {
   }
 
   buildBody = () => {
-    var { page, data } = this.state;
+    var { page, data, errorsObj } = this.state;
 
     switch (page) {
       case 1:
@@ -118,6 +145,7 @@ class Register extends React.Component {
             onUpdate={this.onUpdate}
             onRegister={this.onRegister}
             data={data}
+            errorsObj={errorsObj}
           />
         );
       default:
@@ -127,7 +155,6 @@ class Register extends React.Component {
             onBack={this.onBack}
             onUpdate={this.onUpdate}
             onRegister={this.onRegister}
-            selectedRegion={data.selectedRegion}
             departureCities={data.departureCities}
           />
         );

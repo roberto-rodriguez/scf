@@ -35,6 +35,16 @@ class DepartureCities extends React.Component {
               <i className="fa fa-long-arrow-left float-left bold-text pink-text margin-right-10 margin-top-3" />
             </span>
             {"Select up to 4 Departure Cities"}
+
+            <span className="float-right" onClick={history.goBack}>
+              <a
+                className="cursor-pointer bold-text pink-text"
+                style={{ fontSize: 16 }}
+              >
+                Finish
+              </a> 
+              <i className="fa fa-long-arrow-right float-right bold-text pink-text margin-left-10  margin-top-3" />
+            </span>
           </h5>
         </div>
         <SelectOrigin

@@ -2,29 +2,21 @@ import React from "react";
 import { connect } from "react-redux";
 import "../../authStyles.scss";
 import PropTypes from "prop-types";
+import InputField from "../../../../cmp/InputField";
 
 class Credentials extends React.Component {
-  state = {
-    //use state just for validation latter
-    email: "",
-    password: "",
-    repassword: ""
-  };
-
-  updateInputValue = (field, evt) => {
-    var value = evt.target.value;
+  updateInputValue = (field, value) => {
     var { onUpdate } = this.props;
 
-    this.setState({ [field]: evt.target.value });
     onUpdate(field, value);
   };
 
   render() {
-    var {  data } = this.props;
+    var { data, errorsObj } = this.props;
     var { email, password, repassword } = data;
 
     return (
-      <div> 
+      <div>
         <div
           className="row row-offset-4 justify-content-sm-center"
           style={{ marginBottom: 160 }}
@@ -34,57 +26,31 @@ class Credentials extends React.Component {
               className="rd-mailform rd-form text-left"
               noValidate="novalidate"
             >
-              <div className="form-wrap has-error">
-                <label className="form-label-outside" htmlFor="login">
-                  Email
-                </label>
-                <input
-                  value={email}
-                  onChange={evt => this.updateInputValue("email", evt)}
-                  className="form-input form-input-gray form-control-has-validation form-control-last-child"
-                  id="email"
-                  type="text"
-                  name="email"
-                  data-constraints="@Required"
-                />
-                {false && (
-                  <span className="form-validation">
-                    The text field is required.
-                  </span>
-                )}
-              </div>
-              <div className="form-wrap">
-                <label className="form-label-outside" htmlFor="password">
-                  Password
-                </label>
-                <input
-                  value={password}
-                  onChange={evt => this.updateInputValue("password", evt)}
-                  className="form-input form-input-gray form-control-has-validation form-control-last-child"
-                  id="password"
-                  type="password"
-                  name="password"
-                  data-constraints="@Required"
-                />
-                <span className="form-validation" />
-              </div>
-              <div className="form-wrap">
-                <label className="form-label-outside" htmlFor="repassword">
-                  Confirm Password
-                </label>
-                <input
-                  value={repassword}
-                  onChange={evt => this.updateInputValue("repassword", evt)}
-                  className="form-input form-input-gray form-control-has-validation form-control-last-child"
-                  id="repassword"
-                  type="password"
-                  name="repassword"
-                  data-constraints="@Required"
-                />
-                <span className="form-validation" />
-              </div>
+              <InputField
+                name={"email"}
+                value={email}
+                label={"Email"}
+                onChange={this.updateInputValue}
+                errorsObj={errorsObj}
+              />
+              <InputField
+                name={"password"}
+                value={password}
+                label={"Password"}
+                type={"password"}
+                onChange={this.updateInputValue}
+                errorsObj={errorsObj}
+              />
+              <InputField
+                name={"repassword"}
+                value={repassword}
+                label={"Retype Password"}
+                type={"password"}
+                onChange={this.updateInputValue}
+                errorsObj={errorsObj}
+              />
             </form>
-          </div> 
+          </div>
         </div>
       </div>
     );

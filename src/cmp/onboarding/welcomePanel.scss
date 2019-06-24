@@ -7,3 +7,10 @@
   height:100%;
   z-index: 999999;
 }
+
+
+@media screen and (min-width:1600px) { 
+  #welcome-panel{
+  padding-top:160px!important; 
+   }
+  }  

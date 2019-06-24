@@ -1,5 +1,6 @@
 import * as authActionsCreator from "../../../actions/auth.actions_creator";
 import * as postActionsCreator from "../../../actions/post.actions_creator";
+import * as viewActionsCreator from "../../../actions/view.actions_creator";
 import * as configActions from "../../../actions/ConfigActions";
 import { TOKEN_COOKIE, BROWSER_ID } from "../../../constants/Constants";
 import * as string from "../../../utils/string";
@@ -34,6 +35,13 @@ export function init() {
       }
 
       dispatch(authActionsCreator.setAuthAction(data));
+
+      var showWelcome = cookie.load("showWelcome");
+
+      if (!data.plan && !showWelcome) {
+        dispatch(viewActionsCreator.setViewStateAction("showWelcome", true));
+        cookie.save("showWelcome", true);
+      }
     });
 
     configActions.loadConfig()(dispatch, getState);
@@ -41,7 +49,7 @@ export function init() {
 }
 
 export function login(email, password, callback) {
-  return function(dispatch, getState) {
+  return function(dispatch) {
     dispatch(postActionsCreator.cleanPostListAction());
 
     Proxy.post(

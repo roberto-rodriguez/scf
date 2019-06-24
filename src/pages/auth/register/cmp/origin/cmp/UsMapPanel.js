@@ -21,7 +21,7 @@ class UsMapPanel extends React.Component {
     super(props);
 
     this.state = {
-      region: props.selectedRegion
+      region: props.selectedRegion || 0
     };
   }
 

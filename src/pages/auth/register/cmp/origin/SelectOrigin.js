@@ -19,8 +19,7 @@ class SelectOrigin extends React.Component {
   selectCountry = country => this.setState({ country });
 
   selectRegion = region => {
-    this.setState({ region });
-    this.props.onUpdate("selectedRegion", region);
+    this.setState({ region }); 
   };
 
   selectCity = city => {
@@ -53,8 +52,7 @@ class SelectOrigin extends React.Component {
 
   render() {
     var { departureCities } = this.props;
-    var { country, region } = this.state;
-    var selectedRegion = this.props.selectedRegion || 0;
+    var { country, region } = this.state; 
 
     return (
       <div>
@@ -95,8 +93,7 @@ class SelectOrigin extends React.Component {
         {country == "us" ? (
           <div>
             <UsMapPanel
-              selectRegion={this.selectRegion}
-              selectedRegion={selectedRegion}
+              selectRegion={this.selectRegion} 
               regionId={region}
               selectCity={this.selectCity}
               departureCities={departureCities}
@@ -119,8 +116,7 @@ class SelectOrigin extends React.Component {
 
 SelectOrigin.propTypes = {
   onUpdate: PropTypes.func,
-  departureCities: PropTypes.any,
-  selectedRegion: PropTypes.any
+  departureCities: PropTypes.any 
 };
 
 export default connect()(SelectOrigin);
