@@ -20,7 +20,7 @@ class FilterDestination extends React.Component {
 
     return (
       <div className="height100 width100 filter-origin centered-column">
-        <table cellPadding="10">
+        <table cellPadding="10" width="80%">
           <tbody>
             <tr>
               <td>

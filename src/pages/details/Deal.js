@@ -27,7 +27,7 @@ class Deal extends React.Component {
     this.setState({ triggerUpdate: true });
   }
 
-  componentDidUpdate( ) {
+  componentDidUpdate() {
     var {
       post,
       match,
@@ -35,22 +35,23 @@ class Deal extends React.Component {
       loadCityIfNotExist,
       setSelectedPostId,
       appStarted,
-      postListName
+      postListName,
+      needToLoadCity
     } = this.props;
 
     var { mounted } = this.state;
 
     if (appStarted) {
-      if (!mounted) {
+      if (!mounted || needToLoadCity) {
         window.scrollTo(0, 0);
         var { postId, sampleSearchCityId } = match && match.params;
 
         if (!post) {
           loadPost(postId, sampleSearchCityId);
-        } else { 
-          
+        } else {
           var sampleSearchCity =
             post.cityList && post.cityList[sampleSearchCityId];
+
           if (!sampleSearchCity || !sampleSearchCity.loaded) {
             loadCityIfNotExist(postId, sampleSearchCityId, postListName);
           } else {
@@ -58,7 +59,9 @@ class Deal extends React.Component {
           }
         }
 
-        this.setState({ mounted: true });
+        if (!mounted) {
+          this.setState({ mounted: true });
+        }
       }
     }
   }
@@ -158,24 +161,33 @@ Deal.propTypes = {
   match: PropTypes.object,
   location: PropTypes.object,
   appStarted: PropTypes.bool,
+  needToLoadCity: PropTypes.bool,
   postListName: PropTypes.string
 };
 
 function mapStateToProps({ postReducer, authReducer }, props) {
   var { postId, sampleSearchCityId } = props.match && props.match.params;
-  var postListName = 'postList';
+  var postListName = "postList";
 
   if (postId && sampleSearchCityId) {
     var post = postReducer.postList[postId];
 
     if (!post && postReducer.expiredPostList) {
       post = postReducer.expiredPostList[postId];
-      postListName = 'expiredPostList';
+      postListName = "expiredPostList";
     }
+
+    var needToLoadCity = false;
+
+    if (post && post.cityList[sampleSearchCityId]) {
+      needToLoadCity = !post.cityList[sampleSearchCityId].loaded;
+    }
+
     return {
       post,
       appStarted: authReducer.appStarted,
-      postListName
+      postListName,
+      needToLoadCity
     };
   }
 }

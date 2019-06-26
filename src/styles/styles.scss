@@ -10,6 +10,10 @@
   flex-direction:column;
 } 
 
+.mobile .hide-for-mobile{
+  display:none!important;
+}
+
 @media (max-width: 876px) {
   .hide-on-tablet{
     display: none!important;

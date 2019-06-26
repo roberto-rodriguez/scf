@@ -77,7 +77,7 @@ class HomeHeader extends React.Component {
                 className="arrow bounce cursor-pointer"
                 onClick={() => utils.scrollTo(600, 1000)}
               >
-                <span className="fa fa-chevron-down fa-2x" />
+                {!showWelcome && (<span className="fa fa-chevron-down fa-2x" />)}
               </div>
             )}
           </div>

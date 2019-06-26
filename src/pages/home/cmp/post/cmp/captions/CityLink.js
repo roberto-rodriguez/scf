@@ -1,9 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class CityLink extends React.Component {
-  render() { 
-    var {text, className, originCity, country, sampleSearchCity, postId } = this.props;
+  render() {
+    var {
+      text,
+      className,
+      originCity,
+      country,
+      sampleSearchCity,
+      postId
+    } = this.props;
 
     return (
       <Link
@@ -25,5 +33,14 @@ class CityLink extends React.Component {
     );
   }
 }
+
+CityLink.propTypes = {
+  text: PropTypes.string,
+  className: PropTypes.string,
+  originCity: PropTypes.string,
+  country: PropTypes.string,
+  sampleSearchCity: PropTypes.string,
+  postId: PropTypes.number
+};
 
 export default CityLink;

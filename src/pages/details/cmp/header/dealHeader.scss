@@ -1,5 +1,5 @@
 .deal-header{
-  height:80vh!important;
+  height:80vh;
   background-size: 100% auto!important;
 }
 
@@ -19,5 +19,17 @@
       color: white; 
       cursor:pointer;
      }
+  }
+}
+
+//------- MOBILE STYLES
+
+.mobile{
+  .deal-header{
+    height:20vh!important; 
+  }
+
+  .details-header-title{ 
+    top: calc(20vh - 50px)!important; 
   }
 }

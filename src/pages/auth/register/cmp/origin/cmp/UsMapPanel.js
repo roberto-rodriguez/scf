@@ -48,9 +48,9 @@ class UsMapPanel extends React.Component {
   };
 
   onBackToMap = () => {
-    this.setState({region: 0});
+    this.setState({ region: 0 });
     this.props.selectRegion(0);
-  }
+  };
 
   /* optional customization of filling per state and calling custom callbacks per state */
   statesCustomConfig = () => {
@@ -78,12 +78,19 @@ class UsMapPanel extends React.Component {
     var { region } = this.state;
     var { selectCity, departureCities } = this.props;
 
+    var width, height;
+
+    if (!document.getElementsByClassName("mobile").length) {
+      width = screen.width / 3;
+      height = screen.width / 3 - 120;
+    }
+
     if (region == 0) {
       return (
         <USAMap
           title="Select Region"
-          width={screen.width / 3}
-          height={screen.width / 3 - 120}
+          width={width}
+          height={height}
           customize={this.statesCustomConfig()}
           onClick={this.mapHandler}
         />
@@ -96,7 +103,7 @@ class UsMapPanel extends React.Component {
             selectCity={selectCity}
             departureCities={departureCities}
             onBackToMap={this.onBackToMap}
-          /> 
+          />
         </div>
       );
     }

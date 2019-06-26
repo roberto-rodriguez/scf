@@ -14,8 +14,9 @@ class SubscribeButton extends React.Component {
         cmp = (
           <NavLink exact to="/subscribe">
             <span className="button yellow-button button-circle" href="#">
-              Subscribe Free
+              Sign Up
             </span>
+           
           </NavLink>
         );
         break;

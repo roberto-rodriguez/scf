@@ -20,7 +20,7 @@ class SwitchCmp extends React.Component {
           checked={value || false}
           onColor={"#1f2746"}
         />
-        <h5 style={{ position: "relative", top: -30, paddingLeft: 75 }}>
+        <h5 className={"switch-label"}>
           {label}
         </h5>
       </div>

@@ -25,7 +25,7 @@ class DealsFilter extends React.Component {
             <div className="col-12">
               <h4>Destination</h4>
             </div>
-            <div className="col-12">
+            <div className="col-12 hide-for-mobile" >
               <h4>Dates</h4>
             </div>
           </div>
@@ -36,7 +36,7 @@ class DealsFilter extends React.Component {
             <div className="col-12">
               <FilterDestination />
             </div>
-            <div className="col-12">
+            <div className="col-12 hide-for-mobile">
               <FilterDates />
             </div>
           </div>
@@ -58,7 +58,7 @@ class DealsFilter extends React.Component {
               </span>
 
               {hasDepartureCities && (
-                <NavLink exact to="/departures">
+                <NavLink exact to="/departures"  onClick={() => setViewState("showFilters", false)}>
                   <span className="button button-default button-xs float-left">
                     Change Departure Preferences
                   </span>

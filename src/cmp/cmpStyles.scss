@@ -19,3 +19,34 @@ select{
   white-space: nowrap;
   width: 300px;
 } 
+
+.switch-label{
+  position: relative;
+  top: -30px;
+  padding-left: 75px;
+}
+
+.mobile{
+  .deals-filter .container{
+    width: 100%!important;
+    max-width: 100%!important;
+  }
+
+  .switch-label{
+    padding-left: 140px!important;
+  }
+
+  .deals-filter-header{
+    margin-right: 0px!important;
+    margin-left: 0px!important;
+  }
+
+  .deals-filter-body .col-12{
+    max-width: 50%!important;
+    width: 50%!important;
+  }
+
+  .filter-origin table{
+    width: 100%!important;
+  }
+}
