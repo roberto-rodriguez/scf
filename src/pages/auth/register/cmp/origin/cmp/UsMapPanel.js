@@ -57,7 +57,7 @@ class UsMapPanel extends React.Component {
     var config = {};
     var selectedRegion = this.state.region;
 
-    Object.keys(this.stateAbbreviations).forEach((region, i) =>
+    Object.keys(this.stateAbbreviations).forEach((region) =>
       this.stateAbbreviations[region].reduce((obj, item) => {
         obj[item] = {
           fill:

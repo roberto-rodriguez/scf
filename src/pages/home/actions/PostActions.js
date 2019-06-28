@@ -29,7 +29,7 @@ export function listPost(page, callback, reload) {
     //if (!reload && postList.length >= end) {
     // callback(postList.slice(start, end));
     // } else {
-    var existentPostList = [];
+    //var existentPostList = [];
 
     // var offset = postList.length % 10;
 

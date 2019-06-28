@@ -15,7 +15,7 @@ class DealHeader extends React.Component {
 
     return (
       <header
-        className="page-header deal-header"
+        className="deal-header"
         style={{
           backgroundSize: "cover",
           background: `no-repeat  url(https://res.cloudinary.com/fsc/image/upload/v${

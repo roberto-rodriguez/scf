@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ProviderLink from "./ProviderLink";
-import * as urlBuilder from "./urlBuilder";
+import ProviderLink from "./ProviderLink"; 
 
 class KiwiLink extends React.Component {
   render() {

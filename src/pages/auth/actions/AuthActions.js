@@ -18,6 +18,12 @@ export function init() {
 
     var request = { [BROWSER_ID]: browserId };
 
+    var departureCities = cookie.load("departureCities");
+
+    if(departureCities){
+      request.departureCities = departureCities;
+    }
+
     Proxy.post("auth/init", request, data => {
       data.appStarted = true;
 

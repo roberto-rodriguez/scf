@@ -1,5 +1,4 @@
-import React from "react";
-import Tour from "reactour";
+import React from "react"; 
 import { connect } from "react-redux";
 import * as viewActions from "../../actions/ViewActions";
 import PropTypes from "prop-types";

@@ -4,15 +4,7 @@ import * as postActions from "../../../../actions/PostActions";
 import PropTypes from "prop-types";
 import "../dealsFilterStyles.scss";
 import SwitchCmp from "../../../../../../cmp/SwitchCmp";
-
-const regions = [
-  "Europe", //2
-  "Asia", //3
-  "Oceania", //4
-  "Caribean", //5
-  "America", //6
-  "Africa" //7
-];
+ 
 
 class FilterDestination extends React.Component {
   render() {

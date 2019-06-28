@@ -60,6 +60,7 @@ class Credentials extends React.Component {
 Credentials.propTypes = {
   onNext: PropTypes.func,
   onUpdate: PropTypes.func,
+  errorsObj: PropTypes.any,
   data: PropTypes.object
 };
 

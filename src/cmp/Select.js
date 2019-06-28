@@ -8,7 +8,7 @@ class Select extends React.Component {
     var { value, label, items, onChange, style } = this.props;
 
     return (
-      <div className="margin-top-10" style={{ width: 200 }}>
+      <div className="margin-top-10" style={{ width: 200, ...style }}>
         <label className="form-label-outside">{label}</label>
         <select onChange={e => onChange(e.target.value)} defaultValue={value}>
           <option />

@@ -37,5 +37,5 @@ function send(url, callback, data) {
         callback && callback(data, status, statusMessage);
       }
     })
-    .catch(function(error) {});
+    .catch(function(/*error*/) {});
 }

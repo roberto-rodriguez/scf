@@ -29,7 +29,7 @@ class Login extends React.Component {
         requiredPassword: false
       });
 
-      login(email, password, (resutCode, resultMessage) => {
+      login(email, password, (resutCode /*, resultMessage*/) => {
         if (resutCode) {
           this.setState({ invalidCredentials: true });
         } else {

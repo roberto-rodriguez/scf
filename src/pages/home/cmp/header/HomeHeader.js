@@ -19,7 +19,7 @@ var regions = [
 ];
 class HomeHeader extends React.Component {
   render() {
-    var { appStarted, showWelcome, showTour } = this.props;
+    var { appStarted, showWelcome } = this.props;
 
     return (
       <header className="home-header2">

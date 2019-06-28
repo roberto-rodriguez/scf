@@ -15,9 +15,10 @@ class LoginButton extends React.Component {
   };
 
   render() {
-    var { plan, darkNavLink } = this.props;
+    var { /*plan,*/ darkNavLink, clientId } = this.props;
 
-    if (!plan) {
+    // if (!plan) {
+    if (!clientId) {
       return (
         <li className={darkNavLink ? "dark-nav-link" : ""}>
           <NavLink to="/login">Login</NavLink>
@@ -56,6 +57,7 @@ class LoginButton extends React.Component {
 
 LoginButton.propTypes = {
   plan: PropTypes.number,
+  clientId: PropTypes.number,
   email: PropTypes.string,
   logout: PropTypes.func,
   history: PropTypes.any,
@@ -65,6 +67,7 @@ LoginButton.propTypes = {
 function mapStateToProps({ authReducer }) {
   return {
     plan: authReducer.plan,
+    clientId: authReducer.clientId,
     email: authReducer.email
   };
 }

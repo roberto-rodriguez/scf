@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-var enableDebug = false;
+ 
 import PropTypes from "prop-types";
 
 class InfiniteList extends Component {
