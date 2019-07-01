@@ -1,11 +1,11 @@
 
  .auth-header {
-    background: no-repeat url('../../styles/images/header.jpg') center; 
+    background: no-repeat url('../../styles/images/header.jpg') center;
   }
 
   @media (min-width: 1200px){
     .cities-panel-container {
-      max-width: 65%!important; 
+      max-width: 65%!important;
   }
   }
 
@@ -16,7 +16,7 @@
 
   .selected-city{
     margin-right: 15px;
-    
+
     span{
       margin-left: 10px;
     position: absolute;
@@ -26,7 +26,13 @@
   }
 
   .select-origin-tab-panel:after{
-    width: auto!important; 
+    width: auto!important;
   }
 
- 
+  .width80 {
+    width: 80%!important;
+  }
+
+  .width20 {
+    width: 20%!important;
+  }

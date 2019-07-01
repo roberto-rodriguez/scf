@@ -1,10 +1,44 @@
 import React from "react";
+import { connect } from "react-redux";
 import "../../../../authStyles.scss";
+import PropTypes from "prop-types";
+import { Alert } from "reactstrap";
+import * as addCityActions from "../../../../actions/AddCityActions";
+
 
 class FAQCanNotFindCity extends React.Component {
-  render() {
-    var { showCanNotFindCity, onToggleCanNotFindCity } = this.props;
+  constructor(props) {
+    super(props);
 
+    this.state = {
+    cityName:"",
+    isEmpty:false,
+    message:"",
+    resutCode:0
+    };
+  }
+  addNewCity = () => {
+    var { cityName } = this.state;
+    var {addCity} = this.props;
+      addCity(cityName,  (resutCode, resultMessage) => {
+      if(resutCode==500){
+         this.setState({ isEmpty: true,
+                          resutCode:resutCode,
+                          message:resultMessage });
+       }else{
+       if(resutCode==0){
+         this.setState({ isEmpty: true,
+                          resutCode:resutCode,
+                          message:"The city was added successfully.",
+                          cityName:"" });
+       }
+     }
+      });
+  };
+
+  render() {
+    var { showCanNotFindCity, onToggleCanNotFindCity} = this.props;
+    var {cityName, isEmpty, message,resutCode,} = this.state;
     return (
       <div
         className="responsive-tabs responsive responsive-tabs-classic resp-easy-accordion float-right"
@@ -43,17 +77,45 @@ class FAQCanNotFindCity extends React.Component {
               <label className="form-label-outside" htmlFor="subscribe-email">
                 Enter city name here
               </label>
+
               <input
-                className="form-input form-control-has-validation form-control-last-child"
-                id="subscribe-email"
+                onChange={evt => this.updateInputValue("cityName", evt)}
+                className="form-input form-control-has-validation form-control-last-child float-left width80"
+                id="cityName"
+                value={cityName}
+                type="text"
+                name="cityName"
               />
+              <button
+                onClick={() => this.addNewCity()}
+                className="button button-primary button-block button-sm  width20">
+              Save
+              </button>
+
             </div>
+            {isEmpty && <Alert color={resutCode==0 ? "success": "danger"}>{message}</Alert>}
+
           </div>
         </div>
         <br />
       </div>
     );
   }
+
+
+  updateInputValue = (field, evt) =>
+    this.setState({ [field]: evt.target.value,
+                    isEmpty:false});
 }
 
-export default FAQCanNotFindCity;
+
+FAQCanNotFindCity.propTypes = {
+  cityName: PropTypes.object,
+  addCity:PropTypes.func
+};
+
+
+export default connect(
+  null,
+  addCityActions
+)(FAQCanNotFindCity);
