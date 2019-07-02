@@ -38,7 +38,7 @@ class DealHeader extends React.Component {
             )}
           </h4>
 
-          <ul style={{ float: "right" }}>
+          <ul className="hide-for-mobile" style={{ float: "right" }}>
             <li>
               <a
                 href={`https://www.google.com/destination?dest_mid=/m/${gcode}`}

@@ -20,7 +20,7 @@ export function init() {
 
     var departureCities = cookie.load("departureCities");
 
-    if(departureCities){
+    if (departureCities) {
       request.departureCities = departureCities;
     }
 
@@ -44,7 +44,7 @@ export function init() {
 
       var showWelcome = cookie.load("showWelcome");
 
-      if (!data.plan && !showWelcome) {
+      if (!showWelcome) {
         dispatch(viewActionsCreator.setViewStateAction("showWelcome", true));
         cookie.save("showWelcome", true);
       }

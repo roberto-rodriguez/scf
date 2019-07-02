@@ -45,7 +45,7 @@ class SampleSearch extends React.Component {
               <div className="list-item-content sample-search-justify-left">
                 {provider ? (
                   <img
-                    className="img-responsive center-block thumbnail-img details-city-img"
+                    className="img-responsive center-block thumbnail-img details-city-img hide-for-mobile"
                     style={{ height: 40 }}
                     src={require(`../../images/providers/${
                       providerInfo.image
@@ -53,35 +53,35 @@ class SampleSearch extends React.Component {
                     alt="Provider where this deal was found"
                   />
                 ) : (
-                  <span style={{ height: 40, width: "30%" }}> </span>
+                  <span className="hide-for-mobile" style={{ height: 40, width: "30%" }}> </span>
                 )}
 
                 <div className="list-item-content-left">
-                  <div className="text-base">
+                  <div className="text-base font-15">
                     {dates.formatStringDate(departureDateStr, "MMM Do")}
                   </div>
-                  <span className="small d-block">
+                  <span className="small d-block font-14">
                     {this.getCode(originCode)}
                   </span>
                 </div>
                 <div className="list-item-content-line-wrapper small">
-                  <div className="list-item-content-line-top">
+                  <div className="list-item-content-line-top font-13">
                     {Math.abs(nights)} days
                   </div>
                   <div className="list-item-content-line" />
                 </div>
                 <div className="list-item-content-right">
-                  <div className="text-base black-text">
+                  <div className="text-base black-text font-15">
                     {dates.formatStringDate(arrivalDateStr, "MMM Do")}
                   </div>
-                  <span className="small d-block">
+                  <span className="small d-block font-14">
                     {this.getCode(cityCode)}
                   </span>
                 </div>
               </div>
             </div>
             <hr className="divider divider-wide" />
-            <div className="list-item-bottom">
+            <div className="list-item-bottom hide-for-mobile">
               <div className="list-item-content sample-search-justify-left provider-link-list">
                 <GoogleLink
                   small
@@ -115,8 +115,8 @@ class SampleSearch extends React.Component {
             </div>
           </div>
           <div className="list-item-footer">
-            <h5 className="text-bold list-item-price font-weight-normal black-text">
-              <span className={"icon fa fa-dollar"} />
+            <h5 className="text-bold list-item-price font-weight-normal black-text font-18">
+              <span className={"icon fa fa-dollar font-18"} />
               {price}
             </h5>
             <ViewDealButton sampleSearch={sampleSearch} />

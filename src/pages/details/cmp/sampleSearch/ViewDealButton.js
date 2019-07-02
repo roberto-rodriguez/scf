@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import * as Constants from "../../../../constants/Constants";
 import {
   GoogleLink,
   SkyLink,
@@ -18,15 +19,19 @@ import {
 class ViewDealButton extends React.Component {
   render() {
     var { sampleSearch } = this.props;
+    var width = 300;
+    var cellSpacing = 20;
+    var cellPadding = 10;
+    var ratio = Constants.MOBILE ? 2 : 1;
 
     return sampleSearch.provider ? (
       <a
-        className="button button-primary button-xs button-no-shadow white-text"
+        className="button button-primary button-xs button-no-shadow white-text font-12"
         href={urlBuilder.buildUrl(sampleSearch.provider, sampleSearch)}
         target="_blank"
         rel="noopener noreferrer"
       >
-        View Deal
+        {Constants.MOBILE ? "VIEW" : "VIEW DEAL"}
       </a>
     ) : (
       <div>
@@ -37,12 +42,12 @@ class ViewDealButton extends React.Component {
           style={{ padding: 0 }}
         >
           <span
-            className="button button-default button-no-shadow"
+            className="button button-default button-no-shadow font-12"
             href="#"
             onClick={this.toggle}
             id={"Popover-1"}
           >
-            View Deal
+            {Constants.MOBILE ? "VIEW" : "VIEW DEAL"}
           </span>
         </Button>
         <UncontrolledPopover
@@ -51,15 +56,16 @@ class ViewDealButton extends React.Component {
           target={`PopoverFocus-${sampleSearch.id}`}
         >
           <PopoverHeader>
-            <Button
-              color="link"
-              style={{ color: "#ad146a", fontWeight: "bold" }}
-            >
+            <Button color="link" className={"pink-text bold-text font-18"}>
               Providers
             </Button>
           </PopoverHeader>
           <PopoverBody>
-            <table width="300" cellSpacing="20" cellPadding="10">
+            <table
+              width={width * ratio}
+              cellSpacing={cellSpacing * ratio}
+              cellPadding={cellPadding * ratio}
+            >
               <tbody>
                 <tr>
                   <td width="50%">
@@ -87,7 +93,7 @@ class ViewDealButton extends React.Component {
           <PopoverHeader>
             <Button
               color="link"
-              style={{ color: "#ad146a" }}
+              className={"pink-text bold-text font-18"}
               onClick={this.openAll}
             >
               {"Open All  "}

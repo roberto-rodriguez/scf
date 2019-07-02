@@ -36,24 +36,22 @@ class HomeHeader extends React.Component {
                     className="blue-text"
                     style={{ fontFamily: "Courgette, cursive" }}
                   >
-                    We help you to
+                    
                     <span
                       className="pink-text"
                       style={{ fontFamily: "Courgette, cursive" }}
                     >
-                      {" Fly Super Cheap "}
+                      {" Extremely Cheap "}
                     </span>
+                    last minute flights
                   </h3>
-                  <br />
-                  <h4 className="blue-text">
-                    Finding the BEST DEALS departing from your home city
-                  </h4>
+                  <br /> 
                   <br />
                   <h4
                     className="home-header-sub-title"
                     style={{ color: "maroon" }}
                   >
-                    Deals up to 70% OFF
+                    Deals up to 80% OFF
                   </h4>
                 </div>
               )}
@@ -77,7 +75,7 @@ class HomeHeader extends React.Component {
                 className="arrow bounce cursor-pointer"
                 onClick={() => utils.scrollTo(600, 1000)}
               >
-                {!showWelcome && (<span className="fa fa-chevron-down fa-2x" />)}
+                {!showWelcome && <span className="fa fa-chevron-down fa-2x" />}
               </div>
             )}
           </div>

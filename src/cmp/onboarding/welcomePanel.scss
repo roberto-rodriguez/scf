@@ -1,16 +1,70 @@
 
 #welcome-panel{
+  text-align: justify;
   background-color: white;
-  width: 40%;
-  padding:40px 30px 0px 10%; 
+  width: 50%;
+  padding:10px 30px 0px 10%; 
    
   height:100%;
   z-index: 999999;
+
+  img{
+    position: absolute;
+    top: 10;
+    left: 44%;
+    height: 40px;
+    width: 40px;
+    cursor:pointer;
+  }
+
+  .no-thanks-link, .button-circle{
+    float:right;
+  }
 }
 
 
 @media screen and (min-width:1600px) { 
   #welcome-panel{
   padding-top:160px!important; 
+  width: 40%; 
+
+  img{
+    position: absolute;
+    top: 0;
+    left: 33%;
+    height: 40px;
+    width: 40px;
+    cursor:pointer;
+  }
    }
+
+  
   }  
+
+  .mobile #welcome-panel{
+    width: auto!important; 
+    height:auto!important; 
+    padding:40px 40px 40px 12%!important; 
+    
+    position: absolute;
+
+    h5, h5 span{
+      font-size: 50px!important; 
+    }
+    p, b{
+      font-size: 40px!important; 
+    }
+    span{
+      font-size: 35px!important; 
+    }
+
+    img{ 
+      right: 0px;
+      height: 40px;
+      width: 40px;
+    }
+
+    .button-circle{
+      float:right;
+    }
+  }

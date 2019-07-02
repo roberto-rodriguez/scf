@@ -10,7 +10,7 @@ import { Home, Deal, About, Login, Register, DepartureCities } from "./pages/";
 
 import "./styles/tpl/style.css";
 import "./styles/tpl/bootstrap.css";
-
+import "./styles/styles.mobile.scss";
 class App extends React.Component {
   render() {
     return (

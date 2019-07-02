@@ -16,8 +16,8 @@ class PostCityPrice extends React.Component {
 
     //onClick={this.onClick}
     return (
-      <li >
-        {CityLink(city, (isSelectedCity ? 'white-text' : 'yellow-text'))}
+      <li className="mobile-font-50 mobile-margin-left-60">
+        {CityLink(city, ( isSelectedCity ? 'white-text' : 'yellow-text'))}
         <div>
          {CityLink(formattedPrice, `city-price icon fa fa-dollar ${isSelectedCity ? 'white-text' : 'yellow-text'}`)}
         </div>
@@ -35,7 +35,7 @@ class PostCityPrice extends React.Component {
 
     return (
       <Link
-        className={className}
+        className={'mobile-font-50 ' + className}
         to={{
           pathname: "/deal/" + postId + '/' + sampleSearchCity.cityCode,
           query: {

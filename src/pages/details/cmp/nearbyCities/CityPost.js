@@ -32,46 +32,49 @@ class CityPost extends React.Component {
       country
     } = sampleSearchCity;
 
+    var width = Constants.MOBILE ? 1000 : 360;
+
     return (
-      <Link
-        onClick={this.onCLick}
-        to={{
-          pathname: "/deal/" + postId + "/" + sampleSearchCityId,
-          query: {
-            originCity,
-            city,
-            price,
-            avg,
-            country,
-            image
-          }
-        }}
-      >
-        <div className="col-xl-12 col-md-6">
+      <div className="col-xl-12 col-md-12">
+        <Link
+          onClick={this.onCLick}
+          to={{
+            pathname: "/deal/" + postId + "/" + sampleSearchCityId,
+            query: {
+              originCity,
+              city,
+              price,
+              avg,
+              country,
+              image
+            }
+          }}
+        >
           <div className="thumbnail-btn details-city-thumbnail">
-            <div className="post-price yellow-text bold-text icon" style={{top:0}}>
+            <div
+              className="post-price yellow-text bold-text icon  font-18"
+              style={{ top: 0 }}
+            >
               ${price} <span className="regular-price white-text">${avg}</span>
             </div>
-            <div className="nearby-city-post-badge" >
-              {city}
-            </div>
+            <div className="nearby-city-post-badge  font-18">{city}</div>
             <img
               className="img-responsive center-block thumbnail-img details-city-img"
-              src={`http://res.cloudinary.com/fsc/image/upload/c_scale,w_360/v${
+              src={`http://res.cloudinary.com/fsc/image/upload/c_scale,w_${width}/v${
                 Constants.TIMESTAMP
               }/${cityCode}.jpg`}
             />
             <div className="caption datails-city-caption">
               <span
-                className="button button-primary button-xs"
+                className="button button-primary button-xs font-18"
                 href="blog-single-post.html"
               >
                 explore
               </span>
             </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     );
   }
 }
@@ -87,7 +90,7 @@ CityPost.propTypes = {
 
 function mapStateToProps({ postReducer }, props) {
   var { postId, sampleSearchCityId, postListName } = props;
-  var post = postReducer[postListName][postId] || {}; 
+  var post = postReducer[postListName][postId] || {};
   var cityList = post.cityList || {};
   var sampleSearchCity = cityList[sampleSearchCityId] || {};
 

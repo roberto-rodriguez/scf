@@ -62,11 +62,7 @@
 
   .home-header-top-title{
     margin-bottom: 15px!important; 
-  }
-
-  .home-header-sub-title{
-    display: none;
-  }
+  } 
 
   .home-header-bottom{ 
     padding-top: 3vh!important;
@@ -98,6 +94,10 @@
   }
 }
 
-.signup-arrow{
-  color: red;
+.mobile .home-header-top-title{
+ margin-top: 10%;
+
+ h3{
+  font-size: 50px!important;
+ }
 }

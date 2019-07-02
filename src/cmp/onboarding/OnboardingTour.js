@@ -22,42 +22,11 @@ class OnboardingTour extends React.Component {
 
   steps = [
     {
-      selector: ".expired-post-column",
-      content: (
-        <ul style={{ listStyle: "disc" }}>
-          <li>
-            Here you will find <b className="navy-blue-text">Premium Deals</b>{" "}
-            that came out 3 days ago.
-          </li>
-          <br />
-          <li>
-            <b className="navy-blue-text">Premium Members </b> see these deals
-            as soon as they come out.
-          </li>
-          <br />
-          <li>
-            You will get one month of{" "}
-            <b className="navy-blue-text">FREE Premium Membership </b> when you
-            sign up.
-          </li>
-        </ul>
-      )
-    },
-    {
-      selector: ".main-post-column",
+      selector: ".post-full",
       content: (
         <p>
-          Here you will find the <b className="navy-blue-text">FREE Deals</b>{" "}
-          (Usually one third of all the deals we find)
-        </p>
-      )
-    },
-    {
-      selector: ".nav-filter-button",
-      content: (
-        <p>
-          Here you can <b className="navy-blue-text">Filter the Deals</b> by
-          Departure Cities, Destination and Dates
+          Here you will find our{" "}
+          <b className="navy-blue-text">Flight Deals</b>
         </p>
       )
     },
@@ -67,9 +36,7 @@ class OnboardingTour extends React.Component {
         <p>
           <b className="navy-blue-text">And this is a Deal</b> <br /> Click in
           one of the cities name and we will show you the details and how to
-          find it .
-          <br />
-          We also show you the best prices to cities around.
+          find it.
         </p>
       )
     },
@@ -78,7 +45,6 @@ class OnboardingTour extends React.Component {
       content: (
         <div>
           These are:
-          <br />
           <br />
           <ul style={{ listStyle: "disc" }}>
             <li>Price</li>
@@ -89,11 +55,22 @@ class OnboardingTour extends React.Component {
       )
     },
     {
+      selector: ".nav-filter-button",
+      content: (
+        <p>
+          Here you can<b className="navy-blue-text">{" Filter "}</b> the Deals
+          by
+          <b className="navy-blue-text">{" Departure Cities "}</b>, Destination
+          and Departure Dates
+        </p>
+      )
+    },
+    {
       selector: ".isotope-filters-horizontal",
       content: (
         <p>
-          Select the deals of an{" "}
-          <b className="navy-blue-text">specific region</b>
+          Select the deals by specific{" "}
+          <b className="navy-blue-text"> destination region</b>
         </p>
       )
     }

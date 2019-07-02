@@ -15,22 +15,22 @@ class ToolBar extends React.Component {
         <tbody>
           <tr>
             <td style={{ textAlign: "left" }}>
-              <h5 style={{ color: "#ba0e6f" }}>
+              <h5  className="font-18" style={{ color: "#ba0e6f" }}>
                 {"Price: "}
-                <span style={{ fontSize: 18 }} className="icon fa fa-dollar" />
+                <span className="icon fa fa-dollar font-18" />
                 <span>{price}</span>{" "}
-                <span style={{ color: "grey", fontSize: 18 }}>
+                <span className="grey-text font-18">
                   (Regular +${avg})
                 </span>
               </h5>
             </td>
-            <td style={{ textAlign: "center" }}>
+            <td className="hide-for-mobile" style={{ textAlign: "center" }}>
               <h6>{`${formattedStartDate} — ${formattedEndDate}`}</h6>
             </td>
             <td>
               <div style={{ float: "right", maxWidth: 180 }}>
                 <select
-                  className="form-input select-filter"
+                  className="form-input select-filter font-18"
                   data-placeholder="Select an option"
                   data-minimum-results-for-search="Infinity"
                   data-constraints="@Required"

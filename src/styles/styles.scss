@@ -8,11 +8,7 @@
 .centered-column{
   @extend .centered;
   flex-direction:column;
-} 
-
-.mobile .hide-for-mobile{
-  display:none!important;
-}
+}  
 
 @media (max-width: 876px) {
   .hide-on-tablet{
@@ -166,3 +162,27 @@
   text-align: left!important;
 }
  
+
+//************* FONT **********
+
+.font-12{
+  font-size: 12px;
+}
+
+.font-13{
+  font-size: 13px;
+}
+
+.font-14{
+  font-size: 14px;
+}
+
+.font-15{
+  font-size: 15px;
+}
+
+.font-18,
+.font-18:before
+{
+  font-size: 1rm;
+}

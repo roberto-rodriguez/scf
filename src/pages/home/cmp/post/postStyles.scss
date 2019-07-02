@@ -48,6 +48,10 @@
   background: linear-gradient(transparent 1%,#00000090 99%);
 }
 
+.mobile .nearby-city-post-badge{
+  height: 70px;
+}
+
  .post-header{
    padding: 8px 10px 4px 10px;
  }
@@ -227,6 +231,7 @@
     max-height: 240px;
     min-height: 240px;
   }
+ 
  }
 
  .city-price-caption-header{

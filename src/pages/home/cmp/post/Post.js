@@ -33,7 +33,7 @@ class Post extends React.Component {
         className={
           "home-post isotope-item " +
           (plan > 1
-            ? "col-12 col-md-6 col-lg-4 col-xl-4 col-x1400-4 "
+            ? "col-12 col-md-12 col-lg-6 col-xl-4 col-x1400-4 "
             : "col-12 col-md-12 col-lg-12 col-xl-6")
         }
         data-filter="Type 3"
@@ -44,13 +44,13 @@ class Post extends React.Component {
               <tbody>
                 <tr>
                   <td width="45%" style={{ textAlign: "left" }}>
-                    <span className="pOrigin">{originCity}</span>
+                    <span className="pOrigin mobile-font-50">{originCity}</span>
                   </td>
                   <td width="10%" align="center">
-                    <i className="fa fa-long-arrow-right" />
+                    <i className="fa fa-long-arrow-right mobile-font-50" />
                   </td>
                   <td width="45%" style={{ textAlign: "right" }}>
-                    <span className="pDestination pink-text text-bold">
+                    <span className="pDestination pink-text text-bold mobile-font-50">
                       {city}
                     </span>
                   </td>
@@ -60,13 +60,13 @@ class Post extends React.Component {
           </div>
           {!status && <div className="premium-post-overlay"> </div>}
           <PostBadge status={status} premium={premium} />
-          <div className="post-price yellow-text">
+          <div className="post-price yellow-text mobile-font-50">
             ${price}{" "}
-            <span className="regular-price" style={{ marginRight: 10 }}>
+            <span className="regular-price mobile-font-50" style={{ marginRight: 10 }}>
               ${avg}
             </span>
             {"  "}
-            <span style={{ color: "orange", fontSize: 14 }}>
+            <span style={{ color: "orange"}}>
               {`${percent}% OFF`}
             </span>
           </div>
@@ -75,11 +75,11 @@ class Post extends React.Component {
             <table style={{ width: "100%" }}>
               <tbody>
                 <tr>
-                  <td className="white-text" style={{ textAlign: "left" }}>
+                  <td className="white-text mobile-font-50" style={{ textAlign: "left" }}>
                     {creationDate && moment(creationDate).fromNow()}
                   </td>
                   <td style={{ textAlign: "right" }}>
-                    <span className="pDestination yellow-text">{country}</span>
+                    <span className="pDestination yellow-text mobile-font-50">{country}</span>
                   </td>
                 </tr>
               </tbody>

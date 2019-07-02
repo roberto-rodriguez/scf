@@ -9,7 +9,7 @@ class NearbyCities extends React.Component {
   
     return (
       <div>
-        <h5 className="hr-title" style={{ marginTop: 5 }}>
+        <h5 className="hr-title font-18" style={{ marginTop: 5 }}>
           Nearby cities
         </h5>
 

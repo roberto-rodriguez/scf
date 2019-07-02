@@ -15,15 +15,15 @@ class ProviderLink extends React.Component {
         onClick={logProviderLinkClick}
       >
         <div className="list-item-content-left">
-          <span className={small ? "small" : ""}>
+          <span className={small ? "small" : "font-18 back-text"}>
             {`${provider} `}
             {showProviderPrice && price > 0 && (
-              <span className={"provider-link-price"}>
-                <span className={"icon fa fa-dollar"} />
+              <span className={"provider-link-price font-18"}>
+                <span className={"icon fa fa-dollar font-18"} />
                 {` ${price}`}
               </span>
             )}
-            <span className="icon fa fa-external-link" />
+            <span className="icon fa fa-external-link hide-for-mobile" />
           </span>
         </div>
       </a>
