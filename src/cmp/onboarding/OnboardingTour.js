@@ -25,8 +25,7 @@ class OnboardingTour extends React.Component {
       selector: ".post-full",
       content: (
         <p>
-          Here you will find our{" "}
-          <b className="navy-blue-text">Flight Deals</b>
+          Here you will find our <b className="navy-blue-text">Flight Deals</b>
         </p>
       )
     },
@@ -55,22 +54,10 @@ class OnboardingTour extends React.Component {
       )
     },
     {
-      selector: ".nav-filter-button",
+      selector: ".nav-deals-filter",
       content: (
         <p>
           Here you can<b className="navy-blue-text">{" Filter "}</b> the Deals
-          by
-          <b className="navy-blue-text">{" Departure Cities "}</b>, Destination
-          and Departure Dates
-        </p>
-      )
-    },
-    {
-      selector: ".isotope-filters-horizontal",
-      content: (
-        <p>
-          Select the deals by specific{" "}
-          <b className="navy-blue-text"> destination region</b>
         </p>
       )
     }

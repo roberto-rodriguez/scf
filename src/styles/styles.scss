@@ -10,6 +10,12 @@
   flex-direction:column;
 }  
 
+@media (max-width: 1300px) {
+  .hide-on-laptop{
+    display: none!important;
+  }
+}
+
 @media (max-width: 876px) {
   .hide-on-tablet{
     display: none!important;
@@ -133,7 +139,7 @@
   border: 1px solid grey;
 }
 
-.bck-text {
+.pink-bck {
   background-color: #c62a82!important; 
 } 
 
@@ -186,3 +192,4 @@
 {
   font-size: 1rm;
 }
+

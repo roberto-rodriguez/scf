@@ -2,7 +2,7 @@ import moment from "moment";
  
 export function formatStringDate(
   stringDate,
-  resultFormat,
+  resultFormat = "MMM, YYYY",
   originFormat = "YYYY-MM-DD"
 ) {
   var date = moment(stringDate, originFormat).toDate();

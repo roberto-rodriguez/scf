@@ -14,13 +14,7 @@ class Logo extends React.Component {
     return (
       <NavLink exact to="/">
         <h5
-          className={darkerColor}
-          style={{
-            float: "left",
-            marginTop: 10,
-            fontFamily: "Courgette, serif",
-            fontSize: 25
-          }}
+          className={darkerColor + " fsc-logo"} 
         >
           <span
             className={lighterColor}

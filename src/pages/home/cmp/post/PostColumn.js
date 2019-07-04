@@ -33,26 +33,27 @@ class PostColumn extends React.Component {
   componentDidUpdate() {
     var { region, filterCount } = this.props;
 
-    this.setState({ region, filterCount });
+    if (this.state.region != region || this.state.filterCount != filterCount) {
+      this.setState({ region, filterCount });
+    }
   }
 
   render() {
-   // var { isEmpty } = this.state;
+    // var { isEmpty } = this.state;
     var { /*plan,*/ region, filterCount } = this.props;
     var reload =
       this.state.region != region || this.state.filterCount != filterCount;
 
     // var postCls = plan ? "post-full" : "post-column border-grey";
-    var postCls =  "post-full";
+    var postCls = "post-full";
     var wrapperCls = "row text-lg-left ";
 
     // if (!isEmpty) {
-      wrapperCls += postCls;
+    wrapperCls += postCls;
     // }
 
-
     return (
-      <div className="row-wrapper width100 main-post-column"> 
+      <div className="row-wrapper width100 main-post-column">
         {/* plan <= 1 && !isEmpty && (
           <h5 className={"grey-text"} style={{ textAlign: "right" }}>
             {"Free Deals"}
@@ -78,10 +79,10 @@ class PostColumn extends React.Component {
         page,
         (resultList, reload) => {
           var isEmpty = resultList.length == 0 && (page == 0 || reload);
- 
+
           if (isEmpty) {
             this.setState({ isEmpty });
-          } 
+          }
           infiniteListCallback(resultList);
         },
         reload
@@ -91,7 +92,7 @@ class PostColumn extends React.Component {
 
 PostColumn.propTypes = {
   region: PropTypes.number,
-  plan: PropTypes.number, 
+  plan: PropTypes.number,
   listPost: PropTypes.func,
   filterCount: PropTypes.number
 };
@@ -99,7 +100,7 @@ PostColumn.propTypes = {
 function mapStateToProps({ postReducer, authReducer, viewReducer }) {
   return {
     postList: postReducer.postList,
-    region: postReducer.region, 
+    region: postReducer.region,
     plan: authReducer.plan,
     filterCount: viewReducer.filterCount
   };

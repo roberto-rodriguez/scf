@@ -12,7 +12,7 @@ class WelcomePanel extends React.Component {
 
   componentDidMount() {
     if (this.props.showWelcome) {
-      setTimeout(() => this.setState({ showWelcomePanel: true }), 1000);
+      setTimeout(() => this.setState({ showWelcomePanel: true }), 500);
     }
   }
 
@@ -42,29 +42,15 @@ class WelcomePanel extends React.Component {
               }}
             >
               {" "}
-              Welcome to
+              Welcome !!!
             </span>
-            <span
-              className={"pink-text"}
-              style={{
-                fontWeight: "bold",
-                fontFamily: "Courgette, serif",
-                paddingRight: 8
-              }}
-            >
-              Fly
-            </span>
-            Super Cheap
-            <i
-              className={"icon fa fa-paper-plane pink-text"}
-              style={{ marginLeft: 10 }}
-            />
           </h5>
           <br />
           <h5 className="text-align-left" style={{ lineHeight: 1.5 }}>
-            Every day we find the absolute{" "}
+            Every day we find the{" "}
             <span className="pink-text"> Best Flight Deals </span>
-            comparing all prices across all major Flight Search Engines.
+            departing from your city comparing prices across all major Flight
+            Search Engines.
           </h5>
           <p className="text-align-left" style={{ fontSize: 18 }}>
             <span className="pink-text">What makes us different</span> is that

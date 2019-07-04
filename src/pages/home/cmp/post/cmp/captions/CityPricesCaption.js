@@ -36,7 +36,7 @@ class CityPricesCaption extends React.Component {
 
         <ul className="list-marked list-marked-no-padding list-marked-flex text-base cities-list">
           <PostCityPrice
-            selectedCity={cityCode}
+            mainCity={mainCity}
             sampleSearchCity={mainCity}
             originCity={originCity}
             country={country}
@@ -50,7 +50,7 @@ class CityPricesCaption extends React.Component {
             .map((city, i) => (
               <PostCityPrice
                 key={i}
-                selectedCity={cityCode}
+                mainCity={mainCity}
                 sampleSearchCity={city}
                 originCity={originCity}
                 country={country}

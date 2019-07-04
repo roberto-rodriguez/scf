@@ -2,17 +2,23 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import "./homeStyles.scss";
-import { PostColumn, ExpiredPostColumn, HomeHeader } from "./cmp/";
+import { PostColumn, HomeHeader } from "./cmp/";
+import OnboardingTour from "../../cmp/onboarding/OnboardingTour";
+import SubscribePanel from "../../cmp/onboarding/SubscribePanel";
+
 class Home extends React.Component {
   render() {
-    var { /*plan, */ appStarted, clientId } = this.props;
+    var { /*plan, */ appStarted } = this.props;
 
     return (
       <div>
         <HomeHeader />
+        <OnboardingTour />
+
+        <SubscribePanel />
 
         {appStarted && (
-          <section className="section-80 section-lg-120 home-body">
+          <section className="section-80 section-lg-30 home-body">
             <div className="home-container isotope-wrap" style={{ pading: 0 }}>
               <div
                 className="isotope"

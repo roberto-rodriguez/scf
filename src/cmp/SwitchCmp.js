@@ -10,20 +10,28 @@ class SwitchCmp extends React.Component {
     var { value, label, onChange, style } = this.props;
 
     return (
-      <div
-        style={{ height: 30, ...style }}
-        className={"cursor-pointer"}
+      <table
+        className="cursor-pointer switch-cmp"
+        width="100%" 
         onClick={onChange}
+        style={{ ...style }}
       >
-        <Switch
-          onChange={() => {}}
-          checked={value || false}
-          onColor={"#1f2746"}
-        />
-        <h5 className={"switch-label"}>
-          {label}
-        </h5>
-      </div>
+        <tbody>
+          <tr>
+            <td width="25%">
+              <Switch
+                onChange={() => {}}
+                checked={value || false}
+                onColor={"#1f2746"}
+              />
+            </td>
+            <td width="75%" style={{ textAlign: "left" }}>
+              {" "}
+              {label}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     );
   }
 }

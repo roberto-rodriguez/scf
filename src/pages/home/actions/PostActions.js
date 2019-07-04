@@ -66,7 +66,7 @@ export function updateRegion(region) {
 
 //-------------- Filter
 
-export function updateFilter(name, val) {
+export function updateFilter(name, val, replace) {
   return function(dispatch, getState) {
     var { postReducer } = getState();
     var filters = { ...postReducer.filters };
@@ -74,7 +74,7 @@ export function updateFilter(name, val) {
     switch (name) {
       case "originNotIn":
       case "regionNotIn":
-        filters[name] = addRemoveFromList(filters[name], val);
+        filters[name] = replace ? val : addRemoveFromList(filters[name], val);
 
         if (filters[name].length == 0) {
           delete filters[name];

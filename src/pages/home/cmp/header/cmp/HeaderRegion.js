@@ -5,13 +5,14 @@ import PropTypes from "prop-types";
 
 class HeaderRegion extends React.Component {
   render() {
-    var { id, text, region } = this.props;
+    var { id, text, region, active, textCls } = this.props;
 
     return (
       <li onClick={this.doClick} className="cursor-pointer">
         <span
           className={
-            id == region ? "active white-text region-link" : "region-link"
+            textCls +
+            (active ? " active white-text region-link" : " region-link")
           }
         >
           {text}
@@ -32,6 +33,7 @@ HeaderRegion.propTypes = {
   text: PropTypes.string,
   region: PropTypes.number,
   updateRegion: PropTypes.func,
+  active: PropTypes.bool,
   onUpdateRegion: PropTypes.func
 };
 

@@ -1,34 +1,24 @@
 import React from "react";
 import NavBar from "../../../../cmp/header/NavBar";
 import * as utils from "../../../../utils/util";
-import { HeaderRegion, SubscribeButton } from "./cmp";
+import { SubscribeButton, BottomLeft, BottomRight } from "./cmp";
+
 import "./homeHeaderStyles.scss";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import WelcomePanel from "../../../../cmp/onboarding/WelcomePanel";
-import OnboardingTour from "../../../../cmp/onboarding/OnboardingTour";
 
-var regions = [
-  "All Deals to:",
-  "Europe", //2
-  "Asia", //3
-  "Oceania", //4
-  "Caribean", //5
-  "America", //6
-  "Africa" //7
-];
 class HomeHeader extends React.Component {
   render() {
     var { appStarted, showWelcome } = this.props;
 
     return (
       <header className="home-header2">
-        {!showWelcome && <NavBar hasFilters={true} />}
+        <NavBar hasFilters={true} />
 
         <div className="home-header-wrap">
           <div className="home-header-top">
             {showWelcome && <WelcomePanel />}
-            <OnboardingTour />
             <div className="home-header-top-inner">
               {!showWelcome && (
                 <div className="home-header-top-title">
@@ -36,7 +26,6 @@ class HomeHeader extends React.Component {
                     className="blue-text"
                     style={{ fontFamily: "Courgette, cursive" }}
                   >
-                    
                     <span
                       className="pink-text"
                       style={{ fontFamily: "Courgette, cursive" }}
@@ -45,14 +34,6 @@ class HomeHeader extends React.Component {
                     </span>
                     last minute flights
                   </h3>
-                  <br /> 
-                  <br />
-                  <h4
-                    className="home-header-sub-title"
-                    style={{ color: "maroon" }}
-                  >
-                    Deals up to 80% OFF
-                  </h4>
                 </div>
               )}
 
@@ -61,15 +42,6 @@ class HomeHeader extends React.Component {
           </div>
 
           <div className="home-header-bottom">
-            <div className="isotope-filters isotope-filters-horizontal">
-              <ul className="nav-custom" style={{ backgroundColor: "white" }}>
-                {appStarted &&
-                  regions.map((r, i) => (
-                    <HeaderRegion key={i} id={i + 1} text={r} />
-                  ))}
-              </ul>
-            </div>
-
             {appStarted && (
               <div
                 className="arrow bounce cursor-pointer"
@@ -78,6 +50,9 @@ class HomeHeader extends React.Component {
                 {!showWelcome && <span className="fa fa-chevron-down fa-2x" />}
               </div>
             )}
+
+            <BottomLeft />
+            <BottomRight />
           </div>
         </div>
 
@@ -86,8 +61,7 @@ class HomeHeader extends React.Component {
           target="_blank"
           rel="noopener noreferrer"
           title="Simon Migaj"
-          className="hide-on-tablet"
-          style={{ position: "absolute", bottom: 10, right: 10 }}
+          className="image-credit" 
         >
           Photo by: Simon Migaj
         </a>
@@ -96,6 +70,15 @@ class HomeHeader extends React.Component {
   }
 
   onUpdateRegion = region => this.setState(region);
+}
+
+{
+  /* <div className="isotope-filters isotope-filters-horizontal">
+  <ul className="nav-custom" style={{ backgroundColor: "white" }}>
+    {appStarted &&
+      regions.map((r, i) => <HeaderRegion key={i} id={i + 1} text={r} />)}
+  </ul>
+</div>; */
 }
 
 HomeHeader.propTypes = {

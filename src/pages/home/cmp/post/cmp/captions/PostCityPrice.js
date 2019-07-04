@@ -1,6 +1,7 @@
-import React from "react"; 
+import React from "react";
 import { connect } from "react-redux";
 import * as dealActions from "../../../../../details/actions/DealActions";
+import * as Constants from "../../../../../../constants/Constants";
 import PropTypes from "prop-types";
 import * as string from "../../../../../../utils/string";
 import { Link } from "react-router-dom";
@@ -8,43 +9,49 @@ import { Link } from "react-router-dom";
 class PostCityPrice extends React.Component {
   render() {
     var { CityLink, props } = this;
-    var { sampleSearchCity, selectedCity } = props;
-    var { city, price, cityCode } = sampleSearchCity;
+    var { sampleSearchCity } = props;
+    var { city, price } = sampleSearchCity;
     var formattedPrice = price && string.formatAmount(price);
 
-    var isSelectedCity = selectedCity == cityCode;
-
-    //onClick={this.onClick}
     return (
       <li className="mobile-font-50 mobile-margin-left-60">
-        {CityLink(city, ( isSelectedCity ? 'white-text' : 'yellow-text'))}
-        <div>
-         {CityLink(formattedPrice, `city-price icon fa fa-dollar ${isSelectedCity ? 'white-text' : 'yellow-text'}`)}
-        </div>
+        {CityLink(city)}
+        <div>{CityLink(formattedPrice, "city-price icon fa fa-dollar ")}</div>
       </li>
     );
   }
- 
-  CityLink = (text, className) => {
+
+  CityLink = (text, className = "") => {
     var {
-      originCity, 
-      country, 
+      originCity,
+      country,
       sampleSearchCity,
-      postId 
-    } = this.props; 
+      postId,
+      mainCity
+    } = this.props;
+
+    className +=
+      sampleSearchCity.cityCode == mainCity.cityCode
+        ? "white-text"
+        : "yellow-text";
+
+    var city = Object.assign(
+      {},
+      Constants.MOBILE ? mainCity : sampleSearchCity
+    );
 
     return (
       <Link
-        className={'mobile-font-50 ' + className}
+        className={"mobile-font-50 " + className}
         to={{
-          pathname: "/deal/" + postId + '/' + sampleSearchCity.cityCode,
+          pathname: "/deal/" + postId + "/" + city.cityCode,
           query: {
-            originCity,  
-            country,  
-            city: sampleSearchCity.city, 
-            price: sampleSearchCity.price,
-            avg: sampleSearchCity.avg,  
-            cityCode: sampleSearchCity.cityCode
+            originCity,
+            country,
+            city: city.city,
+            price: city.price,
+            avg: city.avg,
+            cityCode: city.cityCode
           }
         }}
       >
@@ -56,11 +63,14 @@ class PostCityPrice extends React.Component {
 
 PostCityPrice.propTypes = {
   sampleSearchCity: PropTypes.object,
-  originCity: PropTypes.string,   
-  country: PropTypes.string, 
+  originCity: PropTypes.string,
+  country: PropTypes.string,
   postId: PropTypes.string,
-  selectedCity: PropTypes.string,
-  cityCode: PropTypes.string 
+  mainCity: PropTypes.any,
+  cityCode: PropTypes.string
 };
 
-export default connect(null, dealActions)(PostCityPrice);
+export default connect(
+  null,
+  dealActions
+)(PostCityPrice);

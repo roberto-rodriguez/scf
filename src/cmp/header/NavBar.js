@@ -4,14 +4,16 @@ import "./header.scss";
 import PropTypes from "prop-types";
 import { LoginButton, FilterButton, Logo } from "./cmp";
 import { connect } from "react-redux";
+import * as viewActions from "../../actions/ViewActions";
 import DealsFilter from "../../pages/home/cmp/header/dealsFilter/DealsFilter";
+import Filter from "../../pages/home/cmp/header/filter/Filter";
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      navSolidBackground: null,
-      liFocus: false
+      navSolidBackground: null
+      // liFocus: false
     };
   }
 
@@ -24,6 +26,7 @@ class NavBar extends React.Component {
   }
 
   handleScroll = () => {
+    var { showWelcome, toggleViewState } = this.props;
     var navSolidBackground = window.scrollY != 0;
 
     if (
@@ -32,15 +35,19 @@ class NavBar extends React.Component {
     ) {
       this.setState({ navSolidBackground });
     }
+
+    if (showWelcome) {
+      toggleViewState("showWelcome");
+    }
   };
 
-  onBlur() {
-    this.setState({ liFocus: true });
-  }
+  // onBlur() {
+  //   this.setState({ liFocus: true });
+  // }
 
-  onFocus() {
-    this.setState({ liFocus: false });
-  }
+  // onFocus() {
+  //   this.setState({ liFocus: false });
+  // }
 
   render() {
     var { navBck, appStarted, hasFilters, showFilters } = this.props;
@@ -105,7 +112,7 @@ class NavBar extends React.Component {
               >
                 <Logo navSolidBackground={navBck || navSolidBackground} />
 
-                {hasFilters && <FilterButton />}
+                {hasFilters && navSolidBackground && <Filter />}
 
                 <ul className="rd-navbar-nav" style={{ float: "right" }}>
                   <li
@@ -155,7 +162,11 @@ NavBar.propTypes = {
 
 const mapStateToProps = ({ authReducer, viewReducer }) => ({
   appStarted: authReducer.appStarted,
-  showFilters: viewReducer.showFilters
+  showFilters: viewReducer.showFilters,
+  showWelcome: viewReducer.showWelcome
 });
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(
+  mapStateToProps,
+  viewActions
+)(NavBar);

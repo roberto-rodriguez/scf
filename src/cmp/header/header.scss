@@ -1,8 +1,17 @@
-.logo{
+.fsc-logo{
   float: left; 
   margin-top: 10px;
-  font-family: "Courgette, serif";
+  font-family: Courgette, serif;
   font-size: 25px;
+}
+
+//LAPTOP styles
+@media screen and (max-width:1600px) {
+  .fsc-logo{ 
+    padding-top: 5px;
+    font-family: Courgette, serif;
+    font-size: 22px;
+  }
 }
 
 .rd-navbar--has-dropdown:hover ul {

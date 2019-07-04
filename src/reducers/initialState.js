@@ -24,6 +24,7 @@ export default {
     showFilters: false,
     filterCount: 0, //Used to notify home to update when filters change
     showTour: false,
-    showWelcome: false
+    showWelcome: false,
+    showSubscribePanel: true
   }
 };

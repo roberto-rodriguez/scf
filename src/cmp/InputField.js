@@ -5,12 +5,21 @@ import "./cmpStyles.scss";
 
 class InputField extends React.Component {
   render() {
-    var { name, value, label, onChange, errorsObj, style, type } = this.props;
+    var {
+      name,
+      value,
+      label,
+      onChange,
+      errorsObj,
+      style,
+      type,
+      placeholder
+    } = this.props;
     //errorsObj ->  {fieldName: errorMessage}
 
     return (
       <div className="form-wrap has-error" style={{ ...style }}>
-        <label className="form-label-outside">{label}</label>
+        {label && <label className="form-label-outside">{label}</label>}
         <input
           value={value}
           onChange={evt => onChange(name, evt.target.value)}
@@ -18,6 +27,7 @@ class InputField extends React.Component {
           type={type || "text"}
           name={name}
           data-constraints="@Required"
+          placeholder={placeholder}
         />
         {errorsObj && errorsObj[name] && (
           <span className="form-validation">{errorsObj[name]}</span>
@@ -32,6 +42,7 @@ InputField.propTypes = {
   name: PropTypes.string,
   label: PropTypes.string,
   type: PropTypes.string,
+  placeholder: PropTypes.string,
   errorsObj: PropTypes.any,
   onChange: PropTypes.func,
   style: PropTypes.any
