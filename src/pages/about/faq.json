@@ -1,0 +1,64 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "question": "How can I know what services are included on my reservation?",
+      "answer": "Once your reservation is processed and confirmed, you'll receive a message with the confirmation information of your booking. You will be taken to your Itinerary Confirmation, in which you'll find detailed information about the services contracted."
+    },
+    {
+      "id": 2,
+      "question": "How can I verify if my reservation has been confirmed by the Agency?",
+      "answer": "You'll know because you'll receive the confirmation voucher, where the status is specified: CONFIRMED. If you have any questions, we would be happy to respond to any request. You can send an email to your designated travel consultant, whose email address is stated in your confirmation voucher."
+    },
+    {
+      "id": 3,
+      "question": "How will the charge appear on my bank statement?",
+      "answer": "The charge will appear as ETravel Reservation Center or Best Day, although this may vary depending on the entity that processes the payment. If you have any questions we will be glad to help, please get in contact with us on ..."
+    },
+    {
+      "id": 4,
+      "question": "I have a charge on my card that I don't recognize, what should I do?",
+      "answer": "Please get in contact with us first and allow us to investigate this charge. Use our contact email robertosoftwareengineer@gmail.com"
+    },
+    {
+      "id": 5,
+      "question": "Is it secure to make a reservation on your website?",
+      "answer": "Of course, this website uses the Verisign Certificate SSL 3.0 to protect the information sent from your browser to our website and database. 100% of credit card operations are encrypted to ensure privacy when you process your payment online. \n The basic search operations on our website don't require the activation of security processes. Our security system is activated automatically when it senses an operation in which information will be stored in the database, as happens when a reservation is made."
+    },
+    {
+      "id": 6,
+      "question": "Is the information that I provide secure?",
+      "answer": "Of course, we work according to the regulations established in the Federal Law for the Protection of Personal Information Possessed by Individuals, meaning that Fly Super Cheap will look to ensure that all handling of sensitive or personal information is controlled in such a way as to provide privacy and the right to informative self-determination of the aforementioned information."
+    },
+    {
+      "id": 7,
+      "question": "Is there a penalty for cancelling my reservation?",
+      "answer": "The services hired can have different cancellation policies, depending on the dates of travel and promotions acquired. For more detailed information, you can consult the Cancelation Policy link for each service that you find on your confirmation voucher."
+    },
+    {
+      "id": 8,
+      "question": "What credit cards do you accept?",
+      "answer": "We accept Visa, MasterCard, and American Express. We also offer numerous different options when you pay your reservation."
+    },
+    {
+      "id": 9,
+      "question": "What forms of payment do you have available?",
+      "answer": "We accept Visa, MasterCard, and American Express, and you can pay in one payment or with monthly interest-free payments. We also offer the possibility of paying your reservation with one or two forms of payment."
+    },
+    {
+      "id": 10,
+      "question": "What's the procedure for changing my flights?",
+      "answer": "Modifications to airline itineraries will be made according to the policies of the contracted rates, covering the costs for any changes or differences that might be generated."
+    },
+    {
+      "id": 11,
+      "question": "What kinds of reservations can I make on Fly Super Cheap?",
+      "answer": "Fly Super Cheap is the largest Online Travel website and features great offers for flights top destinations, Argentina, Canada, Brazil, The Caribbean and Europe's countries."
+    },
+    {
+      "id": 12,
+      "question": "What should I do if I want to make a change to my reservation?",
+      "answer": "Any change to your reservation is subject to availability and a new quotation. Please contact your designated Travel Consultant for more information, mentioning your reservation number."
+    }
+  ]
+}

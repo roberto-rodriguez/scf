@@ -128,7 +128,7 @@ class NavBar extends React.Component {
                         </NavLink>
                       </li>
                       <li>
-                        <NavLink to="/about">FAQ</NavLink>
+                        <NavLink to="/faq">FAQ</NavLink>
                       </li>
                     </ul>
                   </li>
