@@ -1,67 +1,68 @@
-
-.centered{
-  display:flex; 
-  align-items:center;
-  justify-content:center;
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.centered-column{
+.centered-column {
   @extend .centered;
-  flex-direction:column;
-}  
+  flex-direction: column;
+}
 
 @media (max-width: 1300px) {
-  .hide-on-laptop{
-    display: none!important;
+  .hide-on-laptop {
+    display: none !important;
   }
 }
 
 @media (max-width: 876px) {
-  .hide-on-tablet{
-    display: none!important;
+  .hide-on-tablet {
+    display: none !important;
   }
 }
 
-.width100{
-  width:100%!important;
+.width100 {
+  width: 100% !important;
 }
 
-.heigth100{
-  height:100%!important;
+.heigth100 {
+  height: 100% !important;
 }
 
-.cursor-pointer{
-  cursor: pointer;;
+.cursor-pointer {
+  cursor: pointer;
+  ;
 }
 
-.h-margin-20{
+.h-margin-20 {
   margin-left: 20%;
   margin-right: 20%;
 }
 
-.h-margin-20px{
+.h-margin-20px {
   margin-left: 20px;
   margin-right: 20px;
 }
 
-.margin-top-3{ //To be used by icons
-  margin-top: 3px!important;
+.margin-top-3 {
+  //To be used by icons
+  margin-top: 3px !important;
 }
 
-.margin-top-10{ 
-  margin-top: 10px!important;
+.margin-top-10 {
+  margin-top: 10px !important;
 }
 
-.margin-right-10{ 
-  margin-right: 10px!important;
+.margin-right-10 {
+  margin-right: 10px !important;
 }
 
-.margin-left-10{ 
-  margin-left: 10px!important;
-} 
+.margin-left-10 {
+  margin-left: 10px !important;
+}
 
-.margin-bottom-30{ 
-  margin-bottom: 30px!important;
+.margin-bottom-30 {
+  margin-bottom: 30px !important;
 }
 
 
@@ -72,18 +73,21 @@
 }
 
 //Common Text Styles
-.white-text, .white-text:before {
+.white-text,
+.white-text:before {
   color: white !important;
 }
 
-.yellow-text, .yellow-text:before {
+.yellow-text,
+.yellow-text:before {
   color: yellow !important;
 }
 
-.green-text{
+.green-text {
   color: green !important;
 }
-.grey-text{
+
+.grey-text {
   color: grey !important;
 }
 
@@ -91,12 +95,13 @@
   color: #1f2746;
 }
 
-.navy-blue-text{
+.navy-blue-text {
   color: #007aff;
 }
 
-.black-text, .black-text span:before { 
-  color: black!important;
+.black-text,
+.black-text span:before {
+  color: black !important;
 }
 
 .black-bold-text {
@@ -105,91 +110,96 @@
 }
 
 .bold-text {
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 .pink-text {
-  color: #c62a82!important; 
-} 
+  color: #c62a82 !important;
+}
 
-.bold-light-blue{
+.bold-light-blue {
   overflow: hidden;
   font-size: 16px;
   font-weight: 700;
   color: #22a9bf;
   text-align: left;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.font-weight-normal{
-  font-weight: normal !important; 
-} 
+.font-weight-normal {
+  font-weight: normal !important;
+}
 
 //Common Border Styles
 
-.border-green{
+.border-green {
   border: 1px solid green;
 }
 
-.border-pink{
+.border-pink {
   border: 1px solid #c62a82;
 }
 
-.border-grey{
+.border-grey {
   border: 1px solid grey;
 }
 
 .pink-bck {
-  background-color: #c62a82!important; 
-} 
-
-.float-left{
-  float:left;
+  background-color: #c62a82 !important;
 }
 
-.float-right{
-  float:right;
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
 }
 
 
-.thumbnail{
-  box-shadow: 0 10px 30px 0 rgba(0,0,0,0.5)!important;
+.thumbnail {
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.5) !important;
 }
 
 .yellow-button {
-  background: linear-gradient(0deg,orange,yellow);
+  background: linear-gradient(0deg, orange, yellow);
   background-color: orange;
   border-color: orange;
   color: maroon;
-  box-shadow: 0 10px 30px 0 rgba(0,0,0,0.8)!important;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.8) !important;
 }
 
-.text-align-left{
-  text-align: left!important;
+.text-align-left {
+  text-align: left !important;
 }
- 
+
 
 //************* FONT **********
 
-.font-12{
+.font-12 {
   font-size: 12px;
 }
 
-.font-13{
+.font-13 {
   font-size: 13px;
 }
 
-.font-14{
+.font-14 {
   font-size: 14px;
 }
 
-.font-15{
+.font-15 {
   font-size: 15px;
 }
 
 .font-18,
-.font-18:before
-{
-  font-size: 1rm;
+.font-18:before {
+  font-size: 1rm !important;
 }
 
+.blue-button {
+  color: #1f2746;
+  background-color: #42d4ec;
+  border-color: #42d4ec;
+  background: linear-gradient(0deg, #22a9bf 0%, #42d4ec 100%);
+}

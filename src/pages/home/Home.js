@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import "./homeStyles.scss";
 import { PostColumn, HomeHeader } from "./cmp/";
-import OnboardingTour from "../../cmp/onboarding/OnboardingTour";
-import SubscribePanel from "../../cmp/onboarding/SubscribePanel";
+import OnboardingTour from "../../cmp/onboarding/OnboardingTour"; 
+import FounderQuote from "../../cmp/onboarding/FounderQuote";
 
 class Home extends React.Component {
   render() {
@@ -15,7 +15,7 @@ class Home extends React.Component {
         <HomeHeader />
         <OnboardingTour />
 
-        <SubscribePanel />
+        <FounderQuote />
 
         {appStarted && (
           <section className="section-80 section-lg-30 home-body">

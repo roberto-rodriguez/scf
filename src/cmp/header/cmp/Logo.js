@@ -6,16 +6,14 @@ import { Badge } from "reactstrap";
 
 class Logo extends React.Component {
   render() {
-    var { navSolidBackground } = this.props;
+    var { navSolidBackground, showBeta } = this.props;
 
     var darkerColor = navSolidBackground ? "white-text" : "blue-text";
     var lighterColor = navSolidBackground ? "yellow-text" : "pink-text";
 
     return (
       <NavLink exact to="/">
-        <h5
-          className={darkerColor + " fsc-logo"} 
-        >
+        <h5 className={darkerColor + " fsc-logo"}>
           <span
             className={lighterColor}
             style={{
@@ -32,16 +30,19 @@ class Logo extends React.Component {
             style={{ marginLeft: 10 }}
           />
         </h5>
-        <Badge color="warning" className={"margin-left-10"}>
-          BETA
-        </Badge>
+        {showBeta && (
+          <Badge color="warning" className={"margin-left-10"}>
+            BETA
+          </Badge>
+        )}
       </NavLink>
     );
   }
 }
 
 Logo.propTypes = {
-  navSolidBackground: PropTypes.bool
+  navSolidBackground: PropTypes.bool,
+  showBeta: PropTypes.bool
 };
 
 export default Logo;

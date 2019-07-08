@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import "./header.scss";
 import PropTypes from "prop-types";
 import { LoginButton, FilterButton, Logo } from "./cmp";
@@ -12,7 +13,7 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      navSolidBackground: null
+      navSolidBackground: props.navSolidBackground
       // liFocus: false
     };
   }
@@ -26,12 +27,13 @@ class NavBar extends React.Component {
   }
 
   handleScroll = () => {
-    var { showWelcome, toggleViewState } = this.props;
+    var { showWelcome, toggleViewState, alwaysSolid } = this.props;
     var navSolidBackground = window.scrollY != 0;
 
     if (
-      this.state.navSolidBackground == null ||
-      this.state.navSolidBackground != navSolidBackground
+      !alwaysSolid &&
+      (this.state.navSolidBackground == null ||
+        this.state.navSolidBackground != navSolidBackground)
     ) {
       this.setState({ navSolidBackground });
     }
@@ -50,7 +52,14 @@ class NavBar extends React.Component {
   // }
 
   render() {
-    var { navBck, appStarted, hasFilters, showFilters } = this.props;
+    var {
+      navBck,
+      appStarted,
+      hasFilters,
+      showFilters,
+      setViewStateProps,
+      isHome
+    } = this.props;
     var { navSolidBackground } = this.state;
     var navCls = "rd-navbar-wrap";
     var darkNavLink = false;
@@ -110,11 +119,25 @@ class NavBar extends React.Component {
                 className="rd-navbar-nav-wrap toggle-original-elements heigth100 width100"
                 style={{ justifyContent: "space-between" }}
               >
-                <Logo navSolidBackground={navBck || navSolidBackground} />
+                {isHome ? (
+                  <Logo
+                    navSolidBackground={navBck || navSolidBackground}
+                    showBeta
+                  />
+                ) : (
+                  <ul className="rd-navbar-nav float-left">
+                    <li className={darkNavLink ? "dark-nav-link" : ""}>
+                      <NavLink to="/">
+                        <i className="fa fa-long-arrow-left mobile-font-50 margin-right-10" />
+                        Back to Deals
+                      </NavLink>
+                    </li>
+                  </ul>
+                )}
 
                 {hasFilters && navSolidBackground && <Filter />}
 
-                <ul className="rd-navbar-nav" style={{ float: "right" }}>
+                <ul className="rd-navbar-nav float-right">
                   <li
                     className={`rd-navbar--has-dropdown rd-navbar-submenu ${
                       darkNavLink ? "dark-nav-link" : ""
@@ -122,12 +145,21 @@ class NavBar extends React.Component {
                   >
                     <a href="#">About</a>
                     <span className="rd-navbar-submenu-toggle" />
-                    <ul className="rd-navbar-dropdown">
+                    <ul className="rd-navbar-dropdown" style={{ left: -120 }}>
                       <li>
                         <NavLink to="/about">Overview</NavLink>
                       </li>
                       <li>
-                        <NavLink to="/about">Testimonials</NavLink>
+                        <span
+                          onClick={() =>
+                            setViewStateProps({
+                              showWelcome: false,
+                              showTour: true
+                            })
+                          }
+                        >
+                          Take a Tour
+                        </span>
                       </li>
                       <li>
                         <NavLink to="/departures">
@@ -137,9 +169,14 @@ class NavBar extends React.Component {
                       <li>
                         <NavLink to="/about">FAQ</NavLink>
                       </li>
+                      <li>
+                        <HashLink smooth to="/about#contact">
+                          Contact Us
+                        </HashLink>
+                      </li>
                     </ul>
                   </li>
-                  <LoginButton darkNavLink={darkNavLink} />
+                  {false && <LoginButton darkNavLink={darkNavLink} />}
                 </ul>
               </div>
 
@@ -156,8 +193,10 @@ NavBar.propTypes = {
   navBck: PropTypes.bool,
   appStarted: PropTypes.bool,
   showFilters: PropTypes.bool,
+  isHome: PropTypes.bool,
   hasFilters: PropTypes.bool,
-  setViewState: PropTypes.func
+  setViewState: PropTypes.func,
+  setViewStateProps: PropTypes.func
 };
 
 const mapStateToProps = ({ authReducer, viewReducer }) => ({

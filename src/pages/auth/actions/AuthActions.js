@@ -43,9 +43,17 @@ export function init() {
       dispatch(authActionsCreator.setAuthAction(data));
 
       var showWelcome = cookie.load("showWelcome");
+      var addedToWaitingList = cookie.load("addedToWaitingList");
+
+      dispatch(
+        viewActionsCreator.setViewStatePropsAction({
+          showWelcome: !showWelcome,
+          addedToWaitingList: !!addedToWaitingList,
+          showSubscribePanel: !addedToWaitingList
+        })
+      );
 
       if (!showWelcome) {
-        dispatch(viewActionsCreator.setViewStateAction("showWelcome", true));
         cookie.save("showWelcome", true);
       }
     });

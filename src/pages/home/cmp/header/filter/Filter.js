@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as viewActions from "../../../../../actions/ViewActions";
-import PropTypes from "prop-types";
-import { HeaderRegion } from "../cmp";
+import PropTypes from "prop-types"; 
 import "./filterStyles.scss";
 import { FilterFrom, FilterTo, FilterDate, SearchButton } from "./cmp";
 

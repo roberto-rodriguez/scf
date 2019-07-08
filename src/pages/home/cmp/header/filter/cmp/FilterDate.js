@@ -41,14 +41,23 @@ class FilterDate extends React.Component {
       list.push(<hr key={"hr-" + i} className={"filter-date-hr"} />);
       list.push(
         (month => (
-          <li key={"li-" + i} onClick={() => updateFilter(name, month.value)}>
+          <li
+            key={"li-" + i + 1}
+            onClick={() => updateFilter(name, month.value)}
+          >
             {month.name}
           </li>
         ))(months[i])
       );
     }
 
-    list.push(<hr key={"hr-20"} className={"filter-date-hr"} style={{marginBottom: 0 }} />);
+    list.push(
+      <hr
+        key={"hr-20"}
+        className={"filter-date-hr"}
+        style={{ marginBottom: 0 }}
+      />
+    );
 
     return (
       <li onClick={this.doClick} className="toggle-menu-wrapper">

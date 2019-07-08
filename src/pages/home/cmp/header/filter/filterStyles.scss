@@ -1,49 +1,47 @@
-.rd-navbar-nav-wrap .nav-custom{
-    margin-bottom: 0px!important;
+.rd-navbar-nav-wrap .nav-custom {
+  margin-bottom: 0px !important;
 
-    li span{
-        color: #d7d7d7;
+  li span {
+    color: #d7d7d7;
+  }
+}
+
+.nav-custom .region-link {
+  padding: 4px 20px !important;
+}
+
+.toggle-menu-wrapper {
+  cursor: pointer;
+
+  ul {
+    display: none;
+    position: absolute;
+    top: 50px;
+    background-color: white;
+    border: 1px solid #1f2746;
+    width: 250px;
+
+    li:hover {
+      color: #c62a82 !important;
     }
+  }
 }
 
-.toggle-menu-wrapper{
-    cursor:pointer;
-
-    ul{
-        display:none; 
-        position: absolute;
-        top: 56px;
-        background-color: white;
-        border: 1px solid #1f2746;
-        width: 250px; 
-
-        li:hover{
-            color: #c62a82!important;
-        }
-    }    
+.toggle-menu-wrapper:hover ul {
+  display: block !important;
 }
 
-.toggle-menu-wrapper:hover ul{ 
-        display:block!important; 
-}
-
-.filter-date-hr{
-    margin: 7px;
+.filter-date-hr {
+  margin: 7px;
 }
 
 //LAPTOP styles
 @media screen and (max-width:1600px) {
-    .nav-custom .region-link {
-        padding: 4px 20px!important;
-    }
-
-    .toggle-menu-wrapper{ 
-        ul{ 
-            top: 50px;
-        }
-    }
-
-    .filter-date-hr{
-        margin: 4px;
-    }
+  .nav-custom .region-link {
+    padding: 4px 20px !important;
   }
+
+  .filter-date-hr {
+    margin: 4px;
+  }
+}

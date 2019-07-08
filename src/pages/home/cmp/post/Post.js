@@ -28,7 +28,7 @@ class Post extends React.Component {
     }
 
     return (
-      <div 
+      <div
         id={postId}
         className={
           "home-post isotope-item " +
@@ -59,27 +59,33 @@ class Post extends React.Component {
             </table>
           </div>
           {!status && <div className="premium-post-overlay"> </div>}
-          <PostBadge status={status} premium={premium} />
+          {false && <PostBadge status={status} premium={premium} />}
           <div className="post-price yellow-text mobile-font-50">
             ${price}{" "}
-            <span className="regular-price mobile-font-50" style={{ marginRight: 10 }}>
+            <span
+              className="regular-price mobile-font-50"
+              style={{ marginRight: 10 }}
+            >
               ${avg}
             </span>
             {"  "}
-            <span style={{ color: "orange"}}>
-              {`${percent}% OFF`}
-            </span>
+            <span style={{ color: "orange" }}>{`${percent}% OFF`}</span>
           </div>
 
           <div className="post-footer">
             <table style={{ width: "100%" }}>
               <tbody>
                 <tr>
-                  <td className="white-text mobile-font-50" style={{ textAlign: "left" }}>
+                  <td
+                    className="white-text mobile-font-50"
+                    style={{ textAlign: "left" }}
+                  >
                     {creationDate && moment(creationDate).fromNow()}
                   </td>
                   <td style={{ textAlign: "right" }}>
-                    <span className="pDestination yellow-text mobile-font-50">{country}</span>
+                    <span className="pDestination yellow-text mobile-font-50">
+                      {country}
+                    </span>
                   </td>
                 </tr>
               </tbody>

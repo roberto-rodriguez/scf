@@ -14,13 +14,13 @@ class HomeHeader extends React.Component {
 
     return (
       <header className="home-header2">
-        <NavBar hasFilters={true} />
+        <NavBar hasFilters={true} isHome={true} />
 
         <div className="home-header-wrap">
           <div className="home-header-top">
             {showWelcome && <WelcomePanel />}
             <div className="home-header-top-inner">
-              {!showWelcome && (
+              {appStarted && !showWelcome && (
                 <div className="home-header-top-title">
                   <h3
                     className="blue-text"
@@ -47,7 +47,7 @@ class HomeHeader extends React.Component {
                 className="arrow bounce cursor-pointer"
                 onClick={() => utils.scrollTo(600, 1000)}
               >
-                {!showWelcome && <span className="fa fa-chevron-down fa-2x" />}
+                {!showWelcome && <span className="fa fa-chevron-down" />}
               </div>
             )}
 
@@ -56,15 +56,17 @@ class HomeHeader extends React.Component {
           </div>
         </div>
 
-        <a
-          href="https://unsplash.com/@simonmigaj?utm_source=trello&amp;utm_medium=referral&amp;utm_campaign=api-credit"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Simon Migaj"
-          className="image-credit" 
-        >
-          Photo by: Simon Migaj
-        </a>
+        {false && (
+          <a
+            href="https://unsplash.com/@simonmigaj?utm_source=trello&amp;utm_medium=referral&amp;utm_campaign=api-credit"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Simon Migaj"
+            className="image-credit"
+          >
+            Photo by: Simon Migaj
+          </a>
+        )}
       </header>
     );
   }

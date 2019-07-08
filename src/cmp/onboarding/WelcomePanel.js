@@ -50,13 +50,13 @@ class WelcomePanel extends React.Component {
             Every day we find the{" "}
             <span className="pink-text"> Best Flight Deals </span>
             departing from your city comparing prices across all major Flight
-            Search Engines.
+            Search Sites.
           </h5>
           <p className="text-align-left" style={{ fontSize: 18 }}>
-            <span className="pink-text">What makes us different</span> is that
-            we show you a transparent price comparation for these Deals across
-            all providers, destinations and dates, all in one place. We are not
-            a travel agency. We do not sell flight tickets.
+            Here you will find a{" "}
+            <span className="pink-text">transparent price comparation </span> for
+            these Deals across all providers, destinations and dates, all in one
+            place. We are not a travel agency. We do not sell flight tickets.
           </p>
           <span className="text-align-left">
             Let us show you the most popular features you can take advantage of

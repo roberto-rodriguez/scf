@@ -62,8 +62,8 @@
    bottom: 5vh;
 
    img {
-     height: 70px;
-     width: 70px;
+     height: 60px;
+     width: 60px;
      margin-bottom: 15px;
    }
 
@@ -80,6 +80,13 @@
  .home-header-text-bottom-right {
    @extend .home-header-text-bottom;
    right: 8vh;
+
+   img {
+    height: 45px;
+    width: 45px;
+    margin-bottom: 15px;
+  }
+
  }
 
 
@@ -101,8 +108,8 @@
      bottom: 2vh;
 
      img {
-       height: 50px;
-       width: 50px;
+       height: 40px;
+       width: 40px;
        margin-bottom: 15px;
      }
 

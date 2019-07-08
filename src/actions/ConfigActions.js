@@ -25,7 +25,7 @@ export function updateDepartureCities(key, departureCities) {
       Proxy.post("config/updateDepartureCities", { departureCities });
     }
   };
-}
+} 
 
 //-------------  TEST API ------------------------
 

@@ -9,7 +9,7 @@ class FilterFrom extends React.Component {
   render() {
     var { departureCities, cities, originNotIn, updateFilter } = this.props;
 
-    var hasDepartureCities = departureCities.length > 0;
+    var hasDepartureCities = departureCities && departureCities.length > 0;
 
     var activeCities = hasDepartureCities
       ? departureCities
@@ -29,7 +29,7 @@ class FilterFrom extends React.Component {
         : "From Anywhere";
 
     return (
-      <li onClick={this.doClick} className="toggle-menu-wrapper">
+      <li className="toggle-menu-wrapper">
         <span
           className={"region-link " + (hasDepartureCities ? "pink-bck" : "")}
         >
@@ -67,12 +67,6 @@ class FilterFrom extends React.Component {
       </li>
     );
   }
-
-  doClick = e => {
-    // e.preventDefault();
-    // var { id, updateRegion } = this.props;
-    // updateRegion(id);
-  };
 }
 
 FilterFrom.propTypes = {

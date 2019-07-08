@@ -1,4 +1,6 @@
 import * as viewActionsCreator from "./view.actions_creator";
+import cookie from "react-cookies";
+import * as Proxy from "./Proxy";
 
 export function setViewState(prop, value) {
   return function(dispatch) {
@@ -23,5 +25,15 @@ export function doFilter() {
 export function setViewStateProps(propsObj) {
   return function(dispatch) {
     dispatch(viewActionsCreator.setViewStatePropsAction(propsObj));
+  };
+}
+
+export function addToClientWaitingList(email, callback) {
+  return function(dispatch) {
+    cookie.save("addedToWaitingList", true);
+
+    dispatch(viewActionsCreator.setViewStateAction("addedToWaitingList", true));
+
+    Proxy.post("clientWaitingList/add", { email }, callback);
   };
 }

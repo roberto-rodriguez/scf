@@ -1,9 +1,14 @@
  .subscribe-panel {
-   height: 175px;
+   height: 150px;
    border: 2px solid #b7d1d8;
    border-radius: 10px;
-   width: 60%;
-   padding: 15px;
+   width: 50%;
+   padding: 20px;
+
+   h5 {
+     font-size: 17px !important;
+   }
+
 
    img {
      height: 30px;
@@ -21,25 +26,27 @@
    border-radius: 0px 4px 4px 0px;
    border: none;
    text-transform: uppercase;
+   cursor: pointer;
  }
 
  .green-input {
    border-color: #00bf5f;
-   padding: 0.2rem 1.4rem;
+   padding: 0.1rem 1.4rem;
    border-radius: 4px 0px 0px 4px;
  }
 
 
  @media (max-width: 1300px) {
    .subscribe-panel {
-     height: 160px;
+     height: 140px;
+     width: 60%;
 
-     h5 { 
-       font-size: 17px !important;
+     h5 {
+       font-size: 15px !important;
      }
 
      .green-btn {
-       font-size: 14px;
+       font-size: 13px;
      }
 
      .green-input {

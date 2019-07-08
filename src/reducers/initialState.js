@@ -25,6 +25,7 @@ export default {
     filterCount: 0, //Used to notify home to update when filters change
     showTour: false,
     showWelcome: false,
-    showSubscribePanel: true
+    showSubscribePanel: false,
+    addedToWaitingList: false
   }
 };
