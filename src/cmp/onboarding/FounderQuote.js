@@ -52,7 +52,7 @@ class FounderQuote extends React.Component {
       return <section className="section-80 section-lg-30" />;
     } else
       return (
-        <section className="section-30 section-xl-60 bg-image-01 context-dark">
+        <section className="section-30 section-xl-50 bg-image-01 context-dark">
           <img
             onClick={() => toggleViewState("showSubscribePanel")}
             className={"cursor-pointer"}
@@ -66,7 +66,7 @@ class FounderQuote extends React.Component {
             }}
           />
           <div className="container container-wide">
-            <div className="row">
+            <div className="row row-30">
               <div className="col-xl-3 col-lg-3 float-right">
                 <img
                   className="img-circle img-responsive center-block  float-right"
@@ -91,26 +91,18 @@ class FounderQuote extends React.Component {
                         </span>
                       )}
                       We are developing new initiatives and features every day
-                      to make this the best Cheap Flight Service. We would like
-                      you to join us on this journey,{" "}
+                      to make this the Best Cheap Flight Service, made by
+                      travelers for travelers. We would like you to join us on
+                      this journey,{" "}
                       <span style={{ color: "#42d4ec" }}>
-                        subscribe to our waiting list, leave us your honest
-                        feedback
+                        subscribe to our waiting list, leave us your feedback
                       </span>
                       , and you will receive one year of FREE Premium when we
                       officially launch.
-                      <HashLink
-                        smooth
-                        to="/about#aboutus"
-                        className="text-gray margin-left-10 font-15 cursor-pointer"
-                      >
-                        Learn more
-                        <i className="fa fa-long-arrow-right mobile-font-50 margin-left-10" />
-                      </HashLink>
+                      <cite className="text-gray margin-left-10">
+                        Robert Rodriguez, founder
+                      </cite>
                     </q>
-                  </p>
-                  <p>
-                    <cite className="text-gray">Robert Rodriguez, founder</cite>
                   </p>
                 </blockquote>
                 {showWaitingListInput ? (
