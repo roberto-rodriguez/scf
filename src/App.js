@@ -6,7 +6,7 @@ import React from "react";
 import { hot } from "react-hot-loader";
 import { Route, Switch } from "react-router-dom";
 import NotFoundPage from "./cmp/notFound/NotFoundPage";
-import { Home, Deal, About, Login, Register, DepartureCities } from "./pages/";
+import { Home, Deal, About, Login, Register, DepartureCities, FaqPage } from "./pages/";
 
 import "./styles/tpl/style.css";
 import "./styles/tpl/bootstrap.css";
@@ -23,12 +23,13 @@ class App extends React.Component {
             component={Deal}
           />
           <Route exact path="/" component={Home} key={"home"} />
-          <Route path="/about" component={About} key={"about"} />
+          <Route path="/about" component={About} key={"about"} />         
           <Route
             path="/departures"
             component={DepartureCities}
             key={"departures"}
           />
+          <Route path="/faq" component={FaqPage} key={"faq"} />
           <Route path="/login" component={Login} key={"login"} />
           <Route path="/subscribe" component={Register} key={"subscribe"} />
           <Route component={NotFoundPage} key={"notFound"} />

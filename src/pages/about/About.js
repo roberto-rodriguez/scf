@@ -1,6 +1,5 @@
 import React from "react";
-import Logo from "../../cmp/header/cmp/Logo";
-import Contact from "./Contact";
+import Footer from "../../cmp/Footer";
 import Header from "../../cmp/header/Header";
 import FounderQuote from "../../cmp/onboarding/FounderQuote";
 
@@ -150,28 +149,7 @@ const About = () => {
           </div>
         </div>
       </section>
-
-      <footer className="page-footer" id="contact">
-        <div className="container container-wide text-md-left">
-          <div
-            className="row row-50 section-60 section-lg-90"
-            style={{ paddingLeft: "5%", paddingRight: "5%" }}
-          >
-            <div className="col" style={{ width: "40%" }}>
-              <Logo />
-              <br />
-              <br />
-              <p>
-                We are a free Flight Search Site, we aggregate the best flight
-                Deals from the most prestigious flight sites as soon as they
-                show up and post it here in a convenient and transparent way. We
-                are not a travel agency. We do not sell flight tickets.
-              </p>
-            </div>
-            <Contact />
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

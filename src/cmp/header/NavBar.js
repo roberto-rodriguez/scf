@@ -167,10 +167,10 @@ class NavBar extends React.Component {
                         </NavLink>
                       </li>
                       <li>
-                        <NavLink to="/about">FAQ</NavLink>
+                        <NavLink to="/faq">FAQ</NavLink>
                       </li>
                       <li>
-                        <HashLink smooth to="/about#contact">
+                        <HashLink smooth to="#contact">
                           Contact Us
                         </HashLink>
                       </li>

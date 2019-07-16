@@ -34,7 +34,7 @@ class CityPricesCaption extends React.Component {
           </Link>
         )}
 
-        <ul className="list-marked list-marked-no-padding list-marked-flex text-base cities-list">
+        <ul className="list-marked-price list-marked-no-padding list-marked-flex text-base cities-list">
           <PostCityPrice
             mainCity={mainCity}
             sampleSearchCity={mainCity}
