@@ -2,7 +2,6 @@ import React from "react";
 import SelectOrigin from "../auth/register/cmp/origin/SelectOrigin";
 import * as configActions from "../../actions/ConfigActions";
 import Header from "../../cmp/header/Header";
-import Footer from "../../cmp/Footer";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -52,7 +51,7 @@ class DepartureCities extends React.Component {
           departureCities={cityObjList}
           onUpdate={updateDepartureCities}
         />
-        <Footer />
+        
       </div>
     );
   }

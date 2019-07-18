@@ -41,9 +41,7 @@ class UsMapPanel extends React.Component {
 
       selectRegion(regionId);
 
-      if (window.scrollY < 300) {
-        utils.scrollTo(600, 1000);
-      }
+      
     }
   };
 
@@ -76,7 +74,7 @@ class UsMapPanel extends React.Component {
 
   render() {
     var { region } = this.state;
-    var { selectCity, departureCities } = this.props;
+    var { selectCity, departureCities, hideFooter } = this.props;
 
     var width, height;
 
@@ -102,7 +100,8 @@ class UsMapPanel extends React.Component {
             regionId={region}
             selectCity={selectCity}
             departureCities={departureCities}
-            onBackToMap={this.onBackToMap}
+            onBackToMap={this.onBackToMap}  
+            hideFooter={hideFooter}          
           />
         </div>
       );
@@ -161,7 +160,8 @@ UsMapPanel.propTypes = {
   selectedRegion: PropTypes.any,
   regionId: PropTypes.any,
   selectCity: PropTypes.func,
-  departureCities: PropTypes.any
+  departureCities: PropTypes.any,
+  hideFooter: PropTypes.func
 };
 
 export default connect()(UsMapPanel);

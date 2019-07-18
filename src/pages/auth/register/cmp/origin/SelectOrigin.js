@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as object from "../../../../../utils/object";
 import "../../../authStyles.scss";
 import PropTypes from "prop-types";
+import Footer from "../../../../../cmp/Footer";
 
 import { UsMapPanel, CitiesPanel, SelectedCities } from "./cmp/";
 
@@ -12,14 +13,20 @@ class SelectOrigin extends React.Component {
 
     this.state = {
       country: "us", //or 'canada'
-      region: null
+      region: null,
+      showFooter: true
     };
+    this.hideFooter = this.hideFooter.bind(this);
   }
+
+  hideFooter = show => {
+    this.setState({ showFooter: show });
+  };
 
   selectCountry = country => this.setState({ country });
 
   selectRegion = region => {
-    this.setState({ region }); 
+    this.setState({ region });
   };
 
   selectCity = city => {
@@ -52,7 +59,7 @@ class SelectOrigin extends React.Component {
 
   render() {
     var { departureCities } = this.props;
-    var { country, region } = this.state; 
+    var { country, region, showFooter } = this.state;
 
     return (
       <div>
@@ -93,22 +100,26 @@ class SelectOrigin extends React.Component {
         {country == "us" ? (
           <div>
             <UsMapPanel
-              selectRegion={this.selectRegion} 
+              selectRegion={this.selectRegion}
               regionId={region}
               selectCity={this.selectCity}
               departureCities={departureCities}
+              hideFooter={this.hideFooter}
             />
           </div>
         ) : (
           <CitiesPanel
             regionId={6}
             selectCity={this.selectCity}
-            departureCities={departureCities}
+            departureCities={departureCities}                      
           />
         )}
-        <br />
-        <br />
-        <br />
+        <div>
+          <br />
+          <br />
+          <br />
+          {showFooter && <Footer />}
+        </div>
       </div>
     );
   }
@@ -116,7 +127,7 @@ class SelectOrigin extends React.Component {
 
 SelectOrigin.propTypes = {
   onUpdate: PropTypes.func,
-  departureCities: PropTypes.any 
+  departureCities: PropTypes.any
 };
 
 export default connect()(SelectOrigin);

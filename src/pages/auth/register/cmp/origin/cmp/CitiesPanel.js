@@ -7,14 +7,16 @@ import FAQCanNotFindCity from "./FAQCanNotFindCity";
 class CitiesPanel extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       showCanNotFindCity: false
     };
   }
 
-  onToggleCanNotFindCity = () =>
+  onToggleCanNotFindCity = () => {
     this.setState({ showCanNotFindCity: !this.state.showCanNotFindCity });
+    this.props.hideFooter(this.state.showCanNotFindCity)
+  }
 
   render() {
     var { showCanNotFindCity } = this.state;
@@ -63,6 +65,9 @@ class CitiesPanel extends React.Component {
           showCanNotFindCity={showCanNotFindCity}
           onToggleCanNotFindCity={this.onToggleCanNotFindCity}
         />
+        <br />
+        <br />
+        <br />
       </div>
     );
   }
@@ -77,7 +82,8 @@ CitiesPanel.propTypes = {
   cityList: PropTypes.any,
   departureCities: PropTypes.any,
   selectCity: PropTypes.func,
-  onBackToMap: PropTypes.func
+  onBackToMap: PropTypes.func,
+  hideFooter: PropTypes.func
 };
 
 function mapStateToProps({ configReducer }, props) {
@@ -85,7 +91,7 @@ function mapStateToProps({ configReducer }, props) {
   var cityList = Object.values(cities).filter(
     city => city.region == props.regionId
   );
-
+  
   return { cityList: cityList || [] };
 }
 
