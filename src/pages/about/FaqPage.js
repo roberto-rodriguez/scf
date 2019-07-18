@@ -280,38 +280,38 @@ class FaqPage extends React.Component {
                   <div className="text-lg-left offset-custom-60">
                     <ul className="list-marked">
                       <li> 
-                        <HashLink smooth to="#q0" className="text-info-dr" data-custom-scroll-to="q0" >
+                        <HashLink smooth to="#q1" className="text-info-dr" data-custom-scroll-to="q1" >
                         Can I make changes to my reservation after I have
                         purchased it?
                         </HashLink> 
                       </li>
                       <li>
-                      <HashLink smooth to="#q1" className="text-info-dr" data-custom-scroll-to="q1" >
+                      <HashLink smooth to="#q2" className="text-info-dr" data-custom-scroll-to="q2" >
                           I noticed some flights are operated by other airlines
                           and have a 24-hour hold. What does this mean?
                         </HashLink>
                       </li>
                       <li>
-                      <HashLink smooth to="#q2" className="text-info-dr" data-custom-scroll-to="q2" >
+                      <HashLink smooth to="#q3" className="text-info-dr" data-custom-scroll-to="q3" >
                           Does the number of passengers I choose limit my lowest
                           fare flight choices?
                         </HashLink>
                       </li>
                       <li>
-                      <HashLink smooth to="#q3" className="text-info-dr" data-custom-scroll-to="q3" id="q0" >
+                      <HashLink smooth to="#q4" className="text-info-dr" data-custom-scroll-to="q4" id="q1" >
                           Can I book flights for multiple-stop itineraries
                           online?
                         </HashLink>
                       </li>
                       <li>
-                      <HashLink smooth to="#q4" className="text-info-dr" data-custom-scroll-to="q4" >
+                      <HashLink smooth to="#q5" className="text-info-dr" data-custom-scroll-to="q5" >
                           I received a promotional offer to be redeemed online.
                           How can I redeem it?
                         </HashLink>
                       </li>
                     </ul>                    
                     <dl className="list-terms-variant-1" >
-                      <dt className="h5" id="q1">
+                      <dt className="h5" id="q2">
                         Can I make changes to my reservation after I have
                         purchased it?
                       </dt>
@@ -324,7 +324,7 @@ class FaqPage extends React.Component {
                           select the respective button.
                         </p>
                       </dd>
-                      <dt className="h5" id="q2">
+                      <dt className="h5" id="q3">
                         I noticed some flights are operated by other airlines
                         and have a 24-hour hold. What does this mean?
                       </dt>
@@ -337,7 +337,7 @@ class FaqPage extends React.Component {
                           airline, we will notify you via email.
                         </p>
                       </dd>
-                      <dt className="h5" id="q3">
+                      <dt className="h5" id="q4">
                         Does the number of passengers I choose limit my lowest
                         fare flight choices?
                       </dt>
@@ -348,7 +348,7 @@ class FaqPage extends React.Component {
                           flight due to seat availability.
                         </p>
                       </dd>
-                      <dt className="h5" id="q4">
+                      <dt className="h5" id="q5">
                         Can I book flights for multiple-stop itineraries online?
                       </dt>
                       <dd>
@@ -359,7 +359,7 @@ class FaqPage extends React.Component {
                           the home page.
                         </p>
                       </dd>
-                      <dt className="h5" id="q5">
+                      <dt className="h5" id="q6">
                         I received a promotional offer to be redeemed
                         online. How can I redeem it?
                       </dt>
